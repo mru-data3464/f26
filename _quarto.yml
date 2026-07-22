@@ -18,7 +18,7 @@ website:
       - href: labs/index.qmd
     right:
       - href: https://github.com/mru-data3464/f26.git
-        text: "![GitHub](img/github-mark-white.svg){height=1em}"
+        icon: github
   page-footer:
     center: "© Copyright 2026 Charlotte Curtis. Licensed [CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)."
     right: Made with [![Quarto](https://quarto.org/quarto.png){height=1em}](https://quarto.org/)

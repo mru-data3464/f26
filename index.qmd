@@ -1,0 +1,24 @@
+---
+title: "DATA 3464 | Fall 2026"
+listing:
+  - id: lectures
+    contents: lectures/*.qmd
+    template: _templates/listing-lecture.ejs.md
+  - id: labs
+    contents: labs/*.qmd
+    template: _templates/listing-labs.ejs.md
+---
+
+Welcome to DATA 3464 in Fall 2026!
+
+This website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.
+
+See a mistake? Why not [submit an issue](https://github.com/mru-data3464/f26)?
+
+## Lectures
+:::{#lectures}
+:::
+
+## Labs
+:::{#labs}
+:::

@@ -1,0 +1,5 @@
+---
+title: Lectures
+listing:
+  template: ../_templates/listing-lecture.ejs.md
+---

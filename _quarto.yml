@@ -1,0 +1,34 @@
+project:
+  type: website
+  resources:
+    - "slides/*"
+    - "demo_code/**"
+  render:
+    - "*.qmd"
+    - "lectures/*"
+    - "labs/*"
+
+website:
+  page-navigation: true
+  title: "DATA 3464 | Fall 2026"
+  favicon: img/MRU_SingleChevron_RGB.svg
+  navbar:
+    left:
+      - href: lectures/index.qmd
+      - href: labs/index.qmd
+    right:
+      - href: https://github.com/mru-data3464/f26.git
+        text: "![GitHub](img/github-mark-white.svg){height=1em}"
+  page-footer:
+    center: "© Copyright 2026 Charlotte Curtis. Licensed [CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)."
+    right: Made with [![Quarto](https://quarto.org/quarto.png){height=1em}](https://quarto.org/)
+
+page-layout: full
+format:
+  html:
+    theme: [simplex, brand]
+    toc: true
+    toc-location: left
+    
+execute:
+  freeze: auto

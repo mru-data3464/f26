@@ -1,0 +1,14 @@
+# Quarto cache and build artifacts
+.quarto/
+_site/
+
+# editor stuff
+.vscode
+/.quarto/
+**/*.quarto_ipynb
+
+# Generated files
+lectures/*.qmd
+!lectures/index.qmd
+slides/*.html
+slides/*.pdf

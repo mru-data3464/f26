@@ -1,0 +1,9 @@
+color:
+  # MRU brand colours
+  palette: 
+    kerby-blue: "#003A5F"
+    lincoln-blue: "#0F76D7"
+  primary: kerby-blue
+
+logo:
+  medium: img/MRU_SingleChevron_White.png

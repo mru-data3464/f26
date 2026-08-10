@@ -38,7 +38,7 @@ September 3, 2026
 ## My Background
 ![center w:900px flavour](../img/charlotte-timeline.svg)
 
-## Another new class!
+## Data processing
 > This course introduces techniques for ethically and responsibly wrangling and manipulating datasets to make them appropriate for addressing the question at hand. Topics may include cleaning and transforming data, integrity and quality measures, common file formats, feature selection and engineering, and generating features from unstructured sources such as text and images.
 
 <div style="text-align: center; margin-top: 1em;">
@@ -51,12 +51,12 @@ Colloquially and lovingly referred to as **data wrangling**
 
 <div class="columns">
 
-| Component          | Weight  |
-| ------------------ | ------- |
-| Tutorial exercises | 10%     |
-| Assignments        | 30%     |
-| Midterm exam       | 25%     |
-| Final exam         | 35%     |
+| Component          | Weight | Comment                      |
+| ------------------ | ------ | ---------------------------- |
+| Tutorial exercises | 10%    | Pass/fail                    |
+| Assignments        | 35%    | 8/12/15 split                |
+| Written tests      | 30%    | 2x15% each                   |
+| Final exam         | 25%    | In lab with limited internet |
 
 Bonus marks may be awarded for *substantial* corrections to materials, submitted as pull requests
 
@@ -77,7 +77,7 @@ Bonus marks may be awarded for *substantial* corrections to materials, submitted
     - [Scikit Learn](https://scikit-learn.org/stable/user_guide.html)
     - [Matplotlib](https://matplotlib.org/stable/users/index.html)
 
-> Don't just rely on AI summaries!
+> Don't rely on AI summaries!
 
 ## Speaking of AI...
 In this course (and others, and your career), you will need to know:
@@ -92,30 +92,30 @@ In this course (and others, and your career), you will need to know:
 
 </div>
 
-## The plan - before Reading Week
+## Tentative weekly plan: Before reading week
 
-| Week | Topic                                  | Chapter (ish) |
-| ---- | -------------------------------------- | ------------- |
-| 1    | Review and overview                    | 1-2           |
-| 2    | Exploring data, sampling, splitting    | 3-4           |
-| 3    | Representing categorical data          | 5             |
-| 4    | Numeric transformations, dimensionality reduction | 6             |
-| 5    | Dealing with missing values            | 7-8           |
-| 6    | Feature selection                      | 10            |
+| Week | Topic                                                  | Chapter (ish) |
+| ---- | ------------------------------------------------------ | ------------- |
+| 0-1  | Introduction and overview                              | 1-2           |
+| 1-2  | Basic machine learning models and categorical encoding | 3, 5          |
+| 2-3  | Exploring, splitting, and sampling data                | 4             |
+| 4    | Basic numeric data transformations                     | 6             |
+| 5    | Dealing with missing and weird data                    | 8             |
 
+**Test 1 (15%): Thursday, Oct 7**
 
-## The plan - after Reading Week
+## Tentative weekly plan: second half
 
-| Week | Topic                                |
-| ---- | ------------------------------------ |
-| 7    | Midterm                              |
-| 8    | Extracting data from text            |
-| 9    | Image representation and processing  |
-| 10   | Data labelling and augmentation      |
-| 11   | Processing pipelines                 |
-| 12   | Supervised and unsupervised learning |
-| 13   | Project presentations, buffer time   |
+| Week | Topic                                         | Chapter (ish) |
+| ---- | --------------------------------------------- | ------------- |
+| 6    | Fancy numeric and categorical transformations | 5, 6          |
+| 7    | Wrangling text                                |               |
+| 9    | Bash scripting and data cards                 |               |
+| 10   | 1D signals and audio                          |               |
+| 11   | Images and videos (2D signals)                |               |
+| 12   | Presentations and buffer time                 |               |
 
+**Test 2 (15%): Tuesday, Dec 1**
 
 ## Core courses so far
 
@@ -166,11 +166,6 @@ In this course (and others, and your career), you will need to know:
 
 </div>
 </div>
-
-## Where we left off on January 6
-<!-- _class: title_slide
-_paginate: skip
- -->
 
 ## Case study: risk of ischemic stroke
 
@@ -248,7 +243,4 @@ _class: code_reminder
 
 ## Coming up next
 - Lab: basic regression, show me where you're at
-- Lectures: exploratory data analysis
-    - Summary statistics
-    - Basic visualizations
-    - When and how to split your dataset
+- Lecture: Simple models and evaluation metrics

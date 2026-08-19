@@ -49,22 +49,18 @@ Colloquially and lovingly referred to as **data wrangling**
 
 ## Grade Assessment
 
-<div class="columns">
-
-| Component          | Weight | Comment                      |
-| ------------------ | ------ | ---------------------------- |
-| Tutorial exercises | 10%    | Pass/fail                    |
-| Assignments        | 35%    | 8/12/15 split                |
-| Written tests      | 30%    | 2x15% each                   |
-| Final exam         | 25%    | In lab with limited internet |
-
-Bonus marks may be awarded for *substantial* corrections to materials, submitted as pull requests
-
-</div>
+| Component          | Weight | Comment                          |
+| ------------------ | ------ | -------------------------------- |
+| Tutorial exercises | 10%    | Pass/fail                        |
+| Assignments        | 35%    | 8/12/15 split                    |
+| Written tests      | 35%    | x2, split 15%/20% in your favour |
+| Final exam         | 20%    | In lab with limited internet     |
 
 **Source repo**: https://github.com/mru-data3464/f26
 
 **Rendered at**: https://mru-data3464.github.io/f26
+
+<footer>Bonus marks may be awarded for <em>substantial</em> corrections to materials, submitted as pull requests</footer>
 
 ## Textbook(s)
 ![bg right:40% 50%](https://images.routledge.com/common/jackets/amazon/978103209/9781032090856.jpg)
@@ -102,7 +98,7 @@ In this course (and others, and your career), you will need to know:
 | 4    | Basic numeric data transformations                     | 6             |
 | 5    | Dealing with missing and weird data                    | 8             |
 
-**Test 1 (15%): Thursday, Oct 7**
+**Written test 1: Thursday, Oct 7**
 
 ## Tentative weekly plan: second half
 
@@ -115,7 +111,7 @@ In this course (and others, and your career), you will need to know:
 | 11   | Images and videos (2D signals)                |               |
 | 12   | Presentations and buffer time                 |               |
 
-**Test 2 (15%): Tuesday, Dec 1**
+**Written test 2: Tuesday, Dec 1**
 
 ## Core courses so far
 

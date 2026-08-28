@@ -27,5 +27,5 @@ if [[ -n $notdraft ]]; then
     npx @marp-team/marp-cli@latest --theme marp-mru.css --allow-local-files --pdf --html $notdraft
 
     # Convert to HTML
-    npx @marp-team/marp-cli@latest --theme assets/marp-mru.css --allow-local-files --bespoke.progress --html $notdraft
+    npx @marp-team/marp-cli@latest --theme marp-mru.css --allow-local-files --bespoke.progress --html $notdraft
 fi

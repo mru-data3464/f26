@@ -122,16 +122,16 @@ In this course (and others, and your career), you will need to know:
 </div>
 
 ## What do you know about...
-- Various probability distributions
-- Linear and logistic regression
-- Data quality measures
-- Data stewardship best practices
-- Document parsing, web scraping, audio/video feature detection
-- Linear algebra and array programming
-- Prediction tasks: classification and regression
-- Clustering and anomaly detection
-- Evaluation metrics
-- Basic data visualization (scatter plots, histograms, etc)
+* Various probability distributions
+* Linear and logistic regression
+* Data quality measures
+* Data stewardship best practices
+* Document parsing, web scraping, audio/video feature detection
+* Linear algebra and array programming
+* Prediction tasks: classification and regression
+* Clustering and anomaly detection
+* Evaluation metrics
+* Basic data visualization (scatter plots, histograms, etc)
 
 ## What do you want to know about?
 

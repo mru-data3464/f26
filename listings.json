@@ -1,0 +1,17 @@
+[
+  {
+    "listing": "/lectures/index.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/lectures/index.html",
+      "/labs/index.html"
+    ]
+  },
+  {
+    "listing": "/labs/index.html",
+    "items": []
+  }
+]

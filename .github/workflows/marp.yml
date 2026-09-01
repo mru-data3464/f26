@@ -23,6 +23,6 @@ jobs:
         run: |
           git config --global user.name 'Charlotte Curtis'
           git config --global user.email 'ccurtis@mtroyal.ca'
-          git add .
+          git add slides lectures
           git commit -m "Marp CI build output"
           git push

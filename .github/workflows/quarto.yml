@@ -1,0 +1,35 @@
+name: Deploy Quarto site
+
+on:
+  # runs after Marp Build
+  workflow_run:
+    workflows: ['Marp CI']
+    types:
+      - completed
+
+  # run manually
+  workflow_dispatch:
+  
+  # rebuild Mon/Tues/Wed evenings at 6 pm Mountain Time (Midnight UTC)
+  schedule:
+    - cron: '0 0 * * 1-3'
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,17 +1,20 @@
 [
   {
     "listing": "/lectures/index.html",
-    "items": []
-  },
-  {
-    "listing": "/index.html",
     "items": [
-      "/lectures/index.html",
-      "/labs/index.html"
+      "/lectures/01-intro.html"
     ]
   },
   {
     "listing": "/labs/index.html",
     "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/lectures/01-intro.html",
+      "/lectures/index.html",
+      "/labs/index.html"
+    ]
   }
 ]

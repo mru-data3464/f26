@@ -4,7 +4,14 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "No matching items\n  \n    \n       \n       \n    \n© Copyright 2026 Charlotte Curtis. Licensed CC-BY-NC 4.0.\n\n    \nMade with \n\n  \n\n  \n    \n      Date\n      Title\n      Slides\n      Demo Code\n      Progress"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "labs/index.html",
+    "href": "labs/index.html",
+    "title": "Labs",
+    "section": "",
+    "text": "No matching items"
   },
   {
     "objectID": "index.html",
@@ -18,7 +25,7 @@
     "href": "index.html#lectures",
     "title": "DATA 3464 | Fall 2026",
     "section": "Lectures",
-    "text": "Lectures\n\nNo matching items\n\nNo matching items\n\n  \n    \n       \n       \n    \n© Copyright 2026 Charlotte Curtis. Licensed CC-BY-NC 4.0.\n\n    \nMade with \n\n  \n\n  \n    \n      Date\n      Title\n      Slides\n      Demo Code\n      Progress"
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#labs",
@@ -28,10 +35,143 @@
     "text": "Labs\n\n\nNo matching items"
   },
   {
-    "objectID": "labs/index.html",
-    "href": "labs/index.html",
-    "title": "Labs",
+    "objectID": "lectures/01-intro.html",
+    "href": "lectures/01-intro.html",
+    "title": "1. Introduction",
     "section": "",
-    "text": "No matching items"
+    "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/01-intro.html#code",
+    "href": "lectures/01-intro.html#code",
+    "title": "1. Introduction",
+    "section": "",
+    "text": "Demo Notebook\n\n\n Demo Data"
+  },
+  {
+    "objectID": "lectures/01-intro.html#slides",
+    "href": "lectures/01-intro.html#slides",
+    "title": "1. Introduction",
+    "section": "",
+    "text": "PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/01-intro.html#meet-your-instructor",
+    "href": "lectures/01-intro.html#meet-your-instructor",
+    "title": "1. Introduction",
+    "section": "Meet your instructor",
+    "text": "Meet your instructor\n\n\nName: Charlotte Curtis\nPronouns: She/her\nOffice: B102-4\nEmail: ccurtis@mtroyal.ca\nOffice hours: Book here"
+  },
+  {
+    "objectID": "lectures/01-intro.html#my-background",
+    "href": "lectures/01-intro.html#my-background",
+    "title": "1. Introduction",
+    "section": "My Background",
+    "text": "My Background"
+  },
+  {
+    "objectID": "lectures/01-intro.html#data-processing",
+    "href": "lectures/01-intro.html#data-processing",
+    "title": "1. Introduction",
+    "section": "Data processing",
+    "text": "Data processing\n\nThis course introduces techniques for ethically and responsibly wrangling and manipulating datasets to make them appropriate for addressing the question at hand. Topics may include cleaning and transforming data, integrity and quality measures, common file formats, feature selection and engineering, and generating features from unstructured sources such as text and images.\n\n\nColloquially and lovingly referred to as data wrangling"
+  },
+  {
+    "objectID": "lectures/01-intro.html#grade-assessment",
+    "href": "lectures/01-intro.html#grade-assessment",
+    "title": "1. Introduction",
+    "section": "Grade Assessment",
+    "text": "Grade Assessment\n\n\n\nComponent\nWeight\nComment\n\n\n\n\nTutorial exercises\n10%\nPass/fail\n\n\nAssignments\n35%\n8/12/15 split\n\n\nWritten tests\n35%\nx2, split 15%/20% in your favour\n\n\nFinal exam\n20%\nIn lab with limited internet\n\n\n\nSource repo: https://github.com/mru-data3464/f26\nRendered at: https://mru-data3464.github.io/f26\n\nBonus marks may be awarded for substantial corrections to materials, submitted as pull requests"
+  },
+  {
+    "objectID": "lectures/01-intro.html#textbooks",
+    "href": "lectures/01-intro.html#textbooks",
+    "title": "1. Introduction",
+    "section": "Textbook(s)",
+    "text": "Textbook(s)\n\n\n\nhttp://www.feat.engineering, additional open source resources as needed\nAll the documentation!\n\nPandas\nNumpy\nSciPy\nScikit Learn\nMatplotlib\n\n\n\nDon’t rely on AI summaries!"
+  },
+  {
+    "objectID": "lectures/01-intro.html#speaking-of-ai",
+    "href": "lectures/01-intro.html#speaking-of-ai",
+    "title": "1. Introduction",
+    "section": "Speaking of AI…",
+    "text": "Speaking of AI…\nIn this course (and others, and your career), you will need to know: - What to do, and why - How to do it\n(also when and who)\n\n\nWhich of these things seem appropriate for AI assistance?"
+  },
+  {
+    "objectID": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",
+    "href": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",
+    "title": "1. Introduction",
+    "section": "Tentative weekly plan: Before reading week",
+    "text": "Tentative weekly plan: Before reading week\n\n\n\n\n\n\n\n\nWeek\nTopic\nChapter (ish)\n\n\n\n\n0-1\nIntroduction and overview\n1-2\n\n\n1-2\nBasic machine learning models and categorical encoding\n3, 5\n\n\n2-3\nExploring, splitting, and sampling data\n4\n\n\n4\nBasic numeric data transformations\n6\n\n\n5\nDealing with missing and weird data\n8\n\n\n\nWritten test 1: Thursday, Oct 7"
+  },
+  {
+    "objectID": "lectures/01-intro.html#tentative-weekly-plan-second-half",
+    "href": "lectures/01-intro.html#tentative-weekly-plan-second-half",
+    "title": "1. Introduction",
+    "section": "Tentative weekly plan: second half",
+    "text": "Tentative weekly plan: second half\n\n\n\nWeek\nTopic\nChapter (ish)\n\n\n\n\n6\nFancy numeric and categorical transformations\n5, 6\n\n\n7\nWrangling text\n\n\n\n9\nBash scripting and data cards\n\n\n\n10\n1D signals and audio\n\n\n\n11\nImages and videos (2D signals)\n\n\n\n12\nPresentations and buffer time\n\n\n\n\nWritten test 2: Tuesday, Dec 1"
+  },
+  {
+    "objectID": "lectures/01-intro.html#core-courses-so-far",
+    "href": "lectures/01-intro.html#core-courses-so-far",
+    "title": "1. Introduction",
+    "section": "Core courses so far",
+    "text": "Core courses so far"
+  },
+  {
+    "objectID": "lectures/01-intro.html#what-do-you-know-about",
+    "href": "lectures/01-intro.html#what-do-you-know-about",
+    "title": "1. Introduction",
+    "section": "What do you know about…",
+    "text": "What do you know about…\n\nVarious probability distributions\nLinear and logistic regression\nData quality measures\nData stewardship best practices\nDocument parsing, web scraping, audio/video feature detection\nLinear algebra and array programming\nPrediction tasks: classification and regression\nClustering and anomaly detection\nEvaluation metrics\nBasic data visualization (scatter plots, histograms, etc)"
+  },
+  {
+    "objectID": "lectures/01-intro.html#what-do-you-want-to-know-about",
+    "href": "lectures/01-intro.html#what-do-you-want-to-know-about",
+    "title": "1. Introduction",
+    "section": "What do you want to know about?",
+    "text": "What do you want to know about?\n\n\nExamples of Subject Matter\n\nFinance\nReal estate\nTransportation\nClimate\nPolitics\nBiology\nChemistry\nMalware\n\n\nExamples of Data types\n\nUnstructured text\nStructured text (e.g. csv, HTML)\nPDF\nWord documents\nImages\nAudio\nVideo"
+  },
+  {
+    "objectID": "lectures/01-intro.html#case-study-risk-of-ischemic-stroke",
+    "href": "lectures/01-intro.html#case-study-risk-of-ischemic-stroke",
+    "title": "1. Introduction",
+    "section": "Case study: risk of ischemic stroke",
+    "text": "Case study: risk of ischemic stroke\n\n\n\n\nChapter 2: http://www.feat.engineering/stroke-tour\n\n\nArterial stenosis can predict risk\nPlaque composition plays a role\nFeatures extracted from CT images\nOther risk factors (demographics, lifestyle) added to dataset\n\n\n\n\nMany decisions in the data analysis process are subjective - I will often make different decisions than the textbook"
+  },
+  {
+    "objectID": "lectures/01-intro.html#from-data-to-prediction",
+    "href": "lectures/01-intro.html#from-data-to-prediction",
+    "title": "1. Introduction",
+    "section": "From data to prediction",
+    "text": "From data to prediction\n\nUnderstand the problem and define the task\nCollect, anonymize and organize the data\nExtract features\nExplore the dataset\nSelect a model and preprocess\nTrain the model\nEvaluate, fine-tune, iterate\nDeploy and maintain your system\n\n\nAdapted from Aurélien Géron’s ML Project Checklist"
+  },
+  {
+    "objectID": "lectures/01-intro.html#applied-to-the-stroke-example",
+    "href": "lectures/01-intro.html#applied-to-the-stroke-example",
+    "title": "1. Introduction",
+    "section": "Applied to the stroke example",
+    "text": "Applied to the stroke example\n\nWhat is the problem? What do we need to do?\n(Collect, anonymize and organize the data) - Done for us\n(Extract features) - Done for us\nExplore the dataset\n\nA critically important component, DO NOT OFFLOAD TO AI\nThis can even be where the data sciencing stops and we jump straight to visualizations and communicating insights!\nCheck out Data for Good case studies"
+  },
+  {
+    "objectID": "lectures/01-intro.html#select-a-model-and-preprocess",
+    "href": "lectures/01-intro.html#select-a-model-and-preprocess",
+    "title": "1. Introduction",
+    "section": "5. Select a model and preprocess",
+    "text": "5. Select a model and preprocess\n\n\n\nSource: scikit-learn documentation"
+  },
+  {
+    "objectID": "lectures/01-intro.html#evaluate-fine-tune-and-iterate",
+    "href": "lectures/01-intro.html#evaluate-fine-tune-and-iterate",
+    "title": "1. Introduction",
+    "section": "7. Evaluate, fine-tune, and iterate",
+    "text": "7. Evaluate, fine-tune, and iterate\n\nIn my example, I jumped straight to testing on the held-back test set\nThis is a terrible idea! We have no confidence that the model actually worked. We could be:\n\noverfitting to the training data\nmaking incorrect assumptions about the data\napplying inappropriate transformations, or missing some\nusing the wrong model altogether\n\n\n\nValidation needs to happen before the final testing"
+  },
+  {
+    "objectID": "lectures/01-intro.html#coming-up-next",
+    "href": "lectures/01-intro.html#coming-up-next",
+    "title": "1. Introduction",
+    "section": "Coming up next",
+    "text": "Coming up next\n\nLab: basic regression, show me where you’re at\nLecture: Simple models and evaluation metrics"
   }
 ]

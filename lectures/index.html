@@ -90,9 +90,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-project','listing-website','listing-page-layout','listing-format','listing-execute','listing-engines','listing-language','listing-title','listing-date','listing-marp','listing-theme','listing-paginate','listing-headingDivider','listing-demo-code','listing-demo-data','listing-leftoff','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-project","listing-website","listing-page-layout","listing-format","listing-execute","listing-engines","listing-language","listing-title","listing-date","listing-marp","listing-theme","listing-paginate","listing-headingDivider","listing-demo-code","listing-demo-data","listing-leftoff","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -216,37 +216,32 @@ window.Quarto = {
 
 
 
+
+
+
 <div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-<div class="listing-no-matching d-none">No matching items</div><footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-<p>© Copyright 2026 Charlotte Curtis. Licensed <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>.</p>
-</div>
-    <div class="nav-footer-right">
-<p>Made with <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" style="height:1em" alt="Quarto"></a></p>
-</div>
-  </div>
-</footer><table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Slides</th>
-      <th>Demo Code</th>
-      <th>Progress</th>
-    </tr>
-  </thead>
-  <tbody>
-
-
-
-
-
-
- <!-- /main -->
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Slides</th>
+<th data-quarto-table-cell-role="th">Demo Code</th>
+<th data-quarto-table-cell-role="th">Progress</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sep 3, 2026</td>
+<td><a href="../lectures/01-intro.html">1. Introduction</a></td>
+<td><a href="../slides/01-intro.pdf" aria-label="PDF slides for 1. Introduction" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/01-intro.html" aria-label="HTML slides for 1. Introduction" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
+<td><a href="../demo_code/01_stroke/strokedemo.ipynb" aria-label="Demo notebook for 1. Introduction" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="../demo_code/01_stroke/stroke_data.csv" aria-label="Demo data for 1. Introduction" download="" title="Demo data"><img src="../img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -647,10 +642,22 @@ window.Quarto = {
     }
   });
   </script>
- <!-- /content -->
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© Copyright 2026 Charlotte Curtis. Licensed <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>.</p>
+</div>
+    <div class="nav-footer-right">
+<p>Made with <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" style="height:1em" alt="Quarto"></a></p>
+</div>
+  </div>
+</footer>
 
 
 
 
-
-</tbody></table></div></main></div></body></html>
+</body></html>

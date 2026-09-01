@@ -2,7 +2,7 @@ project:
   type: website
   resources:
     - "slides/*"
-    - "demo_code/**"
+    - "demo_code/*"
   render:
     - "*.qmd"
     - "lectures/*"

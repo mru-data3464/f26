@@ -5,8 +5,8 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-demo-code: ../demo_code/01_stroke/strokedemo.ipynb
-demo-data: ../demo_code/01_stroke/stroke_data.csv
+demo-code: "/demo_code/01_stroke/strokedemo.ipynb"
+demo-data: "/demo_code/01_stroke/stroke_data.csv"
 leftoff: ""
 ---
 

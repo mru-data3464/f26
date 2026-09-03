@@ -52,15 +52,20 @@ Colloquially and lovingly referred to as **data wrangling**
 | Component          | Weight | Comment                          |
 | ------------------ | ------ | -------------------------------- |
 | Tutorial exercises | 10%    | Pass/fail                        |
-| Assignments        | 35%    | 8/12/15 split                    |
+| Assignments        | 35%    | 8/12/15 split, in groups         |
 | Written tests      | 35%    | x2, split 15%/20% in your favour |
 | Final exam         | 20%    | In lab with limited internet     |
 
-**Source repo**: https://github.com/mru-data3464/f26
+> A passing grade (50%) must be earned on the weighted average of written tests and final exam to be eligible for a C- in the course
+
+## Course Website
+Lecture notes, lab and assignment instructions will be hosted on an external site
 
 **Rendered at**: https://mru-data3464.github.io/f26
 
-<footer>Bonus marks may be awarded for <em>substantial</em> corrections to materials, submitted as pull requests</footer>
+**Source repo**: https://github.com/mru-data3464/f26
+
+> Bonus marks may be awarded for *substantial* corrections to materials, submitted as pull requests
 
 ## Textbook(s)
 ![bg right:40% 50%](https://images.routledge.com/common/jackets/amazon/978103209/9781032090856.jpg)
@@ -80,7 +85,7 @@ In this course (and others, and your career), you will need to know:
 - **What** to do, and **why**
 - **How** to do it
 
-(also when and who) 
+*Note: AI will not be available during the final practical exam*
 
 <div data-marpit-fragment>
 

@@ -81,7 +81,14 @@
     "href": "lectures/01-intro.html#grade-assessment",
     "title": "1. Introduction",
     "section": "Grade Assessment",
-    "text": "Grade Assessment\n\n\n\nComponent\nWeight\nComment\n\n\n\n\nTutorial exercises\n10%\nPass/fail\n\n\nAssignments\n35%\n8/12/15 split\n\n\nWritten tests\n35%\nx2, split 15%/20% in your favour\n\n\nFinal exam\n20%\nIn lab with limited internet\n\n\n\nSource repo: https://github.com/mru-data3464/f26\nRendered at: https://mru-data3464.github.io/f26\n\nBonus marks may be awarded for substantial corrections to materials, submitted as pull requests"
+    "text": "Grade Assessment\n\n\n\nComponent\nWeight\nComment\n\n\n\n\nTutorial exercises\n10%\nPass/fail\n\n\nAssignments\n35%\n8/12/15 split, in groups\n\n\nWritten tests\n35%\nx2, split 15%/20% in your favour\n\n\nFinal exam\n20%\nIn lab with limited internet\n\n\n\n\nA passing grade (50%) must be earned on the weighted average of written tests and final exam to be eligible for a C- in the course"
+  },
+  {
+    "objectID": "lectures/01-intro.html#course-website",
+    "href": "lectures/01-intro.html#course-website",
+    "title": "1. Introduction",
+    "section": "Course Website",
+    "text": "Course Website\nLecture notes, lab and assignment instructions will be hosted on an external site\nRendered at: https://mru-data3464.github.io/f26\nSource repo: https://github.com/mru-data3464/f26\n\nBonus marks may be awarded for substantial corrections to materials, submitted as pull requests"
   },
   {
     "objectID": "lectures/01-intro.html#textbooks",
@@ -95,7 +102,7 @@
     "href": "lectures/01-intro.html#speaking-of-ai",
     "title": "1. Introduction",
     "section": "Speaking of AI…",
-    "text": "Speaking of AI…\nIn this course (and others, and your career), you will need to know: - What to do, and why - How to do it\n(also when and who)\n\n\nWhich of these things seem appropriate for AI assistance?"
+    "text": "Speaking of AI…\nIn this course (and others, and your career), you will need to know: - What to do, and why - How to do it\nNote: AI will not be available during the final practical exam\n\n\nWhich of these things seem appropriate for AI assistance?"
   },
   {
     "objectID": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",

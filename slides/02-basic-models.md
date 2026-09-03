@@ -249,10 +249,58 @@ Price of DDR5-5600 2X32GB RAM since March 2025 [[PCPartPicker](https://pcpartpic
 </div>
 
 ## Unsupervised learning
+- Learning patterns without labels, such as:
+  * Anomaly detection
+  * Density estimation
+  * Dimensionality reduction
+  * **Clustering**
+
+<div data-marpit-fragment>
+
+> Why is unsupervised learning important?
+
+</div>
+
+## Clustering: $k$-means
+
+<!-- _class: code_reminder -->
+
+- Goal: Partition $N$ samples into $k$ clusters
+* Naive algorithm:
+  1) Initialize $k$ centroid locations
+  2) Assign each sample to the nearest centroid
+  3) Recalculate centroids for each cluster
+  4) Repeat steps 2-3 until clusters stabilize
+
+<div data-marpit-fragment>
+
+$$\sum_{i=0}^N \min_{\mu_j \in C}(\Vert x_i - \mu_j \Vert^2)$$
+
+</div>
+
+## $k$-means pros and cons
+
+<span class="pro">
+
+* Intuitive
+* Easy to implement
+* Relatively scalable ($O(N)$)
+
+</span>
+<span class="con">
+
+* Need to know how many clusters
+* Sensitive to initialization 
+* Not guaranteed to converge to global minimum
+
+</span>
+
+
+> Scikit-learn has a great [reference table](https://scikit-learn.org/stable/modules/clustering.html) of other clustering methods
 
 ## Coming up next
 * Exploring and understanding your data
 * Splitting your data
   - Repeatability considerations
   - Stratified sampling
-* Assignment 1: Exploring Calgary traffic data
+* Assignment 1: Simple modelling

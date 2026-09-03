@@ -7,6 +7,7 @@ project:
     - "*.qmd"
     - "lectures/*"
     - "labs/*"
+    # - "assignments/*.qmd"
 
 website:
   page-navigation: true
@@ -16,6 +17,7 @@ website:
     left:
       - href: lectures/index.qmd
       - href: labs/index.qmd
+      # - href: assignments/index.qmd
     right:
       - href: https://github.com/mru-data3464/f26.git
         icon: github

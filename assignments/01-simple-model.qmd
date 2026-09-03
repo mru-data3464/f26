@@ -1,0 +1,8 @@
+---
+title: "Assignment 1: Simple Modelling"
+date: 2026-09-10
+due: "September 25, 2026"
+draft: true
+---
+
+Due date: {{< meta due >}} at 5 pm. This is a Friday; I will not be collecting submissions until the following Monday, so use that information as you wish. Reasonable requests for extensions will likely be granted, provided I see some evidence of progress prior to the due date.

@@ -7,7 +7,7 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/01_stroke/strokedemo.ipynb"
 demo-data: "/demo_code/01_stroke/stroke_data.csv"
-leftoff: ""
+leftoff: "Slide 12"
 ---
 
 <!-- 

@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'content/lecture/*'
+      - 'content/slides/*'
 
   workflow_dispatch:
 

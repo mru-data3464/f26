@@ -16,5 +16,9 @@
       "/lectures/index.html",
       "/labs/index.html"
     ]
+  },
+  {
+    "listing": "/assignments/index.html",
+    "items": []
   }
 ]

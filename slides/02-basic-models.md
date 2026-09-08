@@ -5,7 +5,6 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-draft: true
 demo-code: ""
 demo-data: ""
 ---

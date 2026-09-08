@@ -2,7 +2,6 @@
 title: "1: Regression with Clean Data"
 date: 2026-09-09
 due: "September 16, 2026"
-draft: true
 ---
 
 Lab submission due on {{< meta due >}}. 
@@ -11,7 +10,7 @@ Lab submission due on {{< meta due >}}.
 The main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need "clean" and easy to manage data.
 
 ## Deliverables
-[Click here](https://classroom.github.com/a/nfqoN057) to join the GitHub classroom and clone the "starter code". There's not much in here other than the data sets, so you'll need to add:
+[Click here](https://classroom50.org/mru-data3464-f26/data-3464/assignments/labs/accept) to accept the "labs" assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please add:
 
 - Your code to load, process, and visualize the data
 - A brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions
@@ -20,13 +19,15 @@ The main goal of this exercise is for me to learn about your current habits and 
     - Search queries, particularly if you used the "AI overview" response
     - A complete transcript of AI chat history, if any
 
+These can all be in one document if you document your process inline with your code.
+
 ::: {.callout-caution}
 AI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!
 :::
 
 ## Instructions
 1. In the programming language of your choice, write a program to:
-    1. Load the data in `simple_regression.csv`
+    1. Load the data in [`simple_regression.csv`](01-starter/simple_regression.csv)
     2. Calculate the line of best fit using simple linear regression
     3. Create a scatter plot of the data with the best fit line
 
@@ -39,15 +40,19 @@ AI is not forbidden for labs, but it will be during lab exams. I recommend you p
     2. How well does your model fit the data?
     3. What additional information would help to create a more accurate model?
 
-3. Repeat the first question but with the `simple_regression_full.csv` dataset. This contains extra columns; select only the same ones that are present in `simple_regression.csv`. In your report, answer the following:
+3. Repeat the first question but with the [`simple_regression_full.csv`](01-starter/simple_regression_full.csv) dataset. This contains extra columns; select only the same ones that are present in `simple_regression.csv`. In your report, answer the following:
     1. What additional steps did you need to do to recreate the plot?
     2. Do you have any guess what this dataset represents?
 
 ## Submission
-Submit your work by adding new files with `git add`, commit with `git commit`, and push your changes to GitHub with `git push`. You may `add/commit/push` as many times as you like; only the last revision will be marked. Your repo should include:
+Submit your work by adding new files to the lab repo with `git add`, commit with `git commit`, and push your changes to GitHub with `git push`. You may `add/commit/push` as many times as you like; only the last revision will be marked. Your repo should include:
 
 - Your source code in the language of your choice
 - Your report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)
 - Your list of references
+
+::: {.callout-important}
+Do not commit virtual environments (`venv`) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a `.gitignore` file to your repo such as [this one](https://github.com/github/gitignore/blob/main/Python.gitignore).
+:::
 
 Labs are marked pass/fail based on "best effort" completion.

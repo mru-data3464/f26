@@ -2,23 +2,25 @@
   {
     "listing": "/lectures/index.html",
     "items": [
-      "/lectures/01-intro.html"
+      "/lectures/01-intro.html",
+      "/lectures/02-basic-models.html"
     ]
   },
   {
-    "listing": "/labs/index.html",
+    "listing": "/assignments/index.html",
     "items": []
   },
   {
     "listing": "/index.html",
     "items": [
       "/lectures/01-intro.html",
+      "/lectures/02-basic-models.html",
       "/lectures/index.html",
       "/labs/index.html"
     ]
   },
   {
-    "listing": "/assignments/index.html",
+    "listing": "/labs/index.html",
     "items": []
   }
 ]

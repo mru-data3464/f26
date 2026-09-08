@@ -4,42 +4,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "labs/index.html",
-    "href": "labs/index.html",
-    "title": "Labs",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "",
-    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
-  },
-  {
-    "objectID": "index.html#lectures",
-    "href": "index.html#lectures",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#labs",
-    "href": "index.html#labs",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Labs",
-    "text": "Labs\n\n\nNo matching items"
-  },
-  {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "No matching items"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nSlide 12\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/01-intro.html",
@@ -187,5 +152,208 @@
     "title": "1. Introduction",
     "section": "Coming up next",
     "text": "Coming up next\n\nLab: basic regression, show me where you’re at\nLecture: Simple models and evaluation metrics"
+  },
+  {
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "",
+    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
+  },
+  {
+    "objectID": "index.html#lectures",
+    "href": "index.html#lectures",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Lectures",
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nSlide 12\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#labs",
+    "href": "index.html#labs",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Labs",
+    "text": "Labs\n\n\nNo matching items"
+  },
+  {
+    "objectID": "labs/index.html",
+    "href": "labs/index.html",
+    "title": "Labs",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html",
+    "href": "lectures/02-basic-models.html",
+    "title": "2. Basic machine learning models",
+    "section": "",
+    "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#code",
+    "href": "lectures/02-basic-models.html#code",
+    "title": "2. Basic machine learning models",
+    "section": "",
+    "text": "Demo Notebook\n\n\n Demo Data"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#slides",
+    "href": "lectures/02-basic-models.html#slides",
+    "title": "2. Basic machine learning models",
+    "section": "",
+    "text": "PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#topic-overview",
+    "href": "lectures/02-basic-models.html#topic-overview",
+    "title": "2. Basic machine learning models",
+    "section": "Topic overview",
+    "text": "Topic overview\n\nSome common machine learning tasks and models\nEvaluating model performance\nLimitations and assumptions\n\nResources used: - Feature Engineering Chapter 1 - Introduction to Machine Learning with Python. Available at MRU Library - Scikit-learn User Guide - Hands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch. Available at MRU Library"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#machine-learning",
+    "href": "lectures/02-basic-models.html#machine-learning",
+    "title": "2. Basic machine learning models",
+    "section": "Machine learning",
+    "text": "Machine learning\n\nTo appropriately process the data, we need to know why we are doing it and what assumptions we’re making\nModern machine learning toolkits (such as scikit-learn) are so easy to use, they’re easy to use inappropriately\nGoal: just enough understanding to use basic models responsibly"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#why-are-we-processing-data",
+    "href": "lectures/02-basic-models.html#why-are-we-processing-data",
+    "title": "2. Basic machine learning models",
+    "section": "Why are we processing data?",
+    "text": "Why are we processing data?\n\n* No reinforcement learning in this course, sorry"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#a-selection-of-common-models",
+    "href": "lectures/02-basic-models.html#a-selection-of-common-models",
+    "title": "2. Basic machine learning models",
+    "section": "A selection of common models",
+    "text": "A selection of common models\n\n\nSupervised\n\nLinear/logistic regression\nDecision trees\nSupport vector machines\n\n\nUnsupervised\n\nK-means clustering\nPrinciple component analysis"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#no-free-lunch",
+    "href": "lectures/02-basic-models.html#no-free-lunch",
+    "title": "2. Basic machine learning models",
+    "section": "No free lunch",
+    "text": "No free lunch\n\nA theory-heavy paper in 1996 showed that there is no one machine learning algorithm that excels in all situations\nSubsequent work has confirmed this, e.g. a 2018 analysis\nTree-based methods, particularly gradient boosted trees tend to outperform other algorithms the most, but still have limitations\nWhat does it mean to “outperform”?\n\n\nFurther reading: http://www.feat.engineering/important-concepts#no-free-lunch"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#model-evaluation-classification",
+    "href": "lectures/02-basic-models.html#model-evaluation-classification",
+    "title": "2. Basic machine learning models",
+    "section": "Model evaluation: Classification",
+    "text": "Model evaluation: Classification\n\nTrue positive: predicted positive, label was positive (\\(TP\\)) ✔️\nTrue negative: predicted negative, label was negative (\\(TN\\)) ✔️\nFalse positive: predicted positive, label was negative (\\(FP\\)) ❌ (type I)\nFalse negative: predicted negative, label was positive (\\(FN\\)) ❌ (type II)\nAccuracy is the fraction of correct predictions, given as:\n\\[\\mathrm{accuracy} = \\frac{TP + TN}{TP + TN + FP + FN}\\]"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#precision-and-recall",
+    "href": "lectures/02-basic-models.html#precision-and-recall",
+    "title": "2. Basic machine learning models",
+    "section": "Precision and recall",
+    "text": "Precision and recall\n\nPrecision: Out of all the positive predictions, how many were correct? \\[\\mathrm{precision} = \\frac{TP}{TP + FP}\\]\nRecall: Out of all the positive labels, how many were correct? \\[\\mathrm{recall} = \\frac{TP}{TP + FN}\\]\nSpecificity: Out of all the negative labels, how many were correct? \\[\\mathrm{specificity} = \\frac{TN}{TN + FP}\\]"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#confusion-matrix",
+    "href": "lectures/02-basic-models.html#confusion-matrix",
+    "title": "2. Basic machine learning models",
+    "section": "Confusion matrix",
+    "text": "Confusion matrix\n\n\n\n\nPredicted Positive\nPredicted Negative\n\n\n\n\nTrue Positive\nTP\nFN\n\n\nTrue Negative\nFP\nTN\n\n\n\n\nThe axes might be reversed, but a good predictor will have strong diagonals\nThere’s also the F1 score, or harmonic mean of precision and recall: \\[F1 = 2 \\cdot \\frac{\\mathrm{precision} \\cdot \\mathrm{recall}}{\\mathrm{precision} + \\mathrm{recall}}\\]\n\n\nCheck out the Wikipedia page for more ways of describing the same information"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#roc-curves",
+    "href": "lectures/02-basic-models.html#roc-curves",
+    "title": "2. Basic machine learning models",
+    "section": "ROC Curves",
+    "text": "ROC Curves\n\nThe receiver operating characteristic curve is a plot of the true positive rate (recall or sensitivity) vs. false positive rate (1 - specificity) as the detection threshold changes\nThe diagonal is the same as random guessing\nA perfect classifier would hug the top left corner\n\n\n\nFun fact: the name comes from WWII radar operators, where true positives were airplanes and false positives were noise"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#example-1-support-vector-classifier",
+    "href": "lectures/02-basic-models.html#example-1-support-vector-classifier",
+    "title": "2. Basic machine learning models",
+    "section": "Example 1: Support Vector Classifier",
+    "text": "Example 1: Support Vector Classifier\n\n\n\nLinear model that finds vector(s) to best separate classes\n“Kernel trick” allows for nonlinear boundaries\nCheck out the SVM Appendix of Hands-on Machine Learning by Aurélien Geron for more info\n\n\n\nImage from Scikit-learn documentation&lt;/footer.&gt;"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#example-2-decision-trees",
+    "href": "lectures/02-basic-models.html#example-2-decision-trees",
+    "title": "2. Basic machine learning models",
+    "section": "Example 2: Decision Trees",
+    "text": "Example 2: Decision Trees\n\nFamily of models including:\n\ndecision trees\nrandom forests\ngradient boosted decision trees\n\nFinds thresholds for features that best separates classes\nControllable through depth parameter"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#model-evaluation-regression",
+    "href": "lectures/02-basic-models.html#model-evaluation-regression",
+    "title": "2. Basic machine learning models",
+    "section": "Model evaluation: regression",
+    "text": "Model evaluation: regression\n\nFor a predicted \\(\\hat{\\mathbf{y}}\\) and actual \\(\\mathbf{y}\\), metrics include: * Mean squared error: \\(MSE = \\frac{1}{n}\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\) * Root mean squared error: \\(RMSE = \\sqrt{MSE}\\) * Mean absolute error: \\(MAE = \\frac{1}{n}\\sum_{i=1}^n |y_i - \\hat{y}_i|\\) * Mean absolute percentage error: \\(MAPE = \\frac{100}{n}\\sum_{i=1}^n \\left|\\frac{y_i - \\hat{y}_i}{y_i}\\right|\\) * Coefficient of determination: \\(R^2 = 1 - \\frac{\\sum_{i=1}^n (y_i - \\hat{y}_i)^2}{\\sum_{i=1}^n (y_i - \\bar{y})^2}\\) (\\(R^2\\) has some caveats)"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#regression-ordinary-least-squares",
+    "href": "lectures/02-basic-models.html#regression-ordinary-least-squares",
+    "title": "2. Basic machine learning models",
+    "section": "Regression: ordinary least squares",
+    "text": "Regression: ordinary least squares\n\n\nIn 1D, estimate modeled as: \\(\\hat{y_i} = wx_i + b\\), where \\(i\\) denotes a sample\nVector form: \\(\\mathbf{\\hat{y}} = w\\mathbf{x} + b\\)\nGoal is to minimize the Mean Square Error:\n\\[\\begin{aligned}\nMSE &= \\frac{1}{m} \\sum_{i=1}^m (\\hat{y} - y_i)^2 = \\frac{1}{m} \\sum_{i=1}^m (b + w x_i - y_i)^2\\\\\nMSE &= \\frac{1}{m} (\\hat{\\mathbf{y}} - \\mathbf{y})^T (\\hat{\\mathbf{y}} - \\mathbf{y})\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#regression-n-dimensional",
+    "href": "lectures/02-basic-models.html#regression-n-dimensional",
+    "title": "2. Basic machine learning models",
+    "section": "Regression: N-dimensional",
+    "text": "Regression: N-dimensional\n\nMost of the time we have \\(N &gt; 1\\) features\nN-D: \\(\\hat{y_i} = w_1x_{1i} + w_2x_{2i} + ... + w_nx_{ni} + b\\)\nCommon to use a design matrix \\(\\mathbf{X}\\) to represent the feature values:\n\\[\\mathbf{X} = \\begin{bmatrix} 1 & x_{11} & x_{12} & \\cdots & x_{1n} \\\\\n1 & x_{21} & x_{22} & \\cdots & x_{2n} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{m1} & x_{m2} & \\cdots & x_{mn} \\end{bmatrix}\\]\nwhere each row is an instance (sample) and each column is a feature."
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#regression-n-dimensional-1",
+    "href": "lectures/02-basic-models.html#regression-n-dimensional-1",
+    "title": "2. Basic machine learning models",
+    "section": "Regression: N-dimensional",
+    "text": "Regression: N-dimensional\n\nWe can rewrite the estimate in matrix notation: \\[\\hat{\\mathbf{y}} = \\mathbf{X} \\mathbf{\\theta}\\]\nThe MSE can be written as:\n\\[MSE = \\frac{1}{m}\\sum_{i=1}^m (\\hat{y}_i - y_i)^2 = \\frac{1}{m} (\\mathbf{X} \\mathbf{\\theta} - \\mathbf{y})^T (\\mathbf{X} \\mathbf{\\theta} - \\mathbf{y})\\]\nThis has a closed form solution, but it is computationally expensive"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#regression-decision-trees",
+    "href": "lectures/02-basic-models.html#regression-decision-trees",
+    "title": "2. Basic machine learning models",
+    "section": "Regression: Decision trees",
+    "text": "Regression: Decision trees\n\n\n\nFigure 2-32. Comparison of predictions made by a linear model and predictions made by a regression tree on the RAM price data. Source: Introduction to Machine Learning with Python\n\n\nPrice of DDR5-5600 2X32GB RAM since March 2025 [PCPartPicker]"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#comparison-of-supervised-model-families",
+    "href": "lectures/02-basic-models.html#comparison-of-supervised-model-families",
+    "title": "2. Basic machine learning models",
+    "section": "Comparison of supervised model families",
+    "text": "Comparison of supervised model families\n\n\nLinear models\n\n\nVery fast, particularly inference\nScalable to large number of features\nCan model nonlinearity with kernel trick\nEasy to regularize\n\n \n\nDifficult to interpret\nSensitive to parameters and preprocessing\nData needs to be on same scale\nSlow to train on large datasets\n\n\n\nDecision Trees\n\n\nHighly explainable\nFast to train\nFew parameters to tune\nLittle preprocessing needed\nProvides feature importance\n\n \n\nProne to overfitting\nHigh variance\nPoor extrapolation"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#unsupervised-learning",
+    "href": "lectures/02-basic-models.html#unsupervised-learning",
+    "title": "2. Basic machine learning models",
+    "section": "Unsupervised learning",
+    "text": "Unsupervised learning\n\nLearning patterns without labels, such as:\n\nAnomaly detection\nDensity estimation\nDimensionality reduction\nClustering\n\n\n\n\nWhy is unsupervised learning important?"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#clustering-k-means",
+    "href": "lectures/02-basic-models.html#clustering-k-means",
+    "title": "2. Basic machine learning models",
+    "section": "Clustering: \\(k\\)-means",
+    "text": "Clustering: \\(k\\)-means\n\n\nGoal: Partition \\(N\\) samples into \\(k\\) clusters\nNaive algorithm:\n\nInitialize \\(k\\) centroid locations\nAssign each sample to the nearest centroid\nRecalculate centroids for each cluster\nRepeat steps 2-3 until clusters stabilize\n\n\n\n\\[\\sum_{i=0}^N \\min_{\\mu_j \\in C}(\\Vert x_i - \\mu_j \\Vert^2)\\]"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#k-means-pros-and-cons",
+    "href": "lectures/02-basic-models.html#k-means-pros-and-cons",
+    "title": "2. Basic machine learning models",
+    "section": "\\(k\\)-means pros and cons",
+    "text": "\\(k\\)-means pros and cons\n\n\nIntuitive\nEasy to implement\nRelatively scalable (\\(O(N)\\))\n\n \n\nNeed to know how many clusters\nSensitive to initialization\nNot guaranteed to converge to global minimum\n\n\n\nScikit-learn has a great reference table of other clustering methods"
+  },
+  {
+    "objectID": "lectures/02-basic-models.html#coming-up-next",
+    "href": "lectures/02-basic-models.html#coming-up-next",
+    "title": "2. Basic machine learning models",
+    "section": "Coming up next",
+    "text": "Coming up next\n\nExploring and understanding your data\nSplitting your data\n\nRepeatability considerations\nStratified sampling\n\nAssignment 1: Simple modelling"
   }
 ]

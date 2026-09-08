@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-10">
 
-<title>Lectures – DATA 3464 | Fall 2026</title>
+<title>2. Basic machine learning models – DATA 3464 | Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,8 +38,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../img/MRU_SingleChevron_RGB.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -80,35 +79,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-page-layout','listing-format','listing-execute','listing-engines','listing-language','listing-title','listing-date','listing-marp','listing-theme','listing-paginate','listing-headingDivider','listing-demo-code','listing-demo-data','listing-leftoff','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-page-layout","listing-format","listing-execute","listing-engines","listing-language","listing-title","listing-date","listing-marp","listing-theme","listing-paginate","listing-headingDivider","listing-demo-code","listing-demo-data","listing-leftoff","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -142,7 +112,7 @@ window.Quarto = {
 
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="floating nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -164,7 +134,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../lectures/index.html" aria-current="page"> 
+    <a class="nav-link" href="../lectures/index.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
@@ -188,24 +158,58 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#topic-overview" id="toc-topic-overview" class="nav-link active" data-scroll-target="#topic-overview">Topic overview</a></li>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link" data-scroll-target="#machine-learning">Machine learning</a></li>
+  <li><a href="#why-are-we-processing-data" id="toc-why-are-we-processing-data" class="nav-link" data-scroll-target="#why-are-we-processing-data">Why are we processing data?</a></li>
+  <li><a href="#a-selection-of-common-models" id="toc-a-selection-of-common-models" class="nav-link" data-scroll-target="#a-selection-of-common-models">A selection of common models</a></li>
+  <li><a href="#no-free-lunch" id="toc-no-free-lunch" class="nav-link" data-scroll-target="#no-free-lunch">No free lunch</a></li>
+  <li><a href="#model-evaluation-classification" id="toc-model-evaluation-classification" class="nav-link" data-scroll-target="#model-evaluation-classification">Model evaluation: Classification</a></li>
+  <li><a href="#precision-and-recall" id="toc-precision-and-recall" class="nav-link" data-scroll-target="#precision-and-recall">Precision and recall</a></li>
+  <li><a href="#confusion-matrix" id="toc-confusion-matrix" class="nav-link" data-scroll-target="#confusion-matrix">Confusion matrix</a></li>
+  <li><a href="#roc-curves" id="toc-roc-curves" class="nav-link" data-scroll-target="#roc-curves">ROC Curves</a></li>
+  <li><a href="#example-1-support-vector-classifier" id="toc-example-1-support-vector-classifier" class="nav-link" data-scroll-target="#example-1-support-vector-classifier">Example 1: Support Vector Classifier</a></li>
+  <li><a href="#example-2-decision-trees" id="toc-example-2-decision-trees" class="nav-link" data-scroll-target="#example-2-decision-trees">Example 2: Decision Trees</a></li>
+  <li><a href="#model-evaluation-regression" id="toc-model-evaluation-regression" class="nav-link" data-scroll-target="#model-evaluation-regression">Model evaluation: regression</a></li>
+  <li><a href="#regression-ordinary-least-squares" id="toc-regression-ordinary-least-squares" class="nav-link" data-scroll-target="#regression-ordinary-least-squares">Regression: ordinary least squares</a></li>
+  <li><a href="#regression-n-dimensional" id="toc-regression-n-dimensional" class="nav-link" data-scroll-target="#regression-n-dimensional">Regression: N-dimensional</a></li>
+  <li><a href="#regression-n-dimensional-1" id="toc-regression-n-dimensional-1" class="nav-link" data-scroll-target="#regression-n-dimensional-1">Regression: N-dimensional</a></li>
+  <li><a href="#regression-decision-trees" id="toc-regression-decision-trees" class="nav-link" data-scroll-target="#regression-decision-trees">Regression: Decision trees</a></li>
+  <li><a href="#comparison-of-supervised-model-families" id="toc-comparison-of-supervised-model-families" class="nav-link" data-scroll-target="#comparison-of-supervised-model-families">Comparison of supervised model families</a></li>
+  <li><a href="#unsupervised-learning" id="toc-unsupervised-learning" class="nav-link" data-scroll-target="#unsupervised-learning">Unsupervised learning</a></li>
+  <li><a href="#clustering-k-means" id="toc-clustering-k-means" class="nav-link" data-scroll-target="#clustering-k-means">Clustering: <span class="math inline">\(k\)</span>-means</a></li>
+  <li><a href="#k-means-pros-and-cons" id="toc-k-means-pros-and-cons" class="nav-link" data-scroll-target="#k-means-pros-and-cons"><span class="math inline">\(k\)</span>-means pros and cons</a></li>
+  <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
+  </ul>
+</nav>
+</nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">2. Basic machine learning models</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-body">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 10, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -216,39 +220,332 @@ window.Quarto = {
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
+<div class="no-row-height column-margin column-container"><div class="">
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<ul>
+<li>
+<a href="" download=""><img src="../img/journal-code.svg" alt="Demo Notebook"> Demo Notebook</a>
+</li>
+<li>
+<a href="" download=""><img src="../img/filetype-csv.svg" alt="Demo Data"> Demo Data</a>
+</li>
+</ul>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<ul>
+<li><a href="../slides/02-basic-models.pdf"><img src="../img/file-pdf.svg" class="img-fluid" alt="PDF Slides">&nbsp;PDF Slides</a></li>
+<li><a href="../slides/02-basic-models.html"><img src="../img/file-slides.svg" class="img-fluid" alt="HTML Slides">&nbsp;HTML Slides</a></li>
+</ul>
+</section>
+</div></div><section id="topic-overview" class="level2">
+<h2 class="anchored" data-anchor-id="topic-overview">Topic overview</h2>
+<ul>
+<li>Some common machine learning tasks and models</li>
+<li>Evaluating model performance</li>
+<li>Limitations and assumptions</li>
+</ul>
+<p><strong>Resources used</strong>: - <a href="http://www.feat.engineering/important-concepts">Feature Engineering Chapter 1</a> - Introduction to Machine Learning with Python. Available at <a href="https://librarysearch.mtroyal.ca/permalink/01MTROYAL_INST/1qa1aqk/cdi_overdrive_books_ODN0002976888">MRU Library</a> - <a href="https://scikit-learn.org/stable/user_guide.html">Scikit-learn User Guide</a> - Hands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch. Available at <a href="https://ebookcentral.proquest.com/lib/mtroyal-ebooks/detail.action?docID=30168989">MRU Library</a></p>
+</section>
+<section id="machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning">Machine learning</h2>
+<ul>
+<li>To appropriately process the data, we need to know <em>why</em> we are doing it and what assumptions we’re making</li>
+<li>Modern machine learning toolkits (such as <a href="https://scikit-learn.org/stable/">scikit-learn</a>) are so easy to use, they’re easy to use <a href="https://www.cell.com/patterns/fulltext/S2666-3899(23)00159-9">inappropriately</a></li>
+<li>Goal: just enough understanding to use basic models <strong>responsibly</strong></li>
+</ul>
+</section>
+<section id="why-are-we-processing-data" class="level2">
+<h2 class="anchored" data-anchor-id="why-are-we-processing-data">Why are we processing data?</h2>
+<p><img src="../img/02-model-selection.svg" class="img-fluid"><br>
+* No reinforcement learning in this course, sorry</p>
+</section>
+<section id="a-selection-of-common-models" class="level2">
+<h2 class="anchored" data-anchor-id="a-selection-of-common-models">A selection of common models</h2>
+<div class="columns">
+<section id="supervised" class="level3">
+<h3 class="anchored" data-anchor-id="supervised">Supervised</h3>
+<ul>
+<li>Linear/logistic regression</li>
+<li>Decision trees</li>
+<li>Support vector machines</li>
+</ul>
+</section><section id="unsupervised" class="level3">
+<h3 class="anchored" data-anchor-id="unsupervised">Unsupervised</h3>
+<ul>
+<li>K-means clustering</li>
+<li>Principle component analysis</li>
+</ul>
+</section>
+</div>
+</section>
+<section id="no-free-lunch" class="level2">
+<h2 class="anchored" data-anchor-id="no-free-lunch">No free lunch</h2>
+<ul>
+<li>A theory-heavy <a href="https://doi.org/10.1162/neco.1996.8.7.1341">paper</a> in 1996 showed that there is no one machine learning algorithm that excels in all situations</li>
+<li>Subsequent work has confirmed this, e.g.&nbsp;a <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5890912/">2018 analysis</a></li>
+<li>Tree-based methods, particularly <strong>gradient boosted trees</strong> <em>tend</em> to outperform other algorithms the most, but still have limitations</li>
+<li>What does it mean to “outperform”?</li>
+</ul>
+<footer>
+Further reading: http://www.feat.engineering/important-concepts#no-free-lunch
+</footer>
+</section>
+<section id="model-evaluation-classification" class="level2">
+<h2 class="anchored" data-anchor-id="model-evaluation-classification">Model evaluation: Classification</h2>
+<ul>
+<li><p><strong>True positive</strong>: predicted positive, label was positive (<span class="math inline">\(TP\)</span>) ✔️</p></li>
+<li><p><strong>True negative</strong>: predicted negative, label was negative (<span class="math inline">\(TN\)</span>) ✔️</p></li>
+<li><p><strong>False positive</strong>: predicted positive, label was negative (<span class="math inline">\(FP\)</span>) ❌ (type I)</p></li>
+<li><p><strong>False negative</strong>: predicted negative, label was positive (<span class="math inline">\(FN\)</span>) ❌ (type II)</p></li>
+<li><p><strong>Accuracy</strong> is the fraction of correct predictions, given as:</p>
+<p><span class="math display">\[\mathrm{accuracy} = \frac{TP + TN}{TP + TN + FP + FN}\]</span></p></li>
+</ul>
+<!-- Example time -->
+<!-- Cilantro: truth = 80 / 100 -->
+<!-- - Predicted: TP = 75, TN = 10, FN = 5, FP = 10 -->
+</section>
+<section id="precision-and-recall" class="level2">
+<h2 class="anchored" data-anchor-id="precision-and-recall">Precision and recall</h2>
+<ul>
+<li><p><strong>Precision</strong>: Out of all the positive <strong>predictions</strong>, how many were correct? <span class="math display">\[\mathrm{precision} = \frac{TP}{TP + FP}\]</span></p></li>
+<li><p><strong>Recall</strong>: Out of all the positive <strong>labels</strong>, how many were correct? <span class="math display">\[\mathrm{recall} = \frac{TP}{TP + FN}\]</span></p></li>
+<li><p><strong>Specificity</strong>: Out of all the negative <strong>labels</strong>, how many were correct? <span class="math display">\[\mathrm{specificity} = \frac{TN}{TN + FP}\]</span></p></li>
+</ul>
+</section>
+<section id="confusion-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="confusion-matrix">Confusion matrix</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Slides</th>
-<th data-quarto-table-cell-role="th">Demo Code</th>
-<th data-quarto-table-cell-role="th">Progress</th>
+<th></th>
+<th>Predicted Positive</th>
+<th>Predicted Negative</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Sep 3, 2026</td>
-<td><a href="../lectures/01-intro.html">1. Introduction</a></td>
-<td><a href="../slides/01-intro.pdf" aria-label="PDF slides for 1. Introduction" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/01-intro.html" aria-label="HTML slides for 1. Introduction" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/01_stroke/strokedemo.ipynb" aria-label="Demo notebook for 1. Introduction" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="../demo_code/01_stroke/stroke_data.csv" aria-label="Demo data for 1. Introduction" download="" title="Demo data"><img src="../img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
-<td>Slide 12</td>
+<td><strong>True Positive</strong></td>
+<td>TP</td>
+<td>FN</td>
 </tr>
 <tr class="even">
-<td>Sep 10, 2026</td>
-<td><a href="../lectures/02-basic-models.html">2. Basic machine learning models</a></td>
-<td><a href="../slides/02-basic-models.pdf" aria-label="PDF slides for 2. Basic machine learning models" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/02-basic-models.html" aria-label="HTML slides for 2. Basic machine learning models" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td></td>
-<td></td>
+<td><strong>True Negative</strong></td>
+<td>FP</td>
+<td>TN</td>
 </tr>
 </tbody>
 </table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<ul>
+<li>The axes might be reversed, but a good predictor will have strong diagonals</li>
+<li>There’s also the <strong>F1 score</strong>, or harmonic mean of precision and recall: <span class="math display">\[F1 = 2 \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}}\]</span></li>
+</ul>
+<footer>
+Check out the <a href="https://en.wikipedia.org/wiki/Confusion_matrix">Wikipedia page</a> for more ways of describing the same information
+</footer>
+</section>
+<section id="roc-curves" class="level2">
+<h2 class="anchored" data-anchor-id="roc-curves">ROC Curves</h2>
+<ul>
+<li><p>The <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">receiver operating characteristic</a> curve is a plot of the <strong>true positive rate</strong> (recall or sensitivity) vs.&nbsp;<strong>false positive rate</strong> (1 - specificity) as the detection threshold changes</p></li>
+<li><p>The diagonal is the same as random guessing</p></li>
+<li><p>A perfect classifier would hug the top left corner</p></li>
+</ul>
+<div>
+<blockquote class="blockquote">
+<p>Fun fact: the name comes from WWII radar operators, where true positives were airplanes and false positives were noise</p>
+</blockquote>
+</div>
+</section>
+<section id="example-1-support-vector-classifier" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-support-vector-classifier">Example 1: Support Vector Classifier</h2>
+<div class="columns">
+<p><img src="../img/02-SVC_example.png" class="img-fluid"><br>
+</p><ul>
+<li>Linear model that finds vector(s) to best separate classes</li>
+<li>“Kernel trick” allows for nonlinear boundaries</li>
+<li>Check out the <a href="https://ageron.github.io/homlp/HOMLP_Appendix_C.pdf">SVM Appendix</a> of <em>Hands-on Machine Learning</em> by Aurélien Geron for more info</li>
+</ul>
+</div>
+<footer>
+<p>Image from <a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification">Scikit-learn documentation</a>&lt;/footer.&gt;</p>
+</footer></section>
+<section id="example-2-decision-trees" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-decision-trees">Example 2: Decision Trees</h2>
+<ul>
+<li>Family of models including:
+<ul>
+<li>decision trees</li>
+<li>random forests</li>
+<li>gradient boosted decision trees</li>
+</ul></li>
+<li>Finds thresholds for features that best separates classes</li>
+<li>Controllable through depth parameter</li>
+</ul>
+</section>
+<section id="model-evaluation-regression" class="level2">
+<h2 class="anchored" data-anchor-id="model-evaluation-regression">Model evaluation: regression</h2>
+<!-- 
+  _class: code_reminder
+-->
+<p>For a predicted <span class="math inline">\(\hat{\mathbf{y}}\)</span> and actual <span class="math inline">\(\mathbf{y}\)</span>, metrics include: * Mean squared error: <span class="math inline">\(MSE = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2\)</span> * Root mean squared error: <span class="math inline">\(RMSE = \sqrt{MSE}\)</span> * Mean absolute error: <span class="math inline">\(MAE = \frac{1}{n}\sum_{i=1}^n |y_i - \hat{y}_i|\)</span> * Mean absolute percentage error: <span class="math inline">\(MAPE = \frac{100}{n}\sum_{i=1}^n \left|\frac{y_i - \hat{y}_i}{y_i}\right|\)</span> * Coefficient of determination: <span class="math inline">\(R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}\)</span> (<span class="math inline">\(R^2\)</span> has some <a href="http://www.feat.engineering/measuring-performance">caveats</a>)</p>
+</section>
+<section id="regression-ordinary-least-squares" class="level2">
+<h2 class="anchored" data-anchor-id="regression-ordinary-least-squares">Regression: ordinary least squares</h2>
+<!-- 
+_class: code_reminder
+ -->
+<ul>
+<li><p>In 1D, estimate modeled as: <span class="math inline">\(\hat{y_i} = wx_i + b\)</span>, where <span class="math inline">\(i\)</span> denotes a sample</p></li>
+<li><p>Vector form: <span class="math inline">\(\mathbf{\hat{y}} = w\mathbf{x} + b\)</span></p></li>
+<li><p>Goal is to minimize the <strong>Mean Square Error</strong>:</p>
+<p><span class="math display">\[\begin{aligned}
+MSE &amp;= \frac{1}{m} \sum_{i=1}^m (\hat{y} - y_i)^2 = \frac{1}{m} \sum_{i=1}^m (b + w x_i - y_i)^2\\
+MSE &amp;= \frac{1}{m} (\hat{\mathbf{y}} - \mathbf{y})^T (\hat{\mathbf{y}} - \mathbf{y})
+\end{aligned}\]</span></p></li>
+</ul>
+</section>
+<section id="regression-n-dimensional" class="level2">
+<h2 class="anchored" data-anchor-id="regression-n-dimensional">Regression: N-dimensional</h2>
+<ul>
+<li><p>Most of the time we have <span class="math inline">\(N &gt; 1\)</span> <strong>features</strong></p></li>
+<li><p>N-D: <span class="math inline">\(\hat{y_i} = w_1x_{1i} + w_2x_{2i} + ... + w_nx_{ni} + b\)</span></p></li>
+<li><p>Common to use a <strong>design matrix</strong> <span class="math inline">\(\mathbf{X}\)</span> to represent the feature values:</p>
+<p><span class="math display">\[\mathbf{X} = \begin{bmatrix} 1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1n} \\
+1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; x_{m1} &amp; x_{m2} &amp; \cdots &amp; x_{mn} \end{bmatrix}\]</span></p>
+<p>where each row is an instance (sample) and each column is a feature.</p></li>
+</ul>
+</section>
+<section id="regression-n-dimensional-1" class="level2">
+<h2 class="anchored" data-anchor-id="regression-n-dimensional-1">Regression: N-dimensional</h2>
+<ul>
+<li><p>We can rewrite the estimate in matrix notation: <span class="math display">\[\hat{\mathbf{y}} = \mathbf{X} \mathbf{\theta}\]</span></p></li>
+<li><p>The MSE can be written as:</p>
+<p><span class="math display">\[MSE = \frac{1}{m}\sum_{i=1}^m (\hat{y}_i - y_i)^2 = \frac{1}{m} (\mathbf{X} \mathbf{\theta} - \mathbf{y})^T (\mathbf{X} \mathbf{\theta} - \mathbf{y})\]</span></p></li>
+<li><p>This has a closed form solution, but it is computationally expensive</p></li>
+</ul>
+</section>
+<section id="regression-decision-trees" class="level2">
+<h2 class="anchored" data-anchor-id="regression-decision-trees">Regression: Decision trees</h2>
+<!-- _class: code_reminder -->
+<p><img src="../img/02-tree_regression.png" class="img-fluid" alt="center h:400px"><br>
+</p>
+<p><span style="font-size:0.8em; text-align: center;">Figure 2-32. Comparison of predictions made by a linear model and predictions made by a regression tree on the RAM price data. Source: Introduction to Machine Learning with Python</span></p>
+<hr>
+<p><img src="../img/02-ram.png" class="img-fluid"><br>
+Price of DDR5-5600 2X32GB RAM since March 2025 [<a href="https://pcpartpicker.com/trends/price/memory/#ram.ddr5.5200.2x16384">PCPartPicker</a>]</p>
+</section>
+<section id="comparison-of-supervised-model-families" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-supervised-model-families">Comparison of supervised model families</h2>
+<div class="columns" style="font-size:0.9em;">
+<section id="linear-models" class="level3">
+<h3 class="anchored" data-anchor-id="linear-models">Linear models</h3>
+<p><span class="pro"></span></p>
+<ul>
+<li>Very fast, particularly inference</li>
+<li>Scalable to large number of features</li>
+<li>Can model nonlinearity with kernel trick</li>
+<li>Easy to regularize</li>
+</ul>
+<p> <span class="con"></span></p>
+<ul>
+<li>Difficult to interpret</li>
+<li>Sensitive to parameters and preprocessing</li>
+<li>Data needs to be on same scale</li>
+<li>Slow to train on large datasets</li>
+</ul>
+<p></p>
+</section><section id="decision-trees" class="level3">
+<h3 class="anchored" data-anchor-id="decision-trees">Decision Trees</h3>
+<p><span class="pro"></span></p>
+<ul>
+<li>Highly explainable</li>
+<li>Fast to train</li>
+<li>Few parameters to tune</li>
+<li>Little preprocessing needed</li>
+<li>Provides feature importance</li>
+</ul>
+<p> <span class="con"></span></p>
+<ul>
+<li>Prone to overfitting</li>
+<li>High variance</li>
+<li>Poor extrapolation</li>
+</ul>
+<p></p>
+</section>
+</div>
+</section>
+<section id="unsupervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised learning</h2>
+<ul>
+<li>Learning patterns without labels, such as:
+<ul>
+<li>Anomaly detection</li>
+<li>Density estimation</li>
+<li>Dimensionality reduction</li>
+<li><strong>Clustering</strong></li>
+</ul></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>Why is unsupervised learning important?</p>
+</blockquote>
+</div>
+</section>
+<section id="clustering-k-means" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-k-means">Clustering: <span class="math inline">\(k\)</span>-means</h2>
+<!-- _class: code_reminder -->
+<ul>
+<li>Goal: Partition <span class="math inline">\(N\)</span> samples into <span class="math inline">\(k\)</span> clusters</li>
+<li>Naive algorithm:
+<ol type="1">
+<li>Initialize <span class="math inline">\(k\)</span> centroid locations</li>
+<li>Assign each sample to the nearest centroid</li>
+<li>Recalculate centroids for each cluster</li>
+<li>Repeat steps 2-3 until clusters stabilize</li>
+</ol></li>
+</ul>
+<div data-marpit-fragment="">
+<p><span class="math display">\[\sum_{i=0}^N \min_{\mu_j \in C}(\Vert x_i - \mu_j \Vert^2)\]</span></p>
+</div>
+</section>
+<section id="k-means-pros-and-cons" class="level2">
+<h2 class="anchored" data-anchor-id="k-means-pros-and-cons"><span class="math inline">\(k\)</span>-means pros and cons</h2>
+<p><span class="pro"></span></p>
+<ul>
+<li>Intuitive</li>
+<li>Easy to implement</li>
+<li>Relatively scalable (<span class="math inline">\(O(N)\)</span>)</li>
+</ul>
+<p> <span class="con"></span></p>
+<ul>
+<li>Need to know how many clusters</li>
+<li>Sensitive to initialization</li>
+<li>Not guaranteed to converge to global minimum</li>
+</ul>
+<p></p>
+<blockquote class="blockquote">
+<p>Scikit-learn has a great <a href="https://scikit-learn.org/stable/modules/clustering.html">reference table</a> of other clustering methods</p>
+</blockquote>
+</section>
+<section id="coming-up-next" class="level2">
+<h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>
+<ul>
+<li>Exploring and understanding your data</li>
+<li>Splitting your data
+<ul>
+<li>Repeatability considerations</li>
+<li>Stratified sampling</li>
+</ul></li>
+<li>Assignment 1: Simple modelling</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

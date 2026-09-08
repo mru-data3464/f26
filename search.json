@@ -4,7 +4,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nSlide 12\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\n\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/01-intro.html",
@@ -154,6 +154,41 @@
     "text": "Coming up next\n\nLab: basic regression, show me where you’re at\nLecture: Simple models and evaluation metrics"
   },
   {
+    "objectID": "labs/01-clean-regression.html",
+    "href": "labs/01-clean-regression.html",
+    "title": "1: Regression with Clean Data",
+    "section": "",
+    "text": "Lab submission due on September 16, 2026."
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#objective",
+    "href": "labs/01-clean-regression.html#objective",
+    "title": "1: Regression with Clean Data",
+    "section": "Objective",
+    "text": "Objective\nThe main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need “clean” and easy to manage data."
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#deliverables",
+    "href": "labs/01-clean-regression.html#deliverables",
+    "title": "1: Regression with Clean Data",
+    "section": "Deliverables",
+    "text": "Deliverables\nClick here to accept the “labs” assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please add:\n\nYour code to load, process, and visualize the data\nA brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions\nA list of references, such as:\n\nComplete URLs, e.g. to library documentation or Stack Overflow answers\nSearch queries, particularly if you used the “AI overview” response\nA complete transcript of AI chat history, if any\n\n\nThese can all be in one document if you document your process inline with your code.\n\n\n\n\n\n\nCaution\n\n\n\nAI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#instructions",
+    "href": "labs/01-clean-regression.html#instructions",
+    "title": "1: Regression with Clean Data",
+    "section": "Instructions",
+    "text": "Instructions\n\nIn the programming language of your choice, write a program to:\n\nLoad the data in simple_regression.csv\nCalculate the line of best fit using simple linear regression\nCreate a scatter plot of the data with the best fit line\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to document your process as you do this!\n\n\nWith reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.\n\nIs linear regression an appropriate model for these data?\nHow well does your model fit the data?\nWhat additional information would help to create a more accurate model?\n\nRepeat the first question but with the simple_regression_full.csv dataset. This contains extra columns; select only the same ones that are present in simple_regression.csv. In your report, answer the following:\n\nWhat additional steps did you need to do to recreate the plot?\nDo you have any guess what this dataset represents?"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#submission",
+    "href": "labs/01-clean-regression.html#submission",
+    "title": "1: Regression with Clean Data",
+    "section": "Submission",
+    "text": "Submission\nSubmit your work by adding new files to the lab repo with git add, commit with git commit, and push your changes to GitHub with git push. You may add/commit/push as many times as you like; only the last revision will be marked. Your repo should include:\n\nYour source code in the language of your choice\nYour report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)\nYour list of references\n\n\n\n\n\n\n\nImportant\n\n\n\nDo not commit virtual environments (venv) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a .gitignore file to your repo such as this one.\n\n\nLabs are marked pass/fail based on “best effort” completion."
+  },
+  {
     "objectID": "assignments/index.html",
     "href": "assignments/index.html",
     "title": "Assignments",
@@ -172,21 +207,21 @@
     "href": "index.html#lectures",
     "title": "DATA 3464 | Fall 2026",
     "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nSlide 12\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\n\n\n\n\nNo matching items"
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#labs",
     "href": "index.html#labs",
     "title": "DATA 3464 | Fall 2026",
     "section": "Labs",
-    "text": "Labs\n\n\nNo matching items"
+    "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\n\nNo matching items"
   },
   {
     "objectID": "labs/index.html",
     "href": "labs/index.html",
     "title": "Labs",
     "section": "",
-    "text": "No matching items"
+    "text": "Date\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/02-basic-models.html",

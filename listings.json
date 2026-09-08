@@ -16,11 +16,14 @@
       "/lectures/01-intro.html",
       "/lectures/02-basic-models.html",
       "/lectures/index.html",
+      "/labs/01-clean-regression.html",
       "/labs/index.html"
     ]
   },
   {
     "listing": "/labs/index.html",
-    "items": []
+    "items": [
+      "/labs/01-clean-regression.html"
+    ]
   }
 ]

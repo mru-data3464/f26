@@ -10,7 +10,7 @@ Lab submission due on {{< meta due >}}.
 The main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need "clean" and easy to manage data.
 
 ## Deliverables
-[Click here](https://classroom50.org/mru-data3464-f26/data-3464/assignments/labs/accept) to accept the "labs" assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please add:
+[Click here](https://classroom50.org/mru-data3464-f26/data-3464/assignments/labs/accept) to accept the "labs" assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please **create a new directory** named `lab01` (or similar) and add:
 
 - Your code to load, process, and visualize the data
 - A brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions
@@ -26,26 +26,27 @@ AI is not forbidden for labs, but it will be during lab exams. I recommend you p
 :::
 
 ## Instructions
-1. In the programming language of your choice, write a program to:
+1. Clone the labs repo to your local machine and create a new subdirectory named `lab01`. In this folder:
+2. In the programming language of your choice, write a program to:
     1. Load the data in [`simple_regression.csv`](01-starter/simple_regression.csv)
     2. Calculate the line of best fit using simple linear regression
     3. Create a scatter plot of the data with the best fit line
 
    ::: {.callout-note}   
-   Don't forget to document your process as you do this!
+   Don't forget to document your process as you do this! For example, if you get stuck on a step and need to look things up, add a comment.
    :::
 
-2. With reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.
+3. With reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.
     1. Is linear regression an appropriate model for these data?
     2. How well does your model fit the data?
     3. What additional information would help to create a more accurate model?
 
-3. Repeat the first question but with the [`simple_regression_full.csv`](01-starter/simple_regression_full.csv) dataset. This contains extra columns; select only the same ones that are present in `simple_regression.csv`. In your report, answer the following:
+4. Repeat the first question but with the [`simple_regression_full.csv`](01-starter/simple_regression_full.csv) dataset. This contains extra columns; select only the same ones that are present in `simple_regression.csv`. In your report, answer the following:
     1. What additional steps did you need to do to recreate the plot?
     2. Do you have any guess what this dataset represents?
 
 ## Submission
-Submit your work by adding new files to the lab repo with `git add`, commit with `git commit`, and push your changes to GitHub with `git push`. You may `add/commit/push` as many times as you like; only the last revision will be marked. Your repo should include:
+Submit your work by adding your new files to the lab repo with `git add`, commit with `git commit`, and push your changes to GitHub with `git push`. You may `add/commit/push` as many times as you like; only the last revision will be marked. Your repo should include:
 
 - Your source code in the language of your choice
 - Your report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)
@@ -53,6 +54,8 @@ Submit your work by adding new files to the lab repo with `git add`, commit with
 
 ::: {.callout-important}
 Do not commit virtual environments (`venv`) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a `.gitignore` file to your repo such as [this one](https://github.com/github/gitignore/blob/main/Python.gitignore).
+
+If you are using Python 3.13 or newer, the virtual environment directory will be ignored automatically.
 :::
 
-Labs are marked pass/fail based on "best effort" completion.
+Labs are marked pass/fail based on "best effort" completion — you don't need to finish the whole thing, just get as far as you can in a reasonable amount of time.

@@ -31,7 +31,7 @@ demo-data: ""
 - Limitations and assumptions
 
 **Resources used**:
-- [Feature Engineering Chapter 1](http://www.feat.engineering/important-concepts)
+- [Feature Engineering Chapter 1](https://feat.engineering/01-introduction.html)
 - Introduction to Machine Learning with Python. Available at <a href="https://librarysearch.mtroyal.ca/permalink/01MTROYAL_INST/1qa1aqk/cdi_overdrive_books_ODN0002976888">MRU Library</a>
 - [Scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
 - Hands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch. Available at [MRU Library](https://ebookcentral.proquest.com/lib/mtroyal-ebooks/detail.action?docID=30168989)
@@ -71,7 +71,7 @@ demo-data: ""
 * Tree-based methods, particularly **gradient boosted trees** *tend* to outperform other algorithms the most, but still have limitations
 * What does it mean to "outperform"?
 
-<footer>Further reading: http://www.feat.engineering/important-concepts#no-free-lunch</footer>
+<footer>Further reading: https://feat.engineering/01-introduction.html#sec-no-free-lunch</footer>
 
 
 ## Model evaluation: Classification
@@ -155,7 +155,7 @@ For a predicted $\hat{\mathbf{y}}$ and actual $\mathbf{y}$, metrics include:
 * Mean absolute error: $MAE = \frac{1}{n}\sum_{i=1}^n |y_i - \hat{y}_i|$
 * Mean absolute percentage error: $MAPE = \frac{100}{n}\sum_{i=1}^n \left|\frac{y_i - \hat{y}_i}{y_i}\right|$
 * Coefficient of determination: $R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}$
-  ($R^2$ has some [caveats](http://www.feat.engineering/measuring-performance))
+  ($R^2$ has some [caveats](https://feat.engineering/03-Review_of_the_Modeling_Process.html#sec-measuring-performance))
 
 ## Regression: ordinary least squares
 

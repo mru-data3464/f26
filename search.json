@@ -312,7 +312,7 @@
     "href": "lectures/02-basic-models.html#example-1-support-vector-classifier",
     "title": "2. Basic machine learning models",
     "section": "Example 1: Support Vector Classifier",
-    "text": "Example 1: Support Vector Classifier\n\n\n\nLinear model that finds vector(s) to best separate classes\n“Kernel trick” allows for nonlinear boundaries\nCheck out the SVM Appendix of Hands-on Machine Learning by Aurélien Geron for more info\n\n\n\nImage from Scikit-learn documentation&lt;/footer.&gt;"
+    "text": "Example 1: Support Vector Classifier\n\n\n\nLinear model that finds vector(s) to best separate classes\n“Kernel trick” allows for nonlinear boundaries\nCheck out the SVM Appendix of Hands-on Machine Learning by Aurélien Geron for more info\n\n\n\nImage from Scikit-learn documentation"
   },
   {
     "objectID": "lectures/02-basic-models.html#example-2-decision-trees",
@@ -326,7 +326,7 @@
     "href": "lectures/02-basic-models.html#model-evaluation-regression",
     "title": "2. Basic machine learning models",
     "section": "Model evaluation: regression",
-    "text": "Model evaluation: regression\n\nFor a predicted \\(\\hat{\\mathbf{y}}\\) and actual \\(\\mathbf{y}\\), metrics include: * Mean squared error: \\(MSE = \\frac{1}{n}\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\) * Root mean squared error: \\(RMSE = \\sqrt{MSE}\\) * Mean absolute error: \\(MAE = \\frac{1}{n}\\sum_{i=1}^n |y_i - \\hat{y}_i|\\) * Mean absolute percentage error: \\(MAPE = \\frac{100}{n}\\sum_{i=1}^n \\left|\\frac{y_i - \\hat{y}_i}{y_i}\\right|\\) * Coefficient of determination: \\(R^2 = 1 - \\frac{\\sum_{i=1}^n (y_i - \\hat{y}_i)^2}{\\sum_{i=1}^n (y_i - \\bar{y})^2}\\) (\\(R^2\\) has some caveats)"
+    "text": "Model evaluation: regression\n\nFor a predicted \\(\\hat{\\mathbf{y}}\\) and actual \\(\\mathbf{y}\\), metrics include:\n\nMean squared error: \\(MSE = \\frac{1}{n}\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\)\nRoot mean squared error: \\(RMSE = \\sqrt{MSE}\\)\nMean absolute error: \\(MAE = \\frac{1}{n}\\sum_{i=1}^n |y_i - \\hat{y}_i|\\)\nMean absolute percentage error: \\(MAPE = \\frac{100}{n}\\sum_{i=1}^n \\left|\\frac{y_i - \\hat{y}_i}{y_i}\\right|\\)\nCoefficient of determination: \\(R^2 = 1 - \\frac{\\sum_{i=1}^n (y_i - \\hat{y}_i)^2}{\\sum_{i=1}^n (y_i - \\bar{y})^2}\\) (\\(R^2\\) has some caveats)"
   },
   {
     "objectID": "lectures/02-basic-models.html#regression-ordinary-least-squares",

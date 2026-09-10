@@ -128,7 +128,7 @@ September 10, 2026
 * Check out the [SVM Appendix](https://ageron.github.io/homlp/HOMLP_Appendix_C.pdf) of *Hands-on Machine Learning* by Aurélien Geron for more info
 
 </div>
-<footer>Image from <a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification">Scikit-learn documentation</a></footer.>
+<footer>Image from <a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification">Scikit-learn documentation</a></footer>
 
 
 ## Example 2: Decision Trees
@@ -144,6 +144,7 @@ September 10, 2026
   _class: code_reminder
 -->
 For a predicted $\hat{\mathbf{y}}$ and actual $\mathbf{y}$, metrics include:
+
 * Mean squared error: $MSE = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2$
 * Root mean squared error: $RMSE = \sqrt{MSE}$
 * Mean absolute error: $MAE = \frac{1}{n}\sum_{i=1}^n |y_i - \hat{y}_i|$

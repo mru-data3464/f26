@@ -382,7 +382,7 @@
     "href": "lectures/02-basic-models.html#k-means-pros-and-cons",
     "title": "2. Basic machine learning models",
     "section": "\\(k\\)-means pros and cons",
-    "text": "\\(k\\)-means pros and cons\n\n\nIntuitive\nEasy to implement\nRelatively scalable (\\(O(N)\\))\n\n \n\nNeed to know how many clusters\nSensitive to initialization\nNot guaranteed to converge to global minimum\n\n\n\nScikit-learn has a great reference table of other clustering methods"
+    "text": "\\(k\\)-means pros and cons\n\n\nIntuitive\nEasy to implement\nRelatively scalable (\\(O(N)\\))\n\n \n\nNeed to know how many clusters\nSensitive to initialization\nNot guaranteed to converge to global minimum\nDoesn’t like anisotropy and unequal variance\n\n\n\nScikit-learn has a great reference table of other clustering methods"
   },
   {
     "objectID": "lectures/02-basic-models.html#coming-up-next",

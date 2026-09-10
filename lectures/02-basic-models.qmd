@@ -101,12 +101,13 @@ demo-data: ""
 
 |                   | Predicted Positive | Predicted Negative |
 | ----------------- | ------------------ | ------------------ |
-| **True Positive** | TP                 | FN                 |
-| **True Negative** | FP                 | TN                 |
+| **Positive Label** | TP                 | FN                 |
+| **Negative Label** | FP                 | TN                 |
 
 * The axes might be reversed, but a good predictor will have strong diagonals
 * There's also the **F1 score**, or harmonic mean of precision and recall:
     $$F1 = 2 \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}}$$
+* Better for unbalanced datasets, but still does not capture specificity
 
 <footer>Check out the <a href="https://en.wikipedia.org/wiki/Confusion_matrix">Wikipedia page</a> for more ways of describing the same information</footer>
 

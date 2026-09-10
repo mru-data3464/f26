@@ -277,7 +277,7 @@
     "href": "lectures/02-basic-models.html#no-free-lunch",
     "title": "2. Basic machine learning models",
     "section": "No free lunch",
-    "text": "No free lunch\n\nA theory-heavy paper in 1996 showed that there is no one machine learning algorithm that excels in all situations\nSubsequent work has confirmed this, e.g. a 2018 analysis\nTree-based methods, particularly gradient boosted trees tend to outperform other algorithms the most, but still have limitations\nWhat does it mean to “outperform”?\n\n\nFurther reading: http://www.feat.engineering/important-concepts#no-free-lunch"
+    "text": "No free lunch\n\nA theory-heavy paper in 1996 showed that there is no one machine learning algorithm that excels in all situations\nSubsequent work has confirmed this, e.g. a 2018 analysis\nTree-based methods, particularly gradient boosted trees tend to outperform other algorithms the most, but still have limitations\nWhat does it mean to “outperform”?\n\n\nFurther reading: https://feat.engineering/01-introduction.html#sec-no-free-lunch"
   },
   {
     "objectID": "lectures/02-basic-models.html#model-evaluation-classification",

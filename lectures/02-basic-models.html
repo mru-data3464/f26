@@ -326,12 +326,12 @@ Further reading: https://feat.engineering/01-introduction.html#sec-no-free-lunch
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>True Positive</strong></td>
+<td><strong>Positive Label</strong></td>
 <td>TP</td>
 <td>FN</td>
 </tr>
 <tr class="even">
-<td><strong>True Negative</strong></td>
+<td><strong>Negative Label</strong></td>
 <td>FP</td>
 <td>TN</td>
 </tr>
@@ -340,6 +340,7 @@ Further reading: https://feat.engineering/01-introduction.html#sec-no-free-lunch
 <ul>
 <li>The axes might be reversed, but a good predictor will have strong diagonals</li>
 <li>There’s also the <strong>F1 score</strong>, or harmonic mean of precision and recall: <span class="math display">\[F1 = 2 \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}}\]</span></li>
+<li>Better for unbalanced datasets, but still does not capture specificity</li>
 </ul>
 <footer>
 Check out the <a href="https://en.wikipedia.org/wiki/Confusion_matrix">Wikipedia page</a> for more ways of describing the same information

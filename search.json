@@ -298,7 +298,7 @@
     "href": "lectures/02-basic-models.html#confusion-matrix",
     "title": "2. Basic machine learning models",
     "section": "Confusion matrix",
-    "text": "Confusion matrix\n\n\n\n\nPredicted Positive\nPredicted Negative\n\n\n\n\nTrue Positive\nTP\nFN\n\n\nTrue Negative\nFP\nTN\n\n\n\n\nThe axes might be reversed, but a good predictor will have strong diagonals\nThere’s also the F1 score, or harmonic mean of precision and recall: \\[F1 = 2 \\cdot \\frac{\\mathrm{precision} \\cdot \\mathrm{recall}}{\\mathrm{precision} + \\mathrm{recall}}\\]\n\n\nCheck out the Wikipedia page for more ways of describing the same information"
+    "text": "Confusion matrix\n\n\n\n\nPredicted Positive\nPredicted Negative\n\n\n\n\nPositive Label\nTP\nFN\n\n\nNegative Label\nFP\nTN\n\n\n\n\nThe axes might be reversed, but a good predictor will have strong diagonals\nThere’s also the F1 score, or harmonic mean of precision and recall: \\[F1 = 2 \\cdot \\frac{\\mathrm{precision} \\cdot \\mathrm{recall}}{\\mathrm{precision} + \\mathrm{recall}}\\]\nBetter for unbalanced datasets, but still does not capture specificity\n\n\nCheck out the Wikipedia page for more ways of describing the same information"
   },
   {
     "objectID": "lectures/02-basic-models.html#roc-curves",

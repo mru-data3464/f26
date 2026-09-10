@@ -5,7 +5,7 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-demo-code: ""
+demo-code: "/demo_code/02_models/model_demo.ipynb"
 demo-data: ""
 ---
 
@@ -296,6 +296,7 @@ $$\sum_{i=0}^N \min_{\mu_j \in C}(\Vert x_i - \mu_j \Vert^2)$$
 * Need to know how many clusters
 * Sensitive to initialization 
 * Not guaranteed to converge to global minimum
+* Doesn't like anisotropy and unequal variance
 
 </span>
 

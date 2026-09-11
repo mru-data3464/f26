@@ -8,7 +8,9 @@
   },
   {
     "listing": "/assignments/index.html",
-    "items": []
+    "items": [
+      "/assignments/01-simple-model.html"
+    ]
   },
   {
     "listing": "/index.html",

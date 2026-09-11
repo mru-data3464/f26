@@ -193,7 +193,42 @@
     "href": "assignments/index.html",
     "title": "Assignments",
     "section": "",
-    "text": "No matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments/01-simple-model.html",
+    "href": "assignments/01-simple-model.html",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "",
+    "text": "Due date: September 25, 2026 at 5 pm. This is a Friday; I will not be collecting submissions until the following Monday, so use that information as you wish. Reasonable requests for extensions will likely be granted, provided I see some evidence of progress prior to the due date."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#setup",
+    "href": "assignments/01-simple-model.html#setup",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "Setup",
+    "text": "Setup\nYou may work in groups up to 3. Please join a group on D2L, then pick one person to accept the assignment and create the GitHub repository with the dataset. Whoever does this becomes the group manager and can invite team members with their GitHub username.\n\n\n\n\n\n\nTipIf you make a mistake with groups\n\n\n\nDon’t worry, this is the first time for all of us using Classroom50, and the platform itself is brand new. Let me know if you accidentally created two groups, or joined the wrong one; I can modify groups on the backend.\n\n\nIn your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create one coherent report named assignment1 that includes: - Your group members’ names - Some key figures and commentary on data exploration - Description of your data processing decisions - A summary of your experiments - Figures and discussion on your final models\nYour report can be in Markdown or PDF format. In these instructions, I’ve indicated where you should write in your report in an annoying bold face.\nI encourage you to talk things through as you try different things. If you talk with classmates from a different group, cite their contribution. Similarly, if you use a web resource, add a link in the code — this is both polite, and a good habit to develop."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#the-problem",
+    "href": "assignments/01-simple-model.html#the-problem",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "The problem",
+    "text": "The problem\nYou are working for the provincial government and are asked to help predict staffing budgets. Salaries are considered a known quantity, but benefits (cash and non-cash) appear to be more variable. To address this, you must build two models: - a regression model to predict the total cash and non-cash benefits per employee - a classification model to identify employees with less than $20,000 in benefits[^1]\n[^1] Why under $20k? I don’t know, maybe they get a prize or something. It just seemed like a clear dividing line when I inspected the data, and I needed an excuse to turn this into a classification problem.\nThe benefits_train.csv file in your starter repo has been created from the Alberta Salary and severance disclosure table; I have reserved a separate test set and will release it for your testing pleasure after the assignment is complete.\n\nPreliminary EDA and processing\nExploratory data analysis is an important step in data processing, but it is not the main focus of this assignment. You will need to do just enough to have an understanding of what the data looks like, such as: - What features are present - Are there any obvious relationships between features - How many unique values (categorical) or what are the distributions (numeric)\nThe results of your EDA will inform your processing pipeline, such as choosing a categorical encoding approach.\nIn your report, include a key figure or two from your EDA and briefly describe what you see.\n\n\nRegression model\nUsing your choice of regression model from Scikit-learn, create and train a regression model to predict the total benefits (NonCashBenefits + CashBenefits) for each employee. You will need to create this total benefits column, or as a separate vector.\n\n\n\n\n\n\nTip\n\n\n\nDon’t forget to remove or exclude the CashBenefits and NonCashBenefits fields of your training dataframe!\n\n\n\nYou will need to do some basic processing on the training data, but don’t feel the need to use all the features! In your report, briefly justify the following decisions:\n\nWhich features should be included?\nHow should categorical features be encoded?\nHow should numeric features be transformed?\n\nI recommend creating a Scikit-learn Pipeline to be able to fit your processing parameters and model all in one go.\nValidate your model using cross-validation. An easy way to do this is with sklearn.model_selection.cross_val_score. You will need to choose an appropriate metric and pass it as the scoring parameter; feel free to experiment with multiple. In your report, briefly justify why the metric chosen was appropriate.\nIterate! Based on the results of cross-validation, try to improve your model. You can tweak your processing parameters, model parameters, or even choose a different model. Briefly document your experiments in your report, making note of any changes that have impact. &gt; Don’t spend too much time refining your model — the goal is to learn about the process and the factors that impact the results, not to produce the absolute best predictive model possible.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code.\n\nAt this stage, you don’t have final test data, so the process basically stops here.\n\n\nClassification model\nThis time, you’ll be doing basically the same thing, but with a binary classification model. Create your prediction target (labels) as a Boolean vector by thresholding total benefits &lt; 20,000. This can be done in numpy simply as (for example):\ny = total_benefits &lt; 20_000\n\nCount how many labels you have of each class (True or False). In your report, comment on the class balance.\nAs before, create a Scikit-learn pipeline and pick a classification model. You may copy the same pipeline from the previous task and simply swap out the model; you don’t need to document your processing decisions again.\nOnce more, pick an appropriate metric and validate your model using cross-validation. Be careful of the class (im)balance!\nAgain, iterate and try to improve your model based on the results of cross-validation. In your report, make note of what you try and how it impacts the model.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code, formatted neatly as a code block."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#reflections",
+    "href": "assignments/01-simple-model.html#reflections",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "Reflections",
+    "text": "Reflections\nWrite a brief paragraph describing what you found challenging about this assignment, and one thing that was particularly interesting or surprising."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#marking-scheme",
+    "href": "assignments/01-simple-model.html#marking-scheme",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "Marking Scheme",
+    "text": "Marking Scheme\nEach of the following components will be marked on a 4-point scale and weighted.\n\n\n\n\n\n\n\nComponent\nWeight\n\n\n\n\nPreliminary EDA\n10%\n\n\nRegression pipeline development process, observations, comments\n30%\n\n\nClassification pipeline development process, observations, comments\n30%\n\n\nReflections\n20%\n\n\nCitations, overall coherency\n10%\n\n\n\n\n\n\n\n\n\n\n\nScore\nDescription\n\n\n\n\n4\nExcellent — thoughtful and creative without any errors or omissions\n\n\n3\nPretty good, but with minor errors or omissions\n\n\n2\nMostly complete, but with major errors or omissions, lacking in detail\n\n\n1\nA minimal effort was made, incomplete or incorrect\n\n\n0\nNo effort was made, or the submission is plagiarized"
   },
   {
     "objectID": "index.html",

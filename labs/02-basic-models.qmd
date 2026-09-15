@@ -1,0 +1,58 @@
+---
+title: "2: Basic Modelling"
+date: 2026-09-16
+due: "September 23, 2026"
+---
+
+Lab submission due on {{< meta due >}}. 
+
+## Objective
+Learn a bit about:
+
+- Scikit-learn pipelines
+- The need for validation data
+- The overall iterative workflow of making predictions from data
+
+As we haven't yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation.
+
+## Setup
+Create a new directory named `lab02` in your labs repo. Download and add to it:
+
+- [`titanic_train.csv`](02-starter/titanic_train.csv) — the training data
+- [`titanic.ipynb`](02-starter/titanic.ipynb) — the starter notebook
+
+You can also check out the [test data](02-starter/titanic_test.csv), but this doesn't have a truth value. If you want to know the final performance of your model, you'll need to submit it to Kaggle.
+
+## Predicting Titanic survivorship
+Consider this a "Hello, world!" of supervised learning! The [Titanic survival dataset](https://www.kaggle.com/competitions/titanic/overview) is one of the most popular practice datasets.
+1. Open your copy of `titanic.ipynb` and run the first cell. Install any missing packages you encounter.
+2. I've done some basic exploratory data analysis and constructed the [pipeline](https://scikit-learn.org/stable/modules/compose.html) for you, as we haven't gotten to this in class yet. The pipeline is as follows:
+   
+   ```python
+   pipeline = make_pipeline(
+      make_column_transformer(
+         (OneHotEncoder(), cat_feats),
+         (StandardScaler(), num_feats)
+      )
+      # TODO: add some kind of classification model
+   )
+   ```
+3. Add a [decision tree classifier](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier) to the pipeline.
+4. Train and cross-validate your tree, choosing an appropriate `scoring` metric.
+5. Experiment! Does your model seem like it's working fairly well? If not, what could you change? Consider:
+
+   - Dropping features that don't add value
+   - Training a [forest of trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+   - Changing tree depth to avoid overfitting
+  
+   As you make changes, record why you're making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it's okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:
+   
+   ```python
+   # Started with max depth of 3 but it seemed like it wasn't learning enough
+   # Increasing to 4 improves predictions without overfitting
+   tree = DecisionTreeClassifier(maxDepth=4)
+   ```
+6. Repeat, but with some kind of linear classification model, such as [LinearSVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC) or [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html). What changes?
+
+## Submit
+Add and push your code and observations to your GitHub repo for your completion-based lab mark.

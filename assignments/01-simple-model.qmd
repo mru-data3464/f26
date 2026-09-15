@@ -14,6 +14,7 @@ Don't worry, this is the first time for all of us using Classroom50, and the pla
 :::
 
 In your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create **one coherent report named assignment1** that includes:
+
 - Your group members' names
 - Some key figures and commentary on data exploration
 - Description of your data processing decisions
@@ -29,12 +30,13 @@ You are working for the provincial government and are asked to help predict staf
 - a regression model to predict the total cash and non-cash benefits per employee
 - a classification model to identify employees with less than $20,000 in benefits[^1]
 
-[^1]  Why under $20k? I don't know, maybe they get a prize or something. It just seemed like a clear dividing line when I inspected the data, and I needed an excuse to turn this into a classification problem.
+[^1]: Why under $20k? I don't know, maybe they get a prize or something. It just seemed like a clear dividing line when I inspected the data, and I needed an excuse to turn this into a classification problem.
 
 The `benefits_train.csv` file in your starter repo has been created from the [Alberta Salary and severance disclosure table](https://www.alberta.ca/salary-and-severance-disclosure-table); I have reserved a separate test set and will release it for your testing pleasure after the assignment is complete.
 
 ### Preliminary EDA and processing
 Exploratory data analysis is an important step in data processing, but it is not the main focus of this assignment. You will need to do just enough to have an understanding of what the data looks like, such as:
+
 - What features are present
 - Are there any obvious relationships between features
 - How many unique values (categorical) or what are the distributions (numeric)

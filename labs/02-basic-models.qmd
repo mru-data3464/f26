@@ -25,6 +25,7 @@ You can also check out the [test data](_02-starter/titanic_test.csv), but this d
 
 ## Predicting Titanic survivorship
 Consider this a "Hello, world!" of supervised learning! The [Titanic survival dataset](https://www.kaggle.com/competitions/titanic/overview) is one of the most popular practice datasets.
+
 1. Open your copy of `titanic.ipynb` and run the first cell. Install any missing packages you encounter.
 2. I've done some basic exploratory data analysis and constructed the [pipeline](https://scikit-learn.org/stable/modules/compose.html) for you, as we haven't gotten to this in class yet. The pipeline is as follows:
    
@@ -39,6 +40,11 @@ Consider this a "Hello, world!" of supervised learning! The [Titanic survival da
    ```
 3. Add a [decision tree classifier](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier) to the pipeline.
 4. Train and cross-validate your tree, choosing an appropriate `scoring` metric.
+   
+   ::: {.callout-tip}
+   If your model complains about missing values (or some more obscure message about `NaN`), you might need to remove the `Embarked` feature — I missed that it actually has 2 missing features.
+   :::
+
 5. Experiment! Does your model seem like it's working fairly well? If not, what could you change? Consider:
 
    - Dropping features that don't add value

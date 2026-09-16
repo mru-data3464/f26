@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-16">
 
-<title>Labs – DATA 3464 | Fall 2026</title>
+<title>2: Basic Modelling – DATA 3464 | Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -37,8 +73,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../img/MRU_SingleChevron_RGB.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -80,65 +114,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-page-layout','listing-format','listing-execute','listing-engines','listing-language','listing-title','listing-date','listing-due','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-page-layout","listing-format","listing-execute","listing-engines","listing-language","listing-title","listing-date","listing-due","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -168,7 +144,7 @@ window.Quarto = {
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../labs/index.html" aria-current="page"> 
+    <a class="nav-link" href="../labs/index.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
@@ -192,24 +168,41 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#predicting-titanic-survivorship" id="toc-predicting-titanic-survivorship" class="nav-link" data-scroll-target="#predicting-titanic-survivorship">Predicting Titanic survivorship</a></li>
+  <li><a href="#submit" id="toc-submit" class="nav-link" data-scroll-target="#submit">Submit</a></li>
+  </ul>
+</nav>
+</nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Labs</h1>
+<h1 class="title">2: Basic Modelling</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-right">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 16, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -219,39 +212,60 @@ window.Quarto = {
 </header>
 
 
+<p>Lab submission due on September 23, 2026.</p>
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<p>Learn a bit about:</p>
+<ul>
+<li>Scikit-learn pipelines</li>
+<li>The need for validation data</li>
+<li>The overall iterative workflow of making predictions from data</li>
+</ul>
+<p>As we haven’t yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>Create a new directory named <code>lab02</code> in your labs repo. Download and add to it:</p>
+<ul>
+<li><a href="02-starter/titanic_train.csv"><code>titanic_train.csv</code></a> — the training data</li>
+<li><a href="../labs/02-starter/titanic.html"><code>titanic.ipynb</code></a> — the starter notebook</li>
+</ul>
+<p>You can also check out the <a href="02-starter/titanic_test.csv">test data</a>, but this doesn’t have a truth value. If you want to know the final performance of your model, you’ll need to submit it to Kaggle.</p>
+</section>
+<section id="predicting-titanic-survivorship" class="level2">
+<h2 class="anchored" data-anchor-id="predicting-titanic-survivorship">Predicting Titanic survivorship</h2>
+<p>Consider this a “Hello, world!” of supervised learning! The <a href="https://www.kaggle.com/competitions/titanic/overview">Titanic survival dataset</a> is one of the most popular practice datasets. 1. Open your copy of <code>titanic.ipynb</code> and run the first cell. Install any missing packages you encounter. 2. I’ve done some basic exploratory data analysis and constructed the <a href="https://scikit-learn.org/stable/modules/compose.html">pipeline</a> for you, as we haven’t gotten to this in class yet. The pipeline is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> make_pipeline(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   make_column_transformer(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      (OneHotEncoder(), cat_feats),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      (StandardScaler(), num_feats)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   )</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="co"># </span><span class="al">TODO</span><span class="co">: add some kind of classification model</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li><p>Add a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier">decision tree classifier</a> to the pipeline.</p></li>
+<li><p>Train and cross-validate your tree, choosing an appropriate <code>scoring</code> metric.</p></li>
+<li><p>Experiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:</p>
+<ul>
+<li>Dropping features that don’t add value</li>
+<li>Training a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">forest of trees</a></li>
+<li>Changing tree depth to avoid overfitting</li>
+</ul>
+<p>As you make changes, record why you’re making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it’s okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Started with max depth of 3 but it seemed like it wasn't learning enough</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Increasing to 4 improves predictions without overfitting</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> DecisionTreeClassifier(maxDepth<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Repeat, but with some kind of linear classification model, such as <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC">LinearSVC</a> or <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">LogisticRegression</a>. What changes?</p></li>
+</ol>
+</section>
+<section id="submit" class="level2">
+<h2 class="anchored" data-anchor-id="submit">Submit</h2>
+<p>Add and push your code and observations to your GitHub repo for your completion-based lab mark.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Due</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sep 9, 2026</td>
-<td><a href="../labs/01-clean-regression.html">1: Regression with Clean Data</a></td>
-<td>Sep 16, 2026</td>
-</tr>
-<tr class="even">
-<td>Sep 16, 2026</td>
-<td><a href="../labs/02-basic-models.html">2: Basic Modelling</a></td>
-<td>Sep 23, 2026</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="../labs/02-starter/titanic.html"></a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

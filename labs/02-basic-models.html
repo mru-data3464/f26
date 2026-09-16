@@ -234,17 +234,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="predicting-titanic-survivorship" class="level2">
 <h2 class="anchored" data-anchor-id="predicting-titanic-survivorship">Predicting Titanic survivorship</h2>
-<p>Consider this a “Hello, world!” of supervised learning! The <a href="https://www.kaggle.com/competitions/titanic/overview">Titanic survival dataset</a> is one of the most popular practice datasets. 1. Open your copy of <code>titanic.ipynb</code> and run the first cell. Install any missing packages you encounter. 2. I’ve done some basic exploratory data analysis and constructed the <a href="https://scikit-learn.org/stable/modules/compose.html">pipeline</a> for you, as we haven’t gotten to this in class yet. The pipeline is as follows:</p>
+<p>Consider this a “Hello, world!” of supervised learning! The <a href="https://www.kaggle.com/competitions/titanic/overview">Titanic survival dataset</a> is one of the most popular practice datasets.</p>
+<ol type="1">
+<li><p>Open your copy of <code>titanic.ipynb</code> and run the first cell. Install any missing packages you encounter.</p></li>
+<li><p>I’ve done some basic exploratory data analysis and constructed the <a href="https://scikit-learn.org/stable/modules/compose.html">pipeline</a> for you, as we haven’t gotten to this in class yet. The pipeline is as follows:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> make_pipeline(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   make_column_transformer(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      (OneHotEncoder(), cat_feats),</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      (StandardScaler(), num_feats)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   )</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="co"># </span><span class="al">TODO</span><span class="co">: add some kind of classification model</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="3" type="1">
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Add a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier">decision tree classifier</a> to the pipeline.</p></li>
-<li><p>Train and cross-validate your tree, choosing an appropriate <code>scoring</code> metric.</p></li>
+<li><p>Train and cross-validate your tree, choosing an appropriate <code>scoring</code> metric.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If your model complains about missing values (or some more obscure message about <code>NaN</code>), you might need to remove the <code>Embarked</code> feature — I missed that it actually has 2 missing features.</p>
+</div>
+</div></li>
 <li><p>Experiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:</p>
 <ul>
 <li>Dropping features that don’t add value</li>

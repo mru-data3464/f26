@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-01-15">
 
-<title>Lectures – DATA 3464 | Fall 2026</title>
+<title>3. Exploratory Data Analysis – DATA 3464 | Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,8 +38,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../img/MRU_SingleChevron_RGB.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -80,38 +79,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-page-layout','listing-format','listing-execute','listing-engines','listing-language','listing-title','listing-date','listing-marp','listing-theme','listing-paginate','listing-headingDivider','listing-demo-code','listing-demo-data','listing-leftoff','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-math','listing-layout',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-page-layout","listing-format","listing-execute","listing-engines","listing-language","listing-title","listing-date","listing-marp","listing-theme","listing-paginate","listing-headingDivider","listing-demo-code","listing-demo-data","listing-leftoff","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-math","listing-layout"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  </head><body class="floating nav-fixed slimcontent quarto-light">true
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -140,9 +110,9 @@ window.Quarto = {
 };
 </script>
 
-</head>
 
-<body class="floating nav-fixed quarto-light">
+
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -164,7 +134,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../lectures/index.html" aria-current="page"> 
+    <a class="nav-link" href="../lectures/index.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
@@ -192,24 +162,57 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#topic-overview" id="toc-topic-overview" class="nav-link active" data-scroll-target="#topic-overview">Topic overview</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a></li>
+  <li><a href="#basic-things-to-look-at" id="toc-basic-things-to-look-at" class="nav-link" data-scroll-target="#basic-things-to-look-at">Basic things to look at</a></li>
+  <li><a href="#example-anscombes-quartet" id="toc-example-anscombes-quartet" class="nav-link" data-scroll-target="#example-anscombes-quartet">Example: Anscombe’s Quartet</a></li>
+  <li><a href="#case-study-data-visualization-to-the-rescue" id="toc-case-study-data-visualization-to-the-rescue" class="nav-link" data-scroll-target="#case-study-data-visualization-to-the-rescue">Case Study: Data visualization to the rescue</a></li>
+  <li><a href="#useful-starting-points" id="toc-useful-starting-points" class="nav-link" data-scroll-target="#useful-starting-points">Useful starting points</a></li>
+  <li><a href="#types-of-exploratory-visualizations" id="toc-types-of-exploratory-visualizations" class="nav-link" data-scroll-target="#types-of-exploratory-visualizations">Types of exploratory visualizations</a></li>
+  <li><a href="#why-split-your-data" id="toc-why-split-your-data" class="nav-link" data-scroll-target="#why-split-your-data">Why split your data?</a></li>
+  <li><a href="#when-to-split-your-data" id="toc-when-to-split-your-data" class="nav-link" data-scroll-target="#when-to-split-your-data">When to split your data</a></li>
+  <li><a href="#how-to-split-your-data" id="toc-how-to-split-your-data" class="nav-link" data-scroll-target="#how-to-split-your-data">How to split your data</a></li>
+  <li><a href="#side-note-validation" id="toc-side-note-validation" class="nav-link" data-scroll-target="#side-note-validation">Side note: validation</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
+  <li><a href="#how-to-split-your-data-1" id="toc-how-to-split-your-data-1" class="nav-link" data-scroll-target="#how-to-split-your-data-1">How to split your data</a></li>
+  <li><a href="#sampling-bias" id="toc-sampling-bias" class="nav-link" data-scroll-target="#sampling-bias">Sampling bias</a></li>
+  <li><a href="#sampling-bias-continued" id="toc-sampling-bias-continued" class="nav-link" data-scroll-target="#sampling-bias-continued">Sampling bias continued</a></li>
+  <li><a href="#stratification-approach" id="toc-stratification-approach" class="nav-link" data-scroll-target="#stratification-approach">Stratification approach</a></li>
+  <li><a href="#repeatable-randomness" id="toc-repeatable-randomness" class="nav-link" data-scroll-target="#repeatable-randomness">Repeatable randomness</a></li>
+  <li><a href="#back-to-visualizations" id="toc-back-to-visualizations" class="nav-link" data-scroll-target="#back-to-visualizations">Back to visualizations</a></li>
+  <li><a href="#some-handy-tricks" id="toc-some-handy-tricks" class="nav-link" data-scroll-target="#some-handy-tricks">Some handy tricks</a></li>
+  <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
+  </ul>
+</nav>
+</nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">3. Exploratory Data Analysis</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-body">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 15, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -220,46 +223,281 @@ window.Quarto = {
 
 
 
+<div class="no-row-height column-margin column-container"><div class="">
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<ul>
+<li>
+<a href="../demo_code/03_eda/eda_demo.ipynb" download=""><img src="../img/journal-code.svg" alt="Demo Notebook"> Demo Notebook</a>
+</li>
+<li>
+<a href="" download=""><img src="../img/filetype-csv.svg" alt="Demo Data"> Demo Data</a>
+</li>
+</ul>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<ul>
+<li><a href="../slides/03-eda.pdf"><img src="../img/file-pdf.svg" class="img-fluid" alt="PDF Slides">&nbsp;PDF Slides</a></li>
+<li><a href="../slides/03-eda.html"><img src="../img/file-slides.svg" class="img-fluid" alt="HTML Slides">&nbsp;HTML Slides</a></li>
+</ul>
+</section>
+</div></div><section id="topic-overview" class="level2">
+<h2 class="anchored" data-anchor-id="topic-overview">Topic overview</h2>
+<ul>
+<li>Exploratory data analysis (EDA)</li>
+<li>Splitting your data</li>
+</ul>
+<p><strong>Resources used</strong>: - <a href="http://www.feat.engineering/review-predictive-modeling-process">Feat.Engineering Chapter 3</a> - <a href="https://r4ds.hadley.nz/EDA.html">R for Data Science (2e), Chapter 10</a> - Hands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at <a href="https://ebookcentral.proquest.com/lib/mtroyal-ebooks/detail.action?docID=30168989">MRU Library</a></p>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory data analysis</h2>
+<p>The goal of EDA is to <strong>Understand your data</strong></p>
+<ol type="1">
+<li>Ask questions (e.g.&nbsp;do my data fit the linear model assumptions?)</li>
+<li>Look for answers (e.g.&nbsp;by making histograms)</li>
+<li>Find more questions and return to step 1 (hmm, those are some weird numbers, what do these values represent?)</li>
+</ol>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>EDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. Some of these ideas will pan out, and some will be dead ends. — Hadley Wickham</p>
+</blockquote>
+</div>
+</section>
+<section id="basic-things-to-look-at" class="level2">
+<h2 class="anchored" data-anchor-id="basic-things-to-look-at">Basic things to look at</h2>
+<ul>
+<li>Data source - File? Database? API?</li>
+<li>Structured/unstructured</li>
+<li>Assumption 1: relatively small (fits in memory) tabular dataset
+<ul>
+<li>Data types - numeric/categorical, text, other</li>
+<li>Assumption 2: numeric data
+<ul>
+<li>Ranges</li>
+<li>Summary statistics</li>
+<li>Missing values</li>
+</ul></li>
+</ul></li>
+<li>Next week: categorical data, after reading week unstructured</li>
+</ul>
+</section>
+<section id="example-anscombes-quartet" class="level2">
+<h2 class="anchored" data-anchor-id="example-anscombes-quartet">Example: Anscombe’s Quartet</h2>
+<!-- _class: code_reminder -->
+<ul>
+<li>Very small dataset, constructed by hand in 1973 by <a href="https://www.jstor.org/stable/2682899?seq=1">Francis Anscombe</a> <img src="../img/02-anscombe.png" class="img-fluid" alt="center h:375px"><br>
+</li>
+<li>Not known exactly how he made it, but Drs. Roberta La Haye and Peter Zizler proposed a <a href="https://www.tandfonline.com/doi/full/10.1080/07468342.2024.2385078">compelling argument</a> for linear algebra</li>
+</ul>
+</section>
+<section id="case-study-data-visualization-to-the-rescue" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-data-visualization-to-the-rescue">Case Study: Data visualization to the rescue</h2>
+<ul>
+<li>A <a href="https://www.pnas.org/doi/full/10.1073/pnas.1209746109">2012 study about honesty</a> reported that “Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end”</li>
+<li>In 2020, the authors published a new paper admitting that their original results <a href="https://www.pnas.org/doi/abs/10.1073/pnas.1911695117">could not be replicated</a>, and noticed an anomaly in the <strong>summary statistics</strong></li>
+<li>The 2020 paper also published the original data, which was downloaded and visualized by a team of anonymous researchers working with <a href="https://datacolada.org/98">Data Colada</a></li>
+<li>This led to the 2012 paper being retracted, a <a href="https://datacolada.org/116">$25M lawsuit</a>, a <a href="https://datacolada.org/118">data-driven defense</a></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>Moral of the story is, look at your data!</p>
+</blockquote>
+</div>
+</section>
+<section id="useful-starting-points" class="level2">
+<h2 class="anchored" data-anchor-id="useful-starting-points">Useful starting points</h2>
+<!-- _class: code_reminder -->
+<p>Assuming your data is small enough and well structured:</p>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html"><code>pandas.DataFrame.info</code></a>: data type, number of non-null, names, dimensions</li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html"><code>pandas.DataFrame.head</code></a>: return the first <code>n</code> rows (default 5). Also <code>tail</code>.</li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html"><code>pandas.DataFrame.describe</code></a>: Compute a bunch of summary statistics</li>
+<li>Various <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/06_calculate_statistics.html">aggregation statistics</a></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>Next up, visualize!</p>
+</blockquote>
+</div>
+</section>
+<section id="types-of-exploratory-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-exploratory-visualizations">Types of exploratory visualizations</h2>
+<ul>
+<li>I will not provide an exhaustive list of visualizations!</li>
+<li>Pandas provides a <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">handy wrapper</a> around <a href="https://matplotlib.org/">matplotlib</a></li>
+<li>So does <a href="https://seaborn.pydata.org/">Seaborn</a> - check out the <a href="https://seaborn.pydata.org/examples/index.html">example gallery</a></li>
+<li>Some of my favourites:
+<ul>
+<li>Histograms</li>
+<li>Scatter plots/hexbin plots</li>
+<li>Box plots/violin plots</li>
+</ul></li>
+<li>But before we get too deep into EDA, it’s time to <strong>split your data</strong></li>
+</ul>
+</section>
+<section id="why-split-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="why-split-your-data">Why split your data?</h2>
+<p><img src="https://tylervigen.com/spurious/correlation/image/3078_the-number-of-skincare-specialists-in-kentucky_correlates-with_google-searches-for-how-to-hide-a-body.svg" class="img-fluid" alt="bg right fit"><br>
+</p>
+<ul>
+<li>We need to set aside a final <strong>test set</strong> to evaluate our final model</li>
+<li>Humans are great at detecting patterns!</li>
+<li>Even looking at test data could influence decisions, causing <strong>data leakage</strong></li>
+</ul>
+<footer>
+Image source: <a href="https://tylervigen.com/spurious-correlations">Spurious Correlations</a>
+</footer>
+</section>
+<section id="when-to-split-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-split-your-data">When to split your data</h2>
+<!-- _class: code_reminder -->
+<p>How much EDA should you do before splitting? You might need to know: * Are there any missing values? * Is there a need for <a href="http://www.feat.engineering/data-splitting">stratified sampling</a>? * Do the data have a unique identifier beyond the row label? * As soon as you have a general sense of the: - Data types - Missing features - Distributions, particularly categorical * It’s time to split the data!</p>
+</section>
+<section id="how-to-split-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-split-your-data">How to split your data</h2>
+<p>As usual, it depends on the: * Data set size <span class="math inline">\(n\)</span> * Relationship between number of predictors <span class="math inline">\(p\)</span> and <span class="math inline">\(n\)</span> * Nature of the data: - Time series? - Stratification needed? * Intended <strong>validation approach</strong></p>
+</section>
+<section id="side-note-validation" class="level2">
+<h2 class="anchored" data-anchor-id="side-note-validation">Side note: validation</h2>
+<p><img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" class="img-fluid" alt="bg right 90%"><br>
+</p>
+<ul>
+<li>We also need <strong>validation</strong> data</li>
+<li>If the dataset is sufficiently large, this can be a separate split</li>
+<li>In lab 2 and assignment 1 I asked you to use <strong>cross-validation</strong></li>
+</ul>
+<footer>
+Image source: <a href="https://scikit-learn.org/stable/modules/cross_validation.html">Scikit-learn</a>
+</footer>
+</section>
+<section id="validation" class="level2">
+<h2 class="anchored" data-anchor-id="validation">Validation</h2>
+<!-- _class: code_reminder -->
+<ul>
+<li>Validation data is used to make decisions about your model, e.g.
+<ul>
+<li>Model selection</li>
+<li>Tuning hyperparameters</li>
+<li>Monitor training progress</li>
+</ul></li>
+<li>However, validation data is not used to directly <em>train</em> a model</li>
+<li>Think of it like a test-adjacent set where you can repeatedly try stuff on your training set, then evaluate on validation</li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>Cross-validation is a way of checking your model choice and parameters, but final training should be done on the entire training set</p>
+</blockquote>
+</div>
+</section>
+<section id="how-to-split-your-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-split-your-data-1">How to split your data</h2>
+<ul>
+<li>Simple scenario: random sample (typically 70-80% for training)</li>
+<li><strong>Only works if:</strong>
+<ul>
+<li>Stratification doesn’t matter</li>
+<li>Data is guaranteed not to change (later topic)</li>
+<li>Data is not a time-series (later topic)</li>
+</ul></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>How do we know if stratification is necessary?</p>
+</blockquote>
+</div>
+</section>
+<section id="sampling-bias" class="level2">
+<h2 class="anchored" data-anchor-id="sampling-bias">Sampling bias</h2>
+<p>Stratification is used to mitigate <strong>sampling bias</strong></p>
+<ul>
+<li>Cilantro example: assume 80% of population likes cilantro</li>
+<li>Goal: ensure our sample is representative of the population, <span class="math inline">\(\pm 5\%\)</span></li>
+</ul>
+<div data-marpit-fragment="">
+<p>The <a href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial distribution</a> can be used to model the probability of choosing <span class="math inline">\(k\)</span> people who like cilantro from <span class="math inline">\(n\)</span> total participants:</p>
+<p><span class="math display">\[P(X = k) = \binom{n}{k}p^k(1-p)^{n-k}, \mathrm{where} \binom{n}{k} = \frac{n!}{k!(n-k)!}\]</span></p>
+</div>
+</section>
+<section id="sampling-bias-continued" class="level2">
+<h2 class="anchored" data-anchor-id="sampling-bias-continued">Sampling bias continued</h2>
+<!--
+  _class: code_reminder 
+-->
+<p><span class="math inline">\(P(X = k)\)</span> is the probability mass function, and the corresponding cumulative distribution function is just the sum up to <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[P(X \leq k) = \sum_{i=0}^k \binom{n}{i}p^i(1-p)^{n-i}\]</span></p>
+<p>Suppose we <strong>randomly</strong> sample 100 people. What is the probability of fewer than 75 or more than 85 cilantro lovers?</p>
+<blockquote class="blockquote">
+<p>Here we’ve defined an “unbiased sample” as being <span class="math inline">\(\pm5\%\)</span></p>
+</blockquote>
+</section>
+<section id="stratification-approach" class="level2">
+<h2 class="anchored" data-anchor-id="stratification-approach">Stratification approach</h2>
+<ul>
+<li><p>The need for stratification depends on sample size, distribution of stratification category, and how much bias you’re willing to accept | | Small Sample Size | Large Sample Size | | –| – | – | | Unbalanced Classes | Stratify | Maybe | | Balanced Classes | Maybe | Not necessary |</p></li>
+<li><p>Stratification categories can be the target variable, or a predictor</p></li>
+<li><p>Goal is to have the same class distribution in both testing and training</p></li>
+</ul>
+</section>
+<section id="repeatable-randomness" class="level2">
+<h2 class="anchored" data-anchor-id="repeatable-randomness">Repeatable randomness</h2>
+<ul>
+<li>At minimum, you should <strong>always set a random seed</strong> so that every time you sample your data it is the same “random sample”</li>
+<li>This isn’t enough if your data might get updated! You can:
+<ul>
+<li>Store the IDs of your split offline, then sample any new data and append to them (ensuring that test/train never mix)</li>
+<li>Get fancy with a deterministic method like hashing features to create unique IDs, then thresholding based on maximum possible value</li>
+<li>More on fancy sampling later in the semester</li>
+</ul></li>
+</ul>
+</section>
+<section id="back-to-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="back-to-visualizations">Back to visualizations</h2>
+<!-- _class: code_reminder -->
+<p>Now that we’ve got a test set safely stashed, we can <strong>ask questions</strong> about the data and use visualizations and statistics to answer them. Some examples: * Do any of my features seem to be related to my target? * Do any of my features seem to be related to each other? * Why are some values more common than others? * Do these values make sense in the context of my <strong>domain knowledge</strong>? * If I group my data together in some way, are there clear trends?</p>
+<footer>
+<a href="https://r4ds.hadley.nz/EDA.html#questions">R for Data Science</a> has some good examples of further questions
+</footer>
+</section>
+<section id="some-handy-tricks" class="level2">
+<h2 class="anchored" data-anchor-id="some-handy-tricks">Some handy tricks</h2>
+<p>A few things to tweak that can make visualizations easier to read:</p>
+<ul>
+<li>Histogram bin sizes
+<ul>
+<li>Aiming for a smooth distribution that works for your data</li>
+</ul></li>
+<li>Transparency (<code>alpha</code>)
+<ul>
+<li>Useful for both dense scatter plots and overlapping categories</li>
+</ul></li>
+<li>“Jitter”
+<ul>
+<li>Mostly for scatter plot of continuous vs categorical data</li>
+<li>Add a tiny bit of random noise to spread out samples</li>
+</ul></li>
+</ul>
+</section>
+<section id="coming-up-next" class="level2">
+<h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>
+<ul>
+<li>Assignment 1</li>
+<li>Categorical data
+<ul>
+<li>Exploring</li>
+<li>Encoding strategies</li>
+<li>Dealing with missing values</li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p><a href="http://www.feat.engineering/encoding-categorical-predictors">Feature Engineering Chapter 5</a></p>
+</blockquote>
 
 
 
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Slides</th>
-<th data-quarto-table-cell-role="th">Demo Code</th>
-<th data-quarto-table-cell-role="th">Progress</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sep 3, 2026</td>
-<td><a href="../lectures/01-intro.html">1. Introduction</a></td>
-<td><a href="../slides/01-intro.pdf" aria-label="PDF slides for 1. Introduction" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/01-intro.html" aria-label="HTML slides for 1. Introduction" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/01_stroke/strokedemo.ipynb" aria-label="Demo notebook for 1. Introduction" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="../demo_code/01_stroke/stroke_data.csv" aria-label="Demo data for 1. Introduction" download="" title="Demo data"><img src="../img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
-<td>Complete</td>
-</tr>
-<tr class="even">
-<td>Sep 10, 2026</td>
-<td><a href="../lectures/02-basic-models.html">2. Basic machine learning models</a></td>
-<td><a href="../slides/02-basic-models.pdf" aria-label="PDF slides for 2. Basic machine learning models" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/02-basic-models.html" aria-label="HTML slides for 2. Basic machine learning models" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/02_models/model_demo.ipynb" aria-label="Demo notebook for 2. Basic machine learning models" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a></td>
-<td>Slide 10</td>
-</tr>
-<tr class="odd">
-<td>Jan 15, 2026</td>
-<td><a href="../lectures/03-eda.html">3. Exploratory Data Analysis</a></td>
-<td><a href="../slides/03-eda.pdf" aria-label="PDF slides for 3. Exploratory Data Analysis" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/03-eda.html" aria-label="HTML slides for 3. Exploratory Data Analysis" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/03_eda/eda_demo.ipynb" aria-label="Demo notebook for 3. Exploratory Data Analysis" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

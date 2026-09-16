@@ -1,16 +1,9 @@
 [
   {
-    "listing": "/labs/index.html",
+    "listing": "/lectures/index.html",
     "items": [
-      "/labs/01-clean-regression.html",
-      "/labs/02-basic-models.html",
-      "/labs/02-starter/titanic.html"
-    ]
-  },
-  {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/01-simple-model.html"
+      "/lectures/01-intro.html",
+      "/lectures/02-basic-models.html"
     ]
   },
   {
@@ -25,10 +18,16 @@
     ]
   },
   {
-    "listing": "/lectures/index.html",
+    "listing": "/assignments/index.html",
     "items": [
-      "/lectures/01-intro.html",
-      "/lectures/02-basic-models.html"
+      "/assignments/01-simple-model.html"
+    ]
+  },
+  {
+    "listing": "/labs/index.html",
+    "items": [
+      "/labs/01-clean-regression.html",
+      "/labs/02-basic-models.html"
     ]
   }
 ]

@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mru-data3464.github.io/f26/labs/02-starter/titanic.html</loc>
-    <lastmod>2026-09-16T00:06:37.909Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mru-data3464.github.io/f26/lectures/02-basic-models.html</loc>
-    <lastmod>2026-09-16T00:06:37.911Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mru-data3464.github.io/f26/labs/index.html</loc>
-    <lastmod>2026-09-16T00:06:37.909Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mru-data3464.github.io/f26/labs/01-clean-regression.html</loc>
-    <lastmod>2026-09-16T00:06:37.906Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mru-data3464.github.io/f26/assignments/index.html</loc>
-    <lastmod>2026-09-16T00:06:37.872Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mru-data3464.github.io/f26/assignments/01-simple-model.html</loc>
-    <lastmod>2026-09-16T00:06:37.872Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mru-data3464.github.io/f26/index.html</loc>
-    <lastmod>2026-09-16T00:06:37.906Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mru-data3464.github.io/f26/labs/02-basic-models.html</loc>
-    <lastmod>2026-09-16T00:06:37.908Z</lastmod>
+    <loc>https://mru-data3464.github.io/f26/lectures/index.html</loc>
+    <lastmod>2026-09-16T15:06:17.607Z</lastmod>
   </url>
   <url>
     <loc>https://mru-data3464.github.io/f26/lectures/01-intro.html</loc>
-    <lastmod>2026-09-16T00:06:37.909Z</lastmod>
+    <lastmod>2026-09-16T15:06:17.606Z</lastmod>
   </url>
   <url>
-    <loc>https://mru-data3464.github.io/f26/lectures/index.html</loc>
-    <lastmod>2026-09-16T00:06:37.911Z</lastmod>
+    <loc>https://mru-data3464.github.io/f26/labs/02-basic-models.html</loc>
+    <lastmod>2026-09-16T15:06:17.604Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mru-data3464.github.io/f26/index.html</loc>
+    <lastmod>2026-09-16T15:06:17.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mru-data3464.github.io/f26/assignments/01-simple-model.html</loc>
+    <lastmod>2026-09-16T15:06:17.579Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mru-data3464.github.io/f26/assignments/index.html</loc>
+    <lastmod>2026-09-16T15:06:17.579Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mru-data3464.github.io/f26/labs/01-clean-regression.html</loc>
+    <lastmod>2026-09-16T15:06:17.604Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mru-data3464.github.io/f26/labs/index.html</loc>
+    <lastmod>2026-09-16T15:06:17.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mru-data3464.github.io/f26/lectures/02-basic-models.html</loc>
+    <lastmod>2026-09-16T15:06:17.607Z</lastmod>
   </url>
 </urlset>

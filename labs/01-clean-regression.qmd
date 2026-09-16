@@ -28,7 +28,7 @@ AI is not forbidden for labs, but it will be during lab exams. I recommend you p
 ## Instructions
 1. Clone the labs repo to your local machine and create a new subdirectory named `lab01`. In this folder:
 2. In the programming language of your choice, write a program to:
-    1. Load the data in [`simple_regression.csv`](01-starter/simple_regression.csv)
+    1. Load the data in [`simple_regression.csv`](_01-starter/simple_regression.csv)
     2. Calculate the line of best fit using simple linear regression
     3. Create a scatter plot of the data with the best fit line
 
@@ -41,7 +41,7 @@ AI is not forbidden for labs, but it will be during lab exams. I recommend you p
     2. How well does your model fit the data?
     3. What additional information would help to create a more accurate model?
 
-4. Repeat the first question but with the [`simple_regression_full.csv`](01-starter/simple_regression_full.csv) dataset. This contains extra columns; select only the same ones that are present in `simple_regression.csv`. In your report, answer the following:
+4. Repeat the first question but with the [`simple_regression_full.csv`](_01-starter/simple_regression_full.csv) dataset. This contains extra columns; select only the same ones that are present in `simple_regression.csv`. In your report, answer the following:
     1. What additional steps did you need to do to recreate the plot?
     2. Do you have any guess what this dataset represents?
 

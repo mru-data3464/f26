@@ -51,7 +51,7 @@ The goal of EDA is to **Understand your data**
 * Structured/unstructured
 * Assumption 1: relatively small (fits in memory) tabular dataset
   - Data types - numeric/categorical, text, other
-  - Assumption 2: numeric data 
+* Assumption 2: numeric data 
     - Ranges
     - Summary statistics
     - Missing values
@@ -116,6 +116,7 @@ Assuming your data is small enough and well structured:
 <!-- _class: code_reminder -->
 
 How much EDA should you do before splitting? You might need to know:
+
 * Are there any missing values?
 * Is there a need for [stratified sampling](http://www.feat.engineering/data-splitting)?
 * Do the data have a unique identifier beyond the row label?
@@ -127,6 +128,7 @@ How much EDA should you do before splitting? You might need to know:
 
 ## How to split your data
 As usual, it depends on the:
+
 * Data set size $n$
 * Relationship between number of predictors $p$ and $n$
 * Nature of the data:

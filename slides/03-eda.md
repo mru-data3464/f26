@@ -5,7 +5,6 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-math: true
 layout: lecture
 demo-code: "/demo_code/03_eda/eda_demo.ipynb"
 demo-data: "/demo_code/03_eda/titanic_train.csv"

@@ -31,6 +31,7 @@ format:
     theme: [simplex, brand]
     toc: true
     toc-location: left
+from: markdown+lists_without_preceding_blankline
     
 execute:
   freeze: auto

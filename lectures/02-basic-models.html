@@ -184,11 +184,10 @@ window.Quarto = {
   <li><a href="#regression-n-dimensional-1" id="toc-regression-n-dimensional-1" class="nav-link" data-scroll-target="#regression-n-dimensional-1">Regression: N-dimensional</a></li>
   <li><a href="#regression-decision-trees" id="toc-regression-decision-trees" class="nav-link" data-scroll-target="#regression-decision-trees">Regression: Decision trees</a></li>
   <li><a href="#comparison-of-supervised-model-families" id="toc-comparison-of-supervised-model-families" class="nav-link" data-scroll-target="#comparison-of-supervised-model-families">Comparison of supervised model families</a></li>
+  <li><a href="#lecture-ends-here" id="toc-lecture-ends-here" class="nav-link" data-scroll-target="#lecture-ends-here"><!-- fit --> Lecture ends here</a></li>
   <li><a href="#unsupervised-learning" id="toc-unsupervised-learning" class="nav-link" data-scroll-target="#unsupervised-learning">Unsupervised learning</a></li>
   <li><a href="#clustering-k-means" id="toc-clustering-k-means" class="nav-link" data-scroll-target="#clustering-k-means">Clustering: <span class="math inline">\(k\)</span>-means</a></li>
   <li><a href="#k-means-pros-and-cons" id="toc-k-means-pros-and-cons" class="nav-link" data-scroll-target="#k-means-pros-and-cons"><span class="math inline">\(k\)</span>-means pros and cons</a></li>
-  <li><a href="#categorical-data-preview" id="toc-categorical-data-preview" class="nav-link" data-scroll-target="#categorical-data-preview">Categorical data preview</a></li>
-  <li><a href="#nominal-categories-one-hot-encoding" id="toc-nominal-categories-one-hot-encoding" class="nav-link" data-scroll-target="#nominal-categories-one-hot-encoding">Nominal categories: one-hot encoding</a></li>
   <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
   </ul>
 </nav>
@@ -492,6 +491,11 @@ Price of DDR5-5600 2X32GB RAM since March 2025 [<a href="https://pcpartpicker.co
 </section>
 </div>
 </section>
+<section id="lecture-ends-here" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-ends-here"><!-- fit --> Lecture ends here</h2>
+<!-- _class: title_slide -->
+<p>In the interest of time, we’re going to skip over unsupervised clustering for now. We’ll revisit if time allows later in the semester.</p>
+</section>
 <section id="unsupervised-learning" class="level2">
 <h2 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised learning</h2>
 <ul>
@@ -546,68 +550,10 @@ Price of DDR5-5600 2X32GB RAM since March 2025 [<a href="https://pcpartpicker.co
 <p>Scikit-learn has a great <a href="https://scikit-learn.org/stable/modules/clustering.html">reference table</a> of other clustering methods</p>
 </blockquote>
 </section>
-<section id="categorical-data-preview" class="level2">
-<h2 class="anchored" data-anchor-id="categorical-data-preview">Categorical data preview</h2>
-<ul>
-<li>Samples can take on one of several discrete values or groups
-<ul>
-<li><strong>Nominal</strong>: no particular order to the groups</li>
-<li><strong>Ordinal</strong>: groups relate to each other in a specific order</li>
-</ul></li>
-<li>Categories can be represented as strings <em>or</em> numeric types
-<ul>
-<li>Domain knowledge is necessary!</li>
-</ul></li>
-</ul>
-</section>
-<section id="nominal-categories-one-hot-encoding" class="level2">
-<h2 class="anchored" data-anchor-id="nominal-categories-one-hot-encoding">Nominal categories: one-hot encoding</h2>
-<!-- _class: code_reminder -->
-<ul>
-<li>Categories have no natural relationship</li>
-<li>Create <span class="math inline">\(k\)</span> new features from <span class="math inline">\(k\)</span> categories, very sparse matrix</li>
-</ul>
-<div class="centred">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Animal</th>
-<th></th>
-<th>cat</th>
-<th>dog</th>
-<th>rabbit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>cat</td>
-<td>→</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>dog</td>
-<td>→</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>rabbit</td>
-<td>→</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 <section id="coming-up-next" class="level2">
 <h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>
 <ul>
-<li>Basic categorical data encoding ` Exploring and understanding your data</li>
+<li>Exploring and understanding your data</li>
 <li>Splitting your data
 <ul>
 <li>Repeatability considerations</li>

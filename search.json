@@ -4,7 +4,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 10\n\n\nJan 15, 2026\n3. Exploratory Data Analysis\n \n\n\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/02-basic-models.html",
@@ -147,6 +147,13 @@
     "text": "Comparison of supervised model families\n\n\nLinear models\n\n\nVery fast, particularly inference\nScalable to large number of features\nCan model nonlinearity with kernel trick\nEasy to regularize\n\n \n\nDifficult to interpret\nSensitive to parameters and preprocessing\nData needs to be on same scale\nSlow to train on large datasets\n\n\n\nDecision Trees\n\n\nHighly explainable\nFast to train\nFew parameters to tune\nLittle preprocessing needed\nProvides feature importance\n\n \n\nProne to overfitting\nHigh variance\nPoor extrapolation"
   },
   {
+    "objectID": "lectures/02-basic-models.html#lecture-ends-here",
+    "href": "lectures/02-basic-models.html#lecture-ends-here",
+    "title": "2. Basic machine learning models",
+    "section": " Lecture ends here",
+    "text": "Lecture ends here\n\nIn the interest of time, we’re going to skip over unsupervised clustering for now. We’ll revisit if time allows later in the semester."
+  },
+  {
     "objectID": "lectures/02-basic-models.html#unsupervised-learning",
     "href": "lectures/02-basic-models.html#unsupervised-learning",
     "title": "2. Basic machine learning models",
@@ -168,25 +175,11 @@
     "text": "\\(k\\)-means pros and cons\n\n\nIntuitive\nEasy to implement\nRelatively scalable (\\(O(N)\\))\n\n \n\nNeed to know how many clusters\nSensitive to initialization\nNot guaranteed to converge to global minimum\nDoesn’t like anisotropy and unequal variance\n\n\n\nScikit-learn has a great reference table of other clustering methods"
   },
   {
-    "objectID": "lectures/02-basic-models.html#categorical-data-preview",
-    "href": "lectures/02-basic-models.html#categorical-data-preview",
-    "title": "2. Basic machine learning models",
-    "section": "Categorical data preview",
-    "text": "Categorical data preview\n\nSamples can take on one of several discrete values or groups\n\nNominal: no particular order to the groups\nOrdinal: groups relate to each other in a specific order\n\nCategories can be represented as strings or numeric types\n\nDomain knowledge is necessary!"
-  },
-  {
-    "objectID": "lectures/02-basic-models.html#nominal-categories-one-hot-encoding",
-    "href": "lectures/02-basic-models.html#nominal-categories-one-hot-encoding",
-    "title": "2. Basic machine learning models",
-    "section": "Nominal categories: one-hot encoding",
-    "text": "Nominal categories: one-hot encoding\n\n\nCategories have no natural relationship\nCreate \\(k\\) new features from \\(k\\) categories, very sparse matrix\n\n\n\n\n\nAnimal\n\ncat\ndog\nrabbit\n\n\n\n\ncat\n→\n1\n0\n0\n\n\ndog\n→\n0\n1\n0\n\n\nrabbit\n→\n0\n0\n1"
-  },
-  {
     "objectID": "lectures/02-basic-models.html#coming-up-next",
     "href": "lectures/02-basic-models.html#coming-up-next",
     "title": "2. Basic machine learning models",
     "section": "Coming up next",
-    "text": "Coming up next\n\nBasic categorical data encoding ` Exploring and understanding your data\nSplitting your data\n\nRepeatability considerations\nStratified sampling\n\nAssignment 1: Simple modelling"
+    "text": "Coming up next\n\nExploring and understanding your data\nSplitting your data\n\nRepeatability considerations\nStratified sampling\n\nAssignment 1: Simple modelling"
   },
   {
     "objectID": "labs/index.html",
@@ -291,7 +284,7 @@
     "href": "index.html#lectures",
     "title": "DATA 3464 | Fall 2026",
     "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 10\n\n\nJan 15, 2026\n3. Exploratory Data Analysis\n \n\n\n\n\n\nNo matching items"
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#labs",
@@ -635,6 +628,20 @@
     "title": "3. Exploratory Data Analysis",
     "section": "Some handy tricks",
     "text": "Some handy tricks\nA few things to tweak that can make visualizations easier to read:\n\nHistogram bin sizes\n\nAiming for a smooth distribution that works for your data\n\nTransparency (alpha)\n\nUseful for both dense scatter plots and overlapping categories\n\n“Jitter”\n\nMostly for scatter plot of continuous vs categorical data\nAdd a tiny bit of random noise to spread out samples"
+  },
+  {
+    "objectID": "lectures/03-eda.html#categorical-data-preview",
+    "href": "lectures/03-eda.html#categorical-data-preview",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Categorical data preview",
+    "text": "Categorical data preview\n\nSamples can take on one of several discrete values or groups\n\nNominal: no particular order to the groups\nOrdinal: groups relate to each other in a specific order\n\nCategories can be represented as strings or numeric types\n\nDomain knowledge is necessary!"
+  },
+  {
+    "objectID": "lectures/03-eda.html#nominal-categories-one-hot-encoding",
+    "href": "lectures/03-eda.html#nominal-categories-one-hot-encoding",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Nominal categories: one-hot encoding",
+    "text": "Nominal categories: one-hot encoding\n\n\nCategories have no natural relationship\nCreate \\(k\\) new features from \\(k\\) categories, very sparse matrix\n\n\n\n\n\nAnimal\n\ncat\ndog\nrabbit\n\n\n\n\ncat\n→\n1\n0\n0\n\n\ndog\n→\n0\n1\n0\n\n\nrabbit\n→\n0\n0\n1"
   },
   {
     "objectID": "lectures/03-eda.html#coming-up-next",

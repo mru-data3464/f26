@@ -1,6 +1,6 @@
 ---
 title: "3. Exploratory Data Analysis"
-date: 2026-01-15
+date: 2026-09-17
 marp: true
 theme: marp-mru
 paginate: true
@@ -241,6 +241,28 @@ A few things to tweak that can make visualizations easier to read:
 * "Jitter"
   - Mostly for scatter plot of continuous vs categorical data
   - Add a tiny bit of random noise to spread out samples
+
+## Categorical data preview
+- Samples can take on one of several discrete values or groups
+    - **Nominal**: no particular order to the groups
+    - **Ordinal**: groups relate to each other in a specific order
+- Categories can be represented as strings *or* numeric types
+    - Domain knowledge is necessary!
+
+## Nominal categories: one-hot encoding
+<!-- _class: code_reminder -->
+- Categories have no natural relationship
+- Create $k$ new features from $k$ categories, very sparse matrix
+
+<div class="centred">
+
+| Animal |     | cat | dog | rabbit |
+| ------ | --- | --- | --- | ------ |
+| cat    | →   | 1   | 0   | 0      |
+| dog    | →   | 0   | 1   | 0      |
+| rabbit | →   | 0   | 0   | 1      |
+
+</div>
 
 ## Coming up next
 

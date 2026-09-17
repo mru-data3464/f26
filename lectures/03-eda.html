@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-15">
+<meta name="dcterms.date" content="2026-09-17">
 
 <title>3. Exploratory Data Analysis – DATA 3464 | Fall 2026</title>
 <style>
@@ -186,6 +186,8 @@ window.Quarto = {
   <li><a href="#repeatable-randomness" id="toc-repeatable-randomness" class="nav-link" data-scroll-target="#repeatable-randomness">Repeatable randomness</a></li>
   <li><a href="#back-to-visualizations" id="toc-back-to-visualizations" class="nav-link" data-scroll-target="#back-to-visualizations">Back to visualizations</a></li>
   <li><a href="#some-handy-tricks" id="toc-some-handy-tricks" class="nav-link" data-scroll-target="#some-handy-tricks">Some handy tricks</a></li>
+  <li><a href="#categorical-data-preview" id="toc-categorical-data-preview" class="nav-link" data-scroll-target="#categorical-data-preview">Categorical data preview</a></li>
+  <li><a href="#nominal-categories-one-hot-encoding" id="toc-nominal-categories-one-hot-encoding" class="nav-link" data-scroll-target="#nominal-categories-one-hot-encoding">Nominal categories: one-hot encoding</a></li>
   <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
   </ul>
 </nav>
@@ -210,7 +212,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 15, 2026</p>
+      <p class="date">September 17, 2026</p>
     </div>
   </div>
   
@@ -477,6 +479,64 @@ Image source: <a href="https://scikit-learn.org/stable/modules/cross_validation.
 <li>Add a tiny bit of random noise to spread out samples</li>
 </ul></li>
 </ul>
+</section>
+<section id="categorical-data-preview" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-data-preview">Categorical data preview</h2>
+<ul>
+<li>Samples can take on one of several discrete values or groups
+<ul>
+<li><strong>Nominal</strong>: no particular order to the groups</li>
+<li><strong>Ordinal</strong>: groups relate to each other in a specific order</li>
+</ul></li>
+<li>Categories can be represented as strings <em>or</em> numeric types
+<ul>
+<li>Domain knowledge is necessary!</li>
+</ul></li>
+</ul>
+</section>
+<section id="nominal-categories-one-hot-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="nominal-categories-one-hot-encoding">Nominal categories: one-hot encoding</h2>
+<!-- _class: code_reminder -->
+<ul>
+<li>Categories have no natural relationship</li>
+<li>Create <span class="math inline">\(k\)</span> new features from <span class="math inline">\(k\)</span> categories, very sparse matrix</li>
+</ul>
+<div class="centred">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Animal</th>
+<th></th>
+<th>cat</th>
+<th>dog</th>
+<th>rabbit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cat</td>
+<td>→</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>dog</td>
+<td>→</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>rabbit</td>
+<td>→</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="coming-up-next" class="level2">
 <h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>

@@ -247,7 +247,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-problem" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
-<p>You are working for the provincial government and are asked to help predict staffing budgets. Salaries are considered a known quantity, but benefits (cash and non-cash) appear to be more variable. To address this, you must build two models: - a regression model to predict the total cash and non-cash benefits per employee - a classification model to identify employees with less than $20,000 in benefits<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>You are working for the provincial government and are asked to help predict staffing budgets. Salaries are considered a known quantity, but benefits (cash and non-cash) appear to be more variable. To address this, you must build two models:</p>
+<ul>
+<li>a regression model to predict the total cash and non-cash benefits per employee</li>
+<li>a classification model to identify employees with less than $20,000 in benefits<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
 <p>The <code>benefits_train.csv</code> file in your starter repo has been created from the <a href="https://www.alberta.ca/salary-and-severance-disclosure-table">Alberta Salary and severance disclosure table</a>; I have reserved a separate test set and will release it for your testing pleasure after the assignment is complete.</p>
 <section id="preliminary-eda-and-processing" class="level3">
 <h3 class="anchored" data-anchor-id="preliminary-eda-and-processing">Preliminary EDA and processing</h3>

@@ -32,7 +32,7 @@
     "href": "lectures/02-basic-models.html#topic-overview",
     "title": "2. Basic machine learning models",
     "section": "Topic overview",
-    "text": "Topic overview\n\nSome common machine learning tasks and models\nEvaluating model performance\nLimitations and assumptions\n\nResources used: - Feature Engineering Chapter 1 - Introduction to Machine Learning with Python. Available at MRU Library - Scikit-learn User Guide - Hands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch. Available at MRU Library"
+    "text": "Topic overview\n\nSome common machine learning tasks and models\nEvaluating model performance\nLimitations and assumptions\n\nResources used:\n\nFeature Engineering Chapter 1\nIntroduction to Machine Learning with Python. Available at MRU Library\nScikit-learn User Guide\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch. Available at MRU Library"
   },
   {
     "objectID": "lectures/02-basic-models.html#machine-learning",
@@ -46,7 +46,7 @@
     "href": "lectures/02-basic-models.html#why-are-we-processing-data",
     "title": "2. Basic machine learning models",
     "section": "Why are we processing data?",
-    "text": "Why are we processing data?\n\n* No reinforcement learning in this course, sorry"
+    "text": "Why are we processing data?\n\n\n\nNo reinforcement learning in this course, sorry"
   },
   {
     "objectID": "lectures/02-basic-models.html#a-selection-of-common-models",
@@ -249,7 +249,7 @@
     "href": "assignments/01-simple-model.html#the-problem",
     "title": "Assignment 1: Simple Modelling",
     "section": "The problem",
-    "text": "The problem\nYou are working for the provincial government and are asked to help predict staffing budgets. Salaries are considered a known quantity, but benefits (cash and non-cash) appear to be more variable. To address this, you must build two models: - a regression model to predict the total cash and non-cash benefits per employee - a classification model to identify employees with less than $20,000 in benefits1\nThe benefits_train.csv file in your starter repo has been created from the Alberta Salary and severance disclosure table; I have reserved a separate test set and will release it for your testing pleasure after the assignment is complete.\n\nPreliminary EDA and processing\nExploratory data analysis is an important step in data processing, but it is not the main focus of this assignment. You will need to do just enough to have an understanding of what the data looks like, such as:\n\nWhat features are present\nAre there any obvious relationships between features\nHow many unique values (categorical) or what are the distributions (numeric)\n\nThe results of your EDA will inform your processing pipeline, such as choosing a categorical encoding approach.\nIn your report, include a key figure or two from your EDA and briefly describe what you see.\n\n\nRegression model\nUsing your choice of regression model from Scikit-learn, create and train a regression model to predict the total benefits (NonCashBenefits + CashBenefits) for each employee. You will need to create this total benefits column, or as a separate vector.\n\n\n\n\n\n\nTip\n\n\n\nDon’t forget to remove or exclude the CashBenefits and NonCashBenefits fields of your training dataframe!\n\n\n\nYou will need to do some basic processing on the training data, but don’t feel the need to use all the features! In your report, briefly justify the following decisions:\n\nWhich features should be included?\nHow should categorical features be encoded?\nHow should numeric features be transformed?\n\nI recommend creating a Scikit-learn Pipeline to be able to fit your processing parameters and model all in one go.\nValidate your model using cross-validation. An easy way to do this is with sklearn.model_selection.cross_val_score. You will need to choose an appropriate metric and pass it as the scoring parameter; feel free to experiment with multiple. In your report, briefly justify why the metric chosen was appropriate.\nIterate! Based on the results of cross-validation, try to improve your model. You can tweak your processing parameters, model parameters, or even choose a different model. Briefly document your experiments in your report, making note of any changes that have impact. &gt; Don’t spend too much time refining your model — the goal is to learn about the process and the factors that impact the results, not to produce the absolute best predictive model possible.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code.\n\nAt this stage, you don’t have final test data, so the process basically stops here.\n\n\nClassification model\nThis time, you’ll be doing basically the same thing, but with a binary classification model. Create your prediction target (labels) as a Boolean vector by thresholding total benefits &lt; 20,000. This can be done in numpy simply as (for example):\ny = total_benefits &lt; 20_000\n\nCount how many labels you have of each class (True or False). In your report, comment on the class balance.\nAs before, create a Scikit-learn pipeline and pick a classification model. You may copy the same pipeline from the previous task and simply swap out the model; you don’t need to document your processing decisions again.\nOnce more, pick an appropriate metric and validate your model using cross-validation. Be careful of the class (im)balance!\nAgain, iterate and try to improve your model based on the results of cross-validation. In your report, make note of what you try and how it impacts the model.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code, formatted neatly as a code block."
+    "text": "The problem\nYou are working for the provincial government and are asked to help predict staffing budgets. Salaries are considered a known quantity, but benefits (cash and non-cash) appear to be more variable. To address this, you must build two models:\n\na regression model to predict the total cash and non-cash benefits per employee\na classification model to identify employees with less than $20,000 in benefits1\n\nThe benefits_train.csv file in your starter repo has been created from the Alberta Salary and severance disclosure table; I have reserved a separate test set and will release it for your testing pleasure after the assignment is complete.\n\nPreliminary EDA and processing\nExploratory data analysis is an important step in data processing, but it is not the main focus of this assignment. You will need to do just enough to have an understanding of what the data looks like, such as:\n\nWhat features are present\nAre there any obvious relationships between features\nHow many unique values (categorical) or what are the distributions (numeric)\n\nThe results of your EDA will inform your processing pipeline, such as choosing a categorical encoding approach.\nIn your report, include a key figure or two from your EDA and briefly describe what you see.\n\n\nRegression model\nUsing your choice of regression model from Scikit-learn, create and train a regression model to predict the total benefits (NonCashBenefits + CashBenefits) for each employee. You will need to create this total benefits column, or as a separate vector.\n\n\n\n\n\n\nTip\n\n\n\nDon’t forget to remove or exclude the CashBenefits and NonCashBenefits fields of your training dataframe!\n\n\n\nYou will need to do some basic processing on the training data, but don’t feel the need to use all the features! In your report, briefly justify the following decisions:\n\nWhich features should be included?\nHow should categorical features be encoded?\nHow should numeric features be transformed?\n\nI recommend creating a Scikit-learn Pipeline to be able to fit your processing parameters and model all in one go.\nValidate your model using cross-validation. An easy way to do this is with sklearn.model_selection.cross_val_score. You will need to choose an appropriate metric and pass it as the scoring parameter; feel free to experiment with multiple. In your report, briefly justify why the metric chosen was appropriate.\nIterate! Based on the results of cross-validation, try to improve your model. You can tweak your processing parameters, model parameters, or even choose a different model. Briefly document your experiments in your report, making note of any changes that have impact. &gt; Don’t spend too much time refining your model — the goal is to learn about the process and the factors that impact the results, not to produce the absolute best predictive model possible.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code.\n\nAt this stage, you don’t have final test data, so the process basically stops here.\n\n\nClassification model\nThis time, you’ll be doing basically the same thing, but with a binary classification model. Create your prediction target (labels) as a Boolean vector by thresholding total benefits &lt; 20,000. This can be done in numpy simply as (for example):\ny = total_benefits &lt; 20_000\n\nCount how many labels you have of each class (True or False). In your report, comment on the class balance.\nAs before, create a Scikit-learn pipeline and pick a classification model. You may copy the same pipeline from the previous task and simply swap out the model; you don’t need to document your processing decisions again.\nOnce more, pick an appropriate metric and validate your model using cross-validation. Be careful of the class (im)balance!\nAgain, iterate and try to improve your model based on the results of cross-validation. In your report, make note of what you try and how it impacts the model.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code, formatted neatly as a code block."
   },
   {
     "objectID": "assignments/01-simple-model.html#reflections",
@@ -396,7 +396,7 @@
     "href": "lectures/01-intro.html#speaking-of-ai",
     "title": "1. Introduction",
     "section": "Speaking of AI…",
-    "text": "Speaking of AI…\nIn this course (and others, and your career), you will need to know: - What to do, and why - How to do it\nNote: AI will not be available during the final practical exam\n\n\nWhich of these things seem appropriate for AI assistance?"
+    "text": "Speaking of AI…\nIn this course (and others, and your career), you will need to know:\n\nWhat to do, and why\nHow to do it\n\nNote: AI will not be available during the final practical exam\n\n\nWhich of these things seem appropriate for AI assistance?"
   },
   {
     "objectID": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",
@@ -501,7 +501,7 @@
     "href": "lectures/03-eda.html#topic-overview",
     "title": "3. Exploratory Data Analysis",
     "section": "Topic overview",
-    "text": "Topic overview\n\nExploratory data analysis (EDA)\nSplitting your data\n\nResources used: - Feat.Engineering Chapter 3 - R for Data Science (2e), Chapter 10 - Hands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at MRU Library"
+    "text": "Topic overview\n\nExploratory data analysis (EDA)\nSplitting your data\n\nResources used:\n\nFeat.Engineering Chapter 3\nR for Data Science (2e), Chapter 10\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at MRU Library"
   },
   {
     "objectID": "lectures/03-eda.html#exploratory-data-analysis",
@@ -515,7 +515,7 @@
     "href": "lectures/03-eda.html#basic-things-to-look-at",
     "title": "3. Exploratory Data Analysis",
     "section": "Basic things to look at",
-    "text": "Basic things to look at\n\nData source - File? Database? API?\nStructured/unstructured\nAssumption 1: relatively small (fits in memory) tabular dataset\n\nData types - numeric/categorical, text, other\nAssumption 2: numeric data\n\nRanges\nSummary statistics\nMissing values\n\n\nNext week: categorical data, after reading week unstructured"
+    "text": "Basic things to look at\n\nData source - File? Database? API?\nStructured/unstructured\nAssumption 1: relatively small (fits in memory) tabular dataset\n\nData types - numeric/categorical, text, other\n\nAssumption 2: numeric data\n\nRanges\nSummary statistics\nMissing values\n\nNext week: categorical data, after reading week unstructured"
   },
   {
     "objectID": "lectures/03-eda.html#example-anscombes-quartet",
@@ -557,14 +557,14 @@
     "href": "lectures/03-eda.html#when-to-split-your-data",
     "title": "3. Exploratory Data Analysis",
     "section": "When to split your data",
-    "text": "When to split your data\n\nHow much EDA should you do before splitting? You might need to know: * Are there any missing values? * Is there a need for stratified sampling? * Do the data have a unique identifier beyond the row label? * As soon as you have a general sense of the: - Data types - Missing features - Distributions, particularly categorical * It’s time to split the data!"
+    "text": "When to split your data\n\nHow much EDA should you do before splitting? You might need to know:\n\nAre there any missing values?\nIs there a need for stratified sampling?\nDo the data have a unique identifier beyond the row label?\nAs soon as you have a general sense of the:\n\nData types\nMissing features\nDistributions, particularly categorical\n\nIt’s time to split the data!"
   },
   {
     "objectID": "lectures/03-eda.html#how-to-split-your-data",
     "href": "lectures/03-eda.html#how-to-split-your-data",
     "title": "3. Exploratory Data Analysis",
     "section": "How to split your data",
-    "text": "How to split your data\nAs usual, it depends on the: * Data set size \\(n\\) * Relationship between number of predictors \\(p\\) and \\(n\\) * Nature of the data: - Time series? - Stratification needed? * Intended validation approach"
+    "text": "How to split your data\nAs usual, it depends on the:\n\nData set size \\(n\\)\nRelationship between number of predictors \\(p\\) and \\(n\\)\nNature of the data:\n\nTime series?\nStratification needed?\n\nIntended validation approach"
   },
   {
     "objectID": "lectures/03-eda.html#side-note-validation",
@@ -620,7 +620,7 @@
     "href": "lectures/03-eda.html#back-to-visualizations",
     "title": "3. Exploratory Data Analysis",
     "section": "Back to visualizations",
-    "text": "Back to visualizations\n\nNow that we’ve got a test set safely stashed, we can ask questions about the data and use visualizations and statistics to answer them. Some examples: * Do any of my features seem to be related to my target? * Do any of my features seem to be related to each other? * Why are some values more common than others? * Do these values make sense in the context of my domain knowledge? * If I group my data together in some way, are there clear trends?\n\nR for Data Science has some good examples of further questions"
+    "text": "Back to visualizations\n\nNow that we’ve got a test set safely stashed, we can ask questions about the data and use visualizations and statistics to answer them. Some examples:\n\nDo any of my features seem to be related to my target?\nDo any of my features seem to be related to each other?\nWhy are some values more common than others?\nDo these values make sense in the context of my domain knowledge?\nIf I group my data together in some way, are there clear trends?\n\n\nR for Data Science has some good examples of further questions"
   },
   {
     "objectID": "lectures/03-eda.html#some-handy-tricks",

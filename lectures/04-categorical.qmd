@@ -1,0 +1,183 @@
+---
+title: "4: Categorical data basics"
+date: 2026-09-22
+marp: true
+theme: marp-mru
+paginate: true
+headingDivider: 2
+demo-code: "/demo_code/04_categorical/catdemo.ipynb"
+demo=data: "/demo_code/04_categorical/profiles_revised.csv"
+---
+
+::: {.column-margin}
+
+## Code
+
+<ul>
+<li><a href="{{< meta demo-code >}}" download><img src="/img/journal-code.svg" alt="Demo Notebook"> Demo Notebook</a></li>
+<li><a href="{{< meta demo-data >}}" download><img src="/img/filetype-csv.svg" alt="Demo Data"> Demo Data</a></li>
+</ul>
+
+## Slides
+
+- [![PDF Slides](/img/file-pdf.svg)\ PDF Slides](/slides/04-categorical.pdf)
+- [![HTML Slides](/img/file-slides.svg)\ HTML Slides](/slides/04-categorical.html)
+
+:::
+
+## <!--fit-->DATA 3464: Fundamentals of Data Processing
+### <!--fit-->Categorical Data Basics
+
+Charlotte Curtis
+September 22, 2026
+
+## Topic overview
+- Exploring categorical data
+- Basic categorical data encoding strategies
+- Out of scope: Fancier encoding strategies, like feature hashing and target encoding
+
+**Resources used:**
+- [Feature Engineering Chapter 5](http://www.feat.engineering/encoding-categorical-predictors)
+- [Scikit-learn User Guide (7.3)](https://scikit-learn.org/stable/modules/preprocessing.html#encoding-categorical-features)
+
+## What is categorical data?
+* Samples can take on one of several discrete values or groups
+    - **Nominal**: no particular order to the groups
+    - **Ordinal**: groups relate to each other in a specific order
+* Categories can be represented as strings *or* numeric types
+    - Domain knowledge is necessary!
+
+<div data-marpit-fragment>
+    
+> Let's take a few minutes to brainstorm some examples
+
+</div>
+
+## Exploring categorical data
+<!-- _class: code_reminder -->
+
+We've already done some of this, but some ideas to consider:
+* `pandas.DataFrame.value_counts()` - how many of each category?
+* Use category to group, then compute summary stats
+* Plot color per category
+* Scatter plot with jitter
+
+
+## Representing categorical data
+* To do math on categorical data, we need to map to numbers
+* Consider:
+    - Ordinal or nominal?
+    - How many possible categories (cardinality)?
+    - Any chance new ones might show up?
+
+<div data-marpit-fragment>
+
+> How could we encode the examples?
+> What are the benefits and drawbacks of each method?
+
+</div>
+
+## Ordinal encoding
+
+<!-- _class: code_reminder -->
+
+![bg left fit](../img/04-fire-map.png)\
+
+  | Category                    | Feature |
+  | --------------------------- | ------- |
+  | Under Control               | 0       |
+  | Being Held                  | 1       |
+  | *Out of Control (Monitored) | 2       |
+  | Out of Control              | 3       |
+
+<span style="font-size:0.6em;">* I am not a wildfire expert, this is my best guess at ordering</span>
+
+<footer>Image source: <a href="https://cwfis.cfs.nrcan.gc.ca/en/static-maps">Natural Resources Canada</a></footer>
+
+<!-- 
+Drawbacks
+* Only useful for naturally ordered data
+* Assumes linear relationship
+* Difficult to deal with novel features
+-->
+
+## Nominal categories: one-hot encoding
+<!-- _class: code_reminder -->
+* Categories have no natural relationship
+* Create $k$ new features from $k$ categories, very sparse matrix
+
+<div class="centred">
+
+| Animal |     | cat | dog | rabbit |
+| ------ | --- | --- | --- | ------ |
+| cat    | →   | 1   | 0   | 0      |
+| dog    | →   | 0   | 1   | 0      |
+| rabbit | →   | 0   | 0   | 1      |
+
+</div>
+
+<!-- 
+Drawbacks
+* Not good for high cardinality -> consider feature hashing or combining categories
+* Collinearity issues -> (if a concern for model) dummy encoding instead with drop
+* Novel features -> implied by 0 if not using dummy, could also define "other" category
+-->
+
+## From numbers to categories: discretization
+
+<div class="columns">
+
+![](..//img/04-discrete.png)\
+
+* Sometimes numeric data is better represented as categorical
+* Still needs encoding strategy
+* Can introduce nonlinear relationships
+* Like everything, contextual
+
+</div>
+
+## Advantages/disadvantages of various methods
+
+<div class="columns">
+<div>
+
+### Ordinal
+
+<span class="pro">
+
+* Compact (1 column/feature)
+* Only useful for naturally ordered data
+
+</span>
+<span class="con">
+
+* Imposes (linear) relationship
+* Difficult to deal with novel categories
+
+</span>
+</div>
+<div>
+
+### One-hot
+
+<span class="pro">
+
+* No assumptions made about relationships
+* Novel features implied by 0
+
+</span>
+<span class="con">
+
+* Memory intensive
+* Not good for high cardinality
+* Potential collinearity issues
+
+</span>
+</div>
+</div>
+
+## Coming up next
+- Lecture: Basic numeric transformations
+- Assignment 1 due soon!
+
+> [Feature Engineering Chapter 5](http://www.feat.engineering/encoding-categorical-predictors)

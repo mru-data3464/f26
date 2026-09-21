@@ -5,7 +5,6 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-layout: lecture
 demo-code: "/demo_code/03_eda/eda_demo.ipynb"
 demo-data: "/demo_code/03_eda/titanic_train.csv"
 leftoff: "Slide 9"
@@ -244,34 +243,11 @@ A few things to tweak that can make visualizations easier to read:
   - Mostly for scatter plot of continuous vs categorical data
   - Add a tiny bit of random noise to spread out samples
 
-## Categorical data preview
-- Samples can take on one of several discrete values or groups
-    - **Nominal**: no particular order to the groups
-    - **Ordinal**: groups relate to each other in a specific order
-- Categories can be represented as strings *or* numeric types
-    - Domain knowledge is necessary!
-
-## Nominal categories: one-hot encoding
-<!-- _class: code_reminder -->
-- Categories have no natural relationship
-- Create $k$ new features from $k$ categories, very sparse matrix
-
-<div class="centred">
-
-| Animal |     | cat | dog | rabbit |
-| ------ | --- | --- | --- | ------ |
-| cat    | →   | 1   | 0   | 0      |
-| dog    | →   | 0   | 1   | 0      |
-| rabbit | →   | 0   | 0   | 1      |
-
-</div>
-
 ## Coming up next
 
 - Assignment 1
-- Categorical data
+- Basic categorical data
   - Exploring
   - Encoding strategies
-  - Dealing with missing values
 
 > [Feature Engineering Chapter 5](http://www.feat.engineering/encoding-categorical-predictors)

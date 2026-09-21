@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-22">
 
-<title>Lectures – DATA 3464 | Fall 2026</title>
+<title>4: Categorical data basics – DATA 3464 | Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,8 +38,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../img/MRU_SingleChevron_RGB.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -80,35 +79,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-page-layout','listing-format','listing-from','listing-execute','listing-engines','listing-language','listing-title','listing-date','listing-marp','listing-theme','listing-paginate','listing-headingDivider','listing-demo-code','listing-demo-data','listing-leftoff','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-demo=data',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-page-layout","listing-format","listing-from","listing-execute","listing-engines","listing-language","listing-title","listing-date","listing-marp","listing-theme","listing-paginate","listing-headingDivider","listing-demo-code","listing-demo-data","listing-leftoff","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-demo=data"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -142,7 +112,7 @@ window.Quarto = {
 
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="floating nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -164,7 +134,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../lectures/index.html" aria-current="page"> 
+    <a class="nav-link" href="../lectures/index.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
@@ -192,24 +162,50 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-3464-fundamentals-of-data-processing" id="toc-data-3464-fundamentals-of-data-processing" class="nav-link active" data-scroll-target="#data-3464-fundamentals-of-data-processing"><!--fit-->DATA 3464: Fundamentals of Data Processing</a>
+  <ul class="collapse">
+  <li><a href="#categorical-data-basics" id="toc-categorical-data-basics" class="nav-link" data-scroll-target="#categorical-data-basics"><!--fit-->Categorical Data Basics</a></li>
+  </ul></li>
+  <li><a href="#topic-overview" id="toc-topic-overview" class="nav-link" data-scroll-target="#topic-overview">Topic overview</a></li>
+  <li><a href="#what-is-categorical-data" id="toc-what-is-categorical-data" class="nav-link" data-scroll-target="#what-is-categorical-data">What is categorical data?</a></li>
+  <li><a href="#exploring-categorical-data" id="toc-exploring-categorical-data" class="nav-link" data-scroll-target="#exploring-categorical-data">Exploring categorical data</a></li>
+  <li><a href="#representing-categorical-data" id="toc-representing-categorical-data" class="nav-link" data-scroll-target="#representing-categorical-data">Representing categorical data</a></li>
+  <li><a href="#ordinal-encoding" id="toc-ordinal-encoding" class="nav-link" data-scroll-target="#ordinal-encoding">Ordinal encoding</a></li>
+  <li><a href="#nominal-categories-one-hot-encoding" id="toc-nominal-categories-one-hot-encoding" class="nav-link" data-scroll-target="#nominal-categories-one-hot-encoding">Nominal categories: one-hot encoding</a></li>
+  <li><a href="#from-numbers-to-categories-discretization" id="toc-from-numbers-to-categories-discretization" class="nav-link" data-scroll-target="#from-numbers-to-categories-discretization">From numbers to categories: discretization</a></li>
+  <li><a href="#advantagesdisadvantages-of-various-methods" id="toc-advantagesdisadvantages-of-various-methods" class="nav-link" data-scroll-target="#advantagesdisadvantages-of-various-methods">Advantages/disadvantages of various methods</a></li>
+  <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
+  </ul>
+</nav>
+</nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">4: Categorical data basics</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-body">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 22, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -220,53 +216,243 @@ window.Quarto = {
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
+<div class="no-row-height column-margin column-container"><div class="">
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<ul>
+<li>
+<a href="../demo_code/04_categorical/catdemo.ipynb" download=""><img src="../img/journal-code.svg" alt="Demo Notebook"> Demo Notebook</a>
+</li>
+<li>
+<a href="?meta:demo-data" download=""><img src="../img/filetype-csv.svg" alt="Demo Data"> Demo Data</a>
+</li>
+</ul>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<ul>
+<li><a href="../slides/04-categorical.pdf"><img src="../img/file-pdf.svg" class="img-fluid" alt="PDF Slides">&nbsp;PDF Slides</a></li>
+<li><a href="../slides/04-categorical.html"><img src="../img/file-slides.svg" class="img-fluid" alt="HTML Slides">&nbsp;HTML Slides</a></li>
+</ul>
+</section>
+</div></div><section id="data-3464-fundamentals-of-data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-3464-fundamentals-of-data-processing"><!--fit-->DATA 3464: Fundamentals of Data Processing</h2>
+<section id="categorical-data-basics" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-data-basics"><!--fit-->Categorical Data Basics</h3>
+<p>Charlotte Curtis September 22, 2026</p>
+</section>
+</section>
+<section id="topic-overview" class="level2">
+<h2 class="anchored" data-anchor-id="topic-overview">Topic overview</h2>
+<ul>
+<li>Exploring categorical data</li>
+<li>Basic categorical data encoding strategies</li>
+<li>Out of scope: Fancier encoding strategies, like feature hashing and target encoding</li>
+</ul>
+<p><strong>Resources used:</strong></p>
+<ul>
+<li><a href="http://www.feat.engineering/encoding-categorical-predictors">Feature Engineering Chapter 5</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/preprocessing.html#encoding-categorical-features">Scikit-learn User Guide (7.3)</a></li>
+</ul>
+</section>
+<section id="what-is-categorical-data" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-categorical-data">What is categorical data?</h2>
+<ul>
+<li>Samples can take on one of several discrete values or groups
+<ul>
+<li><strong>Nominal</strong>: no particular order to the groups</li>
+<li><strong>Ordinal</strong>: groups relate to each other in a specific order</li>
+</ul></li>
+<li>Categories can be represented as strings <em>or</em> numeric types
+<ul>
+<li>Domain knowledge is necessary!</li>
+</ul></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>Let’s take a few minutes to brainstorm some examples</p>
+</blockquote>
+</div>
+</section>
+<section id="exploring-categorical-data" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-categorical-data">Exploring categorical data</h2>
+<!-- _class: code_reminder -->
+<p>We’ve already done some of this, but some ideas to consider:</p>
+<ul>
+<li><code>pandas.DataFrame.value_counts()</code> - how many of each category?</li>
+<li>Use category to group, then compute summary stats</li>
+<li>Plot color per category</li>
+<li>Scatter plot with jitter</li>
+</ul>
+</section>
+<section id="representing-categorical-data" class="level2">
+<h2 class="anchored" data-anchor-id="representing-categorical-data">Representing categorical data</h2>
+<ul>
+<li>To do math on categorical data, we need to map to numbers</li>
+<li>Consider:
+<ul>
+<li>Ordinal or nominal?</li>
+<li>How many possible categories (cardinality)?</li>
+<li>Any chance new ones might show up?</li>
+</ul></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>How could we encode the examples? What are the benefits and drawbacks of each method?</p>
+</blockquote>
+</div>
+</section>
+<section id="ordinal-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="ordinal-encoding">Ordinal encoding</h2>
+<!-- _class: code_reminder -->
+<p><img src="../img/04-fire-map.png" class="img-fluid" alt="bg left fit"><br>
+</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Slides</th>
-<th data-quarto-table-cell-role="th">Demo Code</th>
-<th data-quarto-table-cell-role="th">Progress</th>
+<th>Category</th>
+<th>Feature</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Sep 3, 2026</td>
-<td><a href="../lectures/01-intro.html">1. Introduction</a></td>
-<td><a href="../slides/01-intro.pdf" aria-label="PDF slides for 1. Introduction" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/01-intro.html" aria-label="HTML slides for 1. Introduction" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/01_stroke/strokedemo.ipynb" aria-label="Demo notebook for 1. Introduction" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="../demo_code/01_stroke/stroke_data.csv" aria-label="Demo data for 1. Introduction" download="" title="Demo data"><img src="../img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
-<td>Complete</td>
+<td>Under Control</td>
+<td>0</td>
 </tr>
 <tr class="even">
-<td>Sep 10, 2026</td>
-<td><a href="../lectures/02-basic-models.html">2. Basic machine learning models</a></td>
-<td><a href="../slides/02-basic-models.pdf" aria-label="PDF slides for 2. Basic machine learning models" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/02-basic-models.html" aria-label="HTML slides for 2. Basic machine learning models" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/02_models/model_demo.ipynb" aria-label="Demo notebook for 2. Basic machine learning models" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a></td>
-<td>Slide 17</td>
+<td>Being Held</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td>Sep 17, 2026</td>
-<td><a href="../lectures/03-eda.html">3. Exploratory Data Analysis</a></td>
-<td><a href="../slides/03-eda.pdf" aria-label="PDF slides for 3. Exploratory Data Analysis" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/03-eda.html" aria-label="HTML slides for 3. Exploratory Data Analysis" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/03_eda/eda_demo.ipynb" aria-label="Demo notebook for 3. Exploratory Data Analysis" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="../demo_code/03_eda/titanic_train.csv" aria-label="Demo data for 3. Exploratory Data Analysis" download="" title="Demo data"><img src="../img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
-<td>Slide 9</td>
+<td>*Out of Control (Monitored)</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td>Sep 22, 2026</td>
-<td><a href="../lectures/04-categorical.html">4: Categorical data basics</a></td>
-<td><a href="../slides/04-categorical.pdf" aria-label="PDF slides for 4: Categorical data basics" title="PDF slides"><img src="../img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="../slides/04-categorical.html" aria-label="HTML slides for 4: Categorical data basics" title="HTML slides"><img src="../img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="../demo_code/04_categorical/catdemo.ipynb" aria-label="Demo notebook for 4: Categorical data basics" download="" title="Demo notebook"><img src="../img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a></td>
-<td></td>
+<td>Out of Control</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<p><span style="font-size:0.6em;">* I am not a wildfire expert, this is my best guess at ordering</span></p>
+<footer>
+Image source: <a href="https://cwfis.cfs.nrcan.gc.ca/en/static-maps">Natural Resources Canada</a>
+</footer>
+<!-- 
+Drawbacks
+* Only useful for naturally ordered data
+* Assumes linear relationship
+* Difficult to deal with novel features
+-->
+</section>
+<section id="nominal-categories-one-hot-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="nominal-categories-one-hot-encoding">Nominal categories: one-hot encoding</h2>
+<!-- _class: code_reminder -->
+<ul>
+<li>Categories have no natural relationship</li>
+<li>Create <span class="math inline">\(k\)</span> new features from <span class="math inline">\(k\)</span> categories, very sparse matrix</li>
+</ul>
+<div class="centred">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Animal</th>
+<th></th>
+<th>cat</th>
+<th>dog</th>
+<th>rabbit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cat</td>
+<td>→</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>dog</td>
+<td>→</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>rabbit</td>
+<td>→</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 
+Drawbacks
+* Not good for high cardinality -> consider feature hashing or combining categories
+* Collinearity issues -> (if a concern for model) dummy encoding instead with drop
+* Novel features -> implied by 0 if not using dummy, could also define "other" category
+-->
+</section>
+<section id="from-numbers-to-categories-discretization" class="level2">
+<h2 class="anchored" data-anchor-id="from-numbers-to-categories-discretization">From numbers to categories: discretization</h2>
+<div class="columns">
+<p><img src="..//img/04-discrete.png" class="img-fluid"><br>
+</p><ul>
+<li>Sometimes numeric data is better represented as categorical</li>
+<li>Still needs encoding strategy</li>
+<li>Can introduce nonlinear relationships</li>
+<li>Like everything, contextual</li>
+</ul>
+</div>
+</section>
+<section id="advantagesdisadvantages-of-various-methods" class="level2">
+<h2 class="anchored" data-anchor-id="advantagesdisadvantages-of-various-methods">Advantages/disadvantages of various methods</h2>
+<div class="columns">
+<section id="ordinal" class="level3">
+<h3 class="anchored" data-anchor-id="ordinal">Ordinal</h3>
+<p><span class="pro"></span></p>
+<ul>
+<li>Compact (1 column/feature)</li>
+<li>Only useful for naturally ordered data</li>
+</ul>
+<p> <span class="con"></span></p>
+<ul>
+<li>Imposes (linear) relationship</li>
+<li>Difficult to deal with novel categories</li>
+</ul>
+<p></p>
+</section><section id="one-hot" class="level3">
+<h3 class="anchored" data-anchor-id="one-hot">One-hot</h3>
+<p><span class="pro"></span></p>
+<ul>
+<li>No assumptions made about relationships</li>
+<li>Novel features implied by 0</li>
+</ul>
+<p> <span class="con"></span></p>
+<ul>
+<li>Memory intensive</li>
+<li>Not good for high cardinality</li>
+<li>Potential collinearity issues</li>
+</ul>
+<p></p>
+</section>
+</div>
+</section>
+<section id="coming-up-next" class="level2">
+<h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>
+<ul>
+<li>Lecture: Basic numeric transformations</li>
+<li>Assignment 1 due soon!</li>
+</ul>
+<blockquote class="blockquote">
+<p><a href="http://www.feat.engineering/encoding-categorical-predictors">Feature Engineering Chapter 5</a></p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

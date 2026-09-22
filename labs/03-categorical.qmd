@@ -1,0 +1,45 @@
+---
+title: "3: Categorical Data Representation"
+date: 2026-09-23
+due: "September 29, 2026"
+---
+
+Lab submission due on {{< meta due >}}.
+
+## Objective
+Learn a bit about:
+
+- More Scikit-learn pipelines
+- Categorical data encoding decisions
+- Things to watch out for when encoding categorical data
+
+## Setup
+Create a new directory named `lab03` in your labs repo. Download and add to it:
+- [`categorical.ipynb`](_03-starter/categorical.ipynb)
+
+This notebook also fetches the [breast cancer dataset](https://archive.ics.uci.edu/dataset/14/breast+cancer) from the UCI Machine Learning datasets archive. You'll need to `pip install ucimlrepo` for this to work, or if you don't want to do that, you can download a CSV manually.
+
+## Predicting breast cancer recurrance
+This is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study[^1]. A number of categorical features are recorded for each, along with the `target` variable (one of `no-recurrence-events` and `recurrence-events`).
+
+[^1]: This seems to me to be a limitation of the dataset — there may be more recurrances that happened after the study period.
+
+Each of the following steps is also indicated as `TODO` items in the starter notebook.
+
+1. Convert the target into a binary feature, assumed to be named `y`
+2. Do some basic exploration on the categorical features, paying attention to:
+    - feature cardinality
+    - ordinal vs nominal
+3. There's also a single continuous value — inspect it using an appropriate visualization or other method
+4. Define appropriate encoders for the categorical features (either [`OneHotEncoder` ](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) or [`OrdinalEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder)). Pay attention to the names of the categories for ordinal encoding! By default they will map to alphabetical order, but that is *not* the same as numerical order (why?).
+5. Put your encoders into the provided `pipeline` skeleton, then cross-validate to see how your model behaves. Can you make any changes that improve the performance?
+
+:::{.callout-note title="Stretch goal"}
+If you want to take things a step further, see if you can interpret the `.feature_importances_` attribute of the classifier. You can access this with the last element of the pipeline, i.e.:
+```python
+importance = pipeline[-1].feature_importances_
+```
+:::
+
+## Submit
+As usual, `git add`, `commit`, and `push` your work. It's okay if you don't make it all the way, I'll be looking for at least one appropriately defined categorical encoder.

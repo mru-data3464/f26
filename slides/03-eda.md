@@ -134,7 +134,7 @@ As usual, it depends on the:
   - Stratification needed?
 * Intended **validation approach**
 
-## Side note: validation
+## Validation
 
 ![bg right 90%](https://scikit-learn.org/stable/_images/grid_search_cross_validation.png)
 
@@ -145,7 +145,7 @@ As usual, it depends on the:
 <footer>Image source: <a href="https://scikit-learn.org/stable/modules/cross_validation.html">Scikit-learn</a></footer>
 
 ## Validation
-<!-- _class: code_reminder -->
+
 * Validation data is used to make decisions about your model, e.g.
   - Model selection
   - Tuning hyperparameters
@@ -158,90 +158,6 @@ As usual, it depends on the:
 > Cross-validation is a way of checking your model choice and parameters, but final training should be done on the entire training set
 
 </div>
-
-## How to split your data
-
-* Simple scenario: random sample (typically 70-80% for training)
-* **Only works if:**
-    - Stratification doesn't matter
-    - Data is guaranteed not to change (later topic)
-    - Data is not a time-series (later topic)
-
-<div data-marpit-fragment>
-
-> How do we know if stratification is necessary?
-
-</div>
-
-## Sampling bias
-Stratification is used to mitigate **sampling bias**
-
-* Cilantro example: assume 80% of population likes cilantro
-* Goal: ensure our sample is representative of the population, $\pm 5\%$
-
-<div data-marpit-fragment>
-
-The [binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution) can be used to model the probability of choosing $k$ people who like cilantro from $n$ total participants:
-
-$$P(X = k) = \binom{n}{k}p^k(1-p)^{n-k}, \mathrm{where} \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
-
-</div>
-
-## Sampling bias continued
-
-<!--
-  _class: code_reminder 
--->
-
-$P(X = k)$ is the probability mass function, and the corresponding cumulative distribution function is just the sum up to $k$:
-
-$$P(X \leq k) = \sum_{i=0}^k \binom{n}{i}p^i(1-p)^{n-i}$$
-
-Suppose we **randomly** sample 100 people. What is the probability of fewer than 75 or more than 85 cilantro lovers?
-
-> Here we've defined an "unbiased sample" as being $\pm5\%$
-
-## Stratification approach
-* The need for stratification depends on sample size, distribution of stratification category, and how much bias you're willing to accept
-  | | Small Sample Size | Large Sample Size |
-  | --| -- | -- |
-  | Unbalanced Classes | Stratify | Maybe |
-  | Balanced Classes | Maybe | Not necessary |
-
-* Stratification categories can be the target variable, or a predictor
-* Goal is to have the same class distribution in both testing and training
-
-## Repeatable randomness
-
-* At minimum, you should **always set a random seed** so that every time you sample your data it is the same "random sample"
-* This isn't enough if your data might get updated! You can:
-  - Store the IDs of your split offline, then sample any new data and append to them (ensuring that test/train never mix)
-  - Get fancy with a deterministic method like hashing features to create unique IDs, then thresholding based on maximum possible value
-  - More on fancy sampling later in the semester
-
-## Back to visualizations
-<!-- _class: code_reminder -->
-
-Now that we've got a test set safely stashed, we can **ask questions** about the data and use visualizations and statistics to answer them. Some examples:
-* Do any of my features seem to be related to my target?
-* Do any of my features seem to be related to each other?
-* Why are some values more common than others?
-* Do these values make sense in the context of my **domain knowledge**?
-* If I group my data together in some way, are there clear trends?
-
-<footer><a href="https://r4ds.hadley.nz/EDA.html#questions">R for Data Science</a> has some good examples of further questions</footer>
-
-## Some handy tricks
-
-A few things to tweak that can make visualizations easier to read:
-
-* Histogram bin sizes
-  - Aiming for a smooth distribution that works for your data
-* Transparency (`alpha`)
-  - Useful for both dense scatter plots and overlapping categories
-* "Jitter"
-  - Mostly for scatter plot of continuous vs categorical data
-  - Add a tiny bit of random noise to spread out samples
 
 ## Coming up next
 

@@ -177,15 +177,8 @@ window.Quarto = {
   <li><a href="#why-split-your-data" id="toc-why-split-your-data" class="nav-link" data-scroll-target="#why-split-your-data">Why split your data?</a></li>
   <li><a href="#when-to-split-your-data" id="toc-when-to-split-your-data" class="nav-link" data-scroll-target="#when-to-split-your-data">When to split your data</a></li>
   <li><a href="#how-to-split-your-data" id="toc-how-to-split-your-data" class="nav-link" data-scroll-target="#how-to-split-your-data">How to split your data</a></li>
-  <li><a href="#side-note-validation" id="toc-side-note-validation" class="nav-link" data-scroll-target="#side-note-validation">Side note: validation</a></li>
   <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
-  <li><a href="#how-to-split-your-data-1" id="toc-how-to-split-your-data-1" class="nav-link" data-scroll-target="#how-to-split-your-data-1">How to split your data</a></li>
-  <li><a href="#sampling-bias" id="toc-sampling-bias" class="nav-link" data-scroll-target="#sampling-bias">Sampling bias</a></li>
-  <li><a href="#sampling-bias-continued" id="toc-sampling-bias-continued" class="nav-link" data-scroll-target="#sampling-bias-continued">Sampling bias continued</a></li>
-  <li><a href="#stratification-approach" id="toc-stratification-approach" class="nav-link" data-scroll-target="#stratification-approach">Stratification approach</a></li>
-  <li><a href="#repeatable-randomness" id="toc-repeatable-randomness" class="nav-link" data-scroll-target="#repeatable-randomness">Repeatable randomness</a></li>
-  <li><a href="#back-to-visualizations" id="toc-back-to-visualizations" class="nav-link" data-scroll-target="#back-to-visualizations">Back to visualizations</a></li>
-  <li><a href="#some-handy-tricks" id="toc-some-handy-tricks" class="nav-link" data-scroll-target="#some-handy-tricks">Some handy tricks</a></li>
+  <li><a href="#validation-1" id="toc-validation-1" class="nav-link" data-scroll-target="#validation-1">Validation</a></li>
   <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
   </ul>
 </nav>
@@ -385,8 +378,8 @@ Image source: <a href="https://tylervigen.com/spurious-correlations">Spurious Co
 <li>Intended <strong>validation approach</strong></li>
 </ul>
 </section>
-<section id="side-note-validation" class="level2">
-<h2 class="anchored" data-anchor-id="side-note-validation">Side note: validation</h2>
+<section id="validation" class="level2">
+<h2 class="anchored" data-anchor-id="validation">Validation</h2>
 <p><img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" class="img-fluid" alt="bg right 90%"><br>
 </p>
 <ul>
@@ -398,9 +391,8 @@ Image source: <a href="https://tylervigen.com/spurious-correlations">Spurious Co
 Image source: <a href="https://scikit-learn.org/stable/modules/cross_validation.html">Scikit-learn</a>
 </footer>
 </section>
-<section id="validation" class="level2">
-<h2 class="anchored" data-anchor-id="validation">Validation</h2>
-<!-- _class: code_reminder -->
+<section id="validation-1" class="level2">
+<h2 class="anchored" data-anchor-id="validation-1">Validation</h2>
 <ul>
 <li>Validation data is used to make decisions about your model, e.g.
 <ul>
@@ -416,101 +408,6 @@ Image source: <a href="https://scikit-learn.org/stable/modules/cross_validation.
 <p>Cross-validation is a way of checking your model choice and parameters, but final training should be done on the entire training set</p>
 </blockquote>
 </div>
-</section>
-<section id="how-to-split-your-data-1" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-split-your-data-1">How to split your data</h2>
-<ul>
-<li>Simple scenario: random sample (typically 70-80% for training)</li>
-<li><strong>Only works if:</strong>
-<ul>
-<li>Stratification doesn’t matter</li>
-<li>Data is guaranteed not to change (later topic)</li>
-<li>Data is not a time-series (later topic)</li>
-</ul></li>
-</ul>
-<div data-marpit-fragment="">
-<blockquote class="blockquote">
-<p>How do we know if stratification is necessary?</p>
-</blockquote>
-</div>
-</section>
-<section id="sampling-bias" class="level2">
-<h2 class="anchored" data-anchor-id="sampling-bias">Sampling bias</h2>
-<p>Stratification is used to mitigate <strong>sampling bias</strong></p>
-<ul>
-<li>Cilantro example: assume 80% of population likes cilantro</li>
-<li>Goal: ensure our sample is representative of the population, <span class="math inline">\(\pm 5\%\)</span></li>
-</ul>
-<div data-marpit-fragment="">
-<p>The <a href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial distribution</a> can be used to model the probability of choosing <span class="math inline">\(k\)</span> people who like cilantro from <span class="math inline">\(n\)</span> total participants:</p>
-<p><span class="math display">\[P(X = k) = \binom{n}{k}p^k(1-p)^{n-k}, \mathrm{where} \binom{n}{k} = \frac{n!}{k!(n-k)!}\]</span></p>
-</div>
-</section>
-<section id="sampling-bias-continued" class="level2">
-<h2 class="anchored" data-anchor-id="sampling-bias-continued">Sampling bias continued</h2>
-<!--
-  _class: code_reminder 
--->
-<p><span class="math inline">\(P(X = k)\)</span> is the probability mass function, and the corresponding cumulative distribution function is just the sum up to <span class="math inline">\(k\)</span>:</p>
-<p><span class="math display">\[P(X \leq k) = \sum_{i=0}^k \binom{n}{i}p^i(1-p)^{n-i}\]</span></p>
-<p>Suppose we <strong>randomly</strong> sample 100 people. What is the probability of fewer than 75 or more than 85 cilantro lovers?</p>
-<blockquote class="blockquote">
-<p>Here we’ve defined an “unbiased sample” as being <span class="math inline">\(\pm5\%\)</span></p>
-</blockquote>
-</section>
-<section id="stratification-approach" class="level2">
-<h2 class="anchored" data-anchor-id="stratification-approach">Stratification approach</h2>
-<ul>
-<li><p>The need for stratification depends on sample size, distribution of stratification category, and how much bias you’re willing to accept | | Small Sample Size | Large Sample Size | | –| – | – | | Unbalanced Classes | Stratify | Maybe | | Balanced Classes | Maybe | Not necessary |</p></li>
-<li><p>Stratification categories can be the target variable, or a predictor</p></li>
-<li><p>Goal is to have the same class distribution in both testing and training</p></li>
-</ul>
-</section>
-<section id="repeatable-randomness" class="level2">
-<h2 class="anchored" data-anchor-id="repeatable-randomness">Repeatable randomness</h2>
-<ul>
-<li>At minimum, you should <strong>always set a random seed</strong> so that every time you sample your data it is the same “random sample”</li>
-<li>This isn’t enough if your data might get updated! You can:
-<ul>
-<li>Store the IDs of your split offline, then sample any new data and append to them (ensuring that test/train never mix)</li>
-<li>Get fancy with a deterministic method like hashing features to create unique IDs, then thresholding based on maximum possible value</li>
-<li>More on fancy sampling later in the semester</li>
-</ul></li>
-</ul>
-</section>
-<section id="back-to-visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="back-to-visualizations">Back to visualizations</h2>
-<!-- _class: code_reminder -->
-<p>Now that we’ve got a test set safely stashed, we can <strong>ask questions</strong> about the data and use visualizations and statistics to answer them. Some examples:</p>
-<ul>
-<li>Do any of my features seem to be related to my target?</li>
-<li>Do any of my features seem to be related to each other?</li>
-<li>Why are some values more common than others?</li>
-<li>Do these values make sense in the context of my <strong>domain knowledge</strong>?</li>
-<li>If I group my data together in some way, are there clear trends?</li>
-</ul>
-<footer>
-<a href="https://r4ds.hadley.nz/EDA.html#questions">R for Data Science</a> has some good examples of further questions
-</footer>
-</section>
-<section id="some-handy-tricks" class="level2">
-<h2 class="anchored" data-anchor-id="some-handy-tricks">Some handy tricks</h2>
-<p>A few things to tweak that can make visualizations easier to read:</p>
-<ul>
-<li>Histogram bin sizes
-<ul>
-<li>Aiming for a smooth distribution that works for your data</li>
-</ul></li>
-<li>Transparency (<code>alpha</code>)
-<ul>
-<li>Useful for both dense scatter plots and overlapping categories</li>
-</ul></li>
-<li>“Jitter”
-<ul>
-<li>Mostly for scatter plot of continuous vs categorical data</li>
-<li>Add a tiny bit of random noise to spread out samples</li>
-</ul></li>
-</ul>
 </section>
 <section id="coming-up-next" class="level2">
 <h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>

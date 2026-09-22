@@ -98,67 +98,18 @@
     "text": "How to split your data\nAs usual, it depends on the:\n\nData set size \\(n\\)\nRelationship between number of predictors \\(p\\) and \\(n\\)\nNature of the data:\n\nTime series?\nStratification needed?\n\nIntended validation approach"
   },
   {
-    "objectID": "lectures/03-eda.html#side-note-validation",
-    "href": "lectures/03-eda.html#side-note-validation",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Side note: validation",
-    "text": "Side note: validation\n\n\n\nWe also need validation data\nIf the dataset is sufficiently large, this can be a separate split\nIn lab 2 and assignment 1 I asked you to use cross-validation\n\n\nImage source: Scikit-learn"
-  },
-  {
     "objectID": "lectures/03-eda.html#validation",
     "href": "lectures/03-eda.html#validation",
     "title": "3. Exploratory Data Analysis",
     "section": "Validation",
-    "text": "Validation\n\n\nValidation data is used to make decisions about your model, e.g.\n\nModel selection\nTuning hyperparameters\nMonitor training progress\n\nHowever, validation data is not used to directly train a model\nThink of it like a test-adjacent set where you can repeatedly try stuff on your training set, then evaluate on validation\n\n\n\nCross-validation is a way of checking your model choice and parameters, but final training should be done on the entire training set"
+    "text": "Validation\n\n\n\nWe also need validation data\nIf the dataset is sufficiently large, this can be a separate split\nIn lab 2 and assignment 1 I asked you to use cross-validation\n\n\nImage source: Scikit-learn"
   },
   {
-    "objectID": "lectures/03-eda.html#how-to-split-your-data-1",
-    "href": "lectures/03-eda.html#how-to-split-your-data-1",
+    "objectID": "lectures/03-eda.html#validation-1",
+    "href": "lectures/03-eda.html#validation-1",
     "title": "3. Exploratory Data Analysis",
-    "section": "How to split your data",
-    "text": "How to split your data\n\nSimple scenario: random sample (typically 70-80% for training)\nOnly works if:\n\nStratification doesn’t matter\nData is guaranteed not to change (later topic)\nData is not a time-series (later topic)\n\n\n\n\nHow do we know if stratification is necessary?"
-  },
-  {
-    "objectID": "lectures/03-eda.html#sampling-bias",
-    "href": "lectures/03-eda.html#sampling-bias",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Sampling bias",
-    "text": "Sampling bias\nStratification is used to mitigate sampling bias\n\nCilantro example: assume 80% of population likes cilantro\nGoal: ensure our sample is representative of the population, \\(\\pm 5\\%\\)\n\n\nThe binomial distribution can be used to model the probability of choosing \\(k\\) people who like cilantro from \\(n\\) total participants:\n\\[P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}, \\mathrm{where} \\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\]"
-  },
-  {
-    "objectID": "lectures/03-eda.html#sampling-bias-continued",
-    "href": "lectures/03-eda.html#sampling-bias-continued",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Sampling bias continued",
-    "text": "Sampling bias continued\n\n\\(P(X = k)\\) is the probability mass function, and the corresponding cumulative distribution function is just the sum up to \\(k\\):\n\\[P(X \\leq k) = \\sum_{i=0}^k \\binom{n}{i}p^i(1-p)^{n-i}\\]\nSuppose we randomly sample 100 people. What is the probability of fewer than 75 or more than 85 cilantro lovers?\n\nHere we’ve defined an “unbiased sample” as being \\(\\pm5\\%\\)"
-  },
-  {
-    "objectID": "lectures/03-eda.html#stratification-approach",
-    "href": "lectures/03-eda.html#stratification-approach",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Stratification approach",
-    "text": "Stratification approach\n\nThe need for stratification depends on sample size, distribution of stratification category, and how much bias you’re willing to accept | | Small Sample Size | Large Sample Size | | –| – | – | | Unbalanced Classes | Stratify | Maybe | | Balanced Classes | Maybe | Not necessary |\nStratification categories can be the target variable, or a predictor\nGoal is to have the same class distribution in both testing and training"
-  },
-  {
-    "objectID": "lectures/03-eda.html#repeatable-randomness",
-    "href": "lectures/03-eda.html#repeatable-randomness",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Repeatable randomness",
-    "text": "Repeatable randomness\n\nAt minimum, you should always set a random seed so that every time you sample your data it is the same “random sample”\nThis isn’t enough if your data might get updated! You can:\n\nStore the IDs of your split offline, then sample any new data and append to them (ensuring that test/train never mix)\nGet fancy with a deterministic method like hashing features to create unique IDs, then thresholding based on maximum possible value\nMore on fancy sampling later in the semester"
-  },
-  {
-    "objectID": "lectures/03-eda.html#back-to-visualizations",
-    "href": "lectures/03-eda.html#back-to-visualizations",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Back to visualizations",
-    "text": "Back to visualizations\n\nNow that we’ve got a test set safely stashed, we can ask questions about the data and use visualizations and statistics to answer them. Some examples:\n\nDo any of my features seem to be related to my target?\nDo any of my features seem to be related to each other?\nWhy are some values more common than others?\nDo these values make sense in the context of my domain knowledge?\nIf I group my data together in some way, are there clear trends?\n\n\nR for Data Science has some good examples of further questions"
-  },
-  {
-    "objectID": "lectures/03-eda.html#some-handy-tricks",
-    "href": "lectures/03-eda.html#some-handy-tricks",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Some handy tricks",
-    "text": "Some handy tricks\nA few things to tweak that can make visualizations easier to read:\n\nHistogram bin sizes\n\nAiming for a smooth distribution that works for your data\n\nTransparency (alpha)\n\nUseful for both dense scatter plots and overlapping categories\n\n“Jitter”\n\nMostly for scatter plot of continuous vs categorical data\nAdd a tiny bit of random noise to spread out samples"
+    "section": "Validation",
+    "text": "Validation\n\nValidation data is used to make decisions about your model, e.g.\n\nModel selection\nTuning hyperparameters\nMonitor training progress\n\nHowever, validation data is not used to directly train a model\nThink of it like a test-adjacent set where you can repeatedly try stuff on your training set, then evaluate on validation\n\n\n\nCross-validation is a way of checking your model choice and parameters, but final training should be done on the entire training set"
   },
   {
     "objectID": "lectures/03-eda.html#coming-up-next",
@@ -375,7 +326,7 @@
     "href": "assignments/01-simple-model.html",
     "title": "Assignment 1: Simple Modelling",
     "section": "",
-    "text": "Due date: September 25, 2026 at 5 pm. This is a Friday; I will not be collecting submissions until the following Monday, so use that information as you wish. Reasonable requests for extensions will likely be granted, provided I see some evidence of progress prior to the due date."
+    "text": "Due date: Wednesday, September 30, 2026 at 11:59 PM (or at least, before Thursday morning). This is an extension from the original due date of Friday September 25th, as we need a bit more time to finish the content."
   },
   {
     "objectID": "assignments/01-simple-model.html#setup",
@@ -725,6 +676,6 @@
     "href": "lectures/04-categorical.html#coming-up-next",
     "title": "4: Categorical data basics",
     "section": "Coming up next",
-    "text": "Coming up next\n\nLecture: Basic numeric transformations\nAssignment 1 due soon!\n\n\nFeature Engineering Chapter 5"
+    "text": "Coming up next\n\nLecture: Basic numeric transformations\nLab: Modelling with categorical data\nAssignment 1 due soon!\n\n\nFeature Engineering Chapter 5"
   }
 ]

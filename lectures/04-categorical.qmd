@@ -178,6 +178,7 @@ Drawbacks
 
 ## Coming up next
 - Lecture: Basic numeric transformations
+- Lab: Modelling with categorical data
 - Assignment 1 due soon!
 
 > [Feature Engineering Chapter 5](http://www.feat.engineering/encoding-categorical-predictors)

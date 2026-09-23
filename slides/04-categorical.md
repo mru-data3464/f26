@@ -6,7 +6,8 @@ theme: marp-mru
 paginate: true
 headingDivider: 2
 demo-code: "/demo_code/04_categorical/catdemo.ipynb"
-demo=data: "/demo_code/04_categorical/profiles_revised.csv"
+demo-data: "/demo_code/04_categorical/profiles_revised.csv"
+leftoff: "Completed Sept 22"
 ---
 
 <!-- 

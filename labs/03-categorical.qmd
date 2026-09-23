@@ -17,7 +17,9 @@ Learn a bit about:
 Create a new directory named `lab03` in your labs repo. Download and add to it:
 - [`categorical.ipynb`](_03-starter/categorical.ipynb)
 
-This notebook also fetches the [breast cancer dataset](https://archive.ics.uci.edu/dataset/14/breast+cancer) from the UCI Machine Learning datasets archive. You'll need to `pip install ucimlrepo` for this to work, or if you don't want to do that, you can download a CSV manually.
+This notebook also fetches the [breast cancer dataset](https://archive.ics.uci.edu/dataset/14/breast+cancer) from the UCI Machine Learning datasets archive. You'll need to `pip install ucimlrepo` for this to work, or if you don't want to do that, you can download a [CSV manually](_03-starter/bc_dataset.csv).
+
+If you download and load the CSV, you'll need to define your `y` target variable from the `Class` column.
 
 ## Predicting breast cancer recurrance
 This is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study[^1]. A number of categorical features are recorded for each, along with the `target` variable (one of `no-recurrence-events` and `recurrence-events`).

@@ -4,455 +4,98 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nSlide 9\n\n\nSep 22, 2026\n4: Categorical data basics\n \n\n\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "lectures/03-eda.html",
-    "href": "lectures/03-eda.html",
-    "title": "3. Exploratory Data Analysis",
+    "objectID": "lectures/04-categorical.html",
+    "href": "lectures/04-categorical.html",
+    "title": "4: Categorical data basics",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
   },
   {
-    "objectID": "lectures/03-eda.html#code",
-    "href": "lectures/03-eda.html#code",
-    "title": "3. Exploratory Data Analysis",
+    "objectID": "lectures/04-categorical.html#code",
+    "href": "lectures/04-categorical.html#code",
+    "title": "4: Categorical data basics",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data"
   },
   {
-    "objectID": "lectures/03-eda.html#slides",
-    "href": "lectures/03-eda.html#slides",
-    "title": "3. Exploratory Data Analysis",
+    "objectID": "lectures/04-categorical.html#slides",
+    "href": "lectures/04-categorical.html#slides",
+    "title": "4: Categorical data basics",
     "section": "",
     "text": "PDF Slides\n HTML Slides"
   },
   {
-    "objectID": "lectures/03-eda.html#topic-overview",
-    "href": "lectures/03-eda.html#topic-overview",
-    "title": "3. Exploratory Data Analysis",
+    "objectID": "lectures/04-categorical.html#data-3464-fundamentals-of-data-processing",
+    "href": "lectures/04-categorical.html#data-3464-fundamentals-of-data-processing",
+    "title": "4: Categorical data basics",
+    "section": "DATA 3464: Fundamentals of Data Processing",
+    "text": "DATA 3464: Fundamentals of Data Processing\n\nCategorical Data Basics\nCharlotte Curtis September 22, 2026"
+  },
+  {
+    "objectID": "lectures/04-categorical.html#topic-overview",
+    "href": "lectures/04-categorical.html#topic-overview",
+    "title": "4: Categorical data basics",
     "section": "Topic overview",
-    "text": "Topic overview\n\nExploratory data analysis (EDA)\nSplitting your data\n\nResources used:\n\nFeat.Engineering Chapter 3\nR for Data Science (2e), Chapter 10\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at MRU Library"
+    "text": "Topic overview\n\nExploring categorical data\nBasic categorical data encoding strategies\nOut of scope: Fancier encoding strategies, like feature hashing and target encoding\n\nResources used:\n\nFeature Engineering Chapter 5\nScikit-learn User Guide (7.3)"
   },
   {
-    "objectID": "lectures/03-eda.html#exploratory-data-analysis",
-    "href": "lectures/03-eda.html#exploratory-data-analysis",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\nThe goal of EDA is to Understand your data\n\nAsk questions (e.g. do my data fit the linear model assumptions?)\nLook for answers (e.g. by making histograms)\nFind more questions and return to step 1 (hmm, those are some weird numbers, what do these values represent?)\n\n\n\nEDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. Some of these ideas will pan out, and some will be dead ends. — Hadley Wickham"
+    "objectID": "lectures/04-categorical.html#what-is-categorical-data",
+    "href": "lectures/04-categorical.html#what-is-categorical-data",
+    "title": "4: Categorical data basics",
+    "section": "What is categorical data?",
+    "text": "What is categorical data?\n\nSamples can take on one of several discrete values or groups\n\nNominal: no particular order to the groups\nOrdinal: groups relate to each other in a specific order\n\nCategories can be represented as strings or numeric types\n\nDomain knowledge is necessary!\n\n\n\n\nLet’s take a few minutes to brainstorm some examples"
   },
   {
-    "objectID": "lectures/03-eda.html#basic-things-to-look-at",
-    "href": "lectures/03-eda.html#basic-things-to-look-at",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Basic things to look at",
-    "text": "Basic things to look at\n\nData source - File? Database? API?\nStructured/unstructured\nAssumption 1: relatively small (fits in memory) tabular dataset\n\nData types - numeric/categorical, text, other\n\nAssumption 2: numeric data\n\nRanges\nSummary statistics\nMissing values\n\nNext week: categorical data, after reading week unstructured"
+    "objectID": "lectures/04-categorical.html#exploring-categorical-data",
+    "href": "lectures/04-categorical.html#exploring-categorical-data",
+    "title": "4: Categorical data basics",
+    "section": "Exploring categorical data",
+    "text": "Exploring categorical data\n\nWe’ve already done some of this, but some ideas to consider:\n\npandas.DataFrame.value_counts() - how many of each category?\nUse category to group, then compute summary stats\nPlot color per category\nScatter plot with jitter"
   },
   {
-    "objectID": "lectures/03-eda.html#example-anscombes-quartet",
-    "href": "lectures/03-eda.html#example-anscombes-quartet",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Example: Anscombe’s Quartet",
-    "text": "Example: Anscombe’s Quartet\n\n\nVery small dataset, constructed by hand in 1973 by Francis Anscombe \n\nNot known exactly how he made it, but Drs. Roberta La Haye and Peter Zizler proposed a compelling argument for linear algebra"
+    "objectID": "lectures/04-categorical.html#representing-categorical-data",
+    "href": "lectures/04-categorical.html#representing-categorical-data",
+    "title": "4: Categorical data basics",
+    "section": "Representing categorical data",
+    "text": "Representing categorical data\n\nTo do math on categorical data, we need to map to numbers\nConsider:\n\nOrdinal or nominal?\nHow many possible categories (cardinality)?\nAny chance new ones might show up?\n\n\n\n\nHow could we encode the examples? What are the benefits and drawbacks of each method?"
   },
   {
-    "objectID": "lectures/03-eda.html#case-study-data-visualization-to-the-rescue",
-    "href": "lectures/03-eda.html#case-study-data-visualization-to-the-rescue",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Case Study: Data visualization to the rescue",
-    "text": "Case Study: Data visualization to the rescue\n\nA 2012 study about honesty reported that “Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end”\nIn 2020, the authors published a new paper admitting that their original results could not be replicated, and noticed an anomaly in the summary statistics\nThe 2020 paper also published the original data, which was downloaded and visualized by a team of anonymous researchers working with Data Colada\nThis led to the 2012 paper being retracted, a $25M lawsuit, a data-driven defense\n\n\n\nMoral of the story is, look at your data!"
+    "objectID": "lectures/04-categorical.html#ordinal-encoding",
+    "href": "lectures/04-categorical.html#ordinal-encoding",
+    "title": "4: Categorical data basics",
+    "section": "Ordinal encoding",
+    "text": "Ordinal encoding\n\n\n\n\n\n\nCategory\nFeature\n\n\n\n\nUnder Control\n0\n\n\nBeing Held\n1\n\n\n*Out of Control (Monitored)\n2\n\n\nOut of Control\n3\n\n\n\n* I am not a wildfire expert, this is my best guess at ordering\n\nImage source: Natural Resources Canada"
   },
   {
-    "objectID": "lectures/03-eda.html#useful-starting-points",
-    "href": "lectures/03-eda.html#useful-starting-points",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Useful starting points",
-    "text": "Useful starting points\n\nAssuming your data is small enough and well structured:\n\npandas.DataFrame.info: data type, number of non-null, names, dimensions\npandas.DataFrame.head: return the first n rows (default 5). Also tail.\npandas.DataFrame.describe: Compute a bunch of summary statistics\nVarious aggregation statistics\n\n\n\nNext up, visualize!"
+    "objectID": "lectures/04-categorical.html#nominal-categories-one-hot-encoding",
+    "href": "lectures/04-categorical.html#nominal-categories-one-hot-encoding",
+    "title": "4: Categorical data basics",
+    "section": "Nominal categories: one-hot encoding",
+    "text": "Nominal categories: one-hot encoding\n\n\nCategories have no natural relationship\nCreate \\(k\\) new features from \\(k\\) categories, very sparse matrix\n\n\n\n\n\nAnimal\n\ncat\ndog\nrabbit\n\n\n\n\ncat\n→\n1\n0\n0\n\n\ndog\n→\n0\n1\n0\n\n\nrabbit\n→\n0\n0\n1"
   },
   {
-    "objectID": "lectures/03-eda.html#types-of-exploratory-visualizations",
-    "href": "lectures/03-eda.html#types-of-exploratory-visualizations",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Types of exploratory visualizations",
-    "text": "Types of exploratory visualizations\n\nI will not provide an exhaustive list of visualizations!\nPandas provides a handy wrapper around matplotlib\nSo does Seaborn - check out the example gallery\nSome of my favourites:\n\nHistograms\nScatter plots/hexbin plots\nBox plots/violin plots\n\nBut before we get too deep into EDA, it’s time to split your data"
+    "objectID": "lectures/04-categorical.html#from-numbers-to-categories-discretization",
+    "href": "lectures/04-categorical.html#from-numbers-to-categories-discretization",
+    "title": "4: Categorical data basics",
+    "section": "From numbers to categories: discretization",
+    "text": "From numbers to categories: discretization\n\n\n\nSometimes numeric data is better represented as categorical\nStill needs encoding strategy\nCan introduce nonlinear relationships\nLike everything, contextual"
   },
   {
-    "objectID": "lectures/03-eda.html#why-split-your-data",
-    "href": "lectures/03-eda.html#why-split-your-data",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Why split your data?",
-    "text": "Why split your data?\n\n\n\nWe need to set aside a final test set to evaluate our final model\nHumans are great at detecting patterns!\nEven looking at test data could influence decisions, causing data leakage\n\n\nImage source: Spurious Correlations"
+    "objectID": "lectures/04-categorical.html#advantagesdisadvantages-of-various-methods",
+    "href": "lectures/04-categorical.html#advantagesdisadvantages-of-various-methods",
+    "title": "4: Categorical data basics",
+    "section": "Advantages/disadvantages of various methods",
+    "text": "Advantages/disadvantages of various methods\n\n\nOrdinal\n\n\nCompact (1 column/feature)\nOnly useful for naturally ordered data\n\n \n\nImposes (linear) relationship\nDifficult to deal with novel categories\n\n\n\nOne-hot\n\n\nNo assumptions made about relationships\nNovel features implied by 0\n\n \n\nMemory intensive\nNot good for high cardinality\nPotential collinearity issues"
   },
   {
-    "objectID": "lectures/03-eda.html#when-to-split-your-data",
-    "href": "lectures/03-eda.html#when-to-split-your-data",
-    "title": "3. Exploratory Data Analysis",
-    "section": "When to split your data",
-    "text": "When to split your data\n\nHow much EDA should you do before splitting? You might need to know:\n\nAre there any missing values?\nIs there a need for stratified sampling?\nDo the data have a unique identifier beyond the row label?\nAs soon as you have a general sense of the:\n\nData types\nMissing features\nDistributions, particularly categorical\n\nIt’s time to split the data!"
-  },
-  {
-    "objectID": "lectures/03-eda.html#how-to-split-your-data",
-    "href": "lectures/03-eda.html#how-to-split-your-data",
-    "title": "3. Exploratory Data Analysis",
-    "section": "How to split your data",
-    "text": "How to split your data\nAs usual, it depends on the:\n\nData set size \\(n\\)\nRelationship between number of predictors \\(p\\) and \\(n\\)\nNature of the data:\n\nTime series?\nStratification needed?\n\nIntended validation approach"
-  },
-  {
-    "objectID": "lectures/03-eda.html#validation",
-    "href": "lectures/03-eda.html#validation",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Validation",
-    "text": "Validation\n\n\n\nWe also need validation data\nIf the dataset is sufficiently large, this can be a separate split\nIn lab 2 and assignment 1 I asked you to use cross-validation\n\n\nImage source: Scikit-learn"
-  },
-  {
-    "objectID": "lectures/03-eda.html#validation-1",
-    "href": "lectures/03-eda.html#validation-1",
-    "title": "3. Exploratory Data Analysis",
-    "section": "Validation",
-    "text": "Validation\n\nValidation data is used to make decisions about your model, e.g.\n\nModel selection\nTuning hyperparameters\nMonitor training progress\n\nHowever, validation data is not used to directly train a model\nThink of it like a test-adjacent set where you can repeatedly try stuff on your training set, then evaluate on validation\n\n\n\nCross-validation is a way of checking your model choice and parameters, but final training should be done on the entire training set"
-  },
-  {
-    "objectID": "lectures/03-eda.html#coming-up-next",
-    "href": "lectures/03-eda.html#coming-up-next",
-    "title": "3. Exploratory Data Analysis",
+    "objectID": "lectures/04-categorical.html#coming-up-next",
+    "href": "lectures/04-categorical.html#coming-up-next",
+    "title": "4: Categorical data basics",
     "section": "Coming up next",
-    "text": "Coming up next\n\nAssignment 1\nBasic categorical data\n\nExploring\nEncoding strategies\n\n\n\nFeature Engineering Chapter 5"
-  },
-  {
-    "objectID": "lectures/01-intro.html",
-    "href": "lectures/01-intro.html",
-    "title": "1. Introduction",
-    "section": "",
-    "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
-  },
-  {
-    "objectID": "lectures/01-intro.html#code",
-    "href": "lectures/01-intro.html#code",
-    "title": "1. Introduction",
-    "section": "",
-    "text": "Demo Notebook\n\n\n Demo Data"
-  },
-  {
-    "objectID": "lectures/01-intro.html#slides",
-    "href": "lectures/01-intro.html#slides",
-    "title": "1. Introduction",
-    "section": "",
-    "text": "PDF Slides\n HTML Slides"
-  },
-  {
-    "objectID": "lectures/01-intro.html#meet-your-instructor",
-    "href": "lectures/01-intro.html#meet-your-instructor",
-    "title": "1. Introduction",
-    "section": "Meet your instructor",
-    "text": "Meet your instructor\n\n\nName: Charlotte Curtis\nPronouns: She/her\nOffice: B102-4\nEmail: ccurtis@mtroyal.ca\nOffice hours: Book here"
-  },
-  {
-    "objectID": "lectures/01-intro.html#my-background",
-    "href": "lectures/01-intro.html#my-background",
-    "title": "1. Introduction",
-    "section": "My Background",
-    "text": "My Background"
-  },
-  {
-    "objectID": "lectures/01-intro.html#data-processing",
-    "href": "lectures/01-intro.html#data-processing",
-    "title": "1. Introduction",
-    "section": "Data processing",
-    "text": "Data processing\n\nThis course introduces techniques for ethically and responsibly wrangling and manipulating datasets to make them appropriate for addressing the question at hand. Topics may include cleaning and transforming data, integrity and quality measures, common file formats, feature selection and engineering, and generating features from unstructured sources such as text and images.\n\n\nColloquially and lovingly referred to as data wrangling"
-  },
-  {
-    "objectID": "lectures/01-intro.html#grade-assessment",
-    "href": "lectures/01-intro.html#grade-assessment",
-    "title": "1. Introduction",
-    "section": "Grade Assessment",
-    "text": "Grade Assessment\n\n\n\nComponent\nWeight\nComment\n\n\n\n\nTutorial exercises\n10%\nPass/fail\n\n\nAssignments\n35%\n8/12/15 split, in groups\n\n\nWritten tests\n35%\nx2, split 15%/20% in your favour\n\n\nFinal exam\n20%\nIn lab with limited internet\n\n\n\n\nA passing grade (50%) must be earned on the weighted average of written tests and final exam to be eligible for a C- in the course"
-  },
-  {
-    "objectID": "lectures/01-intro.html#course-website",
-    "href": "lectures/01-intro.html#course-website",
-    "title": "1. Introduction",
-    "section": "Course Website",
-    "text": "Course Website\nLecture notes, lab and assignment instructions will be hosted on an external site\nRendered at: https://mru-data3464.github.io/f26\nSource repo: https://github.com/mru-data3464/f26\n\nBonus marks may be awarded for substantial corrections to materials, submitted as pull requests"
-  },
-  {
-    "objectID": "lectures/01-intro.html#textbooks",
-    "href": "lectures/01-intro.html#textbooks",
-    "title": "1. Introduction",
-    "section": "Textbook(s)",
-    "text": "Textbook(s)\n\n\n\nhttp://www.feat.engineering, additional open source resources as needed\nAll the documentation!\n\nPandas\nNumpy\nSciPy\nScikit Learn\nMatplotlib\n\n\n\nDon’t rely on AI summaries!"
-  },
-  {
-    "objectID": "lectures/01-intro.html#speaking-of-ai",
-    "href": "lectures/01-intro.html#speaking-of-ai",
-    "title": "1. Introduction",
-    "section": "Speaking of AI…",
-    "text": "Speaking of AI…\nIn this course (and others, and your career), you will need to know:\n\nWhat to do, and why\nHow to do it\n\nNote: AI will not be available during the final practical exam\n\n\nWhich of these things seem appropriate for AI assistance?"
-  },
-  {
-    "objectID": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",
-    "href": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",
-    "title": "1. Introduction",
-    "section": "Tentative weekly plan: Before reading week",
-    "text": "Tentative weekly plan: Before reading week\n\n\n\n\n\n\n\n\nWeek\nTopic\nChapter (ish)\n\n\n\n\n0-1\nIntroduction and overview\n1-2\n\n\n1-2\nBasic machine learning models and categorical encoding\n3, 5\n\n\n2-3\nExploring, splitting, and sampling data\n4\n\n\n4\nBasic numeric data transformations\n6\n\n\n5\nDealing with missing and weird data\n8\n\n\n\nWritten test 1: Thursday, Oct 7"
-  },
-  {
-    "objectID": "lectures/01-intro.html#tentative-weekly-plan-second-half",
-    "href": "lectures/01-intro.html#tentative-weekly-plan-second-half",
-    "title": "1. Introduction",
-    "section": "Tentative weekly plan: second half",
-    "text": "Tentative weekly plan: second half\n\n\n\nWeek\nTopic\nChapter (ish)\n\n\n\n\n6\nFancy numeric and categorical transformations\n5, 6\n\n\n7\nWrangling text\n\n\n\n9\nBash scripting and data cards\n\n\n\n10\n1D signals and audio\n\n\n\n11\nImages and videos (2D signals)\n\n\n\n12\nPresentations and buffer time\n\n\n\n\nWritten test 2: Tuesday, Dec 1"
-  },
-  {
-    "objectID": "lectures/01-intro.html#core-courses-so-far",
-    "href": "lectures/01-intro.html#core-courses-so-far",
-    "title": "1. Introduction",
-    "section": "Core courses so far",
-    "text": "Core courses so far"
-  },
-  {
-    "objectID": "lectures/01-intro.html#what-do-you-know-about",
-    "href": "lectures/01-intro.html#what-do-you-know-about",
-    "title": "1. Introduction",
-    "section": "What do you know about…",
-    "text": "What do you know about…\n\nVarious probability distributions\nLinear and logistic regression\nData quality measures\nData stewardship best practices\nDocument parsing, web scraping, audio/video feature detection\nLinear algebra and array programming\nPrediction tasks: classification and regression\nClustering and anomaly detection\nEvaluation metrics\nBasic data visualization (scatter plots, histograms, etc)"
-  },
-  {
-    "objectID": "lectures/01-intro.html#what-do-you-want-to-know-about",
-    "href": "lectures/01-intro.html#what-do-you-want-to-know-about",
-    "title": "1. Introduction",
-    "section": "What do you want to know about?",
-    "text": "What do you want to know about?\n\n\nExamples of Subject Matter\n\nFinance\nReal estate\nTransportation\nClimate\nPolitics\nBiology\nChemistry\nMalware\n\n\nExamples of Data types\n\nUnstructured text\nStructured text (e.g. csv, HTML)\nPDF\nWord documents\nImages\nAudio\nVideo"
-  },
-  {
-    "objectID": "lectures/01-intro.html#case-study-risk-of-ischemic-stroke",
-    "href": "lectures/01-intro.html#case-study-risk-of-ischemic-stroke",
-    "title": "1. Introduction",
-    "section": "Case study: risk of ischemic stroke",
-    "text": "Case study: risk of ischemic stroke\n\n\n\n\nChapter 2: http://www.feat.engineering/stroke-tour\n\n\nArterial stenosis can predict risk\nPlaque composition plays a role\nFeatures extracted from CT images\nOther risk factors (demographics, lifestyle) added to dataset\n\n\n\n\nMany decisions in the data analysis process are subjective - I will often make different decisions than the textbook"
-  },
-  {
-    "objectID": "lectures/01-intro.html#from-data-to-prediction",
-    "href": "lectures/01-intro.html#from-data-to-prediction",
-    "title": "1. Introduction",
-    "section": "From data to prediction",
-    "text": "From data to prediction\n\nUnderstand the problem and define the task\nCollect, anonymize and organize the data\nExtract features\nExplore the dataset\nSelect a model and preprocess\nTrain the model\nEvaluate, fine-tune, iterate\nDeploy and maintain your system\n\n\nAdapted from Aurélien Géron’s ML Project Checklist"
-  },
-  {
-    "objectID": "lectures/01-intro.html#applied-to-the-stroke-example",
-    "href": "lectures/01-intro.html#applied-to-the-stroke-example",
-    "title": "1. Introduction",
-    "section": "Applied to the stroke example",
-    "text": "Applied to the stroke example\n\nWhat is the problem? What do we need to do?\n(Collect, anonymize and organize the data) - Done for us\n(Extract features) - Done for us\nExplore the dataset\n\nA critically important component, DO NOT OFFLOAD TO AI\nThis can even be where the data sciencing stops and we jump straight to visualizations and communicating insights!\nCheck out Data for Good case studies"
-  },
-  {
-    "objectID": "lectures/01-intro.html#select-a-model-and-preprocess",
-    "href": "lectures/01-intro.html#select-a-model-and-preprocess",
-    "title": "1. Introduction",
-    "section": "5. Select a model and preprocess",
-    "text": "5. Select a model and preprocess\n\n\n\nSource: scikit-learn documentation"
-  },
-  {
-    "objectID": "lectures/01-intro.html#evaluate-fine-tune-and-iterate",
-    "href": "lectures/01-intro.html#evaluate-fine-tune-and-iterate",
-    "title": "1. Introduction",
-    "section": "7. Evaluate, fine-tune, and iterate",
-    "text": "7. Evaluate, fine-tune, and iterate\n\nIn my example, I jumped straight to testing on the held-back test set\nThis is a terrible idea! We have no confidence that the model actually worked. We could be:\n\noverfitting to the training data\nmaking incorrect assumptions about the data\napplying inappropriate transformations, or missing some\nusing the wrong model altogether\n\n\n\nValidation needs to happen before the final testing"
-  },
-  {
-    "objectID": "lectures/01-intro.html#coming-up-next",
-    "href": "lectures/01-intro.html#coming-up-next",
-    "title": "1. Introduction",
-    "section": "Coming up next",
-    "text": "Coming up next\n\nLab: basic regression, show me where you’re at\nLecture: Simple models and evaluation metrics"
-  },
-  {
-    "objectID": "labs/03-categorical.html",
-    "href": "labs/03-categorical.html",
-    "title": "3: Categorical Data Representation",
-    "section": "",
-    "text": "Lab submission due on September 29, 2026."
-  },
-  {
-    "objectID": "labs/03-categorical.html#objective",
-    "href": "labs/03-categorical.html#objective",
-    "title": "3: Categorical Data Representation",
-    "section": "Objective",
-    "text": "Objective\nLearn a bit about:\n\nMore Scikit-learn pipelines\nCategorical data encoding decisions\nThings to watch out for when encoding categorical data"
-  },
-  {
-    "objectID": "labs/03-categorical.html#setup",
-    "href": "labs/03-categorical.html#setup",
-    "title": "3: Categorical Data Representation",
-    "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually.\nIf you download and load the CSV, you’ll need to define your y target variable from the Class column."
-  },
-  {
-    "objectID": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
-    "href": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
-    "title": "3: Categorical Data Representation",
-    "section": "Predicting breast cancer recurrance",
-    "text": "Predicting breast cancer recurrance\nThis is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study1. A number of categorical features are recorded for each, along with the target variable (one of no-recurrence-events and recurrence-events).\nEach of the following steps is also indicated as TODO items in the starter notebook.\n\nConvert the target into a binary feature, assumed to be named y\nDo some basic exploration on the categorical features, paying attention to:\n\nfeature cardinality\nordinal vs nominal\n\nThere’s also a single continuous value — inspect it using an appropriate visualization or other method\nDefine appropriate encoders for the categorical features (either OneHotEncoder or OrdinalEncoder). Pay attention to the names of the categories for ordinal encoding! By default they will map to alphabetical order, but that is not the same as numerical order (why?).\nPut your encoders into the provided pipeline skeleton, then cross-validate to see how your model behaves. Can you make any changes that improve the performance?\n\n\n\n\n\n\n\nNoteStretch goal\n\n\n\nIf you want to take things a step further, see if you can interpret the .feature_importances_ attribute of the classifier. You can access this with the last element of the pipeline, i.e.:\nimportance = pipeline[-1].feature_importances_"
-  },
-  {
-    "objectID": "labs/03-categorical.html#submit",
-    "href": "labs/03-categorical.html#submit",
-    "title": "3: Categorical Data Representation",
-    "section": "Submit",
-    "text": "Submit\nAs usual, git add, commit, and push your work. It’s okay if you don’t make it all the way, I’ll be looking for at least one appropriately defined categorical encoder."
-  },
-  {
-    "objectID": "labs/03-categorical.html#footnotes",
-    "href": "labs/03-categorical.html#footnotes",
-    "title": "3: Categorical Data Representation",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis seems to me to be a limitation of the dataset — there may be more recurrances that happened after the study period.↩︎"
-  },
-  {
-    "objectID": "labs/01-clean-regression.html",
-    "href": "labs/01-clean-regression.html",
-    "title": "1: Regression with Clean Data",
-    "section": "",
-    "text": "Lab submission due on September 16, 2026."
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#objective",
-    "href": "labs/01-clean-regression.html#objective",
-    "title": "1: Regression with Clean Data",
-    "section": "Objective",
-    "text": "Objective\nThe main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need “clean” and easy to manage data."
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#deliverables",
-    "href": "labs/01-clean-regression.html#deliverables",
-    "title": "1: Regression with Clean Data",
-    "section": "Deliverables",
-    "text": "Deliverables\nClick here to accept the “labs” assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please create a new directory named lab01 (or similar) and add:\n\nYour code to load, process, and visualize the data\nA brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions\nA list of references, such as:\n\nComplete URLs, e.g. to library documentation or Stack Overflow answers\nSearch queries, particularly if you used the “AI overview” response\nA complete transcript of AI chat history, if any\n\n\nThese can all be in one document if you document your process inline with your code.\n\n\n\n\n\n\nCaution\n\n\n\nAI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!"
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#instructions",
-    "href": "labs/01-clean-regression.html#instructions",
-    "title": "1: Regression with Clean Data",
-    "section": "Instructions",
-    "text": "Instructions\n\nClone the labs repo to your local machine and create a new subdirectory named lab01. In this folder:\nIn the programming language of your choice, write a program to:\n\nLoad the data in simple_regression.csv\nCalculate the line of best fit using simple linear regression\nCreate a scatter plot of the data with the best fit line\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to document your process as you do this! For example, if you get stuck on a step and need to look things up, add a comment.\n\n\nWith reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.\n\nIs linear regression an appropriate model for these data?\nHow well does your model fit the data?\nWhat additional information would help to create a more accurate model?\n\nRepeat the first question but with the simple_regression_full.csv dataset. This contains extra columns; select only the same ones that are present in simple_regression.csv. In your report, answer the following:\n\nWhat additional steps did you need to do to recreate the plot?\nDo you have any guess what this dataset represents?"
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#submission",
-    "href": "labs/01-clean-regression.html#submission",
-    "title": "1: Regression with Clean Data",
-    "section": "Submission",
-    "text": "Submission\nSubmit your work by adding your new files to the lab repo with git add, commit with git commit, and push your changes to GitHub with git push. You may add/commit/push as many times as you like; only the last revision will be marked. Your repo should include:\n\nYour source code in the language of your choice\nYour report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)\nYour list of references\n\n\n\n\n\n\n\nImportant\n\n\n\nDo not commit virtual environments (venv) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a .gitignore file to your repo such as this one.\nIf you are using Python 3.13 or newer, the virtual environment directory will be ignored automatically.\n\n\nLabs are marked pass/fail based on “best effort” completion — you don’t need to finish the whole thing, just get as far as you can in a reasonable amount of time."
-  },
-  {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "assignments/01-simple-model.html",
-    "href": "assignments/01-simple-model.html",
-    "title": "Assignment 1: Simple Modelling",
-    "section": "",
-    "text": "Due date: Wednesday, September 30, 2026 at 11:59 PM (or at least, before Thursday morning). This is an extension from the original due date of Friday September 25th, as we need a bit more time to finish the content."
-  },
-  {
-    "objectID": "assignments/01-simple-model.html#setup",
-    "href": "assignments/01-simple-model.html#setup",
-    "title": "Assignment 1: Simple Modelling",
-    "section": "Setup",
-    "text": "Setup\nYou may work in groups up to 3. Please join a group on D2L, then pick one person to accept the assignment and create the GitHub repository with the dataset. Whoever does this becomes the group manager and can invite team members with their GitHub username.\n\n\n\n\n\n\nTipIf you make a mistake with groups\n\n\n\nDon’t worry, this is the first time for all of us using Classroom50, and the platform itself is brand new. Let me know if you accidentally created two groups, or joined the wrong one; I can modify groups on the backend.\n\n\nIn your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create one coherent report named assignment1 that includes:\n\nYour group members’ names\nSome key figures and commentary on data exploration\nDescription of your data processing decisions\nA summary of your experiments\nFigures and discussion on your final models\n\nYour report can be in Markdown or PDF format. In these instructions, I’ve indicated where you should write in your report in an annoying bold face.\nI encourage you to talk things through as you try different things. If you talk with classmates from a different group, cite their contribution. Similarly, if you use a web resource, add a link in the code — this is both polite, and a good habit to develop."
-  },
-  {
-    "objectID": "assignments/01-simple-model.html#the-problem",
-    "href": "assignments/01-simple-model.html#the-problem",
-    "title": "Assignment 1: Simple Modelling",
-    "section": "The problem",
-    "text": "The problem\nYou are working for the provincial government and are asked to help predict staffing budgets. Salaries are considered a known quantity, but benefits (cash and non-cash) appear to be more variable. To address this, you must build two models:\n\na regression model to predict the total cash and non-cash benefits per employee\na classification model to identify employees with less than $20,000 in benefits1\n\nThe benefits_train.csv file in your starter repo has been created from the Alberta Salary and severance disclosure table; I have reserved a separate test set and will release it for your testing pleasure after the assignment is complete.\n\nPreliminary EDA and processing\nExploratory data analysis is an important step in data processing, but it is not the main focus of this assignment. You will need to do just enough to have an understanding of what the data looks like, such as:\n\nWhat features are present\nAre there any obvious relationships between features\nHow many unique values (categorical) or what are the distributions (numeric)\n\nThe results of your EDA will inform your processing pipeline, such as choosing a categorical encoding approach.\nIn your report, include a key figure or two from your EDA and briefly describe what you see.\n\n\nRegression model\nUsing your choice of regression model from Scikit-learn, create and train a regression model to predict the total benefits (NonCashBenefits + CashBenefits) for each employee. You will need to create this total benefits column, or as a separate vector.\n\n\n\n\n\n\nTip\n\n\n\nDon’t forget to remove or exclude the CashBenefits and NonCashBenefits fields of your training dataframe!\n\n\n\nYou will need to do some basic processing on the training data, but don’t feel the need to use all the features! In your report, briefly justify the following decisions:\n\nWhich features should be included?\nHow should categorical features be encoded?\nHow should numeric features be transformed?\n\nI recommend creating a Scikit-learn Pipeline to be able to fit your processing parameters and model all in one go.\nValidate your model using cross-validation. An easy way to do this is with sklearn.model_selection.cross_val_score. You will need to choose an appropriate metric and pass it as the scoring parameter; feel free to experiment with multiple. In your report, briefly justify why the metric chosen was appropriate.\nIterate! Based on the results of cross-validation, try to improve your model. You can tweak your processing parameters, model parameters, or even choose a different model. Briefly document your experiments in your report, making note of any changes that have impact. &gt; Don’t spend too much time refining your model — the goal is to learn about the process and the factors that impact the results, not to produce the absolute best predictive model possible.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code.\n\nAt this stage, you don’t have final test data, so the process basically stops here.\n\n\nClassification model\nThis time, you’ll be doing basically the same thing, but with a binary classification model. Create your prediction target (labels) as a Boolean vector by thresholding total benefits &lt; 20,000. This can be done in numpy simply as (for example):\ny = total_benefits &lt; 20_000\n\nCount how many labels you have of each class (True or False). In your report, comment on the class balance.\nAs before, create a Scikit-learn pipeline and pick a classification model. You may copy the same pipeline from the previous task and simply swap out the model; you don’t need to document your processing decisions again.\nOnce more, pick an appropriate metric and validate your model using cross-validation. Be careful of the class (im)balance!\nAgain, iterate and try to improve your model based on the results of cross-validation. In your report, make note of what you try and how it impacts the model.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code, formatted neatly as a code block."
-  },
-  {
-    "objectID": "assignments/01-simple-model.html#reflections",
-    "href": "assignments/01-simple-model.html#reflections",
-    "title": "Assignment 1: Simple Modelling",
-    "section": "Reflections",
-    "text": "Reflections\nWrite a brief paragraph describing what you found challenging about this assignment, and one thing that was particularly interesting or surprising."
-  },
-  {
-    "objectID": "assignments/01-simple-model.html#marking-scheme",
-    "href": "assignments/01-simple-model.html#marking-scheme",
-    "title": "Assignment 1: Simple Modelling",
-    "section": "Marking Scheme",
-    "text": "Marking Scheme\nEach of the following components will be marked on a 4-point scale and weighted.\n\n\n\n\n\n\n\nComponent\nWeight\n\n\n\n\nPreliminary EDA\n10%\n\n\nRegression pipeline development process, observations, comments\n30%\n\n\nClassification pipeline development process, observations, comments\n30%\n\n\nReflections\n20%\n\n\nCitations, overall coherency\n10%\n\n\n\n\n\n\n\n\n\n\n\nScore\nDescription\n\n\n\n\n4\nExcellent — thoughtful and creative without any errors or omissions\n\n\n3\nPretty good, but with minor errors or omissions\n\n\n2\nMostly complete, but with major errors or omissions, lacking in detail\n\n\n1\nA minimal effort was made, incomplete or incorrect\n\n\n0\nNo effort was made, or the submission is plagiarized"
-  },
-  {
-    "objectID": "assignments/01-simple-model.html#footnotes",
-    "href": "assignments/01-simple-model.html#footnotes",
-    "title": "Assignment 1: Simple Modelling",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nWhy under $20k? I don’t know, maybe they get a prize or something. It just seemed like a clear dividing line when I inspected the data, and I needed an excuse to turn this into a classification problem.↩︎"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "",
-    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
-  },
-  {
-    "objectID": "index.html#lectures",
-    "href": "index.html#lectures",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nSlide 9\n\n\nSep 22, 2026\n4: Categorical data basics\n \n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#labs",
-    "href": "index.html#labs",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Labs",
-    "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "labs/02-basic-models.html",
-    "href": "labs/02-basic-models.html",
-    "title": "2: Basic Modelling",
-    "section": "",
-    "text": "Lab submission due on September 23, 2026."
-  },
-  {
-    "objectID": "labs/02-basic-models.html#objective",
-    "href": "labs/02-basic-models.html#objective",
-    "title": "2: Basic Modelling",
-    "section": "Objective",
-    "text": "Objective\nLearn a bit about:\n\nScikit-learn pipelines\nThe need for validation data\nThe overall iterative workflow of making predictions from data\n\nAs we haven’t yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation."
-  },
-  {
-    "objectID": "labs/02-basic-models.html#setup",
-    "href": "labs/02-basic-models.html#setup",
-    "title": "2: Basic Modelling",
-    "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab02 in your labs repo. Download and add to it:\n\ntitanic_train.csv — the training data\ntitanic.ipynb — the starter notebook\n\nYou can also check out the test data, but this doesn’t have a truth value. If you want to know the final performance of your model, you’ll need to submit it to Kaggle."
-  },
-  {
-    "objectID": "labs/02-basic-models.html#predicting-titanic-survivorship",
-    "href": "labs/02-basic-models.html#predicting-titanic-survivorship",
-    "title": "2: Basic Modelling",
-    "section": "Predicting Titanic survivorship",
-    "text": "Predicting Titanic survivorship\nConsider this a “Hello, world!” of supervised learning! The Titanic survival dataset is one of the most popular practice datasets.\n\nOpen your copy of titanic.ipynb and run the first cell. Install any missing packages you encounter.\nI’ve done some basic exploratory data analysis and constructed the pipeline for you, as we haven’t gotten to this in class yet. The pipeline is as follows:\npipeline = make_pipeline(\n   make_column_transformer(\n      (OneHotEncoder(), cat_feats),\n      (StandardScaler(), num_feats)\n   )\n   # TODO: add some kind of classification model\n)\nAdd a decision tree classifier to the pipeline.\nTrain and cross-validate your tree, choosing an appropriate scoring metric.\n\n\n\n\n\n\nTip\n\n\n\nIf your model complains about missing values (or some more obscure message about NaN), you might need to remove the Embarked feature — I missed that it actually has 2 missing features.\n\n\nExperiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:\n\nDropping features that don’t add value\nTraining a forest of trees\nChanging tree depth to avoid overfitting\n\nAs you make changes, record why you’re making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it’s okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:\n# Started with max depth of 3 but it seemed like it wasn't learning enough\n# Increasing to 4 improves predictions without overfitting\ntree = DecisionTreeClassifier(maxDepth=4)\nRepeat, but with some kind of linear classification model, such as LinearSVC or LogisticRegression. What changes?"
-  },
-  {
-    "objectID": "labs/02-basic-models.html#submit",
-    "href": "labs/02-basic-models.html#submit",
-    "title": "2: Basic Modelling",
-    "section": "Submit",
-    "text": "Submit\nAdd and push your code and observations to your GitHub repo for your completion-based lab mark."
-  },
-  {
-    "objectID": "labs/index.html",
-    "href": "labs/index.html",
-    "title": "Labs",
-    "section": "",
-    "text": "Date\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\n\nNo matching items"
+    "text": "Coming up next\n\nLecture: Basic numeric transformations\nLab: Modelling with categorical data\nAssignment 1 due soon!\n\n\nFeature Engineering Chapter 5"
   },
   {
     "objectID": "lectures/02-basic-models.html",
@@ -630,94 +273,570 @@
     "text": "Coming up next\n\nExploring and understanding your data\nSplitting your data\n\nRepeatability considerations\nStratified sampling\n\nAssignment 1: Simple modelling"
   },
   {
-    "objectID": "lectures/04-categorical.html",
-    "href": "lectures/04-categorical.html",
-    "title": "4: Categorical data basics",
+    "objectID": "labs/index.html",
+    "href": "labs/index.html",
+    "title": "Labs",
+    "section": "",
+    "text": "Date\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "labs/02-basic-models.html",
+    "href": "labs/02-basic-models.html",
+    "title": "2: Basic Modelling",
+    "section": "",
+    "text": "Lab submission due on September 23, 2026."
+  },
+  {
+    "objectID": "labs/02-basic-models.html#objective",
+    "href": "labs/02-basic-models.html#objective",
+    "title": "2: Basic Modelling",
+    "section": "Objective",
+    "text": "Objective\nLearn a bit about:\n\nScikit-learn pipelines\nThe need for validation data\nThe overall iterative workflow of making predictions from data\n\nAs we haven’t yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation."
+  },
+  {
+    "objectID": "labs/02-basic-models.html#setup",
+    "href": "labs/02-basic-models.html#setup",
+    "title": "2: Basic Modelling",
+    "section": "Setup",
+    "text": "Setup\nCreate a new directory named lab02 in your labs repo. Download and add to it:\n\ntitanic_train.csv — the training data\ntitanic.ipynb — the starter notebook\n\nYou can also check out the test data, but this doesn’t have a truth value. If you want to know the final performance of your model, you’ll need to submit it to Kaggle."
+  },
+  {
+    "objectID": "labs/02-basic-models.html#predicting-titanic-survivorship",
+    "href": "labs/02-basic-models.html#predicting-titanic-survivorship",
+    "title": "2: Basic Modelling",
+    "section": "Predicting Titanic survivorship",
+    "text": "Predicting Titanic survivorship\nConsider this a “Hello, world!” of supervised learning! The Titanic survival dataset is one of the most popular practice datasets.\n\nOpen your copy of titanic.ipynb and run the first cell. Install any missing packages you encounter.\nI’ve done some basic exploratory data analysis and constructed the pipeline for you, as we haven’t gotten to this in class yet. The pipeline is as follows:\npipeline = make_pipeline(\n   make_column_transformer(\n      (OneHotEncoder(), cat_feats),\n      (StandardScaler(), num_feats)\n   )\n   # TODO: add some kind of classification model\n)\nAdd a decision tree classifier to the pipeline.\nTrain and cross-validate your tree, choosing an appropriate scoring metric.\n\n\n\n\n\n\nTip\n\n\n\nIf your model complains about missing values (or some more obscure message about NaN), you might need to remove the Embarked feature — I missed that it actually has 2 missing features.\n\n\nExperiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:\n\nDropping features that don’t add value\nTraining a forest of trees\nChanging tree depth to avoid overfitting\n\nAs you make changes, record why you’re making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it’s okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:\n# Started with max depth of 3 but it seemed like it wasn't learning enough\n# Increasing to 4 improves predictions without overfitting\ntree = DecisionTreeClassifier(maxDepth=4)\nRepeat, but with some kind of linear classification model, such as LinearSVC or LogisticRegression. What changes?"
+  },
+  {
+    "objectID": "labs/02-basic-models.html#submit",
+    "href": "labs/02-basic-models.html#submit",
+    "title": "2: Basic Modelling",
+    "section": "Submit",
+    "text": "Submit\nAdd and push your code and observations to your GitHub repo for your completion-based lab mark."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "",
+    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
+  },
+  {
+    "objectID": "index.html#lectures",
+    "href": "index.html#lectures",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Lectures",
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#labs",
+    "href": "index.html#labs",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Labs",
+    "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments/01-simple-model.html",
+    "href": "assignments/01-simple-model.html",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "",
+    "text": "Due date: Wednesday, September 30, 2026 at 11:59 PM (or at least, before Thursday morning). This is an extension from the original due date of Friday September 25th, as we need a bit more time to finish the content."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#setup",
+    "href": "assignments/01-simple-model.html#setup",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "Setup",
+    "text": "Setup\nYou may work in groups up to 3. Please join a group on D2L, then pick one person to accept the assignment and create the GitHub repository with the dataset. Whoever does this becomes the group manager and can invite team members with their GitHub username.\n\n\n\n\n\n\nTipIf you make a mistake with groups\n\n\n\nDon’t worry, this is the first time for all of us using Classroom50, and the platform itself is brand new. Let me know if you accidentally created two groups, or joined the wrong one; I can modify groups on the backend.\n\n\nIn your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create one coherent report named assignment1 that includes:\n\nYour group members’ names\nSome key figures and commentary on data exploration\nDescription of your data processing decisions\nA summary of your experiments\nFigures and discussion on your final models\n\nYour report can be in Markdown or PDF format. In these instructions, I’ve indicated where you should write in your report in an annoying bold face.\nI encourage you to talk things through as you try different things. If you talk with classmates from a different group, cite their contribution. Similarly, if you use a web resource, add a link in the code — this is both polite, and a good habit to develop."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#the-problem",
+    "href": "assignments/01-simple-model.html#the-problem",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "The problem",
+    "text": "The problem\nYou are working for the provincial government and are asked to help predict staffing budgets. Salaries are considered a known quantity, but benefits (cash and non-cash) appear to be more variable. To address this, you must build two models:\n\na regression model to predict the total cash and non-cash benefits per employee\na classification model to identify employees with less than $20,000 in benefits1\n\nThe benefits_train.csv file in your starter repo has been created from the Alberta Salary and severance disclosure table; I have reserved a separate test set and will release it for your testing pleasure after the assignment is complete.\n\nPreliminary EDA and processing\nExploratory data analysis is an important step in data processing, but it is not the main focus of this assignment. You will need to do just enough to have an understanding of what the data looks like, such as:\n\nWhat features are present\nAre there any obvious relationships between features\nHow many unique values (categorical) or what are the distributions (numeric)\n\nThe results of your EDA will inform your processing pipeline, such as choosing a categorical encoding approach.\nIn your report, include a key figure or two from your EDA and briefly describe what you see.\n\n\nRegression model\nUsing your choice of regression model from Scikit-learn, create and train a regression model to predict the total benefits (NonCashBenefits + CashBenefits) for each employee. You will need to create this total benefits column, or as a separate vector.\n\n\n\n\n\n\nTip\n\n\n\nDon’t forget to remove or exclude the CashBenefits and NonCashBenefits fields of your training dataframe!\n\n\n\nYou will need to do some basic processing on the training data, but don’t feel the need to use all the features! In your report, briefly justify the following decisions:\n\nWhich features should be included?\nHow should categorical features be encoded?\nHow should numeric features be transformed?\n\nI recommend creating a Scikit-learn Pipeline to be able to fit your processing parameters and model all in one go.\nValidate your model using cross-validation. An easy way to do this is with sklearn.model_selection.cross_val_score. You will need to choose an appropriate metric and pass it as the scoring parameter; feel free to experiment with multiple. In your report, briefly justify why the metric chosen was appropriate.\nIterate! Based on the results of cross-validation, try to improve your model. You can tweak your processing parameters, model parameters, or even choose a different model. Briefly document your experiments in your report, making note of any changes that have impact. &gt; Don’t spend too much time refining your model — the goal is to learn about the process and the factors that impact the results, not to produce the absolute best predictive model possible.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code.\n\nAt this stage, you don’t have final test data, so the process basically stops here.\n\n\nClassification model\nThis time, you’ll be doing basically the same thing, but with a binary classification model. Create your prediction target (labels) as a Boolean vector by thresholding total benefits &lt; 20,000. This can be done in numpy simply as (for example):\ny = total_benefits &lt; 20_000\n\nCount how many labels you have of each class (True or False). In your report, comment on the class balance.\nAs before, create a Scikit-learn pipeline and pick a classification model. You may copy the same pipeline from the previous task and simply swap out the model; you don’t need to document your processing decisions again.\nOnce more, pick an appropriate metric and validate your model using cross-validation. Be careful of the class (im)balance!\nAgain, iterate and try to improve your model based on the results of cross-validation. In your report, make note of what you try and how it impacts the model.\nWhen you’re happy with the results, document your final pipeline in your report. This can just be a copy/paste of your pipeline construction code, formatted neatly as a code block."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#reflections",
+    "href": "assignments/01-simple-model.html#reflections",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "Reflections",
+    "text": "Reflections\nWrite a brief paragraph describing what you found challenging about this assignment, and one thing that was particularly interesting or surprising."
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#marking-scheme",
+    "href": "assignments/01-simple-model.html#marking-scheme",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "Marking Scheme",
+    "text": "Marking Scheme\nEach of the following components will be marked on a 4-point scale and weighted.\n\n\n\n\n\n\n\nComponent\nWeight\n\n\n\n\nPreliminary EDA\n10%\n\n\nRegression pipeline development process, observations, comments\n30%\n\n\nClassification pipeline development process, observations, comments\n30%\n\n\nReflections\n20%\n\n\nCitations, overall coherency\n10%\n\n\n\n\n\n\n\n\n\n\n\nScore\nDescription\n\n\n\n\n4\nExcellent — thoughtful and creative without any errors or omissions\n\n\n3\nPretty good, but with minor errors or omissions\n\n\n2\nMostly complete, but with major errors or omissions, lacking in detail\n\n\n1\nA minimal effort was made, incomplete or incorrect\n\n\n0\nNo effort was made, or the submission is plagiarized"
+  },
+  {
+    "objectID": "assignments/01-simple-model.html#footnotes",
+    "href": "assignments/01-simple-model.html#footnotes",
+    "title": "Assignment 1: Simple Modelling",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWhy under $20k? I don’t know, maybe they get a prize or something. It just seemed like a clear dividing line when I inspected the data, and I needed an excuse to turn this into a classification problem.↩︎"
+  },
+  {
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html",
+    "href": "labs/01-clean-regression.html",
+    "title": "1: Regression with Clean Data",
+    "section": "",
+    "text": "Lab submission due on September 16, 2026."
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#objective",
+    "href": "labs/01-clean-regression.html#objective",
+    "title": "1: Regression with Clean Data",
+    "section": "Objective",
+    "text": "Objective\nThe main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need “clean” and easy to manage data."
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#deliverables",
+    "href": "labs/01-clean-regression.html#deliverables",
+    "title": "1: Regression with Clean Data",
+    "section": "Deliverables",
+    "text": "Deliverables\nClick here to accept the “labs” assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please create a new directory named lab01 (or similar) and add:\n\nYour code to load, process, and visualize the data\nA brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions\nA list of references, such as:\n\nComplete URLs, e.g. to library documentation or Stack Overflow answers\nSearch queries, particularly if you used the “AI overview” response\nA complete transcript of AI chat history, if any\n\n\nThese can all be in one document if you document your process inline with your code.\n\n\n\n\n\n\nCaution\n\n\n\nAI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#instructions",
+    "href": "labs/01-clean-regression.html#instructions",
+    "title": "1: Regression with Clean Data",
+    "section": "Instructions",
+    "text": "Instructions\n\nClone the labs repo to your local machine and create a new subdirectory named lab01. In this folder:\nIn the programming language of your choice, write a program to:\n\nLoad the data in simple_regression.csv\nCalculate the line of best fit using simple linear regression\nCreate a scatter plot of the data with the best fit line\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to document your process as you do this! For example, if you get stuck on a step and need to look things up, add a comment.\n\n\nWith reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.\n\nIs linear regression an appropriate model for these data?\nHow well does your model fit the data?\nWhat additional information would help to create a more accurate model?\n\nRepeat the first question but with the simple_regression_full.csv dataset. This contains extra columns; select only the same ones that are present in simple_regression.csv. In your report, answer the following:\n\nWhat additional steps did you need to do to recreate the plot?\nDo you have any guess what this dataset represents?"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#submission",
+    "href": "labs/01-clean-regression.html#submission",
+    "title": "1: Regression with Clean Data",
+    "section": "Submission",
+    "text": "Submission\nSubmit your work by adding your new files to the lab repo with git add, commit with git commit, and push your changes to GitHub with git push. You may add/commit/push as many times as you like; only the last revision will be marked. Your repo should include:\n\nYour source code in the language of your choice\nYour report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)\nYour list of references\n\n\n\n\n\n\n\nImportant\n\n\n\nDo not commit virtual environments (venv) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a .gitignore file to your repo such as this one.\nIf you are using Python 3.13 or newer, the virtual environment directory will be ignored automatically.\n\n\nLabs are marked pass/fail based on “best effort” completion — you don’t need to finish the whole thing, just get as far as you can in a reasonable amount of time."
+  },
+  {
+    "objectID": "labs/03-categorical.html",
+    "href": "labs/03-categorical.html",
+    "title": "3: Categorical Data Representation",
+    "section": "",
+    "text": "Lab submission due on September 29, 2026."
+  },
+  {
+    "objectID": "labs/03-categorical.html#objective",
+    "href": "labs/03-categorical.html#objective",
+    "title": "3: Categorical Data Representation",
+    "section": "Objective",
+    "text": "Objective\nLearn a bit about:\n\nMore Scikit-learn pipelines\nCategorical data encoding decisions\nThings to watch out for when encoding categorical data"
+  },
+  {
+    "objectID": "labs/03-categorical.html#setup",
+    "href": "labs/03-categorical.html#setup",
+    "title": "3: Categorical Data Representation",
+    "section": "Setup",
+    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually.\nIf you download and load the CSV, you’ll need to define your y target variable from the Class column."
+  },
+  {
+    "objectID": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
+    "href": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
+    "title": "3: Categorical Data Representation",
+    "section": "Predicting breast cancer recurrance",
+    "text": "Predicting breast cancer recurrance\nThis is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study1. A number of categorical features are recorded for each, along with the target variable (one of no-recurrence-events and recurrence-events).\nEach of the following steps is also indicated as TODO items in the starter notebook.\n\nConvert the target into a binary feature, assumed to be named y\nDo some basic exploration on the categorical features, paying attention to:\n\nfeature cardinality\nordinal vs nominal\n\nThere’s also a single continuous value — inspect it using an appropriate visualization or other method\nDefine appropriate encoders for the categorical features (either OneHotEncoder or OrdinalEncoder). Pay attention to the names of the categories for ordinal encoding! By default they will map to alphabetical order, but that is not the same as numerical order (why?).\nPut your encoders into the provided pipeline skeleton, then cross-validate to see how your model behaves. Can you make any changes that improve the performance?\n\n\n\n\n\n\n\nNoteStretch goal\n\n\n\nIf you want to take things a step further, see if you can interpret the .feature_importances_ attribute of the classifier. You can access this with the last element of the pipeline, i.e.:\nimportance = pipeline[-1].feature_importances_"
+  },
+  {
+    "objectID": "labs/03-categorical.html#submit",
+    "href": "labs/03-categorical.html#submit",
+    "title": "3: Categorical Data Representation",
+    "section": "Submit",
+    "text": "Submit\nAs usual, git add, commit, and push your work. It’s okay if you don’t make it all the way, I’ll be looking for at least one appropriately defined categorical encoder."
+  },
+  {
+    "objectID": "labs/03-categorical.html#footnotes",
+    "href": "labs/03-categorical.html#footnotes",
+    "title": "3: Categorical Data Representation",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis seems to me to be a limitation of the dataset — there may be more recurrances that happened after the study period.↩︎"
+  },
+  {
+    "objectID": "lectures/01-intro.html",
+    "href": "lectures/01-intro.html",
+    "title": "1. Introduction",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
   },
   {
-    "objectID": "lectures/04-categorical.html#code",
-    "href": "lectures/04-categorical.html#code",
-    "title": "4: Categorical data basics",
+    "objectID": "lectures/01-intro.html#code",
+    "href": "lectures/01-intro.html#code",
+    "title": "1. Introduction",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data"
   },
   {
-    "objectID": "lectures/04-categorical.html#slides",
-    "href": "lectures/04-categorical.html#slides",
-    "title": "4: Categorical data basics",
+    "objectID": "lectures/01-intro.html#slides",
+    "href": "lectures/01-intro.html#slides",
+    "title": "1. Introduction",
     "section": "",
     "text": "PDF Slides\n HTML Slides"
   },
   {
-    "objectID": "lectures/04-categorical.html#data-3464-fundamentals-of-data-processing",
-    "href": "lectures/04-categorical.html#data-3464-fundamentals-of-data-processing",
-    "title": "4: Categorical data basics",
-    "section": "DATA 3464: Fundamentals of Data Processing",
-    "text": "DATA 3464: Fundamentals of Data Processing\n\nCategorical Data Basics\nCharlotte Curtis September 22, 2026"
+    "objectID": "lectures/01-intro.html#meet-your-instructor",
+    "href": "lectures/01-intro.html#meet-your-instructor",
+    "title": "1. Introduction",
+    "section": "Meet your instructor",
+    "text": "Meet your instructor\n\n\nName: Charlotte Curtis\nPronouns: She/her\nOffice: B102-4\nEmail: ccurtis@mtroyal.ca\nOffice hours: Book here"
   },
   {
-    "objectID": "lectures/04-categorical.html#topic-overview",
-    "href": "lectures/04-categorical.html#topic-overview",
-    "title": "4: Categorical data basics",
-    "section": "Topic overview",
-    "text": "Topic overview\n\nExploring categorical data\nBasic categorical data encoding strategies\nOut of scope: Fancier encoding strategies, like feature hashing and target encoding\n\nResources used:\n\nFeature Engineering Chapter 5\nScikit-learn User Guide (7.3)"
+    "objectID": "lectures/01-intro.html#my-background",
+    "href": "lectures/01-intro.html#my-background",
+    "title": "1. Introduction",
+    "section": "My Background",
+    "text": "My Background"
   },
   {
-    "objectID": "lectures/04-categorical.html#what-is-categorical-data",
-    "href": "lectures/04-categorical.html#what-is-categorical-data",
-    "title": "4: Categorical data basics",
-    "section": "What is categorical data?",
-    "text": "What is categorical data?\n\nSamples can take on one of several discrete values or groups\n\nNominal: no particular order to the groups\nOrdinal: groups relate to each other in a specific order\n\nCategories can be represented as strings or numeric types\n\nDomain knowledge is necessary!\n\n\n\n\nLet’s take a few minutes to brainstorm some examples"
+    "objectID": "lectures/01-intro.html#data-processing",
+    "href": "lectures/01-intro.html#data-processing",
+    "title": "1. Introduction",
+    "section": "Data processing",
+    "text": "Data processing\n\nThis course introduces techniques for ethically and responsibly wrangling and manipulating datasets to make them appropriate for addressing the question at hand. Topics may include cleaning and transforming data, integrity and quality measures, common file formats, feature selection and engineering, and generating features from unstructured sources such as text and images.\n\n\nColloquially and lovingly referred to as data wrangling"
   },
   {
-    "objectID": "lectures/04-categorical.html#exploring-categorical-data",
-    "href": "lectures/04-categorical.html#exploring-categorical-data",
-    "title": "4: Categorical data basics",
-    "section": "Exploring categorical data",
-    "text": "Exploring categorical data\n\nWe’ve already done some of this, but some ideas to consider:\n\npandas.DataFrame.value_counts() - how many of each category?\nUse category to group, then compute summary stats\nPlot color per category\nScatter plot with jitter"
+    "objectID": "lectures/01-intro.html#grade-assessment",
+    "href": "lectures/01-intro.html#grade-assessment",
+    "title": "1. Introduction",
+    "section": "Grade Assessment",
+    "text": "Grade Assessment\n\n\n\nComponent\nWeight\nComment\n\n\n\n\nTutorial exercises\n10%\nPass/fail\n\n\nAssignments\n35%\n8/12/15 split, in groups\n\n\nWritten tests\n35%\nx2, split 15%/20% in your favour\n\n\nFinal exam\n20%\nIn lab with limited internet\n\n\n\n\nA passing grade (50%) must be earned on the weighted average of written tests and final exam to be eligible for a C- in the course"
   },
   {
-    "objectID": "lectures/04-categorical.html#representing-categorical-data",
-    "href": "lectures/04-categorical.html#representing-categorical-data",
-    "title": "4: Categorical data basics",
-    "section": "Representing categorical data",
-    "text": "Representing categorical data\n\nTo do math on categorical data, we need to map to numbers\nConsider:\n\nOrdinal or nominal?\nHow many possible categories (cardinality)?\nAny chance new ones might show up?\n\n\n\n\nHow could we encode the examples? What are the benefits and drawbacks of each method?"
+    "objectID": "lectures/01-intro.html#course-website",
+    "href": "lectures/01-intro.html#course-website",
+    "title": "1. Introduction",
+    "section": "Course Website",
+    "text": "Course Website\nLecture notes, lab and assignment instructions will be hosted on an external site\nRendered at: https://mru-data3464.github.io/f26\nSource repo: https://github.com/mru-data3464/f26\n\nBonus marks may be awarded for substantial corrections to materials, submitted as pull requests"
   },
   {
-    "objectID": "lectures/04-categorical.html#ordinal-encoding",
-    "href": "lectures/04-categorical.html#ordinal-encoding",
-    "title": "4: Categorical data basics",
-    "section": "Ordinal encoding",
-    "text": "Ordinal encoding\n\n\n\n\n\n\nCategory\nFeature\n\n\n\n\nUnder Control\n0\n\n\nBeing Held\n1\n\n\n*Out of Control (Monitored)\n2\n\n\nOut of Control\n3\n\n\n\n* I am not a wildfire expert, this is my best guess at ordering\n\nImage source: Natural Resources Canada"
+    "objectID": "lectures/01-intro.html#textbooks",
+    "href": "lectures/01-intro.html#textbooks",
+    "title": "1. Introduction",
+    "section": "Textbook(s)",
+    "text": "Textbook(s)\n\n\n\nhttp://www.feat.engineering, additional open source resources as needed\nAll the documentation!\n\nPandas\nNumpy\nSciPy\nScikit Learn\nMatplotlib\n\n\n\nDon’t rely on AI summaries!"
   },
   {
-    "objectID": "lectures/04-categorical.html#nominal-categories-one-hot-encoding",
-    "href": "lectures/04-categorical.html#nominal-categories-one-hot-encoding",
-    "title": "4: Categorical data basics",
-    "section": "Nominal categories: one-hot encoding",
-    "text": "Nominal categories: one-hot encoding\n\n\nCategories have no natural relationship\nCreate \\(k\\) new features from \\(k\\) categories, very sparse matrix\n\n\n\n\n\nAnimal\n\ncat\ndog\nrabbit\n\n\n\n\ncat\n→\n1\n0\n0\n\n\ndog\n→\n0\n1\n0\n\n\nrabbit\n→\n0\n0\n1"
+    "objectID": "lectures/01-intro.html#speaking-of-ai",
+    "href": "lectures/01-intro.html#speaking-of-ai",
+    "title": "1. Introduction",
+    "section": "Speaking of AI…",
+    "text": "Speaking of AI…\nIn this course (and others, and your career), you will need to know:\n\nWhat to do, and why\nHow to do it\n\nNote: AI will not be available during the final practical exam\n\n\nWhich of these things seem appropriate for AI assistance?"
   },
   {
-    "objectID": "lectures/04-categorical.html#from-numbers-to-categories-discretization",
-    "href": "lectures/04-categorical.html#from-numbers-to-categories-discretization",
-    "title": "4: Categorical data basics",
-    "section": "From numbers to categories: discretization",
-    "text": "From numbers to categories: discretization\n\n\n\nSometimes numeric data is better represented as categorical\nStill needs encoding strategy\nCan introduce nonlinear relationships\nLike everything, contextual"
+    "objectID": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",
+    "href": "lectures/01-intro.html#tentative-weekly-plan-before-reading-week",
+    "title": "1. Introduction",
+    "section": "Tentative weekly plan: Before reading week",
+    "text": "Tentative weekly plan: Before reading week\n\n\n\n\n\n\n\n\nWeek\nTopic\nChapter (ish)\n\n\n\n\n0-1\nIntroduction and overview\n1-2\n\n\n1-2\nBasic machine learning models and categorical encoding\n3, 5\n\n\n2-3\nExploring, splitting, and sampling data\n4\n\n\n4\nBasic numeric data transformations\n6\n\n\n5\nDealing with missing and weird data\n8\n\n\n\nWritten test 1: Thursday, Oct 7"
   },
   {
-    "objectID": "lectures/04-categorical.html#advantagesdisadvantages-of-various-methods",
-    "href": "lectures/04-categorical.html#advantagesdisadvantages-of-various-methods",
-    "title": "4: Categorical data basics",
-    "section": "Advantages/disadvantages of various methods",
-    "text": "Advantages/disadvantages of various methods\n\n\nOrdinal\n\n\nCompact (1 column/feature)\nOnly useful for naturally ordered data\n\n \n\nImposes (linear) relationship\nDifficult to deal with novel categories\n\n\n\nOne-hot\n\n\nNo assumptions made about relationships\nNovel features implied by 0\n\n \n\nMemory intensive\nNot good for high cardinality\nPotential collinearity issues"
+    "objectID": "lectures/01-intro.html#tentative-weekly-plan-second-half",
+    "href": "lectures/01-intro.html#tentative-weekly-plan-second-half",
+    "title": "1. Introduction",
+    "section": "Tentative weekly plan: second half",
+    "text": "Tentative weekly plan: second half\n\n\n\nWeek\nTopic\nChapter (ish)\n\n\n\n\n6\nFancy numeric and categorical transformations\n5, 6\n\n\n7\nWrangling text\n\n\n\n9\nBash scripting and data cards\n\n\n\n10\n1D signals and audio\n\n\n\n11\nImages and videos (2D signals)\n\n\n\n12\nPresentations and buffer time\n\n\n\n\nWritten test 2: Tuesday, Dec 1"
   },
   {
-    "objectID": "lectures/04-categorical.html#coming-up-next",
-    "href": "lectures/04-categorical.html#coming-up-next",
-    "title": "4: Categorical data basics",
+    "objectID": "lectures/01-intro.html#core-courses-so-far",
+    "href": "lectures/01-intro.html#core-courses-so-far",
+    "title": "1. Introduction",
+    "section": "Core courses so far",
+    "text": "Core courses so far"
+  },
+  {
+    "objectID": "lectures/01-intro.html#what-do-you-know-about",
+    "href": "lectures/01-intro.html#what-do-you-know-about",
+    "title": "1. Introduction",
+    "section": "What do you know about…",
+    "text": "What do you know about…\n\nVarious probability distributions\nLinear and logistic regression\nData quality measures\nData stewardship best practices\nDocument parsing, web scraping, audio/video feature detection\nLinear algebra and array programming\nPrediction tasks: classification and regression\nClustering and anomaly detection\nEvaluation metrics\nBasic data visualization (scatter plots, histograms, etc)"
+  },
+  {
+    "objectID": "lectures/01-intro.html#what-do-you-want-to-know-about",
+    "href": "lectures/01-intro.html#what-do-you-want-to-know-about",
+    "title": "1. Introduction",
+    "section": "What do you want to know about?",
+    "text": "What do you want to know about?\n\n\nExamples of Subject Matter\n\nFinance\nReal estate\nTransportation\nClimate\nPolitics\nBiology\nChemistry\nMalware\n\n\nExamples of Data types\n\nUnstructured text\nStructured text (e.g. csv, HTML)\nPDF\nWord documents\nImages\nAudio\nVideo"
+  },
+  {
+    "objectID": "lectures/01-intro.html#case-study-risk-of-ischemic-stroke",
+    "href": "lectures/01-intro.html#case-study-risk-of-ischemic-stroke",
+    "title": "1. Introduction",
+    "section": "Case study: risk of ischemic stroke",
+    "text": "Case study: risk of ischemic stroke\n\n\n\n\nChapter 2: http://www.feat.engineering/stroke-tour\n\n\nArterial stenosis can predict risk\nPlaque composition plays a role\nFeatures extracted from CT images\nOther risk factors (demographics, lifestyle) added to dataset\n\n\n\n\nMany decisions in the data analysis process are subjective - I will often make different decisions than the textbook"
+  },
+  {
+    "objectID": "lectures/01-intro.html#from-data-to-prediction",
+    "href": "lectures/01-intro.html#from-data-to-prediction",
+    "title": "1. Introduction",
+    "section": "From data to prediction",
+    "text": "From data to prediction\n\nUnderstand the problem and define the task\nCollect, anonymize and organize the data\nExtract features\nExplore the dataset\nSelect a model and preprocess\nTrain the model\nEvaluate, fine-tune, iterate\nDeploy and maintain your system\n\n\nAdapted from Aurélien Géron’s ML Project Checklist"
+  },
+  {
+    "objectID": "lectures/01-intro.html#applied-to-the-stroke-example",
+    "href": "lectures/01-intro.html#applied-to-the-stroke-example",
+    "title": "1. Introduction",
+    "section": "Applied to the stroke example",
+    "text": "Applied to the stroke example\n\nWhat is the problem? What do we need to do?\n(Collect, anonymize and organize the data) - Done for us\n(Extract features) - Done for us\nExplore the dataset\n\nA critically important component, DO NOT OFFLOAD TO AI\nThis can even be where the data sciencing stops and we jump straight to visualizations and communicating insights!\nCheck out Data for Good case studies"
+  },
+  {
+    "objectID": "lectures/01-intro.html#select-a-model-and-preprocess",
+    "href": "lectures/01-intro.html#select-a-model-and-preprocess",
+    "title": "1. Introduction",
+    "section": "5. Select a model and preprocess",
+    "text": "5. Select a model and preprocess\n\n\n\nSource: scikit-learn documentation"
+  },
+  {
+    "objectID": "lectures/01-intro.html#evaluate-fine-tune-and-iterate",
+    "href": "lectures/01-intro.html#evaluate-fine-tune-and-iterate",
+    "title": "1. Introduction",
+    "section": "7. Evaluate, fine-tune, and iterate",
+    "text": "7. Evaluate, fine-tune, and iterate\n\nIn my example, I jumped straight to testing on the held-back test set\nThis is a terrible idea! We have no confidence that the model actually worked. We could be:\n\noverfitting to the training data\nmaking incorrect assumptions about the data\napplying inappropriate transformations, or missing some\nusing the wrong model altogether\n\n\n\nValidation needs to happen before the final testing"
+  },
+  {
+    "objectID": "lectures/01-intro.html#coming-up-next",
+    "href": "lectures/01-intro.html#coming-up-next",
+    "title": "1. Introduction",
     "section": "Coming up next",
-    "text": "Coming up next\n\nLecture: Basic numeric transformations\nLab: Modelling with categorical data\nAssignment 1 due soon!\n\n\nFeature Engineering Chapter 5"
+    "text": "Coming up next\n\nLab: basic regression, show me where you’re at\nLecture: Simple models and evaluation metrics"
+  },
+  {
+    "objectID": "lectures/03-eda.html",
+    "href": "lectures/03-eda.html",
+    "title": "3. Exploratory Data Analysis",
+    "section": "",
+    "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/03-eda.html#code",
+    "href": "lectures/03-eda.html#code",
+    "title": "3. Exploratory Data Analysis",
+    "section": "",
+    "text": "Demo Notebook\n\n\n Demo Data"
+  },
+  {
+    "objectID": "lectures/03-eda.html#slides",
+    "href": "lectures/03-eda.html#slides",
+    "title": "3. Exploratory Data Analysis",
+    "section": "",
+    "text": "PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/03-eda.html#topic-overview",
+    "href": "lectures/03-eda.html#topic-overview",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Topic overview",
+    "text": "Topic overview\n\nExploratory data analysis (EDA)\nSplitting your data\n\nResources used:\n\nFeat.Engineering Chapter 3\nR for Data Science (2e), Chapter 10\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at MRU Library"
+  },
+  {
+    "objectID": "lectures/03-eda.html#exploratory-data-analysis",
+    "href": "lectures/03-eda.html#exploratory-data-analysis",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\nThe goal of EDA is to Understand your data\n\nAsk questions (e.g. do my data fit the linear model assumptions?)\nLook for answers (e.g. by making histograms)\nFind more questions and return to step 1 (hmm, those are some weird numbers, what do these values represent?)\n\n\n\nEDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. Some of these ideas will pan out, and some will be dead ends. — Hadley Wickham"
+  },
+  {
+    "objectID": "lectures/03-eda.html#basic-things-to-look-at",
+    "href": "lectures/03-eda.html#basic-things-to-look-at",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Basic things to look at",
+    "text": "Basic things to look at\n\nData source - File? Database? API?\nStructured/unstructured\nAssumption 1: relatively small (fits in memory) tabular dataset\n\nData types - numeric/categorical, text, other\n\nAssumption 2: numeric data\n\nRanges\nSummary statistics\nMissing values\n\nNext week: categorical data, after reading week unstructured"
+  },
+  {
+    "objectID": "lectures/03-eda.html#example-anscombes-quartet",
+    "href": "lectures/03-eda.html#example-anscombes-quartet",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Example: Anscombe’s Quartet",
+    "text": "Example: Anscombe’s Quartet\n\n\nVery small dataset, constructed by hand in 1973 by Francis Anscombe \n\nNot known exactly how he made it, but Drs. Roberta La Haye and Peter Zizler proposed a compelling argument for linear algebra"
+  },
+  {
+    "objectID": "lectures/03-eda.html#case-study-data-visualization-to-the-rescue",
+    "href": "lectures/03-eda.html#case-study-data-visualization-to-the-rescue",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Case Study: Data visualization to the rescue",
+    "text": "Case Study: Data visualization to the rescue\n\nA 2012 study about honesty reported that “Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end”\nIn 2020, the authors published a new paper admitting that their original results could not be replicated, and noticed an anomaly in the summary statistics\nThe 2020 paper also published the original data, which was downloaded and visualized by a team of anonymous researchers working with Data Colada\nThis led to the 2012 paper being retracted, a $25M lawsuit, a data-driven defense\n\n\n\nMoral of the story is, look at your data!"
+  },
+  {
+    "objectID": "lectures/03-eda.html#useful-starting-points",
+    "href": "lectures/03-eda.html#useful-starting-points",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Useful starting points",
+    "text": "Useful starting points\n\nAssuming your data is small enough and well structured:\n\npandas.DataFrame.info: data type, number of non-null, names, dimensions\npandas.DataFrame.head: return the first n rows (default 5). Also tail.\npandas.DataFrame.describe: Compute a bunch of summary statistics\nVarious aggregation statistics\n\n\n\nNext up, visualize!"
+  },
+  {
+    "objectID": "lectures/03-eda.html#types-of-exploratory-visualizations",
+    "href": "lectures/03-eda.html#types-of-exploratory-visualizations",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Types of exploratory visualizations",
+    "text": "Types of exploratory visualizations\n\nI will not provide an exhaustive list of visualizations!\nPandas provides a handy wrapper around matplotlib\nSo does Seaborn - check out the example gallery\nSome of my favourites:\n\nHistograms\nScatter plots/hexbin plots\nBox plots/violin plots\n\nBut before we get too deep into EDA, it’s time to split your data"
+  },
+  {
+    "objectID": "lectures/03-eda.html#why-split-your-data",
+    "href": "lectures/03-eda.html#why-split-your-data",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Why split your data?",
+    "text": "Why split your data?\n\n\n\nWe need to set aside a final test set to evaluate our final model\nHumans are great at detecting patterns!\nEven looking at test data could influence decisions, causing data leakage\n\n\nImage source: Spurious Correlations"
+  },
+  {
+    "objectID": "lectures/03-eda.html#when-to-split-your-data",
+    "href": "lectures/03-eda.html#when-to-split-your-data",
+    "title": "3. Exploratory Data Analysis",
+    "section": "When to split your data",
+    "text": "When to split your data\n\nHow much EDA should you do before splitting? You might need to know:\n\nAre there any missing values?\nIs there a need for stratified sampling?\nDo the data have a unique identifier beyond the row label?\nAs soon as you have a general sense of the:\n\nData types\nMissing features\nDistributions, particularly categorical\n\nIt’s time to split the data!"
+  },
+  {
+    "objectID": "lectures/03-eda.html#how-to-split-your-data",
+    "href": "lectures/03-eda.html#how-to-split-your-data",
+    "title": "3. Exploratory Data Analysis",
+    "section": "How to split your data",
+    "text": "How to split your data\nAs usual, it depends on the:\n\nData set size \\(n\\)\nRelationship between number of predictors \\(p\\) and \\(n\\)\nNature of the data:\n\nTime series?\nStratification needed?\n\nIntended validation approach"
+  },
+  {
+    "objectID": "lectures/03-eda.html#validation",
+    "href": "lectures/03-eda.html#validation",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Validation",
+    "text": "Validation\n\n\n\nWe also need validation data\nIf the dataset is sufficiently large, this can be a separate split\nIn lab 2 and assignment 1 I asked you to use cross-validation\n\n\nImage source: Scikit-learn"
+  },
+  {
+    "objectID": "lectures/03-eda.html#validation-1",
+    "href": "lectures/03-eda.html#validation-1",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Validation",
+    "text": "Validation\n\nValidation data is used to make decisions about your model, e.g.\n\nModel selection\nTuning hyperparameters\nMonitor training progress\n\nHowever, validation data is not used to directly train a model\nThink of it like a test-adjacent set where you can repeatedly try stuff on your training set, then evaluate on validation\n\n\n\nCross-validation is a way of checking your model choice and parameters, but final training should be done on the entire training set"
+  },
+  {
+    "objectID": "lectures/03-eda.html#coming-up-next",
+    "href": "lectures/03-eda.html#coming-up-next",
+    "title": "3. Exploratory Data Analysis",
+    "section": "Coming up next",
+    "text": "Coming up next\n\nAssignment 1\nBasic categorical data\n\nExploring\nEncoding strategies\n\n\n\nFeature Engineering Chapter 5"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html",
+    "href": "lectures/05-basic-numeric.html",
+    "title": "5: Basic Numeric Transformations",
+    "section": "",
+    "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#code",
+    "href": "lectures/05-basic-numeric.html#code",
+    "title": "5: Basic Numeric Transformations",
+    "section": "",
+    "text": "Demo Notebook\n\n\n Demo Data"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#slides",
+    "href": "lectures/05-basic-numeric.html#slides",
+    "title": "5: Basic Numeric Transformations",
+    "section": "",
+    "text": "PDF Slides\n HTML Slides"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#data-3464-fundamentals-of-data-processing",
+    "href": "lectures/05-basic-numeric.html#data-3464-fundamentals-of-data-processing",
+    "title": "5: Basic Numeric Transformations",
+    "section": "DATA 3464: Fundamentals of Data Processing",
+    "text": "DATA 3464: Fundamentals of Data Processing\n\nBasic Numeric Transformations\nCharlotte Curtis September 23, 2026\n{{% /ignore %}}"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#topic-overview",
+    "href": "lectures/05-basic-numeric.html#topic-overview",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Topic overview",
+    "text": "Topic overview\n\nWhy transformations are necessary\nCommon 1:1 transformations\nImplementation notes\n\nResources used:\n\nFeature Engineering Section 6.1\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 4. Available at MRU Library\nScikit-learn user guide: Chapter 7\nIntroduction to Machine Learning with Python. Available at MRU Library"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#common-11-transformations",
+    "href": "lectures/05-basic-numeric.html#common-11-transformations",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Common 1:1 transformations",
+    "text": "Common 1:1 transformations\n\n“Most models work best when each feature (and in regression also the target) is loosely Gaussian distributed” — Introduction to Machine Learning with Python\n\n\nScaling: normalization or standardization\nNonlinear transforms: log, square root, polynomial\nFancier methods: Box-Cox, Yeo-Johnson"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#a-brief-intro-to-gradient-descent",
+    "href": "lectures/05-basic-numeric.html#a-brief-intro-to-gradient-descent",
+    "title": "5: Basic Numeric Transformations",
+    "section": "A brief intro to gradient descent",
+    "text": "A brief intro to gradient descent\n\nMany linear models minimize some cost function through gradient descent\nThe gradient is a vector of partial derivatives \\[\\nabla f = \\begin{bmatrix} \\frac{\\partial f}{\\partial x_1} \\\\ \\frac{\\partial f}{\\partial x_2} \\\\ \\vdots \\\\ \\frac{\\partial f}{\\partial x_n} \\end{bmatrix}\\]\nfor some scalar-valued \\(f(\\mathbf{x})\\)"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#descending-the-gradient",
+    "href": "lectures/05-basic-numeric.html#descending-the-gradient",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Descending the gradient",
+    "text": "Descending the gradient\nFor a loss (or cost) function such as \\(MSE(\\mathrm{\\theta}) = \\frac{1}{m}(\\mathbf{X}\\mathbf{\\theta} - \\mathbf{y})^T(\\mathbf{X}\\mathbf{\\theta} - \\mathbf{y})\\)\n\nStart with a random \\(\\mathbf{\\theta}\\)\nCalculate the gradient \\(\\nabla_{\\mathbf{\\theta}}\\) for the current \\(\\mathbf{\\theta}\\)\nUpdate \\(\\mathbf{\\theta}\\) as \\(\\mathbf{\\theta} = \\mathbf{\\theta} - \\eta \\nabla_{\\mathbf{\\theta}}\\)\nRepeat 2-3 until some stopping criterion is met\nwhere \\(\\eta\\) is the learning rate, or the size of step to take in the direction opposite the gradient."
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#visualizing-in-2d",
+    "href": "lectures/05-basic-numeric.html#visualizing-in-2d",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Visualizing in 2D",
+    "text": "Visualizing in 2D\n\nThe gradient has \\(m + 1\\) dimensions, where \\(m\\) is the number of features\nstep size \\(\\eta\\) is a scalar parameter\n\n\n\n\n\nMain takeaway: feature should be more or less on the same scale\n\n\n\nFigure 4-7 from Hands-on Machine Learning"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#approaches-to-scaling",
+    "href": "lectures/05-basic-numeric.html#approaches-to-scaling",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Approaches to scaling",
+    "text": "Approaches to scaling\n\n\n\nStandardize: \\(x_{scaled} = \\dfrac{x - \\mu_x}{\\sigma_x}\\)Normalize: \\(x_{scaled} = \\dfrac{x - \\mathrm{min}(x)}{\\mathrm{max}(x) - \\mathrm{min}(x)}\\)"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#nonlinear-transforms",
+    "href": "lectures/05-basic-numeric.html#nonlinear-transforms",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Nonlinear transforms",
+    "text": "Nonlinear transforms\n\n\n\n\nCommon case: count data\nExample: Ask 1000 students how often they checked D2L that day\nNot a Gaussian distribution!\nWhat about the central limit theorem?"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#power-transforms",
+    "href": "lectures/05-basic-numeric.html#power-transforms",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Power transforms",
+    "text": "Power transforms\nA family of functions that map data to a normal distribution.\n\\[y_i^{(\\lambda)} =\n\\begin{cases}\n\\dfrac{y_i^\\lambda-1}{\\lambda(\\operatorname{GM}(y))^{\\lambda -1}} , &\\text{if } \\lambda \\neq 0 \\\\[12pt]\n\\operatorname{GM}(y)\\ln{y_i} , &\\text{if } \\lambda = 0\n\\end{cases}\\]\n(Or just PowerTransformer)\n\n\n\nImage credit: Scikit-learn"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#transformations-in-training-vs-inference",
+    "href": "lectures/05-basic-numeric.html#transformations-in-training-vs-inference",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Transformations in training vs inference",
+    "text": "Transformations in training vs inference\n\nDefine functions, e.g.\ndef standardize(X, mu, sigma):\n    return (X - mu) / sigma\nCompute scaling parameters on the training data, then stash them somewhere:\nmu = X_train.mean()\nsigma = X_train.std()\n# ... later on, during inference\nX = standardize(X, mu, sigma)\n\nWhat would happen if standardize instead computed values on the fly?"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#manual-approach-in-the-wild",
+    "href": "lectures/05-basic-numeric.html#manual-approach-in-the-wild",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Manual approach in the wild",
+    "text": "Manual approach in the wild\nYou may run across magic numbers, e.g from the PyTorch tutorials:\nimport torch\nfrom torchvision import transforms, datasets\n\ndata_transform = transforms.Compose([\n        transforms.RandomResizedCrop(224),\n        transforms.RandomHorizontalFlip(),\n        transforms.ToTensor(),\n        transforms.Normalize(mean=[0.485, 0.456, 0.406],\n                             std=[0.229, 0.224, 0.225])\n    ])\nThis really should have a comment! Derived from ImageNet."
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#an-alternative-solution-scikit-learn-pipelines",
+    "href": "lectures/05-basic-numeric.html#an-alternative-solution-scikit-learn-pipelines",
+    "title": "5: Basic Numeric Transformations",
+    "section": "An alternative solution: Scikit-learn Pipelines",
+    "text": "An alternative solution: Scikit-learn Pipelines\n\nHard-coding scaling (and other) parameters is okay, provided you can justify the choice and document where they came from\nScikit-learn Pipeline is a convenient alternative\nEach step in the pipeline has a fit and transform method\n\nfit computes parameters from the training data\ntransform applies the transformation\nfit_transform does both — only use on training data!\n\nYou can call these functions on the whole pipeline to fit or apply all in one go"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#summary",
+    "href": "lectures/05-basic-numeric.html#summary",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Summary",
+    "text": "Summary\n\nNumerical data often needs to be transformed to fit model assumptions\nStandardizing and normalizing are very common\nNonlinear transformations can also be beneficial\nMake sure to only compute parameters based on training data!"
+  },
+  {
+    "objectID": "lectures/05-basic-numeric.html#coming-up-next",
+    "href": "lectures/05-basic-numeric.html#coming-up-next",
+    "title": "5: Basic Numeric Transformations",
+    "section": "Coming up next",
+    "text": "Coming up next\n\nLecture: Back to sampling/splitting\nTruth and reconciliation day — no lab next week (but assignment 1 is due!)\nNext topic: Missing data, outliers, and interaction effects"
   }
 ]

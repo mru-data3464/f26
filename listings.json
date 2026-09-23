@@ -5,13 +5,16 @@
       "/lectures/01-intro.html",
       "/lectures/02-basic-models.html",
       "/lectures/03-eda.html",
-      "/lectures/04-categorical.html"
+      "/lectures/04-categorical.html",
+      "/lectures/05-basic-numeric.html"
     ]
   },
   {
-    "listing": "/assignments/index.html",
+    "listing": "/labs/index.html",
     "items": [
-      "/assignments/01-simple-model.html"
+      "/labs/01-clean-regression.html",
+      "/labs/02-basic-models.html",
+      "/labs/03-categorical.html"
     ]
   },
   {
@@ -21,6 +24,7 @@
       "/lectures/02-basic-models.html",
       "/lectures/03-eda.html",
       "/lectures/04-categorical.html",
+      "/lectures/05-basic-numeric.html",
       "/lectures/index.html",
       "/labs/01-clean-regression.html",
       "/labs/02-basic-models.html",
@@ -29,11 +33,9 @@
     ]
   },
   {
-    "listing": "/labs/index.html",
+    "listing": "/assignments/index.html",
     "items": [
-      "/labs/01-clean-regression.html",
-      "/labs/02-basic-models.html",
-      "/labs/03-categorical.html"
+      "/assignments/01-simple-model.html"
     ]
   }
 ]

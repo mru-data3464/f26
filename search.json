@@ -284,7 +284,7 @@
     "href": "labs/03-categorical.html#setup",
     "title": "3: Categorical Data Representation",
     "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually."
+    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually.\nIf you download and load the CSV, you’ll need to define your y target variable from the Class column."
   },
   {
     "objectID": "labs/03-categorical.html#predicting-breast-cancer-recurrance",

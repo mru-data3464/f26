@@ -5,7 +5,7 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-code: 05_numeric
+code: "/demo_code/05_numeric/numericdemo.ipynb"
 leftoff:
 ---
 
@@ -14,16 +14,11 @@ _class: title_slide
 _paginate: skip
 -->
 
-{{< katex />}}
-{{% ignore %}}
-
 ## <!--fit-->DATA 3464: Fundamentals of Data Processing
 ### <!--fit-->Basic Numeric Transformations
 
 Charlotte Curtis
 September 23, 2026
-
-{{% /ignore %}}
 
 ## Topic overview
 - Why transformations are necessary

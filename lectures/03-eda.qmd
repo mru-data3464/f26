@@ -7,7 +7,7 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/03_eda/eda_demo.ipynb"
 demo-data: "/demo_code/03_eda/titanic_train.csv"
-leftoff: "Slide 9"
+leftoff: "Completed Sept 22"
 ---
 
 ::: {.column-margin}

@@ -9,6 +9,12 @@
     ]
   },
   {
+    "listing": "/assignments/index.html",
+    "items": [
+      "/assignments/01-simple-model.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/lectures/01-intro.html",
@@ -18,20 +24,16 @@
       "/lectures/index.html",
       "/labs/01-clean-regression.html",
       "/labs/02-basic-models.html",
+      "/labs/03-categorical.html",
       "/labs/index.html"
-    ]
-  },
-  {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/01-simple-model.html"
     ]
   },
   {
     "listing": "/labs/index.html",
     "items": [
       "/labs/01-clean-regression.html",
-      "/labs/02-basic-models.html"
+      "/labs/02-basic-models.html",
+      "/labs/03-categorical.html"
     ]
   }
 ]

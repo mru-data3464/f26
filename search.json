@@ -4,7 +4,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \n\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \nSlide 7\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/05-basic-numeric.html",
@@ -522,7 +522,7 @@
     "href": "index.html#lectures",
     "title": "DATA 3464 | Fall 2026",
     "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \n\n\n\n\nNo matching items"
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \nSlide 7\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#labs",
@@ -900,7 +900,7 @@
     "href": "lectures/06-splitting-combining.html#sampling-bias-continued",
     "title": "6: Splitting and combining data",
     "section": "Sampling bias continued",
-    "text": "Sampling bias continued\n\n\\(P(X = k)\\) is the probability mass function, and the corresponding cumulative distribution function is just the sum up to \\(k\\):\n\\[P(X \\leq k) = \\sum_{i=0}^k \\binom{n}{i}p^i(1-p)^{n-i}\\]\nSuppose we randomly sample 100 people. What is the probability of fewer than 75 or more than 85 cilantro lovers?\n\nHere we’ve defined an “unbiased sample” as being \\(\\pm5\\%\\)"
+    "text": "Sampling bias continued\n\n\\(P(X = k)\\) is the probability mass function, and the corresponding cumulative distribution function is just the sum up to \\(k\\):\n\\[P(X \\leq k) = \\sum_{i=0}^k \\binom{n}{i}p^i(1-p)^{n-i}\\]\nSuppose we randomly sample 100 people. What is the probability of fewer than 75 79 or more than 85 81 cilantro lovers?\n\nHere I’ve defined an “unbiased sample” as being \\(\\pm5\\%\\) of expected of the smallest category (that this is a correction from the version presented in class!)"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#stratification-approach",

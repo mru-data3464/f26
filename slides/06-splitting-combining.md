@@ -7,7 +7,7 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/06_splitting_combining/splitting_combining_demo.ipynb"
 demo-data: "/demo_code/06_splitting_combining/climate_traffic_data.zip"
-leftoff: ""
+leftoff: "Slide 7"
 ---
 
 <!-- 
@@ -77,9 +77,9 @@ $P(X = k)$ is the probability mass function, and the corresponding cumulative di
 
 $$P(X \leq k) = \sum_{i=0}^k \binom{n}{i}p^i(1-p)^{n-i}$$
 
-Suppose we **randomly** sample 100 people. What is the probability of fewer than 75 or more than 85 cilantro lovers?
+Suppose we **randomly** sample 100 people. What is the probability of fewer than ~~75~~ 79 or more than ~~85~~ 81 cilantro lovers?
 
-> Here we've defined an "unbiased sample" as being $\pm5\%$
+> Here I've defined an "unbiased sample" as being $\pm5\%$ of expected **of the smallest category** (that this is a correction from the version presented in class!)
 
 ## Stratification approach
 * The need for stratification depends on sample size, distribution of stratification category, and how much bias you're willing to accept

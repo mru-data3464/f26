@@ -907,7 +907,7 @@
     "href": "lectures/06-splitting-combining.html#stratification-approach",
     "title": "6: Splitting and combining data",
     "section": "Stratification approach",
-    "text": "Stratification approach\n\nThe need for stratification depends on sample size, distribution of stratification category, and how much bias you’re willing to accept | | Small Sample Size | Large Sample Size | | –| – | – | | Unbalanced Classes | Stratify | Maybe | | Balanced Classes | Maybe | Not necessary |\nStratification categories can be the target variable, or a predictor\nGoal is to have the same class distribution in both testing and training"
+    "text": "Stratification approach\n\nThe need for stratification depends on sample size, distribution of stratification category, and how much bias you’re willing to accept\n\n\n\n\nSmall Sample Size\nLarge Sample Size\n\n\n\n\nUnbalanced Classes\nStratify\nMaybe\n\n\nBalanced Classes\nMaybe\nNot necessary\n\n\n\nStratification categories can be the target variable, or a predictor\nGoal is to have the same class distribution in both testing and training"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#repeatable-randomness",

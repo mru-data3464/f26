@@ -83,10 +83,11 @@ Suppose we **randomly** sample 100 people. What is the probability of fewer than
 
 ## Stratification approach
 * The need for stratification depends on sample size, distribution of stratification category, and how much bias you're willing to accept
-  | | Small Sample Size | Large Sample Size |
-  | --| -- | -- |
-  | Unbalanced Classes | Stratify | Maybe |
-  | Balanced Classes | Maybe | Not necessary |
+  
+  |                    | Small Sample Size | Large Sample Size |
+  | ------------------ | ----------------- | ----------------- |
+  | Unbalanced Classes | Stratify          | Maybe             |
+  | Balanced Classes   | Maybe             | Not necessary     |
 
 * Stratification categories can be the target variable, or a predictor
 * Goal is to have the same class distribution in both testing and training

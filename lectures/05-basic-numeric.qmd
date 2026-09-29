@@ -5,8 +5,8 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-code: "/demo_code/05_numeric/numericdemo.ipynb"
-leftoff: "Completed"
+demo-code: "/demo_code/05_numeric/numericdemo.ipynb"
+leftoff: "Completed Sept 24"
 ---
 
 ::: {.column-margin}

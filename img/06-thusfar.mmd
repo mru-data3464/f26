@@ -6,9 +6,10 @@ config:
 
 flowchart LR
     A[Tabular data] --> B[Split]
+    B --> B2[EDA]
     subgraph Repeat until happy
-        B --> C[Categorical\nEncoding]
-        B --> D[Numerical\nTransformations]
+        B2 --> C[Categorical\nEncoding]
+        B2 --> D[Numerical\nTransformations]
         C --> E[Model]
         D --> E[Model]
         E --> F[Validate]

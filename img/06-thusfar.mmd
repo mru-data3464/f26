@@ -1,0 +1,16 @@
+---
+config:
+  themeVariables:
+    fontSize: 20px
+---
+
+flowchart LR
+    A[Tabular data] --> B[Split]
+    subgraph Repeat until happy
+        B --> C[Categorical\nEncoding]
+        B --> D[Numerical\nTransformations]
+        C --> E[Model]
+        D --> E[Model]
+        E --> F[Validate]
+    end
+    F --> G[Final\nModel]

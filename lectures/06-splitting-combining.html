@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-29">
 
-<title>DATA 3464 | Fall 2026</title>
+<title>6: Splitting and combining data – DATA 3464 | Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,30 +30,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./img/MRU_SingleChevron_RGB.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3e208ab2a520bff1082bd5c021bef27e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../img/MRU_SingleChevron_RGB.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3e208ab2a520bff1082bd5c021bef27e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,63 +79,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-lectures .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-page-layout','listing-format','listing-from','listing-execute','listing-engines','listing-language','listing-title','listing-date','listing-marp','listing-theme','listing-paginate','listing-headingDivider','listing-demo-code','listing-demo-data','listing-leftoff','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-code','listing-listing',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-page-layout","listing-format","listing-from","listing-execute","listing-engines","listing-language","listing-title","listing-date","listing-marp","listing-theme","listing-paginate","listing-headingDivider","listing-demo-code","listing-demo-data","listing-leftoff","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-code","listing-listing"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-lectures'] = new List('listing-lectures', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-labs .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-page-layout','listing-format','listing-from','listing-execute','listing-engines','listing-language','listing-title','listing-date','listing-due','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-listing',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-page-layout","listing-format","listing-from","listing-execute","listing-engines","listing-language","listing-title","listing-date","listing-due","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-listing"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-labs'] = new List('listing-labs', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -170,18 +112,18 @@ window.Quarto = {
 
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="floating nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./img/MRU_SingleChevron_White.png" alt="" class="navbar-logo light-content">
-    <img src="./img/MRU_SingleChevron_White.png" alt="" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/MRU_SingleChevron_White.png" alt="" class="navbar-logo light-content">
+    <img src="../img/MRU_SingleChevron_White.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DATA 3464 | Fall 2026</span>
     </a>
   </div>
@@ -192,15 +134,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./lectures/index.html"> 
+    <a class="nav-link" href="../lectures/index.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./labs/index.html"> 
+    <a class="nav-link" href="../labs/index.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments/index.html"> 
+    <a class="nav-link" href="../assignments/index.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
@@ -225,8 +167,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lectures" id="toc-lectures" class="nav-link active" data-scroll-target="#lectures">Lectures</a></li>
-  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
+  <li><a href="#data-3464-fundamentals-of-data-processing" id="toc-data-3464-fundamentals-of-data-processing" class="nav-link active" data-scroll-target="#data-3464-fundamentals-of-data-processing"><!--fit-->DATA 3464: Fundamentals of Data Processing</a>
+  <ul class="collapse">
+  <li><a href="#splitting-and-combining-data" id="toc-splitting-and-combining-data" class="nav-link" data-scroll-target="#splitting-and-combining-data"><!--fit-->Splitting and combining data</a></li>
+  </ul></li>
+  <li><a href="#topic-overview" id="toc-topic-overview" class="nav-link" data-scroll-target="#topic-overview">Topic overview</a></li>
+  <li><a href="#the-data-process-to-date" id="toc-the-data-process-to-date" class="nav-link" data-scroll-target="#the-data-process-to-date">The data process to date</a></li>
+  <li><a href="#how-to-split-your-data" id="toc-how-to-split-your-data" class="nav-link" data-scroll-target="#how-to-split-your-data">How to split your data</a></li>
+  <li><a href="#sampling-bias" id="toc-sampling-bias" class="nav-link" data-scroll-target="#sampling-bias">Sampling bias</a></li>
+  <li><a href="#sampling-bias-continued" id="toc-sampling-bias-continued" class="nav-link" data-scroll-target="#sampling-bias-continued">Sampling bias continued</a></li>
+  <li><a href="#stratification-approach" id="toc-stratification-approach" class="nav-link" data-scroll-target="#stratification-approach">Stratification approach</a></li>
+  <li><a href="#repeatable-randomness" id="toc-repeatable-randomness" class="nav-link" data-scroll-target="#repeatable-randomness">Repeatable randomness</a></li>
+  <li><a href="#back-to-visualizations" id="toc-back-to-visualizations" class="nav-link" data-scroll-target="#back-to-visualizations">Back to visualizations</a></li>
+  <li><a href="#some-handy-tricks" id="toc-some-handy-tricks" class="nav-link" data-scroll-target="#some-handy-tricks">Some handy tricks</a></li>
+  <li><a href="#combining-data-sources" id="toc-combining-data-sources" class="nav-link" data-scroll-target="#combining-data-sources">Combining data sources</a></li>
+  <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
   </ul>
 </nav>
 </nav>
@@ -235,18 +190,24 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DATA 3464 | Fall 2026</h1>
+<h1 class="title">6: Splitting and combining data</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 29, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -256,102 +217,177 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to DATA 3464 in Fall 2026!</p>
-<p>This website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.</p>
-<p>See a mistake? Why not <a href="https://github.com/mru-data3464/f26">submit an issue</a>?</p>
-<section id="lectures" class="level2">
-<h2 class="anchored" data-anchor-id="lectures">Lectures</h2>
-<div id="listing-lectures" class="quarto-listing quarto-listing-container-custom">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Slides</th>
-<th data-quarto-table-cell-role="th">Demo Code</th>
-<th data-quarto-table-cell-role="th">Progress</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sep 3, 2026</td>
-<td><a href="./lectures/01-intro.html">1. Introduction</a></td>
-<td><a href="./slides/01-intro.pdf" aria-label="PDF slides for 1. Introduction" title="PDF slides"><img src="./img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="./slides/01-intro.html" aria-label="HTML slides for 1. Introduction" title="HTML slides"><img src="./img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="./demo_code/01_stroke/strokedemo.ipynb" aria-label="Demo notebook for 1. Introduction" download="" title="Demo notebook"><img src="./img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="./demo_code/01_stroke/stroke_data.csv" aria-label="Demo data for 1. Introduction" download="" title="Demo data"><img src="./img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
-<td>Complete</td>
-</tr>
-<tr class="even">
-<td>Sep 10, 2026</td>
-<td><a href="./lectures/02-basic-models.html">2. Basic machine learning models</a></td>
-<td><a href="./slides/02-basic-models.pdf" aria-label="PDF slides for 2. Basic machine learning models" title="PDF slides"><img src="./img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="./slides/02-basic-models.html" aria-label="HTML slides for 2. Basic machine learning models" title="HTML slides"><img src="./img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="./demo_code/02_models/model_demo.ipynb" aria-label="Demo notebook for 2. Basic machine learning models" download="" title="Demo notebook"><img src="./img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a></td>
-<td>Slide 17</td>
-</tr>
-<tr class="odd">
-<td>Sep 17, 2026</td>
-<td><a href="./lectures/03-eda.html">3. Exploratory Data Analysis</a></td>
-<td><a href="./slides/03-eda.pdf" aria-label="PDF slides for 3. Exploratory Data Analysis" title="PDF slides"><img src="./img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="./slides/03-eda.html" aria-label="HTML slides for 3. Exploratory Data Analysis" title="HTML slides"><img src="./img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="./demo_code/03_eda/eda_demo.ipynb" aria-label="Demo notebook for 3. Exploratory Data Analysis" download="" title="Demo notebook"><img src="./img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="./demo_code/03_eda/titanic_train.csv" aria-label="Demo data for 3. Exploratory Data Analysis" download="" title="Demo data"><img src="./img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
-<td>Completed Sept 22</td>
-</tr>
-<tr class="even">
-<td>Sep 22, 2026</td>
-<td><a href="./lectures/04-categorical.html">4: Categorical data basics</a></td>
-<td><a href="./slides/04-categorical.pdf" aria-label="PDF slides for 4: Categorical data basics" title="PDF slides"><img src="./img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="./slides/04-categorical.html" aria-label="HTML slides for 4: Categorical data basics" title="HTML slides"><img src="./img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td><a href="./demo_code/04_categorical/catdemo.ipynb" aria-label="Demo notebook for 4: Categorical data basics" download="" title="Demo notebook"><img src="./img/journal-code.svg" class="img-fluid" width="24" alt="Demo notebook"></a> <a href="./demo_code/04_categorical/profiles_revised.csv" aria-label="Demo data for 4: Categorical data basics" download="" title="Demo data"><img src="./img/filetype-csv.svg" class="img-fluid" width="24" alt="Demo data"></a></td>
-<td>Completed Sept 22</td>
-</tr>
-<tr class="odd">
-<td>Sep 24, 2026</td>
-<td><a href="./lectures/05-basic-numeric.html">5: Basic Numeric Transformations</a></td>
-<td><a href="./slides/05-basic-numeric.pdf" aria-label="PDF slides for 5: Basic Numeric Transformations" title="PDF slides"><img src="./img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="./slides/05-basic-numeric.html" aria-label="HTML slides for 5: Basic Numeric Transformations" title="HTML slides"><img src="./img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td></td>
-<td>Completed</td>
-</tr>
-<tr class="even">
-<td>Sep 29, 2026</td>
-<td><a href="./lectures/06-splitting-combining.html">6: Splitting and combining data</a></td>
-<td><a href="./slides/06-splitting-combining.pdf" aria-label="PDF slides for 6: Splitting and combining data" title="PDF slides"><img src="./img/file-pdf.svg" class="img-fluid" width="24" alt="PDF slides"></a> <a href="./slides/06-splitting-combining.html" aria-label="HTML slides for 6: Splitting and combining data" title="HTML slides"><img src="./img/file-slides.svg" class="img-fluid" width="24" alt="HTML slides"></a></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<ul>
+<li>
+<a href="?meta:demo-code" download=""><img src="../img/journal-code.svg" alt="Demo Notebook"> Demo Notebook</a>
+</li>
+<li>
+<a href="?meta:demo-data" download=""><img src="../img/filetype-csv.svg" alt="Demo Data"> Demo Data</a>
+</li>
+</ul>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<ul>
+<li><a href="../slides/06-splitting-combining.pdf"><img src="../img/file-pdf.svg" class="img-fluid" alt="PDF Slides">&nbsp;PDF Slides</a></li>
+<li><a href="../slides/06-splitting-combining.html"><img src="../img/file-slides.svg" class="img-fluid" alt="HTML Slides">&nbsp;HTML Slides</a></li>
+</ul>
+</section>
+</div></div><section id="data-3464-fundamentals-of-data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-3464-fundamentals-of-data-processing"><!--fit-->DATA 3464: Fundamentals of Data Processing</h2>
+<section id="splitting-and-combining-data" class="level3">
+<h3 class="anchored" data-anchor-id="splitting-and-combining-data"><!--fit-->Splitting and combining data</h3>
+<p>Charlotte Curtis September 23, 2026</p>
+</section>
+</section>
+<section id="topic-overview" class="level2">
+<h2 class="anchored" data-anchor-id="topic-overview">Topic overview</h2>
+<p>Adding detail to the process thus far</p>
+<ul>
+<li>Splitting and sampling data</li>
+<li>Some more visualization tricks</li>
+<li>Combining multiple datasets</li>
+</ul>
+<p><strong>Resources used:</strong></p>
+<ul>
+<li><a href="https://feat.engineering/03-Review_of_the_Modeling_Process.html#sec-data-splitting">Feature Engineering Sections 3.3-3.4</a></li>
+<li>Hands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at <a href="https://ebookcentral.proquest.com/lib/mtroyal-ebooks/detail.action?docID=30168989">MRU Library</a></li>
+</ul>
+</section>
+<section id="the-data-process-to-date" class="level2">
+<h2 class="anchored" data-anchor-id="the-data-process-to-date">The data process to date</h2>
+<p><img src="../img/06-thusfar.svg" class="img-fluid"><br>
+</p>
+<ul>
+<li>We’ve talked about <em>why</em> to split, but not <em>how</em></li>
+<li>We might also have more than one table to deal with</li>
+</ul>
+</section>
+<section id="how-to-split-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-split-your-data">How to split your data</h2>
+<ul>
+<li>Simple scenario: random sample (typically 70-80% for training)</li>
+<li><strong>Only works if:</strong>
+<ul>
+<li>Stratification doesn’t matter</li>
+<li>Data is guaranteed not to change</li>
+<li>Data is not a time-series</li>
+</ul></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>How do we know if stratification is necessary?</p>
+</blockquote>
 </div>
 </section>
-<section id="labs" class="level2">
-<h2 class="anchored" data-anchor-id="labs">Labs</h2>
-<div id="listing-labs" class="quarto-listing quarto-listing-container-custom">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Due</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sep 9, 2026</td>
-<td><a href="./labs/01-clean-regression.html">1: Regression with Clean Data</a></td>
-<td>Sep 16, 2026</td>
-</tr>
-<tr class="even">
-<td>Sep 16, 2026</td>
-<td><a href="./labs/02-basic-models.html">2: Basic Modelling</a></td>
-<td>Sep 23, 2026</td>
-</tr>
-<tr class="odd">
-<td>Sep 23, 2026</td>
-<td><a href="./labs/03-categorical.html">3: Categorical Data Representation</a></td>
-<td>Sep 29, 2026</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
+<section id="sampling-bias" class="level2">
+<h2 class="anchored" data-anchor-id="sampling-bias">Sampling bias</h2>
+<p>Stratification is used to mitigate <strong>sampling bias</strong></p>
+<ul>
+<li>Cilantro example: assume 80% of population likes cilantro</li>
+<li>Goal: ensure our sample is representative of the population, <span class="math inline">\(\pm 5\%\)</span></li>
+</ul>
+<div data-marpit-fragment="">
+<p>The <a href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial distribution</a> can be used to model the probability of choosing <span class="math inline">\(k\)</span> people who like cilantro from <span class="math inline">\(n\)</span> total participants:</p>
+<p><span class="math display">\[P(X = k) = \binom{n}{k}p^k(1-p)^{n-k}, \mathrm{where} \binom{n}{k} = \frac{n!}{k!(n-k)!}\]</span></p>
 </div>
-
+</section>
+<section id="sampling-bias-continued" class="level2">
+<h2 class="anchored" data-anchor-id="sampling-bias-continued">Sampling bias continued</h2>
+<!--
+  _class: code_reminder 
+-->
+<p><span class="math inline">\(P(X = k)\)</span> is the probability mass function, and the corresponding cumulative distribution function is just the sum up to <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[P(X \leq k) = \sum_{i=0}^k \binom{n}{i}p^i(1-p)^{n-i}\]</span></p>
+<p>Suppose we <strong>randomly</strong> sample 100 people. What is the probability of fewer than 75 or more than 85 cilantro lovers?</p>
+<blockquote class="blockquote">
+<p>Here we’ve defined an “unbiased sample” as being <span class="math inline">\(\pm5\%\)</span></p>
+</blockquote>
+</section>
+<section id="stratification-approach" class="level2">
+<h2 class="anchored" data-anchor-id="stratification-approach">Stratification approach</h2>
+<ul>
+<li><p>The need for stratification depends on sample size, distribution of stratification category, and how much bias you’re willing to accept | | Small Sample Size | Large Sample Size | | –| – | – | | Unbalanced Classes | Stratify | Maybe | | Balanced Classes | Maybe | Not necessary |</p></li>
+<li><p>Stratification categories can be the target variable, or a predictor</p></li>
+<li><p>Goal is to have the same class distribution in both testing and training</p></li>
+</ul>
+</section>
+<section id="repeatable-randomness" class="level2">
+<h2 class="anchored" data-anchor-id="repeatable-randomness">Repeatable randomness</h2>
+<!-- _class: code_reminder -->
+<ul>
+<li>At minimum, you should <strong>always set a random seed</strong> so that every time you sample your data it is the same “random sample”</li>
+<li>This isn’t enough if your data might get updated! You can:
+<ul>
+<li>Store the IDs of your split offline, then sample any new data and append to them (ensuring that test/train never mix)</li>
+<li>Get fancy with a deterministic method like hashing features to create unique IDs, then thresholding based on maximum possible value</li>
+</ul></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>As usual, we want to avoid <strong>data leakage</strong></p>
+</blockquote>
+</div>
+</section>
+<section id="back-to-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="back-to-visualizations">Back to visualizations</h2>
+<p>Now that we’ve got a test set safely stashed, we can <strong>ask questions</strong> about the data and use visualizations and statistics to answer them. Some examples:</p>
+<ul>
+<li>Do any of my features seem to be related to my target?</li>
+<li>Do any of my features seem to be related to each other?</li>
+<li>Why are some values more common than others?</li>
+<li>Do these values make sense in the context of my <strong>domain knowledge</strong>?</li>
+<li>If I group my data together in some way, are there clear trends?</li>
+</ul>
+<footer>
+<a href="https://r4ds.hadley.nz/EDA.html#questions">R for Data Science</a> has some good examples of further questions
+</footer>
+</section>
+<section id="some-handy-tricks" class="level2">
+<h2 class="anchored" data-anchor-id="some-handy-tricks">Some handy tricks</h2>
+<!-- _class: code_reminder -->
+<p>A few things to tweak that can make visualizations easier to read:</p>
+<ul>
+<li>Histogram bin sizes
+<ul>
+<li>Aiming for a smooth distribution that works for your data</li>
+</ul></li>
+<li>Transparency (<code>alpha</code>)
+<ul>
+<li>Useful for both dense scatter plots and overlapping categories</li>
+</ul></li>
+<li>“Jitter”
+<ul>
+<li>Mostly for scatter plot of continuous vs categorical data</li>
+<li>Add a tiny bit of random noise to spread out samples</li>
+</ul></li>
+</ul>
+</section>
+<section id="combining-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="combining-data-sources">Combining data sources</h2>
+<!-- _class: code_reminder -->
+<p>My assumption: you know all about joins from DATA 2721 and DATA 2402</p>
+<ul>
+<li>Concatenating tables: <code>pd.concat([list, of, dataframes], axis=??)</code></li>
+<li>Joining to <em>nearest</em> match: <code>pd.asof</code></li>
+<li>Watch out for datatypes! Dates in particular are a huge pain
+<ul>
+<li><code>datetime[ns]</code> is not the same as <code>datetime[s]</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="coming-up-next" class="level2">
+<h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>
+<ul>
+<li>No lab this week (Truth and Reconciliation)</li>
+<li>Assignment 1 is due!</li>
+<li>Next topic: Missing data and outliers</li>
+<li>Written test 1 next <strong>Thursday</strong></li>
+</ul>
 
 
 </section>

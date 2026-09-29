@@ -6,7 +6,7 @@ theme: marp-mru
 paginate: true
 headingDivider: 2
 code: "/demo_code/05_numeric/numericdemo.ipynb"
-leftoff:
+leftoff: "Completed"
 ---
 
 <!-- 

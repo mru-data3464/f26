@@ -5,7 +5,8 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-code: ""
+demo-code: "/demo_code/06_splitting_combining/splitting_combining_demo.ipynb"
+demo-data: "/demo_code/06_splitting_combining/climate_traffic_data.zip"
 leftoff: ""
 ---
 

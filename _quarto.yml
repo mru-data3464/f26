@@ -2,12 +2,12 @@ project:
   type: website
   resources:
     - "slides/*"
-    - "demo_code/*"
   render:
     - "*.qmd"
     - "lectures/*"
     - "labs/*"
     - "assignments/*.qmd"
+    - "demo_code"
 
 website:
   page-navigation: true

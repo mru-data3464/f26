@@ -1,0 +1,5 @@
+format:
+  html:
+    theme: [simplex, brand]
+    toc: false
+  ipynb: default

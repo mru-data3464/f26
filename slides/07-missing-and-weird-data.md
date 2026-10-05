@@ -7,7 +7,7 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/07_missing_weird/ok_cupid_processing.ipynb"
 demo-data: "/demo_code/04_categorical/profiles_revised.csv"
-leftoff: ""
+leftoff: "Slide 9"
 ---
 
 <!-- 

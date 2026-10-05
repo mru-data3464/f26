@@ -35,7 +35,7 @@ items = (items || []).filter((item) => {
         </td>
         <td>
   <%   if (demoCodePath) { %>
-          <a href="<%- demoCodePath %>" title="Demo notebook" aria-label="Demo notebook for <%= item.title %>" download><img src="/img/journal-code.svg" alt="Demo notebook" width="24"></a>
+          <a href="<%- demoCodePath %>" title="Demo notebook" aria-label="Demo notebook for <%= item.title %>"><img src="/img/journal-code.svg" alt="Demo notebook" width="24"></a>
   <%   }
       if (demoDataPath) { %>
           <a href="<%- demoDataPath %>" title="Demo data" aria-label="Demo data for <%= item.title %>" download><img src="/img/filetype-csv.svg" alt="Demo data" width="24"></a>

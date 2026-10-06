@@ -1,0 +1,48 @@
+---
+title: "4: Exploratory Data Analysis"
+date: 2026-10-07
+due: "October 21, 2026"
+draft: true
+---
+
+Lab submission due on {{< meta due >}}. This is a week longer than normal, not because I expect it to take longer, but because it's reading week and I don't like having deadlines in the middle.
+
+## Objective
+Learn a bit about:
+
+- Combining data from different sources
+- Working with datetime formats
+- Data exploration
+
+## Setup
+Create a new directory named `lab04` in your labs repo. Download and add to it:
+- [climate_traffic_data.zip](/demo_code/06_splitting_combining), unzipped
+- A new notebook or Python script for your lab work
+
+::: {.callout-note}
+
+This is the same data I demonstrated combining in class. You can refer to [my notebook](/demo_code/06_splitting_combining/splitting_combining_demo.html) if you get stuck, but try to figure it out and understand what's going on rather than copying big chunks of code.
+
+:::
+
+## Combining data
+I've given you a zip file with 12 CSVs containing month-by-month climate data for the City of Calgary (reported hourly), as well as a year's worth of traffic incidents, both from 2025. In contrast to your prior labs and assignments, we are not going to be predicting anything, just looking at the past year to try to get some insights.
+
+1. Load the 12 weather csvs and concatenate into a single dataframe, then print out the info about the features.
+2. Load the road incident csv and again print out the info. 
+3. Identify which feature on each dataframe is the date/time info. What time zone are they reporting in?
+4. Try to combine the datasets using Pandas' [`merge_asof`](https://pandas.pydata.org/docs/reference/api/pandas.merge_asof.html) function, which will align each traffic incident with the *nearest* climate observation. What error do you get?
+5. To fix the error, you'll need to convert the string timestamps to a proper `datetime` datatype. An easy way to do this is with Pandas' [`to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) method, but be careful about ensuring both end up with the same unit! `datetime[ns]` is not the same as `datetime[us]`.
+6. After converting the dates, go back and merge using `merge_asof` to create a combined dataframe with the approximate weather for each traffic incident.
+
+## Exploring
+Now that you have a dataset combining weather with traffic incidents, it's time to explore![^1]
+
+[^1]: In this case, you don't need to split the data as we're not trying to build a predictive model. It's also a time-series, which needs special consideration.
+
+Remember that the goal of exploratory data analysis (EDA) is to understand your data. Ask questions, then look for answers using visualizations or summary statistics. For the purposes of this lab, pick **one question** that might be answered by the data, and try to find the answer.
+
+The example I gave in class was "is there a relationship between temperature and traffic incidents", which I tried to answer with a histogram and concluded that there seems to be an overrepresentation at lower temperatures — however, I didn't account for the missing data in June, so this particular visualization can be improved.
+
+## Submit
+As usual, add your `lab04` directory to your `labs` repo and push your changes to GitHub.

@@ -74,14 +74,14 @@
     "href": "demo_code/07_missing_weird/ok_cupid_processing.html",
     "title": "Understanding missing values",
     "section": "",
-    "text": "import matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\n\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import (\n    StandardScaler,\n    Normalizer,\n    FunctionTransformer,\n    OneHotEncoder,\n    OrdinalEncoder,\n    PowerTransformer,\n)\nfrom sklearn.decomposition import PCA\nfrom sklearn.impute import SimpleImputer, KNNImputer\nfrom sklearn.compose import make_column_transformer\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.model_selection import train_test_split, cross_val_score, cross_validate\n# Revisit the OKCupid data\ndf = pd.read_csv(\"../04_categorical/profiles_revised.csv\")\ndf.info()\n# Target: predict if job is stem related\ndf = df.dropna(axis=0, subset=\"job\")\ndf[\"stem_job\"] = df[\"job\"].str.contains(\"computer|science|engineer|math|tech\", case=False)\ndf.drop(columns=\"job\", inplace=True)\ndf[\"stem_job\"].value_counts() / len(df)\ndf.info()\ntrain, test = train_test_split(df, test_size=0.25, random_state=322, stratify=df[[\"stem_job\"]])\nIn addition to looking at how many of which feature are missing, it’s useful to understand whether missing values tend to co-occur.\n# set income &lt; 0 to missing\ntrain.loc[train[\"income\"] &lt; 0, \"income\"] = np.nan\ntrain.head()\nprint(\"Missing values by percentage of dataset\")\ntrain.isna().sum().sort_values(ascending=False) / len(train) * 100\n# How many missing values per sample?\nmissing_per_sample = train.isna().sum(axis=1).value_counts()\nplt.bar(missing_per_sample.index, missing_per_sample)\nplt.xlabel(\"Number of missing features\")\nplt.ylabel(\"Number of samples\")\n# look at the top 5 missing\ntrain.loc[train.isna().sum(axis=1).sort_values(ascending=False).index].head()\n# Maybe a heatmap can show trends?\n# number of missing per sample\nmissing_samples = train.isna().sum(axis=1).sort_values()\n# drop with none missing and sort \nmissing_samples.drop(missing_samples[missing_samples == 0].index, inplace=True)\n\n# Features with samples missing\nmissing_features = train.isna().sum(axis=0).sort_values()\nmissing_features.drop(missing_features[missing_features == 0].index, inplace=True)\n\nsns.heatmap(train.loc[missing_samples.index, missing_features.index].isna())\n# how about correlations between missing values?\nmissing_cor = train.loc[missing_samples.index, missing_features.index].isna().corr()\n# zero out the diagonal so we can visualize it better\nmissing_cor -= np.identity(missing_cor.shape[0])\nsns.heatmap(missing_cor)\n# look at the ones that have a lot missing\ntrain_missing = train.isna().sum(axis=0).sort_values(ascending=False)\n# filter down to the &gt; 20% missing\nn_missing = train_missing[train_missing &gt; 0.2 * len(train)]\nprint(n_missing)\n\n# percentage in each target category\ntrain_prop = train[\"stem_job\"].value_counts() / len(train)\nfig, axes = plt.subplots(2, 3, figsize=(12, 6), sharex=True, sharey=True)\nfor feat, ax in zip(n_missing.index, axes.flatten()):\n    counts = train.groupby(\"stem_job\")[feat].apply(lambda x: x.isna().sum())\n    # normalize\n    counts /= n_missing[feat]\n    # compare to the overall proportion of stem/not stem\n    ax.bar([-0.1, .9], train_prop, width=0.2, label=\"Overall\")\n    ax.bar([0.1, 1.1], counts, width=0.2, label=f\"{feat}\")\n    ax.set_xticks([0, 1], labels=[\"Non-STEM\", \"STEM\"])\n    ax.set_title(f\"Proportion of missing {feat}\")\n    ax.legend()\n\n# Look at value_counts for the features with lots of missing data, grouped by stem_job\n# what about the non-missing values from categories with a lot missing?\nfig, axes = plt.subplots(2, 3, figsize=(20, 12))\nfor feat, ax in zip(n_missing.index, axes.flatten()):\n    # income is the only continuous one, do a box plot\n    if feat == \"income\":\n        train[[\"income\", \"stem_job\"]].dropna().plot.box(column=\"income\", ax=ax,by=\"stem_job\")\n        ax.set_xlabel(\"STEM job\")\n        ax.set_xticks([1,2], labels=[\"Non-STEM\", \"STEM\"])\n        ax.set_yscale(\"log\")\n    else:\n        # categorical needs value_counts\n        # Thanks to https://stackoverflow.com/questions/48238305/bar-plot-with-groupby for unstack(0) magic\n        feat_cat_counts = train[[feat, \"stem_job\"]].dropna().groupby(\"stem_job\")[feat].value_counts().unstack(0)\n        \n        # normalize by total number in each stem category\n        feat_cat_counts /= feat_cat_counts.sum()\n        # plot magic\n        feat_cat_counts.plot.bar(ax=ax)"
+    "text": "import matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\n\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import (\n    StandardScaler,\n    Normalizer,\n    FunctionTransformer,\n    OneHotEncoder,\n    OrdinalEncoder,\n    PowerTransformer,\n)\nfrom sklearn.decomposition import PCA\nfrom sklearn.impute import SimpleImputer, KNNImputer\nfrom sklearn.compose import make_column_transformer\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.model_selection import train_test_split, cross_val_score, cross_validate\n# Revisit the OKCupid data\ndf = pd.read_csv(\"../04_categorical/profiles_revised.csv\")\ndf.info()\n\n&lt;class 'pandas.DataFrame'&gt;\nRangeIndex: 59946 entries, 0 to 59945\nData columns (total 19 columns):\n #   Column       Non-Null Count  Dtype  \n---  ------       --------------  -----  \n 0   age          59946 non-null  int64  \n 1   body_type    54650 non-null  str    \n 2   diet         35551 non-null  str    \n 3   drinks       56961 non-null  str    \n 4   drugs        45866 non-null  str    \n 5   education    53318 non-null  str    \n 6   ethnicity    54266 non-null  str    \n 7   height       59943 non-null  float64\n 8   income       59946 non-null  int64  \n 9   job          51748 non-null  str    \n 10  offspring    24385 non-null  str    \n 11  orientation  59946 non-null  str    \n 12  pets         40025 non-null  str    \n 13  religion     39720 non-null  str    \n 14  sex          59946 non-null  str    \n 15  sign         48890 non-null  str    \n 16  smokes       54434 non-null  str    \n 17  speaks       59896 non-null  str    \n 18  status       59946 non-null  str    \ndtypes: float64(1), int64(2), str(16)\nmemory usage: 8.7 MB\n# Target: predict if job is stem related\ndf = df.dropna(axis=0, subset=\"job\") # dropping empty target, don't want to invent for training\ndf[\"stem_job\"] = df[\"job\"].str.contains(\"computer|science|engineer|math|tech\", case=False)\ndf.drop(columns=\"job\", inplace=True)\ndf[\"stem_job\"].value_counts() / len(df)\n\nstem_job\nFalse    0.815317\nTrue     0.184683\nName: count, dtype: float64\ndf.info()\n\n&lt;class 'pandas.DataFrame'&gt;\nIndex: 51748 entries, 0 to 59945\nData columns (total 19 columns):\n #   Column       Non-Null Count  Dtype  \n---  ------       --------------  -----  \n 0   age          51748 non-null  int64  \n 1   body_type    47791 non-null  str    \n 2   diet         32056 non-null  str    \n 3   drinks       50168 non-null  str    \n 4   drugs        39989 non-null  str    \n 5   education    48175 non-null  str    \n 6   ethnicity    47686 non-null  str    \n 7   height       51747 non-null  float64\n 8   income       51748 non-null  int64  \n 9   offspring    22387 non-null  str    \n 10  orientation  51748 non-null  str    \n 11  pets         36566 non-null  str    \n 12  religion     36414 non-null  str    \n 13  sex          51748 non-null  str    \n 14  sign         43929 non-null  str    \n 15  smokes       48128 non-null  str    \n 16  speaks       51714 non-null  str    \n 17  status       51748 non-null  str    \n 18  stem_job     51748 non-null  bool   \ndtypes: bool(1), float64(1), int64(2), str(15)\nmemory usage: 7.6 MB\ntrain, test = train_test_split(df, test_size=0.25, random_state=322, stratify=df[[\"stem_job\"]])\nIn addition to looking at how many of which feature are missing, it’s useful to understand whether missing values tend to co-occur.\n# set income &lt; 0 to missing\ntrain.loc[train[\"income\"] &lt; 0, \"income\"] = np.nan\ntrain.head()\n\n\n\n\n\n\n\n\nage\nbody_type\ndiet\ndrinks\ndrugs\neducation\nethnicity\nheight\nincome\noffspring\norientation\npets\nreligion\nsex\nsign\nsmokes\nspeaks\nstatus\nstem_job\n\n\n\n\n53633\n51\nfit\nmostly vegan\nrarely\nnever\ngraduated from masters program\nwhite\n70.0\n80000.0\nhas a kid\nstraight\nlikes dogs and has cats\nother and very serious about it\nf\nvirgo and it matters a lot\nno\nenglish (fluently)\nsingle\nFalse\n\n\n21354\n47\nathletic\nNaN\nsocially\nnever\ngraduated from college/university\nblack\n69.0\nNaN\nNaN\nstraight\nlikes dogs and dislikes cats\ncatholicism but not too serious about it\nm\nlibra but it doesn&rsquo;t matter\nno\nenglish\nsingle\nFalse\n\n\n10785\n54\ncurvy\nmostly anything\nnot at all\nnever\ngraduated from college/university\nblack\n62.0\nNaN\nhas a kid, but doesn&rsquo;t want more\nstraight\nhas dogs and dislikes cats\nchristianity\nf\naquarius and it&rsquo;s fun to think about\nno\nenglish, english\nsingle\nFalse\n\n\n28139\n24\nfit\nmostly anything\nsocially\nnever\nworking on college/university\nwhite\n73.0\nNaN\ndoesn&rsquo;t have kids, but wants them\nstraight\nlikes dogs and likes cats\njudaism but not too serious about it\nm\nsagittarius and it&rsquo;s fun to think about\nno\nenglish (fluently), russian (fluently)\nsingle\nFalse\n\n\n40368\n19\naverage\nanything\nnot at all\nnever\nworking on high school\nasian, white, other\n66.0\nNaN\nhas a kid\nbisexual\nlikes dogs and has cats\nother and somewhat serious about it\nf\ntaurus and it&rsquo;s fun to think about\ntrying to quit\nenglish (fluently), french (poorly)\nsingle\nFalse\nprint(\"Missing values by percentage of dataset\")\ntrain.isna().sum().sort_values(ascending=False) / len(train) * 100\n\nMissing values by percentage of dataset\n\n\nincome         78.470021\noffspring      56.674654\ndiet           38.172168\npets           29.440107\nreligion       29.411765\ndrugs          22.797660\nsign           15.091082\nethnicity       7.848290\nbody_type       7.665353\nsmokes          6.951637\neducation       6.804772\ndrinks          2.981114\nspeaks          0.079874\nheight          0.002577\nage             0.000000\norientation     0.000000\nsex             0.000000\nstatus          0.000000\nstem_job        0.000000\ndtype: float64\n# How many missing values per sample?\nmissing_per_sample = train.isna().sum(axis=1).value_counts()\nplt.bar(missing_per_sample.index, missing_per_sample)\nplt.xlabel(\"Number of missing features\")\nplt.ylabel(\"Number of samples\")\n# look at the top 5 missing\ntrain.loc[train.isna().sum(axis=1).sort_values(ascending=False).index].head()\n\n\n\n\n\n\n\n\nage\nbody_type\ndiet\ndrinks\ndrugs\neducation\nethnicity\nheight\nincome\noffspring\norientation\npets\nreligion\nsex\nsign\nsmokes\nspeaks\nstatus\nstem_job\n\n\n\n\n36428\n31\nNaN\nNaN\nNaN\nNaN\nNaN\nother\nNaN\nNaN\nNaN\nstraight\nNaN\nNaN\nf\nNaN\nNaN\nenglish (fluently), german (fluently)\nsingle\nFalse\n\n\n34519\n28\nNaN\nstrictly anything\nNaN\nNaN\nNaN\nNaN\n72.0\nNaN\nNaN\nstraight\nNaN\nNaN\nm\nNaN\nNaN\nenglish\nsingle\nFalse\n\n\n44538\n44\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n76.0\nNaN\nNaN\nbisexual\nNaN\nNaN\nm\nNaN\nno\nenglish\nsingle\nFalse\n\n\n15083\n39\nNaN\nNaN\nNaN\nNaN\nNaN\nwhite\n69.0\nNaN\nNaN\nstraight\nNaN\nNaN\nf\nNaN\nNaN\nenglish\nsingle\nFalse\n\n\n7056\n32\nNaN\nNaN\nNaN\nnever\nNaN\nNaN\n66.0\nNaN\nNaN\nstraight\nNaN\nNaN\nf\nNaN\nNaN\nenglish\nsingle\nFalse\n# Maybe a heatmap can show trends?\n# number of missing per sample\nmissing_samples = train.isna().sum(axis=1).sort_values()\n# drop with none missing and sort \nmissing_samples.drop(missing_samples[missing_samples == 0].index, inplace=True)\n\n# Features with samples missing\nmissing_features = train.isna().sum(axis=0).sort_values()\nmissing_features.drop(missing_features[missing_features == 0].index, inplace=True)\n\nsns.heatmap(train.loc[missing_samples.index, missing_features.index].isna())\n# how about correlations between missing values?\nmissing_cor = train.loc[missing_samples.index, missing_features.index].isna().corr()\n# zero out the diagonal so we can visualize it better\nmissing_cor -= np.identity(missing_cor.shape[0])\nsns.heatmap(missing_cor)\n# look at the ones that have a lot missing\ntrain_missing = train.isna().sum(axis=0).sort_values(ascending=False)\n# filter down to the &gt; 20% missing\nn_missing = train_missing[train_missing &gt; 0.2 * len(train)]\nprint(n_missing)\n\n# percentage in each target category\ntrain_prop = train[\"stem_job\"].value_counts() / len(train)\nfig, axes = plt.subplots(2, 3, figsize=(12, 6), sharex=True, sharey=True)\nfor feat, ax in zip(n_missing.index, axes.flatten()):\n    counts = train.groupby(\"stem_job\")[feat].apply(lambda x: x.isna().sum())\n    # normalize\n    counts /= n_missing[feat]\n    # compare to the overall proportion of stem/not stem\n    ax.bar([-0.1, .9], train_prop, width=0.2, label=\"Overall\")\n    ax.bar([0.1, 1.1], counts, width=0.2, label=f\"{feat}\")\n    ax.set_xticks([0, 1], labels=[\"Non-STEM\", \"STEM\"])\n    ax.set_title(f\"Proportion of missing {feat}\")\n    ax.legend()\n\n# Look at value_counts for the features with lots of missing data, grouped by stem_job\n\nincome       30455\noffspring    21996\ndiet         14815\npets         11426\nreligion     11415\ndrugs         8848\ndtype: int64\n# what about the non-missing values from categories with a lot missing?\nfig, axes = plt.subplots(2, 3, figsize=(20, 12))\nfor feat, ax in zip(n_missing.index, axes.flatten()):\n    # income is the only continuous one, do a box plot\n    if feat == \"income\":\n        train[[\"income\", \"stem_job\"]].dropna().plot.box(column=\"income\", ax=ax,by=\"stem_job\")\n        ax.set_xlabel(\"STEM job\")\n        ax.set_xticks([1,2], labels=[\"Non-STEM\", \"STEM\"])\n        ax.set_yscale(\"log\")\n    else:\n        # categorical needs value_counts\n        # Thanks to https://stackoverflow.com/questions/48238305/bar-plot-with-groupby for unstack(0) magic\n        feat_cat_counts = train[[feat, \"stem_job\"]].dropna().groupby(\"stem_job\")[feat].value_counts().unstack(0)\n        \n        # normalize by total number in each stem category\n        feat_cat_counts /= feat_cat_counts.sum()\n        # plot magic\n        feat_cat_counts.plot.bar(ax=ax)"
   },
   {
     "objectID": "demo_code/07_missing_weird/ok_cupid_processing.html#dealing-with-missing-values",
     "href": "demo_code/07_missing_weird/ok_cupid_processing.html#dealing-with-missing-values",
     "title": "Understanding missing values",
     "section": "Dealing with missing values",
-    "text": "Dealing with missing values\n\n# select features to use in the model\nnumeric_features = [\"age\", \"height\", \"income\"]\ncat_features = [\"drinks\", \"education\", \"sex\",\"pets\",\"religion\",\"offspring\"]\n\n\nfor cat in cat_features:\n    print(cat,\"cardinality:\")\n    print(len(train[cat].value_counts()))\n\n\n# Define the trickier encoder\ndrink_enc = OrdinalEncoder(\n            categories=[\n                [\n                    \"not at all\",\n                    \"rarely\",\n                    \"socially\",\n                    \"often\",\n                    \"very often\",\n                    \"desperately\",\n                ]\n            ],\n            handle_unknown=\"use_encoded_value\",\n            unknown_value=-1,\n        )\n\n# use one-hot for the rest\nnom_cats = [\"drinks\", \"education\", \"sex\", \"pets\", \"religion\", \"offspring\"]\n\nIterations\n\nDecision tree, do nothing with NaNs\nImpute with constant\nAdd missing indicator\nImpute with mean/mode\n\n\n# Build the preprocessing pipeline\n\nnumeric_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=0),\n    PowerTransformer(method=\"yeo-johnson\"),\n)\n\ncat_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=\"unknown\"),\n    OneHotEncoder(handle_unknown=\"ignore\", sparse_output=False)\n)\n\ndrink_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"most_frequent\"),\n    drink_enc\n)\n\npreprocessor = make_column_transformer(\n    (numeric_pipeline, [\"age\", \"height\", \"income\"]),\n    (cat_pipeline, nom_cats),\n    (drink_pipeline, [\"drinks\"])\n)\n\n# Now add on a model!\npipeline = make_pipeline(\n    preprocessor,\n    DecisionTreeClassifier(class_weight=\"balanced\", max_depth=5),\n).set_output(transform=\"pandas\")\n\ncv = cross_validate(pipeline, train, train[\"stem_job\"], scoring=[\"precision\", \"recall\"])\nprint(\"Precision\",cv[\"test_precision\"])\nprint(\"Recall\", cv[\"test_recall\"])\nprint(f\"\\nMean Precision: {cv['test_precision'].mean():.2f}\") # Out of predicted true, what % are actually true?\nprint(f\"MeanRecall:    {cv['test_recall'].mean():.2f}\") # Out of all actual true values, what % are predicted true?\n\n\n# look at top 10 feature importance\nN = 10\npipeline.fit(train, train[\"stem_job\"])\nX = pipeline[:-1].transform(train)\nfi = pipeline[-1].feature_importances_\ntopN = fi.argsort(descending=True)[:N]\n\nticks = np.arange(N)\nplt.bar(ticks, fi[topN])\nplt.xticks(ticks=ticks, labels=X.columns[topN], rotation = 90)\nplt.show()"
+    "text": "Dealing with missing values\n\n# select features to use in the model\nnumeric_features = [\"age\", \"height\", \"income\"]\ncat_features = [\"drinks\", \"education\", \"sex\",\"pets\",\"religion\",\"offspring\"]\n\n\nfor cat in cat_features:\n    print(cat,\"cardinality:\")\n    print(len(train[cat].value_counts()))\n\ndrinks cardinality:\n6\neducation cardinality:\n32\nsex cardinality:\n2\npets cardinality:\n15\nreligion cardinality:\n45\noffspring cardinality:\n15\n\n\n\n# Define the trickier encoder\ndrink_enc = OrdinalEncoder(\n            categories=[\n                [\n                    \"not at all\",\n                    \"rarely\",\n                    \"socially\",\n                    \"often\",\n                    \"very often\",\n                    \"desperately\",\n                ]\n            ],\n            handle_unknown=\"use_encoded_value\",\n            unknown_value=-1,\n        )\n\n# use one-hot for the rest\nnom_cats = [\"drinks\", \"education\", \"sex\", \"pets\", \"religion\", \"offspring\"]\n\nIterations\n\nDecision tree, do nothing with NaNs\nImpute with constant\nAdd missing indicator\nImpute with mean/mode\n\n\n# Build the preprocessing pipeline\n\nnumeric_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=0, add_indicator=True),\n    SimpleImputer(strategy=\"median\", add_indicator=True),\n    PowerTransformer(method=\"yeo-johnson\"),\n)\n\ncat_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=\"unknown\", add_indicator=True),\n    SimpleImputer(strategy=\"most_frequent\", add_indicator=True),\n    OneHotEncoder(handle_unknown=\"ignore\", sparse_output=False)\n)\n\ndrink_pipeline = make_pipeline(\n    SimpleImputer(strategy=\"most_frequent\"),\n    drink_enc\n)\n\npreprocessor = make_column_transformer(\n    (numeric_pipeline, [\"age\", \"height\", \"income\"]),\n    (cat_pipeline, nom_cats),\n    (drink_pipeline, [\"drinks\"])\n)\n\n# Now add on a model!\npipeline = make_pipeline(\n    preprocessor,\n    DecisionTreeClassifier(class_weight=\"balanced\", max_depth=5),\n).set_output(transform=\"pandas\")\n\ncv = cross_validate(pipeline, train, train[\"stem_job\"], scoring=[\"precision\", \"recall\"])\nprint(\"Precision\",cv[\"test_precision\"])\nprint(\"Recall\", cv[\"test_recall\"])\nprint(f\"\\nMean Precision: {cv['test_precision'].mean():.2f}\") # Out of predicted true, what % are actually true?\nprint(f\"MeanRecall:    {cv['test_recall'].mean():.2f}\") # Out of all actual true values, what % are predicted true?\n\nPrecision [0.29033903 0.2919112  0.28021148 0.28741755 0.28340383]\nRecall [0.79428173 0.79832519 0.77669225 0.79009763 0.79428173]\n\nMean Precision: 0.29\nMeanRecall:    0.79\n\n\n\n# look at top 10 feature importance\nN = 10\npipeline.fit(train, train[\"stem_job\"])\nX = pipeline[:-1].transform(train)\nfi = pipeline[-1].feature_importances_\ntopN = fi.argsort(descending=True)[:N]\n\nticks = np.arange(N)\nplt.bar(ticks, fi[topN])\nplt.xticks(ticks=ticks, labels=X.columns[topN], rotation = 90)\nplt.show()\n\n\n\n\n\n\n\n\n\ny_hat = pipeline.predict(train)\nwrong = y_hat != train[\"stem_job\"]\ntrain[wrong].head()\n\n\n\n\n\n\n\n\nage\nbody_type\ndiet\ndrinks\ndrugs\neducation\nethnicity\nheight\nincome\noffspring\norientation\npets\nreligion\nsex\nsign\nsmokes\nspeaks\nstatus\nstem_job\n\n\n\n\n21354\n47\nathletic\nNaN\nsocially\nnever\ngraduated from college/university\nblack\n69.0\nNaN\nNaN\nstraight\nlikes dogs and dislikes cats\ncatholicism but not too serious about it\nm\nlibra but it doesn&rsquo;t matter\nno\nenglish\nsingle\nFalse\n\n\n16302\n32\njacked\nstrictly vegan\ndesperately\noften\ndropped out of masters program\nwhite\n72.0\n1000000.0\nhas kids, and wants more\nstraight\nhas dogs\njudaism\nm\ntaurus\nyes\nenglish, c++, esperanto, catalan\nsingle\nFalse\n\n\n24674\n43\nathletic\nmostly other\nsocially\nnever\ngraduated from two-year college\nwhite\n72.0\nNaN\nNaN\nstraight\nhas dogs and likes cats\nother and laughing about it\nm\npisces and it&rsquo;s fun to think about\nno\nenglish (fluently), german (fluently)\navailable\nFalse\n\n\n56941\n34\naverage\nanything\nrarely\nnever\ngraduated from two-year college\nwhite\n68.0\nNaN\nhas a kid, and might want more\nstraight\nNaN\nNaN\nm\nleo\nno\nenglish\nsingle\nFalse\n\n\n55075\n23\naverage\nNaN\nsocially\nnever\ngraduated from college/university\nhispanic / latin\n67.0\nNaN\nNaN\ngay\nNaN\nagnosticism\nm\nvirgo\nno\nenglish\nsingle\nFalse"
   },
   {
     "objectID": "demo_code/07_missing_weird/ok_cupid_processing.html#extra-plots-used-in-slides",
@@ -637,88 +637,109 @@
     "text": "Coming up next\n\nLab: basic regression, show me where you’re at\nLecture: Simple models and evaluation metrics"
   },
   {
-    "objectID": "labs/03-categorical.html",
-    "href": "labs/03-categorical.html",
-    "title": "3: Categorical Data Representation",
+    "objectID": "labs/04-eda.html",
+    "href": "labs/04-eda.html",
+    "title": "4: Exploratory Data Analysis",
     "section": "",
-    "text": "Lab submission due on September 29, 2026."
+    "text": "Lab submission due on October 21, 2026. This is a week longer than normal; not because I expect it to take longer, but because it’s reading week and I don’t like having deadlines in the middle."
   },
   {
-    "objectID": "labs/03-categorical.html#objective",
-    "href": "labs/03-categorical.html#objective",
-    "title": "3: Categorical Data Representation",
+    "objectID": "labs/04-eda.html#objective",
+    "href": "labs/04-eda.html#objective",
+    "title": "4: Exploratory Data Analysis",
     "section": "Objective",
-    "text": "Objective\nLearn a bit about:\n\nMore Scikit-learn pipelines\nCategorical data encoding decisions\nThings to watch out for when encoding categorical data"
+    "text": "Objective\nLearn a bit about:\n\nCombining data from different sources\nWorking with datetime formats\nData exploration"
   },
   {
-    "objectID": "labs/03-categorical.html#setup",
-    "href": "labs/03-categorical.html#setup",
-    "title": "3: Categorical Data Representation",
+    "objectID": "labs/04-eda.html#setup",
+    "href": "labs/04-eda.html#setup",
+    "title": "4: Exploratory Data Analysis",
     "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually.\nIf you download and load the CSV, you’ll need to define your y target variable from the Class column."
+    "text": "Setup\nCreate a new directory named lab04 in your labs repo. Download and add to it:\n\nclimate_traffic_data.zip, unzipped\nA new notebook or Python script for your lab work\n\n\n\n\n\n\n\nNote\n\n\n\nThis is the same data I demonstrated combining in class. You can refer to my notebook if you get stuck, but try to figure it out and understand what’s going on rather than copying big chunks of code."
   },
   {
-    "objectID": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
-    "href": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
-    "title": "3: Categorical Data Representation",
-    "section": "Predicting breast cancer recurrance",
-    "text": "Predicting breast cancer recurrance\nThis is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study1. A number of categorical features are recorded for each, along with the target variable (one of no-recurrence-events and recurrence-events).\nEach of the following steps is also indicated as TODO items in the starter notebook.\n\nConvert the target into a binary feature, assumed to be named y\nDo some basic exploration on the categorical features, paying attention to:\n\nfeature cardinality\nordinal vs nominal\n\nThere’s also a single continuous value — inspect it using an appropriate visualization or other method\nDefine appropriate encoders for the categorical features (either OneHotEncoder or OrdinalEncoder). Pay attention to the names of the categories for ordinal encoding! By default they will map to alphabetical order, but that is not the same as numerical order (why?).\nPut your encoders into the provided pipeline skeleton, then cross-validate to see how your model behaves. Can you make any changes that improve the performance?\n\n\n\n\n\n\n\nNoteStretch goal\n\n\n\nIf you want to take things a step further, see if you can interpret the .feature_importances_ attribute of the classifier. You can access this with the last element of the pipeline, i.e.:\nimportance = pipeline[-1].feature_importances_"
+    "objectID": "labs/04-eda.html#combining-data",
+    "href": "labs/04-eda.html#combining-data",
+    "title": "4: Exploratory Data Analysis",
+    "section": "Combining data",
+    "text": "Combining data\nI’ve given you a zip file with 12 CSVs containing month-by-month climate data for the City of Calgary (reported hourly), as well as a year’s worth of traffic incidents, both from 2025. In contrast to your prior labs and assignments, we are not going to be predicting anything, just looking at the past year to try to get some insights.\n\nLoad the 12 weather csvs and concatenate into a single dataframe, then print out the info about the features.\nLoad the road incident csv and again print out the info.\nIdentify which feature on each dataframe is the date/time info. What time zone are they reporting in?\nTry to combine the datasets using Pandas’ merge_asof function, which will align each traffic incident with the nearest climate observation. What error do you get?\nTo fix the error, you’ll need to convert the string timestamps to a proper datetime datatype. An easy way to do this is with Pandas’ to_datetime method, but be careful about ensuring both end up with the same unit! datetime[ns] is not the same as datetime[us].\n\n\n\n\n\n\nTip\n\n\n\nIn addition to converting the date format, don’t forget to account for the time zone for each dataset! In the Environment Canada Data, LST stands for “local standard time”.\n\n\nAfter converting the dates, go back and merge using merge_asof to create a combined dataframe with the approximate weather for each traffic incident."
   },
   {
-    "objectID": "labs/03-categorical.html#submit",
-    "href": "labs/03-categorical.html#submit",
-    "title": "3: Categorical Data Representation",
+    "objectID": "labs/04-eda.html#exploring",
+    "href": "labs/04-eda.html#exploring",
+    "title": "4: Exploratory Data Analysis",
+    "section": "Exploring",
+    "text": "Exploring\nNow that you have a dataset combining weather with traffic incidents, it’s time to explore!1\nRemember that the goal of exploratory data analysis (EDA) is to understand your data. Ask questions, then look for answers using visualizations or summary statistics. The example I gave in class was “is there a relationship between temperature and traffic incidents”, which I tried to answer with a histogram and concluded that there seems to be an overrepresentation at lower temperatures — however, I didn’t account for the missing data in June, so this particular visualization can be improved.\nIn your lab notebook:\n\nState a question about the dataset.\nVisualize the data in some way to try to find the answer.\nRecord what you think the visualization is telling you."
+  },
+  {
+    "objectID": "labs/04-eda.html#submit",
+    "href": "labs/04-eda.html#submit",
+    "title": "4: Exploratory Data Analysis",
     "section": "Submit",
-    "text": "Submit\nAs usual, git add, commit, and push your work. It’s okay if you don’t make it all the way, I’ll be looking for at least one appropriately defined categorical encoder."
+    "text": "Submit\nAs usual, add your lab04 directory to your labs repo and push your changes to GitHub."
   },
   {
-    "objectID": "labs/03-categorical.html#footnotes",
-    "href": "labs/03-categorical.html#footnotes",
-    "title": "3: Categorical Data Representation",
+    "objectID": "labs/04-eda.html#footnotes",
+    "href": "labs/04-eda.html#footnotes",
+    "title": "4: Exploratory Data Analysis",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis seems to me to be a limitation of the dataset — there may be more recurrances that happened after the study period.↩︎"
+    "text": "Footnotes\n\n\nIn this case, you don’t need to split the data as we’re not trying to build a predictive model. It’s also a time-series, which needs special consideration.↩︎"
   },
   {
-    "objectID": "labs/01-clean-regression.html",
-    "href": "labs/01-clean-regression.html",
-    "title": "1: Regression with Clean Data",
+    "objectID": "labs/02-basic-models.html",
+    "href": "labs/02-basic-models.html",
+    "title": "2: Basic Modelling",
     "section": "",
-    "text": "Lab submission due on September 16, 2026."
+    "text": "Lab submission due on September 23, 2026."
   },
   {
-    "objectID": "labs/01-clean-regression.html#objective",
-    "href": "labs/01-clean-regression.html#objective",
-    "title": "1: Regression with Clean Data",
+    "objectID": "labs/02-basic-models.html#objective",
+    "href": "labs/02-basic-models.html#objective",
+    "title": "2: Basic Modelling",
     "section": "Objective",
-    "text": "Objective\nThe main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need “clean” and easy to manage data."
+    "text": "Objective\nLearn a bit about:\n\nScikit-learn pipelines\nThe need for validation data\nThe overall iterative workflow of making predictions from data\n\nAs we haven’t yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation."
   },
   {
-    "objectID": "labs/01-clean-regression.html#deliverables",
-    "href": "labs/01-clean-regression.html#deliverables",
-    "title": "1: Regression with Clean Data",
-    "section": "Deliverables",
-    "text": "Deliverables\nClick here to accept the “labs” assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please create a new directory named lab01 (or similar) and add:\n\nYour code to load, process, and visualize the data\nA brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions\nA list of references, such as:\n\nComplete URLs, e.g. to library documentation or Stack Overflow answers\nSearch queries, particularly if you used the “AI overview” response\nA complete transcript of AI chat history, if any\n\n\nThese can all be in one document if you document your process inline with your code.\n\n\n\n\n\n\nCaution\n\n\n\nAI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!"
+    "objectID": "labs/02-basic-models.html#setup",
+    "href": "labs/02-basic-models.html#setup",
+    "title": "2: Basic Modelling",
+    "section": "Setup",
+    "text": "Setup\nCreate a new directory named lab02 in your labs repo. Download and add to it:\n\ntitanic_train.csv — the training data\ntitanic.ipynb — the starter notebook\n\nYou can also check out the test data, but this doesn’t have a truth value. If you want to know the final performance of your model, you’ll need to submit it to Kaggle."
   },
   {
-    "objectID": "labs/01-clean-regression.html#instructions",
-    "href": "labs/01-clean-regression.html#instructions",
-    "title": "1: Regression with Clean Data",
-    "section": "Instructions",
-    "text": "Instructions\n\nClone the labs repo to your local machine and create a new subdirectory named lab01. In this folder:\nIn the programming language of your choice, write a program to:\n\nLoad the data in simple_regression.csv\nCalculate the line of best fit using simple linear regression\nCreate a scatter plot of the data with the best fit line\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to document your process as you do this! For example, if you get stuck on a step and need to look things up, add a comment.\n\n\nWith reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.\n\nIs linear regression an appropriate model for these data?\nHow well does your model fit the data?\nWhat additional information would help to create a more accurate model?\n\nRepeat the first question but with the simple_regression_full.csv dataset. This contains extra columns; select only the same ones that are present in simple_regression.csv. In your report, answer the following:\n\nWhat additional steps did you need to do to recreate the plot?\nDo you have any guess what this dataset represents?"
+    "objectID": "labs/02-basic-models.html#predicting-titanic-survivorship",
+    "href": "labs/02-basic-models.html#predicting-titanic-survivorship",
+    "title": "2: Basic Modelling",
+    "section": "Predicting Titanic survivorship",
+    "text": "Predicting Titanic survivorship\nConsider this a “Hello, world!” of supervised learning! The Titanic survival dataset is one of the most popular practice datasets.\n\nOpen your copy of titanic.ipynb and run the first cell. Install any missing packages you encounter.\nI’ve done some basic exploratory data analysis and constructed the pipeline for you, as we haven’t gotten to this in class yet. The pipeline is as follows:\npipeline = make_pipeline(\n   make_column_transformer(\n      (OneHotEncoder(), cat_feats),\n      (StandardScaler(), num_feats)\n   )\n   # TODO: add some kind of classification model\n)\nAdd a decision tree classifier to the pipeline.\nTrain and cross-validate your tree, choosing an appropriate scoring metric.\n\n\n\n\n\n\nTip\n\n\n\nIf your model complains about missing values (or some more obscure message about NaN), you might need to remove the Embarked feature — I missed that it actually has 2 missing features.\n\n\nExperiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:\n\nDropping features that don’t add value\nTraining a forest of trees\nChanging tree depth to avoid overfitting\n\nAs you make changes, record why you’re making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it’s okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:\n# Started with max depth of 3 but it seemed like it wasn't learning enough\n# Increasing to 4 improves predictions without overfitting\ntree = DecisionTreeClassifier(maxDepth=4)\nRepeat, but with some kind of linear classification model, such as LinearSVC or LogisticRegression. What changes?"
   },
   {
-    "objectID": "labs/01-clean-regression.html#submission",
-    "href": "labs/01-clean-regression.html#submission",
-    "title": "1: Regression with Clean Data",
-    "section": "Submission",
-    "text": "Submission\nSubmit your work by adding your new files to the lab repo with git add, commit with git commit, and push your changes to GitHub with git push. You may add/commit/push as many times as you like; only the last revision will be marked. Your repo should include:\n\nYour source code in the language of your choice\nYour report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)\nYour list of references\n\n\n\n\n\n\n\nImportant\n\n\n\nDo not commit virtual environments (venv) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a .gitignore file to your repo such as this one.\nIf you are using Python 3.13 or newer, the virtual environment directory will be ignored automatically.\n\n\nLabs are marked pass/fail based on “best effort” completion — you don’t need to finish the whole thing, just get as far as you can in a reasonable amount of time."
+    "objectID": "labs/02-basic-models.html#submit",
+    "href": "labs/02-basic-models.html#submit",
+    "title": "2: Basic Modelling",
+    "section": "Submit",
+    "text": "Submit\nAdd and push your code and observations to your GitHub repo for your completion-based lab mark."
   },
   {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DATA 3464 | Fall 2026",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
+  },
+  {
+    "objectID": "index.html#lectures",
+    "href": "index.html#lectures",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Lectures",
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7: Missing and weird data\n \n \nSlide 9\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#labs",
+    "href": "index.html#labs",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Labs",
+    "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\nOct 7, 2026\n4: Exploratory Data Analysis\nOct 21, 2026\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/01-simple-model.html",
@@ -763,67 +784,95 @@
     "text": "Footnotes\n\n\nWhy under $20k? I don’t know, maybe they get a prize or something. It just seemed like a clear dividing line when I inspected the data, and I needed an excuse to turn this into a classification problem.↩︎"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DATA 3464 | Fall 2026",
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
     "section": "",
-    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "index.html#lectures",
-    "href": "index.html#lectures",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7: Missing and weird data\n \n \nSlide 9\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#labs",
-    "href": "index.html#labs",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Labs",
-    "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "labs/02-basic-models.html",
-    "href": "labs/02-basic-models.html",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/01-clean-regression.html",
+    "href": "labs/01-clean-regression.html",
+    "title": "1: Regression with Clean Data",
     "section": "",
-    "text": "Lab submission due on September 23, 2026."
+    "text": "Lab submission due on September 16, 2026."
   },
   {
-    "objectID": "labs/02-basic-models.html#objective",
-    "href": "labs/02-basic-models.html#objective",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/01-clean-regression.html#objective",
+    "href": "labs/01-clean-regression.html#objective",
+    "title": "1: Regression with Clean Data",
     "section": "Objective",
-    "text": "Objective\nLearn a bit about:\n\nScikit-learn pipelines\nThe need for validation data\nThe overall iterative workflow of making predictions from data\n\nAs we haven’t yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation."
+    "text": "Objective\nThe main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need “clean” and easy to manage data."
   },
   {
-    "objectID": "labs/02-basic-models.html#setup",
-    "href": "labs/02-basic-models.html#setup",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/01-clean-regression.html#deliverables",
+    "href": "labs/01-clean-regression.html#deliverables",
+    "title": "1: Regression with Clean Data",
+    "section": "Deliverables",
+    "text": "Deliverables\nClick here to accept the “labs” assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please create a new directory named lab01 (or similar) and add:\n\nYour code to load, process, and visualize the data\nA brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions\nA list of references, such as:\n\nComplete URLs, e.g. to library documentation or Stack Overflow answers\nSearch queries, particularly if you used the “AI overview” response\nA complete transcript of AI chat history, if any\n\n\nThese can all be in one document if you document your process inline with your code.\n\n\n\n\n\n\nCaution\n\n\n\nAI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#instructions",
+    "href": "labs/01-clean-regression.html#instructions",
+    "title": "1: Regression with Clean Data",
+    "section": "Instructions",
+    "text": "Instructions\n\nClone the labs repo to your local machine and create a new subdirectory named lab01. In this folder:\nIn the programming language of your choice, write a program to:\n\nLoad the data in simple_regression.csv\nCalculate the line of best fit using simple linear regression\nCreate a scatter plot of the data with the best fit line\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to document your process as you do this! For example, if you get stuck on a step and need to look things up, add a comment.\n\n\nWith reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.\n\nIs linear regression an appropriate model for these data?\nHow well does your model fit the data?\nWhat additional information would help to create a more accurate model?\n\nRepeat the first question but with the simple_regression_full.csv dataset. This contains extra columns; select only the same ones that are present in simple_regression.csv. In your report, answer the following:\n\nWhat additional steps did you need to do to recreate the plot?\nDo you have any guess what this dataset represents?"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html#submission",
+    "href": "labs/01-clean-regression.html#submission",
+    "title": "1: Regression with Clean Data",
+    "section": "Submission",
+    "text": "Submission\nSubmit your work by adding your new files to the lab repo with git add, commit with git commit, and push your changes to GitHub with git push. You may add/commit/push as many times as you like; only the last revision will be marked. Your repo should include:\n\nYour source code in the language of your choice\nYour report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)\nYour list of references\n\n\n\n\n\n\n\nImportant\n\n\n\nDo not commit virtual environments (venv) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a .gitignore file to your repo such as this one.\nIf you are using Python 3.13 or newer, the virtual environment directory will be ignored automatically.\n\n\nLabs are marked pass/fail based on “best effort” completion — you don’t need to finish the whole thing, just get as far as you can in a reasonable amount of time."
+  },
+  {
+    "objectID": "labs/03-categorical.html",
+    "href": "labs/03-categorical.html",
+    "title": "3: Categorical Data Representation",
+    "section": "",
+    "text": "Lab submission due on September 29, 2026."
+  },
+  {
+    "objectID": "labs/03-categorical.html#objective",
+    "href": "labs/03-categorical.html#objective",
+    "title": "3: Categorical Data Representation",
+    "section": "Objective",
+    "text": "Objective\nLearn a bit about:\n\nMore Scikit-learn pipelines\nCategorical data encoding decisions\nThings to watch out for when encoding categorical data"
+  },
+  {
+    "objectID": "labs/03-categorical.html#setup",
+    "href": "labs/03-categorical.html#setup",
+    "title": "3: Categorical Data Representation",
     "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab02 in your labs repo. Download and add to it:\n\ntitanic_train.csv — the training data\ntitanic.ipynb — the starter notebook\n\nYou can also check out the test data, but this doesn’t have a truth value. If you want to know the final performance of your model, you’ll need to submit it to Kaggle."
+    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually.\nIf you download and load the CSV, you’ll need to define your y target variable from the Class column."
   },
   {
-    "objectID": "labs/02-basic-models.html#predicting-titanic-survivorship",
-    "href": "labs/02-basic-models.html#predicting-titanic-survivorship",
-    "title": "2: Basic Modelling",
-    "section": "Predicting Titanic survivorship",
-    "text": "Predicting Titanic survivorship\nConsider this a “Hello, world!” of supervised learning! The Titanic survival dataset is one of the most popular practice datasets.\n\nOpen your copy of titanic.ipynb and run the first cell. Install any missing packages you encounter.\nI’ve done some basic exploratory data analysis and constructed the pipeline for you, as we haven’t gotten to this in class yet. The pipeline is as follows:\npipeline = make_pipeline(\n   make_column_transformer(\n      (OneHotEncoder(), cat_feats),\n      (StandardScaler(), num_feats)\n   )\n   # TODO: add some kind of classification model\n)\nAdd a decision tree classifier to the pipeline.\nTrain and cross-validate your tree, choosing an appropriate scoring metric.\n\n\n\n\n\n\nTip\n\n\n\nIf your model complains about missing values (or some more obscure message about NaN), you might need to remove the Embarked feature — I missed that it actually has 2 missing features.\n\n\nExperiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:\n\nDropping features that don’t add value\nTraining a forest of trees\nChanging tree depth to avoid overfitting\n\nAs you make changes, record why you’re making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it’s okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:\n# Started with max depth of 3 but it seemed like it wasn't learning enough\n# Increasing to 4 improves predictions without overfitting\ntree = DecisionTreeClassifier(maxDepth=4)\nRepeat, but with some kind of linear classification model, such as LinearSVC or LogisticRegression. What changes?"
+    "objectID": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
+    "href": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
+    "title": "3: Categorical Data Representation",
+    "section": "Predicting breast cancer recurrance",
+    "text": "Predicting breast cancer recurrance\nThis is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study1. A number of categorical features are recorded for each, along with the target variable (one of no-recurrence-events and recurrence-events).\nEach of the following steps is also indicated as TODO items in the starter notebook.\n\nConvert the target into a binary feature, assumed to be named y\nDo some basic exploration on the categorical features, paying attention to:\n\nfeature cardinality\nordinal vs nominal\n\nThere’s also a single continuous value — inspect it using an appropriate visualization or other method\nDefine appropriate encoders for the categorical features (either OneHotEncoder or OrdinalEncoder). Pay attention to the names of the categories for ordinal encoding! By default they will map to alphabetical order, but that is not the same as numerical order (why?).\nPut your encoders into the provided pipeline skeleton, then cross-validate to see how your model behaves. Can you make any changes that improve the performance?\n\n\n\n\n\n\n\nNoteStretch goal\n\n\n\nIf you want to take things a step further, see if you can interpret the .feature_importances_ attribute of the classifier. You can access this with the last element of the pipeline, i.e.:\nimportance = pipeline[-1].feature_importances_"
   },
   {
-    "objectID": "labs/02-basic-models.html#submit",
-    "href": "labs/02-basic-models.html#submit",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/03-categorical.html#submit",
+    "href": "labs/03-categorical.html#submit",
+    "title": "3: Categorical Data Representation",
     "section": "Submit",
-    "text": "Submit\nAdd and push your code and observations to your GitHub repo for your completion-based lab mark."
+    "text": "Submit\nAs usual, git add, commit, and push your work. It’s okay if you don’t make it all the way, I’ll be looking for at least one appropriately defined categorical encoder."
+  },
+  {
+    "objectID": "labs/03-categorical.html#footnotes",
+    "href": "labs/03-categorical.html#footnotes",
+    "title": "3: Categorical Data Representation",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis seems to me to be a limitation of the dataset — there may be more recurrances that happened after the study period.↩︎"
   },
   {
     "objectID": "labs/index.html",
     "href": "labs/index.html",
     "title": "Labs",
     "section": "",
-    "text": "Date\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\nOct 7, 2026\n4: Exploratory Data Analysis\nOct 21, 2026\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/02-basic-models.html",

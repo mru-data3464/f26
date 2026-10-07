@@ -15,7 +15,7 @@ Learn a bit about:
 
 ## Setup
 Create a new directory named `lab04` in your labs repo. Download and add to it:
-- [climate_traffic_data.zip](/demo_code/06_splitting_combining), unzipped
+- [climate_traffic_data.zip](/demo_code/06_splitting_combining/climate_traffic_data.zip), unzipped
 - A new notebook or Python script for your lab work
 
 ::: {.callout-note}

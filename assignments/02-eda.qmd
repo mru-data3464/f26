@@ -1,0 +1,108 @@
+---
+title: "Assignment 2: Merging and exploring datasets"
+date: 2026-10-09
+due: "Friday, October 30 at 5 pm"
+---
+
+Due date: {{< meta due >}}. Reasonable requests for extensions will be granted, and realistically, I will not look at these until the following Monday anyway.
+
+## Setup
+You may work in groups up to 3. Please join a group on D2L, then pick **one person** to [accept the assignment](https://classroom50.org/mru-data3464-f26/data-3464/assignments/assignment-2/accept) and create the GitHub repository with the datasets. Whoever does this becomes the group manager and can invite team members with their GitHub username.
+
+In your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create **one coherent report named assignment2** that includes:
+
+- Your group members' names
+- A description of your understanding of the various data files provided
+- A clear statement of your research question
+- A conclusion answering your research question, including key figures as supporting evidence
+- Reflections on lessons learned and challenges
+
+Your report can be in Markdown or PDF format. In these instructions, I've indicated where you should write **in your report** in an annoying bold face.
+
+I encourage you to talk things through as you try different things. If you talk with classmates from a different group, **cite their contribution**. Similarly, if you use a web resource, add a link in the code — this is both polite, and a good habit to develop.
+
+## The problem
+Humans and wildlife are having more and more encounters, and Parks Canada would like to understand the data they've collected. Your task is to combine and explore various Parks Canada wildlife encounters datasets to gain insights about trends in animal encounters.
+
+The data provided in the starter code repo was downloaded from Canada's Open Data Portal and https://climatedata.ca. The `parks-canada-attendance-*` and `climate-daily*` csvs should be fairly understandable, but you will need to read the description of the [Animal Encounters Datasets](https://open.canada.ca/data/en/dataset/743a0b4a-9e33-4b12-981a-9f9fd3dd1680) to understand the relationship between the various tables (for example, why a single incident might involve multiple animal records).
+
+### Data Combining
+There's a lot of separate datasets here that all relate to each other. Combining them is non-trivial, but is an essential step to being able to understand them.
+
+1. Load the four animal encounters csvs (`incidents`,`responses`, `activities`, and `animals_involved`) as pandas dataframes.
+2. Do some basic exploration to understand the contents of these dataframes.
+3. Join the dataframes on the `Incident Number` key. Other columns may also be duplicated; try to create a single dataframe with all the unique columns, without any duplicated columns. There will be duplicated incident numbers, that's okay! Just remember this later on if you want to count unique incidents.
+4. Load the `climate-daily` files and concatenate them. Again, do some basic exploration to understand the information provided.
+5. Load the various `parks-canada-attendance` CSVs to find the number of visitors per year. Yes, it's annoying that these are broken up into multiple files! Also annoying is the date range: each "season" (e.g. 2019-2020) goes from April 1 to March 31st. You'll need to find the best way of structuring this data to align visitor counts to incidents.
+6. Restrict your datasets to just Banff and Jasper parks to keep things manageable and join all the various data sources by date.
+
+   :::{.callout-tip}
+
+   Convert the date columns to a `datetime` format before merging, just like in lab 4. Be careful with the visitor data; you'll need to find the visitor count corresponding to the April-March year in which the incident occurred. For example, an incident occurring in January 2022 would fall within the 2021-22 attendance record.
+
+   :::
+
+   You may need to process Banff and Jasper separately.
+
+Congratulations, you now have a giant dataframe with incidents, animals involved, responses, climate data, and the number of visitors to each park! Getting to this point is a surprising amount of work, even after I've done the acquisition part for you.
+
+**In your report**, write a summary description of the various data sources and how they relate to each other. You might want to do some preliminary data exploration first to understand the various columns.
+
+### Data Exploration
+:::{.callout-note}
+
+There is no modelling in this assignment, it's simply a retrospective look at some collected data, so no splitting is required.
+
+:::
+
+This section is a lot more free-form than combining the data. Now that you have a better understanding of the data, it's time to formulate a research question. To begin, create:
+1. At least 2 exploratory visualizations or statistics for the numerical data
+2. At least 2 exploratory visualizations or statistics for the categorical data
+3. For each, state *why* you chose that way of examining the data, and at least one observation. This doesn't need to go in your report, but it should be in your exploration notebook(s).
+
+After doing this, hopefully something interesting popped out to investigate further. **In your report**, write a **clear statement of the research question** you are trying to answer. Examples might include (but are not limited to):
+- Is there a trend of increased animal encounters while driving?
+- Are wilderness encounters associated with warmer temperatures?
+- What trends in responses are there for different kinds of animals?
+If you are comparing incident count over time, you will need to normalize by visitor count.
+
+To answer your research question, you will likely need to create several additional visualizations. In your exploration document, state what you are trying to answer, then visualize, then make a comment about your observations.
+
+:::{.callout-note title="Get Creative!"}
+
+Poke at the data and see what happens. Many of your questions may lead nowhere, and that's okay! I'd like to see your process as you explore and develop insights.
+
+:::
+
+If, along the way, you see something interesting, you may want to update your research question. That's fine! If you start off looking at one thing and switch to another, leave the original explorations in your notebook. I'd like to see the process as well as the final decision.
+
+**In your report**, include one or two key figures that provide the answer to your research question and write a short paragraph describing your observations.
+
+## Reflections
+**In your report**, write a brief paragraph describing what you found challenging about this assignment, and one thing that was particularly interesting or surprising.
+
+## Submission
+Commit changes and `push` your working documents and report to the GitHub repo. Make sure to include **rendered outputs** in your notebooks so that I can see the visualizations without needing to run your code.
+
+You may commit and push as often as you like (and in fact, regular commits are a good idea!). I will only evaluate the last one committed before the deadline.
+
+## Marking Scheme
+Each of the following components will be marked on a 4-point scale and weighted as follows:
+
+| Component                                      | Weight |
+| ---------------------------------------------- | ------ |
+| Data combining process and accuracy            | 20%    |
+| Exploratory questions, plots, and observations | 30%    |
+| Research question and interpretation           | 20%    |
+| Reflections                                    | 20%    | 
+| Overall coherency and citations                | 10%    |
+
+<br />
+
+| Score | Description                                                            |
+| ----- | ---------------------------------------------------------------------- |
+| 4     | Excellent — thoughtful and creative without any errors or omissions    |
+| 3     | Pretty good, but with minor errors or omissions                        |
+| 2     | Mostly complete, but with major errors or omissions, lacking in detail |
+| 1     | A minimal effort was made, incomplete or incorrect                     |
+| 0     | No effort was made, or the submission is plagiarized                   |

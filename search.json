@@ -742,6 +742,48 @@
     "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\nOct 7, 2026\n4: Exploratory Data Analysis\nOct 21, 2026\n\n\n\nNo matching items"
   },
   {
+    "objectID": "assignments/02-eda.html",
+    "href": "assignments/02-eda.html",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "",
+    "text": "Due date: Friday, October 30 at 5 pm. Reasonable requests for extensions will be granted, and realistically, I will not look at these until the following Monday anyway."
+  },
+  {
+    "objectID": "assignments/02-eda.html#setup",
+    "href": "assignments/02-eda.html#setup",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "Setup",
+    "text": "Setup\nYou may work in groups up to 3. Please join a group on D2L, then pick one person to accept the assignment and create the GitHub repository with the datasets. Whoever does this becomes the group manager and can invite team members with their GitHub username.\nIn your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create one coherent report named assignment2 that includes:\n\nYour group members’ names\nA description of your understanding of the various data files provided\nA clear statement of your research question\nA conclusion answering your research question, including key figures as supporting evidence\nReflections on lessons learned and challenges\n\nYour report can be in Markdown or PDF format. In these instructions, I’ve indicated where you should write in your report in an annoying bold face.\nI encourage you to talk things through as you try different things. If you talk with classmates from a different group, cite their contribution. Similarly, if you use a web resource, add a link in the code — this is both polite, and a good habit to develop."
+  },
+  {
+    "objectID": "assignments/02-eda.html#the-problem",
+    "href": "assignments/02-eda.html#the-problem",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "The problem",
+    "text": "The problem\nHumans and wildlife are having more and more encounters, and Parks Canada would like to understand the data they’ve collected. Your task is to combine and explore various Parks Canada wildlife encounters datasets to gain insights about trends in animal encounters.\nThe data provided in the starter code repo was downloaded from Canada’s Open Data Portal and https://climatedata.ca. The parks-canada-attendance-* and climate-daily* csvs should be fairly understandable, but you will need to read the description of the Animal Encounters Datasets to understand the relationship between the various tables (for example, why a single incident might involve multiple animal records).\n\nData Combining\nThere’s a lot of separate datasets here that all relate to each other. Combining them is non-trivial, but is an essential step to being able to understand them.\n\nLoad the four animal encounters csvs (incidents,responses, activities, and animals_involved) as pandas dataframes.\nDo some basic exploration to understand the contents of these dataframes.\nJoin the dataframes on the Incident Number key. Other columns may also be duplicated; try to create a single dataframe with all the unique columns, without any duplicated columns. There will be duplicated incident numbers, that’s okay! Just remember this later on if you want to count unique incidents.\nLoad the climate-daily files and concatenate them. Again, do some basic exploration to understand the information provided.\nLoad the various parks-canada-attendance CSVs to find the number of visitors per year. Yes, it’s annoying that these are broken up into multiple files! Also annoying is the date range: each “season” (e.g. 2019-2020) goes from April 1 to March 31st. You’ll need to find the best way of structuring this data to align visitor counts to incidents.\nRestrict your datasets to just Banff and Jasper parks to keep things manageable and join all the various data sources by date.\n\n\n\n\n\n\nTip\n\n\n\nConvert the date columns to a datetime format before merging, just like in lab 4. Be careful with the visitor data; you’ll need to find the visitor count corresponding to the April-March year in which the incident occurred. For example, an incident occurring in January 2022 would fall within the 2021-22 attendance record.\n\n\nYou may need to process Banff and Jasper separately.\n\nCongratulations, you now have a giant dataframe with incidents, animals involved, responses, climate data, and the number of visitors to each park! Getting to this point is a surprising amount of work, even after I’ve done the acquisition part for you.\nIn your report, write a summary description of the various data sources and how they relate to each other. You might want to do some preliminary data exploration first to understand the various columns.\n\n\nData Exploration\n\n\n\n\n\n\nNote\n\n\n\nThere is no modelling in this assignment, it’s simply a retrospective look at some collected data, so no splitting is required.\n\n\nThis section is a lot more free-form than combining the data. Now that you have a better understanding of the data, it’s time to formulate a research question. To begin, create:\n\nAt least 2 exploratory visualizations or statistics for the numerical data\nAt least 2 exploratory visualizations or statistics for the categorical data\nFor each, state why you chose that way of examining the data, and at least one observation. This doesn’t need to go in your report, but it should be in your exploration notebook(s).\n\nAfter doing this, hopefully something interesting popped out to investigate further. In your report, write a clear statement of the research question you are trying to answer. Examples might include (but are not limited to):\n\nIs there a trend of increased animal encounters while driving?\nAre wilderness encounters associated with warmer temperatures?\nWhat trends in responses are there for different kinds of animals? If you are comparing incident count over time, you will need to normalize by visitor count.\n\nTo answer your research question, you will likely need to create several additional visualizations. In your exploration document, state what you are trying to answer, then visualize, then make a comment about your observations.\n\n\n\n\n\n\nNoteGet Creative!\n\n\n\nPoke at the data and see what happens. Many of your questions may lead nowhere, and that’s okay! I’d like to see your process as you explore and develop insights.\n\n\nIf, along the way, you see something interesting, you may want to update your research question. That’s fine! If you start off looking at one thing and switch to another, leave the original explorations in your notebook. I’d like to see the process as well as the final decision.\nIn your report, include one or two key figures that provide the answer to your research question and write a short paragraph describing your observations."
+  },
+  {
+    "objectID": "assignments/02-eda.html#reflections",
+    "href": "assignments/02-eda.html#reflections",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "Reflections",
+    "text": "Reflections\nIn your report, write a brief paragraph describing what you found challenging about this assignment, and one thing that was particularly interesting or surprising."
+  },
+  {
+    "objectID": "assignments/02-eda.html#submission",
+    "href": "assignments/02-eda.html#submission",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "Submission",
+    "text": "Submission\nCommit changes and push your working documents and report to the GitHub repo. Make sure to include rendered outputs in your notebooks so that I can see the visualizations without needing to run your code.\nYou may commit and push as often as you like (and in fact, regular commits are a good idea!). I will only evaluate the last one committed before the deadline."
+  },
+  {
+    "objectID": "assignments/02-eda.html#marking-scheme",
+    "href": "assignments/02-eda.html#marking-scheme",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "Marking Scheme",
+    "text": "Marking Scheme\nEach of the following components will be marked on a 4-point scale and weighted as follows:\n\n\n\nComponent\nWeight\n\n\n\n\nData combining process and accuracy\n20%\n\n\nExploratory questions, plots, and observations\n30%\n\n\nResearch question and interpretation\n20%\n\n\nReflections\n20%\n\n\nOverall coherency and citations\n10%\n\n\n\n\n\n\n\n\n\n\n\nScore\nDescription\n\n\n\n\n4\nExcellent — thoughtful and creative without any errors or omissions\n\n\n3\nPretty good, but with minor errors or omissions\n\n\n2\nMostly complete, but with major errors or omissions, lacking in detail\n\n\n1\nA minimal effort was made, incomplete or incorrect\n\n\n0\nNo effort was made, or the submission is plagiarized"
+  },
+  {
     "objectID": "assignments/01-simple-model.html",
     "href": "assignments/01-simple-model.html",
     "title": "Assignment 1: Simple Modelling",
@@ -788,7 +830,7 @@
     "href": "assignments/index.html",
     "title": "Assignments",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nOct 9, 2026\n\n\nAssignment 2: Merging and exploring datasets\n\n\n \n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "labs/01-clean-regression.html",

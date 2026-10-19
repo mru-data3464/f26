@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="e941ccce" class="cell" data-execution_count="1">
+<div id="e941ccce" class="cell" data-execution_count="161">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, cross_val_score, cross_validate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="9d34576c" class="cell" data-execution_count="2">
+<div id="9d34576c" class="cell" data-execution_count="162">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisit the OKCupid data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../04_categorical/profiles_revised.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -251,20 +251,20 @@ dtypes: float64(1), int64(2), str(16)
 memory usage: 8.7 MB</code></pre>
 </div>
 </div>
-<div id="04dc0ce7" class="cell" data-execution_count="3">
+<div id="04dc0ce7" class="cell" data-execution_count="163">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Target: predict if job is stem related</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(axis<span class="op">=</span><span class="dv">0</span>, subset<span class="op">=</span><span class="st">"job"</span>) <span class="co"># dropping empty target, don't want to invent for training</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"stem_job"</span>] <span class="op">=</span> df[<span class="st">"job"</span>].<span class="bu">str</span>.contains(<span class="st">"computer|science|engineer|math|tech"</span>, case<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df.drop(columns<span class="op">=</span><span class="st">"job"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"stem_job"</span>].value_counts() <span class="op">/</span> <span class="bu">len</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="163">
 <pre><code>stem_job
 False    0.815317
 True     0.184683
 Name: count, dtype: float64</code></pre>
 </div>
 </div>
-<div id="aac150d6" class="cell" data-execution_count="4">
+<div id="aac150d6" class="cell" data-execution_count="164">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
@@ -295,15 +295,15 @@ dtypes: bool(1), float64(1), int64(2), str(15)
 memory usage: 7.6 MB</code></pre>
 </div>
 </div>
-<div id="8bfaf9ea" class="cell" data-execution_count="5">
+<div id="8bfaf9ea" class="cell" data-execution_count="165">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">322</span>, stratify<span class="op">=</span>df[[<span class="st">"stem_job"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In addition to looking at how many of which feature are missing, it’s useful to understand whether missing values tend to co-occur.</p>
-<div id="5d50c85a" class="cell" data-execution_count="6">
+<div id="5d50c85a" class="cell" data-execution_count="166">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set income &lt; 0 to missing</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>train.loc[train[<span class="st">"income"</span>] <span class="op">&lt;</span> <span class="dv">0</span>, <span class="st">"income"</span>] <span class="op">=</span> np.nan</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>train.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="166">
 <div>
 
 
@@ -449,13 +449,13 @@ memory usage: 7.6 MB</code></pre>
 </div>
 </div>
 </div>
-<div id="3d72dddc" class="cell" data-execution_count="7">
+<div id="3d72dddc" class="cell" data-execution_count="167">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values by percentage of dataset"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>train.isna().<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>) <span class="op">/</span> <span class="bu">len</span>(train) <span class="op">*</span> <span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Missing values by percentage of dataset</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="167">
 <pre><code>income         78.470021
 offspring      56.674654
 diet           38.172168
@@ -478,7 +478,7 @@ stem_job        0.000000
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="07326129" class="cell" data-execution_count="8">
+<div id="07326129" class="cell" data-execution_count="168">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many missing values per sample?</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>missing_per_sample <span class="op">=</span> train.isna().<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).value_counts()</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.bar(missing_per_sample.index, missing_per_sample)</span>
@@ -492,10 +492,10 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="848997dd" class="cell" data-execution_count="9">
+<div id="848997dd" class="cell" data-execution_count="169">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the top 5 missing</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>train.loc[train.isna().<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>).index].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="169">
 <div>
 
 
@@ -641,7 +641,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="16c9fc3a" class="cell" data-execution_count="10">
+<div id="16c9fc3a" class="cell" data-execution_count="170">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Maybe a heatmap can show trends?</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># number of missing per sample</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>missing_samples <span class="op">=</span> train.isna().<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).sort_values()</span>
@@ -661,7 +661,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="582464a8" class="cell" data-execution_count="13">
+<div id="582464a8" class="cell" data-execution_count="171">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how about correlations between missing values?</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>missing_cor <span class="op">=</span> train.loc[missing_samples.index, missing_features.index].isna().corr()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># zero out the diagonal so we can visualize it better</span></span>
@@ -675,7 +675,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="58ba6e9e" class="cell" data-execution_count="14">
+<div id="58ba6e9e" class="cell" data-execution_count="172">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the ones that have a lot missing</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>train_missing <span class="op">=</span> train.isna().<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># filter down to the &gt; 20% missing</span></span>
@@ -714,7 +714,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="8ab58af9" class="cell" data-execution_count="15">
+<div id="8ab58af9" class="cell" data-execution_count="173">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what about the non-missing values from categories with a lot missing?</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">12</span>))</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> feat, ax <span class="kw">in</span> <span class="bu">zip</span>(n_missing.index, axes.flatten()):</span>
@@ -743,12 +743,12 @@ dtype: int64</code></pre>
 </div>
 <section id="dealing-with-missing-values" class="level2">
 <h2 class="anchored" data-anchor-id="dealing-with-missing-values">Dealing with missing values</h2>
-<div id="c298abbb" class="cell" data-execution_count="16">
+<div id="c298abbb" class="cell" data-execution_count="174">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select features to use in the model</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> [<span class="st">"age"</span>, <span class="st">"height"</span>, <span class="st">"income"</span>]</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>cat_features <span class="op">=</span> [<span class="st">"drinks"</span>, <span class="st">"education"</span>, <span class="st">"sex"</span>,<span class="st">"pets"</span>,<span class="st">"religion"</span>,<span class="st">"offspring"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="f3502d88" class="cell" data-execution_count="17">
+<div id="f3502d88" class="cell" data-execution_count="175">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cat <span class="kw">in</span> cat_features:</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(cat,<span class="st">"cardinality:"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">len</span>(train[cat].value_counts()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -767,7 +767,7 @@ offspring cardinality:
 15</code></pre>
 </div>
 </div>
-<div id="f798a431" class="cell" data-execution_count="18">
+<div id="f798a431" class="cell" data-execution_count="176">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the trickier encoder</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>drink_enc <span class="op">=</span> OrdinalEncoder(</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            categories<span class="op">=</span>[</span>
@@ -794,7 +794,7 @@ offspring cardinality:
 <li>Add missing indicator</li>
 <li>Impute with mean/mode</li>
 </ol>
-<div id="fa1c0eb1" class="cell">
+<div id="fa1c0eb1" class="cell" data-execution_count="177">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the preprocessing pipeline</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>numeric_pipeline <span class="op">=</span> make_pipeline(</span>
@@ -832,14 +832,14 @@ offspring cardinality:
 <span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Mean Precision: </span><span class="sc">{</span>cv[<span class="st">'test_precision'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>) <span class="co"># Out of predicted true, what % are actually true?</span></span>
 <span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"MeanRecall:    </span><span class="sc">{</span>cv[<span class="st">'test_recall'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>) <span class="co"># Out of all actual true values, what % are predicted true?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Precision [0.29033903 0.2919112  0.28021148 0.28741755 0.28340383]
-Recall [0.79428173 0.79832519 0.77669225 0.79009763 0.79428173]
+<pre><code>Precision [0.29537738 0.29473956 0.28722308 0.29622887 0.28312655]
+Recall [0.78870293 0.79762736 0.77808793 0.79428173 0.79567643]
 
 Mean Precision: 0.29
 MeanRecall:    0.79</code></pre>
 </div>
 </div>
-<div id="cf418cc2" class="cell" data-execution_count="26">
+<div id="cf418cc2" class="cell" data-execution_count="178">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at top 10 feature importance</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>pipeline.fit(train, train[<span class="st">"stem_job"</span>])</span>
@@ -859,11 +859,11 @@ MeanRecall:    0.79</code></pre>
 </div>
 </div>
 </div>
-<div id="8a4456a5" class="cell" data-execution_count="27">
+<div id="8a4456a5" class="cell" data-execution_count="179">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> pipeline.predict(train)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>wrong <span class="op">=</span> y_hat <span class="op">!=</span> train[<span class="st">"stem_job"</span>]</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>train[wrong].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="179">
 <div>
 
 
@@ -1010,24 +1010,24 @@ MeanRecall:    0.79</code></pre>
 </div>
 </div>
 </section>
-<section id="extra-plots-used-in-slides" class="level2">
-<h2 class="anchored" data-anchor-id="extra-plots-used-in-slides">Extra plots used in slides</h2>
-<div id="0f95e702" class="cell">
+<section id="examining-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="examining-outliers">Examining outliers</h2>
+<div id="1f22fbb3" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assume -1 is encoding missingness</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.hist(df[df[<span class="st">"income"</span>] <span class="op">&gt;</span> <span class="dv">0</span>][<span class="st">"income"</span>], bins<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Income &gt; 0 in OKCupid Dataset"</span>)</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of instances"</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig("../img/06-income-hist.png")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig("../../img/06-income-hist.png")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="f46f93a8" class="cell">
+<div id="934c3944" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assume -1 is encoding missingness</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>log_inc <span class="op">=</span> np.log(train[train[<span class="st">"income"</span>] <span class="op">&gt;</span> <span class="dv">0</span>][<span class="st">"income"</span>])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.hist(log_inc, bins<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Income &gt; 0 in OKCupid Dataset"</span>)</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Log number of instances"</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig("../img/06-income-hist-log.png")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig("../../img/06-income-hist-log.png")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="71900bbf" class="cell">
+<div id="a89b8016" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What about boxplots vs STEM?</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Only use the training data since we're looking at relationship with predictor</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plot_train <span class="op">=</span> train[train[<span class="st">"income"</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
@@ -1037,9 +1037,9 @@ MeanRecall:    0.79</code></pre>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="dv">1</span>,<span class="dv">2</span>], labels<span class="op">=</span>[<span class="st">"Non-STEM"</span>, <span class="st">"STEM"</span>])</span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Income (&gt; 0)"</span>)</span>
 <span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.savefig("../img/06-income-boxplot.png")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../../img/06-income-boxplot.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="52dde36c" class="cell">
+<div id="91a90691" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Those outliers are all overlapping, try spreading them out with jitter</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plot_train.query(<span class="st">"income &lt; 140000"</span>).plot.box(column<span class="op">=</span><span class="st">"income"</span>, ax<span class="op">=</span>ax,by<span class="op">=</span><span class="st">"stem_job"</span>)</span>
@@ -1053,10 +1053,136 @@ MeanRecall:    0.79</code></pre>
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> plot_train.query(<span class="st">"income &gt;= 140000"</span>)</span>
 <span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>jit_x <span class="op">=</span> rng.normal(size<span class="op">=</span>outliers.shape[<span class="dv">0</span>], scale<span class="op">=</span><span class="fl">0.1</span>) <span class="op">+</span> <span class="dv">1</span> <span class="op">+</span> outliers[<span class="st">"stem_job"</span>] <span class="op">*</span> <span class="dv">1</span></span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>jit_y <span class="op">=</span> rng.normal(size<span class="op">=</span>outliers.shape[<span class="dv">0</span>], scale<span class="op">=</span><span class="dv">10000</span>) <span class="op">+</span> outliers[<span class="st">"income"</span>] </span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>plt.scatter(jit_x, jit_y, alpha<span class="op">=</span><span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>plt.scatter(jit_x, jit_y, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../../img/06-income-boxplot-jitter.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="clustering-examples" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-examples">Clustering Examples</h2>
+<p>Copied from https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_assumptions.html</p>
+<div id="11bfca30" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Authors: The scikit-learn developers</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="an">SPDX-License-Identifier:</span><span class="co"> BSD-3-Clause</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A reasonable number of samples to work with</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>n_samples <span class="op">=</span> <span class="dv">1500</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>random_state <span class="op">=</span> <span class="dv">170</span>  <span class="co"># a new random seed</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># skew it so it's not just round blobs</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>transformation <span class="op">=</span> [[<span class="fl">0.60834549</span>, <span class="op">-</span><span class="fl">0.63667341</span>], [<span class="op">-</span><span class="fl">0.40887718</span>, <span class="fl">0.85253229</span>]]</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># make_blobs is a sklearn function that creates fake clustered data</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span>n_samples, random_state<span class="op">=</span>random_state)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>X_aniso <span class="op">=</span> np.dot(X, transformation)  <span class="co"># Anisotropic blobs</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>X_varied, y_varied <span class="op">=</span> make_blobs(</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    n_samples<span class="op">=</span>n_samples, cluster_std<span class="op">=</span>[<span class="fl">1.0</span>, <span class="fl">2.5</span>, <span class="fl">0.5</span>], random_state<span class="op">=</span>random_state</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># Unequal variance</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>X_filtered <span class="op">=</span> np.vstack(</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    (X[y <span class="op">==</span> <span class="dv">0</span>][:<span class="dv">500</span>], X[y <span class="op">==</span> <span class="dv">1</span>][:<span class="dv">100</span>], X[y <span class="op">==</span> <span class="dv">2</span>][:<span class="dv">10</span>])</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># Unevenly sized blobs</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>y_filtered <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">500</span> <span class="op">+</span> [<span class="dv">1</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">+</span> [<span class="dv">2</span>] <span class="op">*</span> <span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="2849dc1c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].set_title(<span class="st">"Mixture of Gaussian Blobs"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].scatter(X_aniso[:, <span class="dv">0</span>], X_aniso[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].set_title(<span class="st">"Anisotropically Distributed Blobs"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].scatter(X_varied[:, <span class="dv">0</span>], X_varied[:, <span class="dv">1</span>], c<span class="op">=</span>y_varied)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">"Unequal Variance"</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].scatter(X_filtered[:, <span class="dv">0</span>], X_filtered[:, <span class="dv">1</span>], c<span class="op">=</span>y_filtered)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].set_title(<span class="st">"Unevenly Sized Blobs"</span>)</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Ground truth clusters"</span>).set_y(<span class="fl">0.95</span>)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="29d04b89" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define common parameters in a dictionary. </span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># When expanded with **, this is the same as saying n_init=auto, random_state=random_state</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>common_params <span class="op">=</span> {</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"n_init"</span>: <span class="st">"auto"</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"random_state"</span>: random_state,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>))</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fit_predict is a scikit-learn method that does both fit and predict</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># same as .fit(X).predict(X)</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">2</span>, <span class="op">**</span>common_params).fit_predict(X)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y_pred)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].set_title(<span class="st">"Non-optimal Number of Clusters"</span>)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, <span class="op">**</span>common_params).fit_predict(X_aniso)</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].scatter(X_aniso[:, <span class="dv">0</span>], X_aniso[:, <span class="dv">1</span>], c<span class="op">=</span>y_pred)</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].set_title(<span class="st">"Anisotropically Distributed Blobs"</span>)</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, <span class="op">**</span>common_params).fit_predict(X_varied)</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].scatter(X_varied[:, <span class="dv">0</span>], X_varied[:, <span class="dv">1</span>], c<span class="op">=</span>y_pred)</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">"Unequal Variance"</span>)</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span>random_state).fit_predict(X_filtered)</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].scatter(X_filtered[:, <span class="dv">0</span>], X_filtered[:, <span class="dv">1</span>], c<span class="op">=</span>y_pred)</span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].set_title(<span class="st">"Unevenly Sized Blobs"</span>)</span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Unexpected KMeans clusters"</span>).set_y(<span class="fl">0.95</span>)</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="adding-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="adding-outliers">Adding outliers</h3>
+<p>Since k-means assumes that we have isotropic, normally distributed data with equal variance, outliers can impact the results.</p>
+<div id="f26f0cdf" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># modify to add some outliers</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> np.argsort(y)[:<span class="dv">20</span>]</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>X_out <span class="op">=</span> X.copy()</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>X_out[outliers,<span class="dv">0</span>] <span class="op">+=</span> <span class="dv">5</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].scatter(X_out[:, <span class="dv">0</span>], X_out[:, <span class="dv">1</span>], c<span class="op">=</span>y, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"Actual class labels"</span>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, <span class="op">**</span>common_params).fit_predict(X_out)</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].scatter(X_out[:, <span class="dv">0</span>], X_out[:, <span class="dv">1</span>], c<span class="op">=</span>y_pred, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co"># highlight where y_pred != y</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>misclass <span class="op">=</span> (y_pred <span class="op">-</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">3</span> <span class="op">!=</span> y</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].scatter(X_out[misclass, <span class="dv">0</span>], X_out[misclass, <span class="dv">1</span>], edgecolor<span class="op">=</span><span class="st">'k'</span>, facecolor<span class="op">=</span><span class="st">'none'</span>)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"Result of clustering"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="dbscan" class="level3">
+<h3 class="anchored" data-anchor-id="dbscan">DBSCAN</h3>
+<div id="113d49ce" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>))</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># modify to add some outliers</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> np.argsort(y)[:<span class="dv">20</span>]</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>X_out <span class="op">=</span> X.copy()</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>X_out[outliers,<span class="dv">0</span>] <span class="op">+=</span> <span class="dv">5</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].scatter(X_out[:, <span class="dv">0</span>], X_out[:, <span class="dv">1</span>], c<span class="op">=</span>y, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"Actual class labels"</span>)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> DBSCAN().fit_predict(X_out)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].scatter(X_out[:, <span class="dv">0</span>], X_out[:, <span class="dv">1</span>], c<span class="op">=</span>y_pred, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"DBSCAN class labels"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -219,12 +219,16 @@ window.Quarto = {
   <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers">Outliers</a></li>
   <li><a href="#detecting-outliers" id="toc-detecting-outliers" class="nav-link" data-scroll-target="#detecting-outliers">Detecting outliers</a></li>
   <li><a href="#context-matters" id="toc-context-matters" class="nav-link" data-scroll-target="#context-matters">Context matters!</a></li>
+  <li><a href="#be-careful-with-visual-inspection" id="toc-be-careful-with-visual-inspection" class="nav-link" data-scroll-target="#be-careful-with-visual-inspection">Be careful with visual inspection</a></li>
   <li><a href="#what-to-do-about-outliers" id="toc-what-to-do-about-outliers" class="nav-link" data-scroll-target="#what-to-do-about-outliers">What to do about outliers?</a></li>
   <li><a href="#nonlinear-transformations" id="toc-nonlinear-transformations" class="nav-link" data-scroll-target="#nonlinear-transformations">Nonlinear transformations</a></li>
   <li><a href="#dropping-the-samples" id="toc-dropping-the-samples" class="nav-link" data-scroll-target="#dropping-the-samples">Dropping the samples</a></li>
   <li><a href="#encoding-outliers" id="toc-encoding-outliers" class="nav-link" data-scroll-target="#encoding-outliers">Encoding outliers</a></li>
   <li><a href="#leave-them-alone" id="toc-leave-them-alone" class="nav-link" data-scroll-target="#leave-them-alone">Leave them alone</a></li>
   <li><a href="#missing-values-and-outliers-in-the-target" id="toc-missing-values-and-outliers-in-the-target" class="nav-link" data-scroll-target="#missing-values-and-outliers-in-the-target">Missing values and outliers in the target</a></li>
+  <li><a href="#revisiting-unsupervised-learning" id="toc-revisiting-unsupervised-learning" class="nav-link" data-scroll-target="#revisiting-unsupervised-learning">Revisiting unsupervised learning</a></li>
+  <li><a href="#clustering-k-means" id="toc-clustering-k-means" class="nav-link" data-scroll-target="#clustering-k-means">Clustering: <span class="math inline">\(k\)</span>-means</a></li>
+  <li><a href="#k-means-pros-and-cons" id="toc-k-means-pros-and-cons" class="nav-link" data-scroll-target="#k-means-pros-and-cons"><span class="math inline">\(k\)</span>-means pros and cons</a></li>
   <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
   </ul>
 </nav>
@@ -491,15 +495,24 @@ window.Quarto = {
 </section>
 <section id="context-matters" class="level2">
 <h2 class="anchored" data-anchor-id="context-matters">Context matters!</h2>
-<!-- _class: code_reminder -->
-<ul>
-<li><p>Look at the relationship between outliers and target (training dataset, of course)</p>
+<p>Look at the relationship between outliers and target (training dataset, of course)</p>
 <blockquote class="blockquote">
-<p>What do the dots on box plots represent?</p>
-</blockquote></li>
-</ul>
+<p>What do the dots on <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html">box plots</a> represent?</p>
+</blockquote>
 <p><img src="../img/06-income-boxplot.png" class="img-fluid" alt="bg right fit"><br>
 </p>
+</section>
+<section id="be-careful-with-visual-inspection" class="level2">
+<h2 class="anchored" data-anchor-id="be-careful-with-visual-inspection">Be careful with visual inspection</h2>
+<!-- _class: code_reminder -->
+<div class="columns">
+<p><img src="../img/06-income-boxplot.png" class="img-fluid"><br>
+</p><p><img src="../img/06-income-boxplot-jitter.png" class="img-fluid"><br>
+</p>
+</div>
+<blockquote class="blockquote">
+<p>11% of samples are “outliers”!</p>
+</blockquote>
 </section>
 <section id="what-to-do-about-outliers" class="level2">
 <h2 class="anchored" data-anchor-id="what-to-do-about-outliers">What to do about outliers?</h2>
@@ -522,7 +535,7 @@ window.Quarto = {
 </p>
 <ul>
 <li>Transforming the data does not actually remove the outlier</li>
-<li>Can help make the relationship less extreme</li>
+<li>Can help make the relationship less extreme for linear models</li>
 </ul>
 </section>
 <section id="dropping-the-samples" class="level2">
@@ -530,7 +543,7 @@ window.Quarto = {
 <ul>
 <li>In general, not a thing I love to do</li>
 <li>If you drop a sample from training, you need to decide what to do at inference</li>
-<li>My opinion: Only do it if you’re confident it’s an error in the dataset &gt; Can you think of an example?</li>
+<li>My opinion: Only do it if you’re confident it’s an error in the dataset &gt; Can you think of an example we’ve seen so far?</li>
 <li>What can you do at inference time when outliers are encountered?</li>
 </ul>
 </section>
@@ -563,16 +576,71 @@ window.Quarto = {
 <li>If you have missing values in the target, you probably want to avoid imputing</li>
 <li>This is a good case for dropping samples from <strong>training</strong>!</li>
 <li>Outliers are trickier — again, check if they’re real or mistakes</li>
-<li>There may be a case for transforming the target</li>
+<li>There may be a case for transforming the target, but be careful interpreting results &gt; What does it mean if <span class="math inline">\(MSE(\mathbf{y} - \mathbf{\hat{y}}) &gt; MSE(\log(\mathbf{y}) - \log(\mathbf{\hat{y}}))\)</span>?</li>
 </ul>
+</section>
+<section id="revisiting-unsupervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="revisiting-unsupervised-learning">Revisiting unsupervised learning</h2>
+<p>Learning patterns without labels, such as:</p>
+<ul>
+<li>Anomaly detection</li>
+<li>Density estimation</li>
+<li>Dimensionality reduction</li>
+<li><strong>Clustering</strong></li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>Why is unsupervised learning important?</p>
+</blockquote>
+</div>
+<footer>
+Note: this content was originally in lecture 2
+</footer>
+</section>
+<section id="clustering-k-means" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-k-means">Clustering: <span class="math inline">\(k\)</span>-means</h2>
+<!-- _class: code_reminder -->
+<ul>
+<li>Goal: Partition <span class="math inline">\(N\)</span> samples into <span class="math inline">\(k\)</span> clusters</li>
+<li>Naive algorithm:
+<ol type="1">
+<li>Initialize <span class="math inline">\(k\)</span> centroid locations</li>
+<li>Assign each sample to the nearest centroid</li>
+<li>Recalculate centroids for each cluster</li>
+<li>Repeat steps 2-3 until clusters stabilize</li>
+</ol></li>
+</ul>
+<div data-marpit-fragment="">
+<p><span class="math display">\[\sum_{i=0}^N \min_{\mu_j \in C}(\Vert x_i - \mu_j \Vert^2)\]</span></p>
+</div>
+</section>
+<section id="k-means-pros-and-cons" class="level2">
+<h2 class="anchored" data-anchor-id="k-means-pros-and-cons"><span class="math inline">\(k\)</span>-means pros and cons</h2>
+<p><span class="pro"></span></p>
+<ul>
+<li>Intuitive</li>
+<li>Easy to implement</li>
+<li>Relatively scalable (<span class="math inline">\(O(N)\)</span>)</li>
+</ul>
+<p> <span class="con"></span></p>
+<ul>
+<li>Need to know how many clusters</li>
+<li>Sensitive to initialization</li>
+<li>Sensitive to outliers</li>
+<li>Not guaranteed to converge to global minimum</li>
+<li>Doesn’t like anisotropy and unequal variance</li>
+</ul>
+<p></p>
+<blockquote class="blockquote">
+<p>Scikit-learn has a great <a href="https://scikit-learn.org/stable/modules/clustering.html">reference table</a> of other clustering methods</p>
+</blockquote>
 </section>
 <section id="coming-up-next" class="level2">
 <h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>
 <ul>
-<li>Interactions between variables</li>
-<li>Feature selection</li>
-<li>Written exam 1, assignment 2</li>
-<li>Reading week!!!</li>
+<li>Lecture: Fancy encoding and transformations</li>
+<li>Lab: Exploring missing and weird data</li>
+<li>Assignment 2</li>
 </ul>
 
 

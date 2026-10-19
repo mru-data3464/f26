@@ -184,10 +184,6 @@ window.Quarto = {
   <li><a href="#regression-n-dimensional-1" id="toc-regression-n-dimensional-1" class="nav-link" data-scroll-target="#regression-n-dimensional-1">Regression: N-dimensional</a></li>
   <li><a href="#regression-decision-trees" id="toc-regression-decision-trees" class="nav-link" data-scroll-target="#regression-decision-trees">Regression: Decision trees</a></li>
   <li><a href="#comparison-of-supervised-model-families" id="toc-comparison-of-supervised-model-families" class="nav-link" data-scroll-target="#comparison-of-supervised-model-families">Comparison of supervised model families</a></li>
-  <li><a href="#lecture-ends-here" id="toc-lecture-ends-here" class="nav-link" data-scroll-target="#lecture-ends-here"><!-- fit --> Lecture ends here</a></li>
-  <li><a href="#unsupervised-learning" id="toc-unsupervised-learning" class="nav-link" data-scroll-target="#unsupervised-learning">Unsupervised learning</a></li>
-  <li><a href="#clustering-k-means" id="toc-clustering-k-means" class="nav-link" data-scroll-target="#clustering-k-means">Clustering: <span class="math inline">\(k\)</span>-means</a></li>
-  <li><a href="#k-means-pros-and-cons" id="toc-k-means-pros-and-cons" class="nav-link" data-scroll-target="#k-means-pros-and-cons"><span class="math inline">\(k\)</span>-means pros and cons</a></li>
   <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
   </ul>
 </nav>
@@ -499,65 +495,6 @@ Price of DDR5-5600 2X32GB RAM since March 2025 [<a href="https://pcpartpicker.co
 <p></p>
 </section>
 </div>
-</section>
-<section id="lecture-ends-here" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-ends-here"><!-- fit --> Lecture ends here</h2>
-<!-- _class: title_slide -->
-<p>In the interest of time, we’re going to skip over unsupervised clustering for now. We’ll revisit if time allows later in the semester.</p>
-</section>
-<section id="unsupervised-learning" class="level2">
-<h2 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised learning</h2>
-<ul>
-<li>Learning patterns without labels, such as:
-<ul>
-<li>Anomaly detection</li>
-<li>Density estimation</li>
-<li>Dimensionality reduction</li>
-<li><strong>Clustering</strong></li>
-</ul></li>
-</ul>
-<div data-marpit-fragment="">
-<blockquote class="blockquote">
-<p>Why is unsupervised learning important?</p>
-</blockquote>
-</div>
-</section>
-<section id="clustering-k-means" class="level2">
-<h2 class="anchored" data-anchor-id="clustering-k-means">Clustering: <span class="math inline">\(k\)</span>-means</h2>
-<!-- _class: code_reminder -->
-<ul>
-<li>Goal: Partition <span class="math inline">\(N\)</span> samples into <span class="math inline">\(k\)</span> clusters</li>
-<li>Naive algorithm:
-<ol type="1">
-<li>Initialize <span class="math inline">\(k\)</span> centroid locations</li>
-<li>Assign each sample to the nearest centroid</li>
-<li>Recalculate centroids for each cluster</li>
-<li>Repeat steps 2-3 until clusters stabilize</li>
-</ol></li>
-</ul>
-<div data-marpit-fragment="">
-<p><span class="math display">\[\sum_{i=0}^N \min_{\mu_j \in C}(\Vert x_i - \mu_j \Vert^2)\]</span></p>
-</div>
-</section>
-<section id="k-means-pros-and-cons" class="level2">
-<h2 class="anchored" data-anchor-id="k-means-pros-and-cons"><span class="math inline">\(k\)</span>-means pros and cons</h2>
-<p><span class="pro"></span></p>
-<ul>
-<li>Intuitive</li>
-<li>Easy to implement</li>
-<li>Relatively scalable (<span class="math inline">\(O(N)\)</span>)</li>
-</ul>
-<p> <span class="con"></span></p>
-<ul>
-<li>Need to know how many clusters</li>
-<li>Sensitive to initialization</li>
-<li>Not guaranteed to converge to global minimum</li>
-<li>Doesn’t like anisotropy and unequal variance</li>
-</ul>
-<p></p>
-<blockquote class="blockquote">
-<p>Scikit-learn has a great <a href="https://scikit-learn.org/stable/modules/clustering.html">reference table</a> of other clustering methods</p>
-</blockquote>
 </section>
 <section id="coming-up-next" class="level2">
 <h2 class="anchored" data-anchor-id="coming-up-next">Coming up next</h2>

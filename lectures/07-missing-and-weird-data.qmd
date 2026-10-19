@@ -182,12 +182,25 @@ When data are missing in the *features* we have a few options:
 * As usual, context and domain knowledge are essential
 
 ## Context matters!
-<!-- _class: code_reminder -->
-- Look at the relationship between outliers and target (training dataset, of course)
 
-	> What do the dots on box plots represent?
+Look at the relationship between outliers and target (training dataset, of course)
+
+> What do the dots on [box plots](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html) represent?
 
 ![bg right fit](../img/06-income-boxplot.png)\
+
+## Be careful with visual inspection
+<!-- _class: code_reminder -->
+
+<div class="columns">
+
+![](../img/06-income-boxplot.png)\
+
+![](../img/06-income-boxplot-jitter.png)\
+
+</div>
+
+> 11% of samples are "outliers"!
 
 ## What to do about outliers?
 
@@ -208,13 +221,13 @@ As usual, very data- and model-dependent. Tree based methods are particularly im
 ![bg left fit](../img/06-income-hist-log.png)\
 
 * Transforming the data does not actually remove the outlier
-* Can help make the relationship less extreme
+* Can help make the relationship less extreme for linear models
   
 ## Dropping the samples
 * In general, not a thing I love to do
 * If you drop a sample from training, you need to decide what to do at inference
 * My opinion: Only do it if you're confident it's an error in the dataset
-    > Can you think of an example?
+    > Can you think of an example we've seen so far?
 * What can you do at inference time when outliers are encountered?
 
 ## Encoding outliers
@@ -238,10 +251,66 @@ Then you probably want to keep them!
 * If you have missing values in the target, you probably want to avoid imputing
 * This is a good case for dropping samples from **training**!
 * Outliers are trickier — again, check if they're real or mistakes
-* There may be a case for transforming the target
+* There may be a case for transforming the target, but be careful interpreting results
+  > What does it mean if $MSE(\mathbf{y} - \mathbf{\hat{y}}) > MSE(\log(\mathbf{y}) - \log(\mathbf{\hat{y}}))$?
+
+## Revisiting unsupervised learning
+
+Learning patterns without labels, such as:
+  * Anomaly detection
+  * Density estimation
+  * Dimensionality reduction
+  * **Clustering**
+
+<div data-marpit-fragment>
+
+> Why is unsupervised learning important?
+
+</div>
+
+<footer>Note: this content was originally in lecture 2</footer>
+
+## Clustering: $k$-means
+
+<!-- _class: code_reminder -->
+
+- Goal: Partition $N$ samples into $k$ clusters
+* Naive algorithm:
+  1) Initialize $k$ centroid locations
+  2) Assign each sample to the nearest centroid
+  3) Recalculate centroids for each cluster
+  4) Repeat steps 2-3 until clusters stabilize
+
+<div data-marpit-fragment>
+
+$$\sum_{i=0}^N \min_{\mu_j \in C}(\Vert x_i - \mu_j \Vert^2)$$
+
+</div>
+
+## $k$-means pros and cons
+
+<span class="pro">
+
+* Intuitive
+* Easy to implement
+* Relatively scalable ($O(N)$)
+
+</span>
+<span class="con">
+
+* Need to know how many clusters
+* Sensitive to initialization
+* Sensitive to outliers 
+* Not guaranteed to converge to global minimum
+* Doesn't like anisotropy and unequal variance
+
+</span>
+
+
+> Scikit-learn has a great [reference table](https://scikit-learn.org/stable/modules/clustering.html) of other clustering methods
+
 
 ## Coming up next
-* Interactions between variables
-* Feature selection
-* Written exam 1, assignment 2
-* Reading week!!!
+- Lecture: Fancy encoding and transformations
+- Lab: Exploring missing and weird data
+- Assignment 2

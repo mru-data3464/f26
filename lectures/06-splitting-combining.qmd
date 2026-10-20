@@ -1,5 +1,5 @@
 ---
-title: "6: Splitting and combining data"
+title: "6. Splitting and combining data"
 date: 2026-09-29
 marp: true
 theme: marp-mru

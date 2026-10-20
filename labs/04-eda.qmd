@@ -1,5 +1,5 @@
 ---
-title: "4: Exploratory Data Analysis"
+title: "4. Exploratory Data Analysis"
 date: 2026-10-07
 due: "October 21, 2026"
 ---

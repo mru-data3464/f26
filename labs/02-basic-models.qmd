@@ -1,5 +1,5 @@
 ---
-title: "2: Basic Modelling"
+title: "2. Basic Modelling"
 date: 2026-09-16
 due: "September 23, 2026"
 ---

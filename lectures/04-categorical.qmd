@@ -1,5 +1,5 @@
 ---
-title: "4: Categorical data basics"
+title: "4. Categorical data basics"
 date: 2026-09-22
 marp: true
 theme: marp-mru

@@ -1,5 +1,5 @@
 ---
-title: "7: Missing and weird data"
+title: "7. Missing and weird data"
 date: 2026-10-01
 marp: true
 theme: marp-mru

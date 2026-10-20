@@ -1,5 +1,5 @@
 ---
-title: "5: Basic Numeric Transformations"
+title: "5. Basic Numeric Transformations"
 date: 2026-09-24
 marp: true
 theme: marp-mru

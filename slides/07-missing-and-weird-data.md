@@ -1,5 +1,5 @@
 ---
-title: "7: Missing and weird data"
+title: "7. Missing and weird data"
 date: 2026-10-01
 marp: true
 theme: marp-mru
@@ -7,7 +7,7 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/07_missing_weird/ok_cupid_processing.ipynb"
 demo-data: "/demo_code/04_categorical/profiles_revised.csv"
-leftoff: "Slide 9"
+leftoff: "Completed"
 ---
 
 <!-- 

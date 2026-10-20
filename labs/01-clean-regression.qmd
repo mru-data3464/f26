@@ -1,5 +1,5 @@
 ---
-title: "1: Regression with Clean Data"
+title: "1. Regression with Clean Data"
 date: 2026-09-09
 due: "September 16, 2026"
 ---

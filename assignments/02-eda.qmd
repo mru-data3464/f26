@@ -61,10 +61,11 @@ This section is a lot more free-form than combining the data. Now that you have 
 3. For each, state *why* you chose that way of examining the data, and at least one observation. This doesn't need to go in your report, but it should be in your exploration notebook(s).
 
 After doing this, hopefully something interesting popped out to investigate further. **In your report**, write a **clear statement of the research question** you are trying to answer. Examples might include (but are not limited to):
-- Is there a trend of increased animal encounters while driving?
+- Is there a year-over-year increase in animal encounters while driving?
 - Are wilderness encounters associated with warmer temperatures?
 - What trends in responses are there for different kinds of animals?
-If you are comparing incident count over time, you will need to normalize by visitor count.
+
+If you are comparing incident count over time, you will need to **normalize by visitor count**.
 
 To answer your research question, you will likely need to create several additional visualizations. In your exploration document, state what you are trying to answer, then visualize, then make a comment about your observations.
 

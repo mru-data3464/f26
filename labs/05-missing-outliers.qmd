@@ -1,0 +1,66 @@
+---
+title: "5. Missing and Weird Data"
+date: 2026-10-21
+due: "October 28, 2026"
+---
+
+Lab submission due on {{< meta due >}}.
+
+## Objective
+Learn a bit about:
+
+- Identifying missing data and outliers
+- Exploring patterns in missing data and outliers
+- Explaining missing data and outliers
+
+## Setup
+Create a new directory named `lab05` in your labs repo. Download and add to it:
+- [2026 City of Calgary Assessment data](_05-starter/assessment.csv)
+- A new notebook or Python script for your lab work
+
+This is a subset of data from the [Current Year Property Assessments (Parcel) dataset](https://data.calgary.ca/Government/Current-Year-Property-Assessments-Parcel-/4bsw-nn7w/about_data) available on Calgary's open data portal. I've removed some of the columns and limited it to only those properties without farm or non-residential value (though, as you will discover, this does not mean that all properties are actually residential!).
+
+To understand the various columns, you might want to refer to the City's data tables, particularly [Land Use Designations](https://data.calgary.ca/Base-Maps/Land-Use-Designation-Codes/svbi-k49z/explore) and [Sub-property use codes](https://data.calgary.ca/Help-and-Information/Assessment-Subproperty-Use-Codes/5843-8tyj/explore/).
+
+## Understanding missing values
+1. Load the csv and inspect it. Which columns have missing data? Do the data types make sense? If not, you may need to convert some strings to floats, for example.
+2. Split the data and reserve a reasonable sized test set. You can choose to stratify if it seems justifiable.
+3. Look at the data with missing features. I recommend just printing out the raw dataframe and eyeballing to see if anything jumps out first, e.g.
+
+    ```python
+    # print the first 50 rows with missing values
+    df[df.isna().any(axis=1)].head(50)
+    ```
+
+4. Based on the results of the previous step, pick a potential relationship of the missing data to explore using visualizations or summary statistics. For example, is there a relationship between missing land size and sub-property use codes?
+   
+   ::: {.callout-tip}
+   
+   Consider looking at the relative ratios of `value_counts` for missing values vs non-missing values. Bar charts can be helpful, but clunky. [Seaborn](https://seaborn.pydata.org/index.html) can help streamline things, e.g.:
+   
+   ```python
+   sns.histplot(df, x="PROPERTY_TYPE", hue=df["YEAR_OF_CONSTRUCTION"].isna(), multiple="dodge")
+   ```
+   
+   would show a histogram of `PROPERTY_TYPE` values, coloured based on whether or not there are any missing values in `YEAR_OF_CONSTRUCTION`.
+   
+   :::
+
+5. Continue to explore your missing values until you have a reasonable explanation for their presence. Based on what you've learned, how would you recommend treating these in a predictive modelling pipeline? Justify your answer, but you do not need to actually build a model at this time.
+
+## Understanding outliers
+
+::: {.callout-important title="Remember"}
+
+Outliers are context-dependent! Algorithmic rules like $1.5\times \mathrm{IQR}$ or $3\sigma$ can help identify weird values, but knowing how to handle them requires understanding how they came to be.
+
+:::
+
+1. Using your domain knowledge (e.g. detached homes usually cost more than condos, the oldest building still standing was [built in 1876](https://www.deanehouse.com/about-history), etc), identify some anomalous values in the numeric features. These may be beyond the range of "typical" values for a single feature, or they may deviate from the dominant relationship between features.
+2. Again, print out the table of data with weird values to understand their context.
+3. Based on the patterns observed in the tabular data, explore the anomalous values further with visualizations. For example, do they all belong to a certain property type?
+4. Do your outliers seem more likely to be mistakes, an unexpected data entry process, or true extreme values? Justify your answer.
+5. Based on your previous response, how would you propose to deal with the outliers in a predictive modelling pipeline? Again, justify your response, but you do not need to actually build a model.
+
+## Submit
+As usual, add your `lab04` directory to your `labs` repo and push your changes to GitHub.

@@ -81,334 +81,334 @@
     "href": "demo_code/07_missing_weird/ok_cupid_processing.html#dealing-with-missing-values",
     "title": "Understanding missing values",
     "section": "Dealing with missing values",
-    "text": "Dealing with missing values\n\n# select features to use in the model\nnumeric_features = [\"age\", \"height\", \"income\"]\ncat_features = [\"drinks\", \"education\", \"sex\",\"pets\",\"religion\",\"offspring\"]\n\n\nfor cat in cat_features:\n    print(cat,\"cardinality:\")\n    print(len(train[cat].value_counts()))\n\ndrinks cardinality:\n6\neducation cardinality:\n32\nsex cardinality:\n2\npets cardinality:\n15\nreligion cardinality:\n45\noffspring cardinality:\n15\n\n\n\n# Define the trickier encoder\ndrink_enc = OrdinalEncoder(\n            categories=[\n                [\n                    \"not at all\",\n                    \"rarely\",\n                    \"socially\",\n                    \"often\",\n                    \"very often\",\n                    \"desperately\",\n                ]\n            ],\n            handle_unknown=\"use_encoded_value\",\n            unknown_value=-1,\n        )\n\n# use one-hot for the rest\nnom_cats = [\"drinks\", \"education\", \"sex\", \"pets\", \"religion\", \"offspring\"]\n\nIterations\n\nDecision tree, do nothing with NaNs\nImpute with constant\nAdd missing indicator\nImpute with mean/mode\n\n\n# Build the preprocessing pipeline\n\nnumeric_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=0, add_indicator=True),\n    SimpleImputer(strategy=\"median\", add_indicator=True),\n    PowerTransformer(method=\"yeo-johnson\"),\n)\n\ncat_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=\"unknown\", add_indicator=True),\n    SimpleImputer(strategy=\"most_frequent\", add_indicator=True),\n    OneHotEncoder(handle_unknown=\"ignore\", sparse_output=False)\n)\n\ndrink_pipeline = make_pipeline(\n    SimpleImputer(strategy=\"most_frequent\"),\n    drink_enc\n)\n\npreprocessor = make_column_transformer(\n    (numeric_pipeline, [\"age\", \"height\", \"income\"]),\n    (cat_pipeline, nom_cats),\n    (drink_pipeline, [\"drinks\"])\n)\n\n# Now add on a model!\npipeline = make_pipeline(\n    preprocessor,\n    DecisionTreeClassifier(class_weight=\"balanced\", max_depth=5),\n).set_output(transform=\"pandas\")\n\ncv = cross_validate(pipeline, train, train[\"stem_job\"], scoring=[\"precision\", \"recall\"])\nprint(\"Precision\",cv[\"test_precision\"])\nprint(\"Recall\", cv[\"test_recall\"])\nprint(f\"\\nMean Precision: {cv['test_precision'].mean():.2f}\") # Out of predicted true, what % are actually true?\nprint(f\"MeanRecall:    {cv['test_recall'].mean():.2f}\") # Out of all actual true values, what % are predicted true?\n\nPrecision [0.29537738 0.29473956 0.28722308 0.29622887 0.28312655]\nRecall [0.78870293 0.79762736 0.77808793 0.79428173 0.79567643]\n\nMean Precision: 0.29\nMeanRecall:    0.79\n\n\n\n# look at top 10 feature importance\nN = 10\npipeline.fit(train, train[\"stem_job\"])\nX = pipeline[:-1].transform(train)\nfi = pipeline[-1].feature_importances_\ntopN = fi.argsort(descending=True)[:N]\n\nticks = np.arange(N)\nplt.bar(ticks, fi[topN])\nplt.xticks(ticks=ticks, labels=X.columns[topN], rotation = 90)\nplt.show()\n\n\n\n\n\n\n\n\n\ny_hat = pipeline.predict(train)\nwrong = y_hat != train[\"stem_job\"]\ntrain[wrong].head()\n\n\n\n\n\n\n\n\nage\nbody_type\ndiet\ndrinks\ndrugs\neducation\nethnicity\nheight\nincome\noffspring\norientation\npets\nreligion\nsex\nsign\nsmokes\nspeaks\nstatus\nstem_job\n\n\n\n\n21354\n47\nathletic\nNaN\nsocially\nnever\ngraduated from college/university\nblack\n69.0\nNaN\nNaN\nstraight\nlikes dogs and dislikes cats\ncatholicism but not too serious about it\nm\nlibra but it doesn&rsquo;t matter\nno\nenglish\nsingle\nFalse\n\n\n16302\n32\njacked\nstrictly vegan\ndesperately\noften\ndropped out of masters program\nwhite\n72.0\n1000000.0\nhas kids, and wants more\nstraight\nhas dogs\njudaism\nm\ntaurus\nyes\nenglish, c++, esperanto, catalan\nsingle\nFalse\n\n\n24674\n43\nathletic\nmostly other\nsocially\nnever\ngraduated from two-year college\nwhite\n72.0\nNaN\nNaN\nstraight\nhas dogs and likes cats\nother and laughing about it\nm\npisces and it&rsquo;s fun to think about\nno\nenglish (fluently), german (fluently)\navailable\nFalse\n\n\n56941\n34\naverage\nanything\nrarely\nnever\ngraduated from two-year college\nwhite\n68.0\nNaN\nhas a kid, and might want more\nstraight\nNaN\nNaN\nm\nleo\nno\nenglish\nsingle\nFalse\n\n\n55075\n23\naverage\nNaN\nsocially\nnever\ngraduated from college/university\nhispanic / latin\n67.0\nNaN\nNaN\ngay\nNaN\nagnosticism\nm\nvirgo\nno\nenglish\nsingle\nFalse"
+    "text": "Dealing with missing values\n\n# select features to use in the model\nnumeric_features = [\"age\", \"height\", \"income\"]\ncat_features = [\"drinks\", \"education\", \"sex\",\"pets\",\"religion\",\"offspring\"]\n\n\nfor cat in cat_features:\n    print(cat,\"cardinality:\")\n    print(len(train[cat].value_counts()))\n\ndrinks cardinality:\n6\neducation cardinality:\n32\nsex cardinality:\n2\npets cardinality:\n15\nreligion cardinality:\n45\noffspring cardinality:\n15\n\n\n\n# Define the trickier encoder\ndrink_enc = OrdinalEncoder(\n            categories=[\n                [\n                    \"not at all\",\n                    \"rarely\",\n                    \"socially\",\n                    \"often\",\n                    \"very often\",\n                    \"desperately\",\n                ]\n            ],\n            handle_unknown=\"use_encoded_value\",\n            unknown_value=-1,\n        )\n\n# use one-hot for the rest\nnom_cats = [\"drinks\", \"education\", \"sex\", \"pets\", \"religion\", \"offspring\"]\n\nIterations\n\nDecision tree, do nothing with NaNs\nImpute with constant\nAdd missing indicator\nImpute with mean/mode\n\n\n# Build the preprocessing pipeline\n\nnumeric_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=0, add_indicator=True),\n    SimpleImputer(strategy=\"median\", add_indicator=True),\n    PowerTransformer(method=\"yeo-johnson\"),\n)\n\ncat_pipeline = make_pipeline(\n    # SimpleImputer(strategy=\"constant\", fill_value=\"unknown\", add_indicator=True),\n    SimpleImputer(strategy=\"most_frequent\", add_indicator=True),\n    OneHotEncoder(handle_unknown=\"ignore\", sparse_output=False)\n)\n\ndrink_pipeline = make_pipeline(\n    SimpleImputer(strategy=\"most_frequent\"),\n    drink_enc\n)\n\npreprocessor = make_column_transformer(\n    (numeric_pipeline, [\"age\", \"height\", \"income\"]),\n    (cat_pipeline, nom_cats),\n    (drink_pipeline, [\"drinks\"])\n)\n\n# Now add on a model!\npipeline = make_pipeline(\n    preprocessor,\n    DecisionTreeClassifier(class_weight=\"balanced\", max_depth=5),\n).set_output(transform=\"pandas\")\n\ncv = cross_validate(pipeline, train, train[\"stem_job\"], scoring=[\"precision\", \"recall\"])\nprint(\"Precision\",cv[\"test_precision\"])\nprint(\"Recall\", cv[\"test_recall\"])\nprint(f\"\\nMean Precision: {cv['test_precision'].mean():.2f}\") # Out of predicted true, what % are actually true?\nprint(f\"MeanRecall:    {cv['test_recall'].mean():.2f}\") # Out of all actual true values, what % are predicted true?\n\nPrecision [0.29545455 0.29473956 0.28722308 0.29622887 0.28312655]\nRecall [0.78870293 0.79762736 0.77808793 0.79428173 0.79567643]\n\nMean Precision: 0.29\nMeanRecall:    0.79\n\n\n\n# look at top 10 feature importance\nN = 10\npipeline.fit(train, train[\"stem_job\"])\nX = pipeline[:-1].transform(train)\nfi = pipeline[-1].feature_importances_\ntopN = fi.argsort(descending=True)[:N]\n\nticks = np.arange(N)\nplt.bar(ticks, fi[topN])\nplt.xticks(ticks=ticks, labels=X.columns[topN], rotation = 90)\nplt.show()\n\n\n\n\n\n\n\n\n\ny_hat = pipeline.predict(train)\nwrong = y_hat != train[\"stem_job\"]\ntrain[wrong].head()\n\n\n\n\n\n\n\n\nage\nbody_type\ndiet\ndrinks\ndrugs\neducation\nethnicity\nheight\nincome\noffspring\norientation\npets\nreligion\nsex\nsign\nsmokes\nspeaks\nstatus\nstem_job\n\n\n\n\n21354\n47\nathletic\nNaN\nsocially\nnever\ngraduated from college/university\nblack\n69.0\nNaN\nNaN\nstraight\nlikes dogs and dislikes cats\ncatholicism but not too serious about it\nm\nlibra but it doesn&rsquo;t matter\nno\nenglish\nsingle\nFalse\n\n\n16302\n32\njacked\nstrictly vegan\ndesperately\noften\ndropped out of masters program\nwhite\n72.0\n1000000.0\nhas kids, and wants more\nstraight\nhas dogs\njudaism\nm\ntaurus\nyes\nenglish, c++, esperanto, catalan\nsingle\nFalse\n\n\n24674\n43\nathletic\nmostly other\nsocially\nnever\ngraduated from two-year college\nwhite\n72.0\nNaN\nNaN\nstraight\nhas dogs and likes cats\nother and laughing about it\nm\npisces and it&rsquo;s fun to think about\nno\nenglish (fluently), german (fluently)\navailable\nFalse\n\n\n56941\n34\naverage\nanything\nrarely\nnever\ngraduated from two-year college\nwhite\n68.0\nNaN\nhas a kid, and might want more\nstraight\nNaN\nNaN\nm\nleo\nno\nenglish\nsingle\nFalse\n\n\n55075\n23\naverage\nNaN\nsocially\nnever\ngraduated from college/university\nhispanic / latin\n67.0\nNaN\nNaN\ngay\nNaN\nagnosticism\nm\nvirgo\nno\nenglish\nsingle\nFalse"
   },
   {
     "objectID": "demo_code/07_missing_weird/ok_cupid_processing.html#examining-outliers",
     "href": "demo_code/07_missing_weird/ok_cupid_processing.html#examining-outliers",
     "title": "Understanding missing values",
     "section": "Examining outliers",
-    "text": "Examining outliers\n\n# assume -1 is encoding missingness\nplt.hist(df[df[\"income\"] &gt; 0][\"income\"], bins=50)\nplt.xlabel(\"Income &gt; 0 in OKCupid Dataset\")\nplt.ylabel(\"Number of instances\")\n# plt.savefig(\"../../img/06-income-hist.png\")\n\n\n# assume -1 is encoding missingness\nlog_inc = np.log(train[train[\"income\"] &gt; 0][\"income\"])\nplt.hist(log_inc, bins=50)\nplt.xlabel(\"Income &gt; 0 in OKCupid Dataset\")\nplt.ylabel(\"Log number of instances\")\n# plt.savefig(\"../../img/06-income-hist-log.png\")\n\n\n# What about boxplots vs STEM?\n# Only use the training data since we're looking at relationship with predictor\nplot_train = train[train[\"income\"] &gt; 0]\nfig, ax = plt.subplots()\nplot_train.plot.box(column=\"income\", ax=ax,by=\"stem_job\")\nax.set_xlabel(\"STEM job\")\nax.set_xticks([1,2], labels=[\"Non-STEM\", \"STEM\"])\nax.set_ylabel(\"Income (&gt; 0)\")\nplt.yscale(\"log\")\nplt.savefig(\"../../img/06-income-boxplot.png\")\n\n\n# Those outliers are all overlapping, try spreading them out with jitter\nfig, ax = plt.subplots()\nplot_train.query(\"income &lt; 140000\").plot.box(column=\"income\", ax=ax,by=\"stem_job\")\nax.set_xlabel(\"STEM job\")\nax.set_xticks([1,2], labels=[\"Non-STEM\", \"STEM\"])\nax.set_ylabel(\"Income (&gt; 0)\")\nplt.yscale(\"log\")\n\n# we need a random number generator\nrng = np.random.default_rng(seed=67)\noutliers = plot_train.query(\"income &gt;= 140000\")\njit_x = rng.normal(size=outliers.shape[0], scale=0.1) + 1 + outliers[\"stem_job\"] * 1\njit_y = rng.normal(size=outliers.shape[0], scale=10000) + outliers[\"income\"] \nplt.scatter(jit_x, jit_y, alpha=0.3)\nplt.savefig(\"../../img/06-income-boxplot-jitter.png\")"
+    "text": "Examining outliers\n\n# assume -1 is encoding missingness\nplt.hist(df[df[\"income\"] &gt; 0][\"income\"], bins=50)\nplt.xlabel(\"Income &gt; 0 in OKCupid Dataset\")\nplt.ylabel(\"Number of instances\")\n# plt.savefig(\"../../img/06-income-hist.png\")\n\n\n\n\n\n\n\n\n\n# assume -1 is encoding missingness\nlog_inc = np.log(train[train[\"income\"] &gt; 0][\"income\"])\nplt.hist(log_inc, bins=50)\nplt.xlabel(\"log(Income &gt; 0) in OKCupid Dataset\")\nplt.ylabel(\"Number of instances\")\n# plt.savefig(\"../../img/06-income-hist-log.png\")\n\n\n\n\n\n\n\n\n\n# What about boxplots vs STEM?\n# Only use the training data since we're looking at relationship with predictor\nplot_train = train[train[\"income\"] &gt; 0]\nfig, ax = plt.subplots()\nplot_train.plot.box(column=\"income\", ax=ax,by=\"stem_job\")\nax.set_xlabel(\"STEM job\")\nax.set_xticks([1,2], labels=[\"Non-STEM\", \"STEM\"])\nax.set_ylabel(\"Income (&gt; 0)\")\nplt.yscale(\"log\")\nplt.savefig(\"../../img/06-income-boxplot.png\")\n\n\n\n\n\n\n\n\n\n# Those outliers are all overlapping, try spreading them out with jitter\nfig, ax = plt.subplots()\nplot_train.query(\"income &lt; 140000\").plot.box(column=\"income\", ax=ax,by=\"stem_job\")\nax.set_xlabel(\"STEM job\")\nax.set_xticks([1,2], labels=[\"Non-STEM\", \"STEM\"])\nax.set_ylabel(\"Income (&gt; 0)\")\nplt.yscale(\"log\")\n\n# we need a random number generator\nrng = np.random.default_rng(seed=67)\noutliers = plot_train.query(\"income &gt;= 140000\")\njit_x = rng.normal(size=outliers.shape[0], scale=0.1) + 1 + outliers[\"stem_job\"] * 1\njit_y = rng.normal(size=outliers.shape[0], scale=10000) + outliers[\"income\"] \nplt.scatter(jit_x, jit_y, alpha=0.3)\nplt.savefig(\"../../img/06-income-boxplot-jitter.png\")\n\n\n\n\n\n\n\n\n\noutliers\n\n\n\n\n\n\n\n\nage\nbody_type\ndiet\ndrinks\ndrugs\neducation\nethnicity\nheight\nincome\noffspring\norientation\npets\nreligion\nsex\nsign\nsmokes\nspeaks\nstatus\nstem_job\n\n\n\n\n16302\n32\njacked\nstrictly vegan\ndesperately\noften\ndropped out of masters program\nwhite\n72.0\n1000000.0\nhas kids, and wants more\nstraight\nhas dogs\njudaism\nm\ntaurus\nyes\nenglish, c++, esperanto, catalan\nsingle\nFalse\n\n\n9924\n22\nathletic\nNaN\nvery often\noften\ndropped out of high school\nNaN\n69.0\n1000000.0\ndoesn&rsquo;t want kids\nstraight\nNaN\natheism\nm\nNaN\nyes\nenglish (poorly), yiddish (fluently), ancient ...\nsingle\nFalse\n\n\n51690\n34\naverage\nmostly vegetarian\nsocially\nNaN\ngraduated from masters program\nasian, white\n68.0\n1000000.0\ndoesn&rsquo;t have kids\nstraight\nlikes dogs and likes cats\natheism but not too serious about it\nf\ngemini but it doesn&rsquo;t matter\nno\nenglish\nsingle\nFalse\n\n\n25868\n30\naverage\nstrictly vegetarian\nsocially\nnever\nworking on college/university\nhispanic / latin\n68.0\n1000000.0\nwants kids\nstraight\nhas dogs and likes cats\nchristianity and very serious about it\nm\ncapricorn but it doesn&rsquo;t matter\nno\nenglish (fluently), spanish (okay)\nsingle\nFalse\n\n\n14287\n49\nathletic\nmostly anything\nsocially\nnever\ngraduated from masters program\nwhite\n71.0\n500000.0\nhas kids, and might want more\nstraight\nlikes dogs and likes cats\njudaism but not too serious about it\nm\nvirgo and it&rsquo;s fun to think about\nno\nenglish (fluently), hebrew (fluently)\nsingle\nFalse\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n30267\n21\nthin\nstrictly kosher\ndesperately\noften\ngraduated from med school\nasian, middle eastern, black, native american,...\n60.0\n1000000.0\nhas kids\nbisexual\nNaN\nNaN\nf\nNaN\nsometimes\nenglish (fluently), chechen (fluently), khmer ...\nsingle\nFalse\n\n\n58301\n47\nathletic\nanything\nsocially\nnever\ngraduated from ph.d program\nwhite\n73.0\n150000.0\nNaN\nstraight\nNaN\nNaN\nm\nvirgo\nno\nenglish\nsingle\nFalse\n\n\n72\n34\nathletic\nmostly anything\nsocially\nsometimes\ngraduated from space camp\nnative american, white\n73.0\n150000.0\ndoesn&rsquo;t have kids, but might want them\nstraight\nlikes dogs and likes cats\nagnosticism and very serious about it\nm\npisces and it&rsquo;s fun to think about\nno\nenglish (poorly), spanish (poorly)\nsingle\nFalse\n\n\n13590\n37\nfit\nNaN\nsocially\nnever\ngraduated from college/university\nwhite\n71.0\n150000.0\nNaN\nstraight\nlikes dogs and likes cats\njudaism but not too serious about it\nm\ntaurus but it doesn&rsquo;t matter\nno\nenglish\nsingle\nTrue\n\n\n57529\n33\nNaN\nNaN\nsocially\nsometimes\ngraduated from college/university\nwhite\n71.0\n1000000.0\nNaN\nstraight\nlikes dogs and likes cats\nNaN\nm\ntaurus and it&rsquo;s fun to think about\nno\nenglish\nsingle\nFalse\n\n\n\n\n944 rows × 19 columns"
   },
   {
     "objectID": "demo_code/07_missing_weird/ok_cupid_processing.html#clustering-examples",
     "href": "demo_code/07_missing_weird/ok_cupid_processing.html#clustering-examples",
     "title": "Understanding missing values",
     "section": "Clustering Examples",
-    "text": "Clustering Examples\nCopied from https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_assumptions.html\n\nfrom sklearn.datasets import make_blobs\n\n# Authors: The scikit-learn developers\n# SPDX-License-Identifier: BSD-3-Clause\n\n# A reasonable number of samples to work with\nn_samples = 1500\nrandom_state = 170  # a new random seed\n\n# skew it so it's not just round blobs\ntransformation = [[0.60834549, -0.63667341], [-0.40887718, 0.85253229]]\n\n# make_blobs is a sklearn function that creates fake clustered data\nX, y = make_blobs(n_samples=n_samples, random_state=random_state)\nX_aniso = np.dot(X, transformation)  # Anisotropic blobs\nX_varied, y_varied = make_blobs(\n    n_samples=n_samples, cluster_std=[1.0, 2.5, 0.5], random_state=random_state\n)  # Unequal variance\nX_filtered = np.vstack(\n    (X[y == 0][:500], X[y == 1][:100], X[y == 2][:10])\n)  # Unevenly sized blobs\ny_filtered = [0] * 500 + [1] * 100 + [2] * 10\n\n\n# Visualize\nfig, axs = plt.subplots(nrows=2, ncols=2, figsize=(12, 12))\n\naxs[0, 0].scatter(X[:, 0], X[:, 1], c=y)\naxs[0, 0].set_title(\"Mixture of Gaussian Blobs\")\n\naxs[0, 1].scatter(X_aniso[:, 0], X_aniso[:, 1], c=y)\naxs[0, 1].set_title(\"Anisotropically Distributed Blobs\")\n\naxs[1, 0].scatter(X_varied[:, 0], X_varied[:, 1], c=y_varied)\naxs[1, 0].set_title(\"Unequal Variance\")\n\naxs[1, 1].scatter(X_filtered[:, 0], X_filtered[:, 1], c=y_filtered)\naxs[1, 1].set_title(\"Unevenly Sized Blobs\")\n\nplt.suptitle(\"Ground truth clusters\").set_y(0.95)\nplt.show()\n\n\nfrom sklearn.cluster import KMeans\n\n# define common parameters in a dictionary. \n# When expanded with **, this is the same as saying n_init=auto, random_state=random_state\ncommon_params = {\n    \"n_init\": \"auto\",\n    \"random_state\": random_state,\n}\n\nfig, axs = plt.subplots(nrows=2, ncols=2, figsize=(12, 12))\n\n# fit_predict is a scikit-learn method that does both fit and predict\n# same as .fit(X).predict(X)\ny_pred = KMeans(n_clusters=2, **common_params).fit_predict(X)\naxs[0, 0].scatter(X[:, 0], X[:, 1], c=y_pred)\naxs[0, 0].set_title(\"Non-optimal Number of Clusters\")\n\ny_pred = KMeans(n_clusters=3, **common_params).fit_predict(X_aniso)\naxs[0, 1].scatter(X_aniso[:, 0], X_aniso[:, 1], c=y_pred)\naxs[0, 1].set_title(\"Anisotropically Distributed Blobs\")\n\ny_pred = KMeans(n_clusters=3, **common_params).fit_predict(X_varied)\naxs[1, 0].scatter(X_varied[:, 0], X_varied[:, 1], c=y_pred)\naxs[1, 0].set_title(\"Unequal Variance\")\n\ny_pred = KMeans(n_clusters=3, random_state=random_state).fit_predict(X_filtered)\naxs[1, 1].scatter(X_filtered[:, 0], X_filtered[:, 1], c=y_pred)\naxs[1, 1].set_title(\"Unevenly Sized Blobs\")\n\nplt.suptitle(\"Unexpected KMeans clusters\").set_y(0.95)\nplt.show()\n\n\nAdding outliers\nSince k-means assumes that we have isotropic, normally distributed data with equal variance, outliers can impact the results.\n\nfig, axs = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))\n\n# modify to add some outliers\noutliers = np.argsort(y)[:20]\nX_out = X.copy()\nX_out[outliers,0] += 5\n\naxs[0].scatter(X_out[:, 0], X_out[:, 1], c=y, alpha=0.5)\naxs[0].set_title(\"Actual class labels\")\n\ny_pred = KMeans(n_clusters=3, **common_params).fit_predict(X_out)\n\naxs[1].scatter(X_out[:, 0], X_out[:, 1], c=y_pred, alpha=0.5)\n# highlight where y_pred != y\nmisclass = (y_pred - 1) % 3 != y\naxs[1].scatter(X_out[misclass, 0], X_out[misclass, 1], edgecolor='k', facecolor='none')\naxs[1].set_title(\"Result of clustering\")\n\n\n\nDBSCAN\n\nfrom sklearn.cluster import DBSCAN\n\nfig, axs = plt.subplots(nrows=1, ncols=2, figsize=(12, \n5))\n\n# modify to add some outliers\noutliers = np.argsort(y)[:20]\nX_out = X.copy()\nX_out[outliers,0] += 5\n\naxs[0].scatter(X_out[:, 0], X_out[:, 1], c=y, alpha=0.5)\naxs[0].set_title(\"Actual class labels\")\n\ny_pred = DBSCAN().fit_predict(X_out)\n\naxs[1].scatter(X_out[:, 0], X_out[:, 1], c=y_pred, alpha=0.5)\naxs[1].set_title(\"DBSCAN class labels\")"
+    "text": "Clustering Examples\nCopied from https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_assumptions.html\n\nfrom sklearn.datasets import make_blobs\n\n# Authors: The scikit-learn developers\n# SPDX-License-Identifier: BSD-3-Clause\n\n# A reasonable number of samples to work with\nn_samples = 1500\nrandom_state = 170  # a new random seed\n\n# skew it so it's not just round blobs\ntransformation = [[0.60834549, -0.63667341], [-0.40887718, 0.85253229]]\n\n# make_blobs is a sklearn function that creates fake clustered data\nX, y = make_blobs(n_samples=n_samples, random_state=random_state)\nX_aniso = np.dot(X, transformation)  # Anisotropic blobs\nX_varied, y_varied = make_blobs(\n    n_samples=n_samples, cluster_std=[1.0, 2.5, 0.5], random_state=random_state\n)  # Unequal variance\nX_filtered = np.vstack(\n    (X[y == 0][:500], X[y == 1][:100], X[y == 2][:10])\n)  # Unevenly sized blobs\ny_filtered = [0] * 500 + [1] * 100 + [2] * 10\n\n\n# Visualize\nfig, axs = plt.subplots(nrows=2, ncols=2, figsize=(12, 12))\n\naxs[0, 0].scatter(X[:, 0], X[:, 1], c=y)\naxs[0, 0].set_title(\"Mixture of Gaussian Blobs\")\n\naxs[0, 1].scatter(X_aniso[:, 0], X_aniso[:, 1], c=y)\naxs[0, 1].set_title(\"Anisotropically Distributed Blobs\")\n\naxs[1, 0].scatter(X_varied[:, 0], X_varied[:, 1], c=y_varied)\naxs[1, 0].set_title(\"Unequal Variance\")\n\naxs[1, 1].scatter(X_filtered[:, 0], X_filtered[:, 1], c=y_filtered)\naxs[1, 1].set_title(\"Unevenly Sized Blobs\")\n\nplt.suptitle(\"Ground truth clusters\").set_y(0.95)\nplt.show()\n\n\n\n\n\n\n\n\n\nplt.scatter(X[:,0], X[:,1])\n\n\n\n\n\n\n\n\n\nfrom sklearn.cluster import KMeans\n\n# define common parameters in a dictionary. \n# When expanded with **, this is the same as saying n_init=auto, random_state=random_state\ncommon_params = {\n    \"n_init\": \"auto\",\n    \"random_state\": random_state,\n}\n\nfig, axs = plt.subplots(nrows=2, ncols=2, figsize=(12, 12))\n\n# fit_predict is a scikit-learn method that does both fit and predict\n# same as .fit(X).predict(X)\ny_pred = KMeans(n_clusters=2, **common_params).fit_predict(X)\naxs[0, 0].scatter(X[:, 0], X[:, 1], c=y_pred)\naxs[0, 0].set_title(\"Non-optimal Number of Clusters\")\n\ny_pred = KMeans(n_clusters=3, **common_params).fit_predict(X_aniso)\naxs[0, 1].scatter(X_aniso[:, 0], X_aniso[:, 1], c=y_pred)\naxs[0, 1].set_title(\"Anisotropically Distributed Blobs\")\n\ny_pred = KMeans(n_clusters=3, **common_params).fit_predict(X_varied)\naxs[1, 0].scatter(X_varied[:, 0], X_varied[:, 1], c=y_pred)\naxs[1, 0].set_title(\"Unequal Variance\")\n\ny_pred = KMeans(n_clusters=3, random_state=random_state).fit_predict(X_filtered)\naxs[1, 1].scatter(X_filtered[:, 0], X_filtered[:, 1], c=y_pred)\naxs[1, 1].set_title(\"Unevenly Sized Blobs\")\n\nplt.suptitle(\"Unexpected KMeans clusters\").set_y(0.95)\nplt.show()\n\n\n\n\n\n\n\n\n\nAdding outliers\nSince k-means assumes that we have isotropic, normally distributed data with equal variance, outliers can impact the results.\n\nfig, axs = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))\n\n# modify to add some outliers\noutliers = np.argsort(y)[:20]\nX_out = X.copy()\nX_out[outliers,0] += 5\n\naxs[0].scatter(X_out[:, 0], X_out[:, 1], c=y, alpha=0.5)\naxs[0].set_title(\"Actual class labels\")\n\ny_pred = KMeans(n_clusters=3, **common_params).fit_predict(X_out)\n\naxs[1].scatter(X_out[:, 0], X_out[:, 1], c=y_pred, alpha=0.5)\n# highlight where y_pred != y\nmisclass = (y_pred - 1) % 3 != y\naxs[1].scatter(X_out[misclass, 0], X_out[misclass, 1], edgecolor='k', facecolor='none')\naxs[1].set_title(\"Result of clustering\")\n\n\n\n\n\n\n\n\n\n\nDBSCAN\n\nfrom sklearn.cluster import DBSCAN\n\nfig, axs = plt.subplots(nrows=1, ncols=2, figsize=(12, \n5))\n\n# modify to add some outliers\noutliers = np.argsort(y)[:20]\nX_out = X.copy()\nX_out[outliers,0] += 5\n\naxs[0].scatter(X_out[:, 0], X_out[:, 1], c=y, alpha=0.5)\naxs[0].set_title(\"Actual class labels\")\n\ny_pred = DBSCAN().fit_predict(X_out)\n\naxs[1].scatter(X_out[:, 0], X_out[:, 1], c=y_pred, alpha=0.5)\naxs[1].set_title(\"DBSCAN class labels\")"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html",
     "href": "lectures/07-missing-and-weird-data.html",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#code",
     "href": "lectures/07-missing-and-weird-data.html#code",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#slides",
     "href": "lectures/07-missing-and-weird-data.html#slides",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "",
     "text": "PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#data-3464-fundamentals-of-data-processing",
     "href": "lectures/07-missing-and-weird-data.html#data-3464-fundamentals-of-data-processing",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "DATA 3464: Fundamentals of Data Processing",
     "text": "DATA 3464: Fundamentals of Data Processing\n\nMissing and Weird Data\nCharlotte Curtis October 1, 2026"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#topic-overview",
     "href": "lectures/07-missing-and-weird-data.html#topic-overview",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Topic overview",
     "text": "Topic overview\n\nWritten test 1 info\nWhat to do with missing data\nDetecting and handling outliers\n\nResources used:\n\nFeature Engineering Chapter 8\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at MRU Library\nScikit-learn user guide: Chapters 2 and 7"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#written-test-1-info",
     "href": "lectures/07-missing-and-weird-data.html#written-test-1-info",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Written test 1 info",
     "text": "Written test 1 info\n\n1 handwritten reference page on 8.5x11” paper, single-sided\nA non-programmable emotional support calculator\n6 questions MC, 9 TF, 3x long answer (similar to class practice)\nTotal of 50 points (1 point per MC), 80 minutes\nLast semester’s midterm is on D2L — it has concepts we haven’t covered yet!\nTwo tests worth 35% total — this one is 15% or 20%, whichever is best for you"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#written-test-1-content",
     "href": "lectures/07-missing-and-weird-data.html#written-test-1-content",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Written test 1 content",
     "text": "Written test 1 content\nWhat is not on the test:\n\nClustering, because we skipped it\nDetailed knoweldge of gradient descent or probability distributions\nAny kind of Python syntax or coding\n\nWhat is on the test?\n\nConcepts from lectures, labs, and assignments\nUp to and including basic imputation of missing values (today!)\nMore emphasis on things you did in labs/assignments"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#the-problem",
     "href": "lectures/07-missing-and-weird-data.html#the-problem",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "The problem",
     "text": "The problem\n\nAs you’ve seen, real-world data is messy\nMissing values are common, other values don’t make sense\nWe need to decide how to deal with these problems\n\n\n\nWhat examples have we seen so far? Why might data be missing or weird*?"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#missing-data",
     "href": "lectures/07-missing-and-weird-data.html#missing-data",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Missing data",
     "text": "Missing data\n\nWhen data are missing in the features we have a few options:\n\nDo nothing! Some algorithms (e.g. Decisions Trees) can handle missing values\nRemove features with missing values\nRemove samples with missing values\nInvent a new value to represent “missingness”\nImpute a value based on other data\n\n\n\nMost important: understand why data are missing (more EDA!)"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#option-1-removing-features",
     "href": "lectures/07-missing-and-weird-data.html#option-1-removing-features",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Option 1: removing features",
     "text": "Option 1: removing features\n\nIf a feature has:\n\nA high proportion of missing values, and\nLittle apparent relationship to the target or\nits information is redundant with other features\n\nIt may be reasonable to remove it entirely. You can drop it, e.g.: python   df.drop(columns=['feature_name'], inplace=True) or (probably more reliable) just not select it when building your pipeline"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#option-2-removing-samples",
     "href": "lectures/07-missing-and-weird-data.html#option-2-removing-samples",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Option 2: removing samples",
     "text": "Option 2: removing samples\n\nIf:\n\nOnly a small number of samples have missing values\nThe values are missing completely at random Then you can drop them from the training data:\ntrain_nona = train.dropna(subset=[[\"features\",\"we\",\"care\",\"about\"]])\n\nGood idea if the same samples have missing values from multiple features\nStill useful to explore why data are missing\n\n\n\nWhat does this imply at inference time?"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#option-3-invent-a-new-value",
     "href": "lectures/07-missing-and-weird-data.html#option-3-invent-a-new-value",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Option 3: invent a new value",
     "text": "Option 3: invent a new value\n\nCategorical features: add a new category for “missing”\nAdd a new binary feature indicating whether the value was missing\nI have seen advice to use extreme values for numerical features, like the -1 income in the OKCupid dataset, but I’m not convinced this is a good idea\n\n\n\nCase study: where missingness is informative"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#option-4-impute-missing-values",
     "href": "lectures/07-missing-and-weird-data.html#option-4-impute-missing-values",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Option 4: impute missing values",
     "text": "Option 4: impute missing values\n\n\nFill in the missing values with an “educated guess”\nReplace missing value with:\n\nconstant\nmean, median, or mode (most_frequent)\n\nUse other features to infer missing value:\n\nK-nearest neighbours\nsimple models to predict missing values\n\nCan be combined with option 3 to indicate missing features\nHow much to impute? Feat.Engineering suggests no more than 20%"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#choosing-an-imputation-strategy",
     "href": "lectures/07-missing-and-weird-data.html#choosing-an-imputation-strategy",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Choosing an imputation strategy",
     "text": "Choosing an imputation strategy\n\n\n\nStrategy\nWhen to use\n\n\n\n\nConstant\nWhen there is a reasonable default value\n\n\nMean\nNumeric features with normal distribution\n\n\nMedian\nNumeric features with extreme outliers\n\n\nKNN\nRelationship with other features\n\n\nMissingness indicator\nIf missingness seems informative"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#outliers",
     "href": "lectures/07-missing-and-weird-data.html#outliers",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Outliers",
     "text": "Outliers\n\nAn outlier is an observation which deviates so much from the other observations as to arouse suspicions that it was generated by a different mechanism. — D. M. Hawkins\n\n\nThere are many entire books dedicated to outlier detection\nUseful for anomaly detection, e.g:\n\nfraud detection\nfailure prediction\nMany other applications\n\nOur focus is on dealing with outliers in preprocessing\n\n\nHawkins, D. M. (1980). Identification of Outliers."
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#detecting-outliers",
     "href": "lectures/07-missing-and-weird-data.html#detecting-outliers",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Detecting outliers",
     "text": "Detecting outliers\n\n\n\nVisually as part of EDA\nStatistically, e.g. \\(\\gt 3\\sigma\\)\nAlgorithmically, e.g. Isolation Forests\nAs usual, context and domain knowledge are essential"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#context-matters",
     "href": "lectures/07-missing-and-weird-data.html#context-matters",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Context matters!",
     "text": "Context matters!\nLook at the relationship between outliers and target (training dataset, of course)\n\nWhat do the dots on box plots represent?"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#be-careful-with-visual-inspection",
     "href": "lectures/07-missing-and-weird-data.html#be-careful-with-visual-inspection",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Be careful with visual inspection",
     "text": "Be careful with visual inspection\n\n\n\n\n\n\n\n11% of samples are “outliers”!"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#what-to-do-about-outliers",
     "href": "lectures/07-missing-and-weird-data.html#what-to-do-about-outliers",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "What to do about outliers?",
     "text": "What to do about outliers?\nAs usual, very data- and model-dependent. Tree based methods are particularly impacted by outliers!\n\nData transformations\nDrop the samples\nEncode them somehow\nLeave them alone\n\n\n\nAny other ideas?"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#nonlinear-transformations",
     "href": "lectures/07-missing-and-weird-data.html#nonlinear-transformations",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Nonlinear transformations",
     "text": "Nonlinear transformations\n\n\n\nTransforming the data does not actually remove the outlier\nCan help make the relationship less extreme for linear models"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#dropping-the-samples",
     "href": "lectures/07-missing-and-weird-data.html#dropping-the-samples",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Dropping the samples",
     "text": "Dropping the samples\n\nIn general, not a thing I love to do\nIf you drop a sample from training, you need to decide what to do at inference\nMy opinion: Only do it if you’re confident it’s an error in the dataset &gt; Can you think of an example we’ve seen so far?\nWhat can you do at inference time when outliers are encountered?"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#encoding-outliers",
     "href": "lectures/07-missing-and-weird-data.html#encoding-outliers",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Encoding outliers",
     "text": "Encoding outliers\nA few other options that might fall into “encoding”:\n\nJust like with missing values, binary column indicating outlier/inlier\nRemove the values and convert them to missing\nBin or impose a cap (floor/ceiling) on the value\nReplace the numeric value with a rank or quantile bucket\nProbably other things!"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#leave-them-alone",
     "href": "lectures/07-missing-and-weird-data.html#leave-them-alone",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Leave them alone",
     "text": "Leave them alone\nIf your outliers are:\n\nReal values (not data entry or other errors)\nRepresentative of things that might happen during inference\n\nThen you probably want to keep them!\n\nConsider using a RobustScalar to standardize if you have lots of outliers"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#missing-values-and-outliers-in-the-target",
     "href": "lectures/07-missing-and-weird-data.html#missing-values-and-outliers-in-the-target",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Missing values and outliers in the target",
     "text": "Missing values and outliers in the target\n\nIf you have missing values in the target, you probably want to avoid imputing\nThis is a good case for dropping samples from training!\nOutliers are trickier — again, check if they’re real or mistakes\nThere may be a case for transforming the target, but be careful interpreting results &gt; What does it mean if \\(MSE(\\mathbf{y} - \\mathbf{\\hat{y}}) &gt; MSE(\\log(\\mathbf{y}) - \\log(\\mathbf{\\hat{y}}))\\)?"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#revisiting-unsupervised-learning",
     "href": "lectures/07-missing-and-weird-data.html#revisiting-unsupervised-learning",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Revisiting unsupervised learning",
     "text": "Revisiting unsupervised learning\nLearning patterns without labels, such as:\n\nAnomaly detection\nDensity estimation\nDimensionality reduction\nClustering\n\n\n\nWhy is unsupervised learning important?\n\n\n\nNote: this content was originally in lecture 2"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#clustering-k-means",
     "href": "lectures/07-missing-and-weird-data.html#clustering-k-means",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Clustering: \\(k\\)-means",
     "text": "Clustering: \\(k\\)-means\n\n\nGoal: Partition \\(N\\) samples into \\(k\\) clusters\nNaive algorithm:\n\nInitialize \\(k\\) centroid locations\nAssign each sample to the nearest centroid\nRecalculate centroids for each cluster\nRepeat steps 2-3 until clusters stabilize\n\n\n\n\\[\\sum_{i=0}^N \\min_{\\mu_j \\in C}(\\Vert x_i - \\mu_j \\Vert^2)\\]"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#k-means-pros-and-cons",
     "href": "lectures/07-missing-and-weird-data.html#k-means-pros-and-cons",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "\\(k\\)-means pros and cons",
     "text": "\\(k\\)-means pros and cons\n\n\nIntuitive\nEasy to implement\nRelatively scalable (\\(O(N)\\))\n\n \n\nNeed to know how many clusters\nSensitive to initialization\nSensitive to outliers\nNot guaranteed to converge to global minimum\nDoesn’t like anisotropy and unequal variance\n\n\n\nScikit-learn has a great reference table of other clustering methods"
   },
   {
     "objectID": "lectures/07-missing-and-weird-data.html#coming-up-next",
     "href": "lectures/07-missing-and-weird-data.html#coming-up-next",
-    "title": "7: Missing and weird data",
+    "title": "7. Missing and weird data",
     "section": "Coming up next",
     "text": "Coming up next\n\nLecture: Fancy encoding and transformations\nLab: Exploring missing and weird data\nAssignment 2"
   },
   {
     "objectID": "lectures/05-basic-numeric.html",
     "href": "lectures/05-basic-numeric.html",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#code",
     "href": "lectures/05-basic-numeric.html#code",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#slides",
     "href": "lectures/05-basic-numeric.html#slides",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "",
     "text": "PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#data-3464-fundamentals-of-data-processing",
     "href": "lectures/05-basic-numeric.html#data-3464-fundamentals-of-data-processing",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "DATA 3464: Fundamentals of Data Processing",
     "text": "DATA 3464: Fundamentals of Data Processing\n\nBasic Numeric Transformations\nCharlotte Curtis September 23, 2026"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#topic-overview",
     "href": "lectures/05-basic-numeric.html#topic-overview",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Topic overview",
     "text": "Topic overview\n\nWhy transformations are necessary\nCommon 1:1 transformations\nImplementation notes\n\nResources used:\n\nFeature Engineering Section 6.1\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 4. Available at MRU Library\nScikit-learn user guide: Chapter 7\nIntroduction to Machine Learning with Python. Available at MRU Library"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#common-11-transformations",
     "href": "lectures/05-basic-numeric.html#common-11-transformations",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Common 1:1 transformations",
     "text": "Common 1:1 transformations\n\n“Most models work best when each feature (and in regression also the target) is loosely Gaussian distributed” — Introduction to Machine Learning with Python\n\n\nScaling: normalization or standardization\nNonlinear transforms: log, square root, polynomial\nFancier methods: Box-Cox, Yeo-Johnson"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#a-brief-intro-to-gradient-descent",
     "href": "lectures/05-basic-numeric.html#a-brief-intro-to-gradient-descent",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "A brief intro to gradient descent",
     "text": "A brief intro to gradient descent\n\nMany linear models minimize some cost function through gradient descent\nThe gradient is a vector of partial derivatives \\[\\nabla f = \\begin{bmatrix} \\frac{\\partial f}{\\partial x_1} \\\\ \\frac{\\partial f}{\\partial x_2} \\\\ \\vdots \\\\ \\frac{\\partial f}{\\partial x_n} \\end{bmatrix}\\]\nfor some scalar-valued \\(f(\\mathbf{x})\\)"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#descending-the-gradient",
     "href": "lectures/05-basic-numeric.html#descending-the-gradient",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Descending the gradient",
     "text": "Descending the gradient\nFor a loss (or cost) function such as \\(MSE(\\mathrm{\\theta}) = \\frac{1}{m}(\\mathbf{X}\\mathbf{\\theta} - \\mathbf{y})^T(\\mathbf{X}\\mathbf{\\theta} - \\mathbf{y})\\)\n\nStart with a random \\(\\mathbf{\\theta}\\)\nCalculate the gradient \\(\\nabla_{\\mathbf{\\theta}}\\) for the current \\(\\mathbf{\\theta}\\)\nUpdate \\(\\mathbf{\\theta}\\) as \\(\\mathbf{\\theta} = \\mathbf{\\theta} - \\eta \\nabla_{\\mathbf{\\theta}}\\)\nRepeat 2-3 until some stopping criterion is met\nwhere \\(\\eta\\) is the learning rate, or the size of step to take in the direction opposite the gradient."
   },
   {
     "objectID": "lectures/05-basic-numeric.html#visualizing-in-2d",
     "href": "lectures/05-basic-numeric.html#visualizing-in-2d",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Visualizing in 2D",
     "text": "Visualizing in 2D\n\nThe gradient has \\(m + 1\\) dimensions, where \\(m\\) is the number of features\nstep size \\(\\eta\\) is a scalar parameter\n\n\n\n\n\nMain takeaway: feature should be more or less on the same scale\n\n\n\nFigure 4-7 from Hands-on Machine Learning"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#approaches-to-scaling",
     "href": "lectures/05-basic-numeric.html#approaches-to-scaling",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Approaches to scaling",
     "text": "Approaches to scaling\n\n\n\nStandardize: \\(x_{scaled} = \\dfrac{x - \\mu_x}{\\sigma_x}\\)Normalize: \\(x_{scaled} = \\dfrac{x - \\mathrm{min}(x)}{\\mathrm{max}(x) - \\mathrm{min}(x)}\\)"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#nonlinear-transforms",
     "href": "lectures/05-basic-numeric.html#nonlinear-transforms",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Nonlinear transforms",
     "text": "Nonlinear transforms\n\n\n\n\nCommon case: count data\nExample: Ask 1000 students how often they checked D2L that day\nNot a Gaussian distribution!\nWhat about the central limit theorem?"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#power-transforms",
     "href": "lectures/05-basic-numeric.html#power-transforms",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Power transforms",
     "text": "Power transforms\nA family of functions that map data to a normal distribution.\n\\[y_i^{(\\lambda)} =\n\\begin{cases}\n\\dfrac{y_i^\\lambda-1}{\\lambda(\\operatorname{GM}(y))^{\\lambda -1}} , &\\text{if } \\lambda \\neq 0 \\\\[12pt]\n\\operatorname{GM}(y)\\ln{y_i} , &\\text{if } \\lambda = 0\n\\end{cases}\\]\n(Or just PowerTransformer)\n\n\n\nImage credit: Scikit-learn"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#transformations-in-training-vs-inference",
     "href": "lectures/05-basic-numeric.html#transformations-in-training-vs-inference",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Transformations in training vs inference",
     "text": "Transformations in training vs inference\n\nDefine functions, e.g.\ndef standardize(X, mu, sigma):\n    return (X - mu) / sigma\nCompute scaling parameters on the training data, then stash them somewhere:\nmu = X_train.mean()\nsigma = X_train.std()\n# ... later on, during inference\nX = standardize(X, mu, sigma)\n\nWhat would happen if standardize instead computed values on the fly?"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#manual-approach-in-the-wild",
     "href": "lectures/05-basic-numeric.html#manual-approach-in-the-wild",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Manual approach in the wild",
     "text": "Manual approach in the wild\nYou may run across magic numbers, e.g from the PyTorch tutorials:\nimport torch\nfrom torchvision import transforms, datasets\n\ndata_transform = transforms.Compose([\n        transforms.RandomResizedCrop(224),\n        transforms.RandomHorizontalFlip(),\n        transforms.ToTensor(),\n        transforms.Normalize(mean=[0.485, 0.456, 0.406],\n                             std=[0.229, 0.224, 0.225])\n    ])\nThis really should have a comment! Derived from ImageNet."
   },
   {
     "objectID": "lectures/05-basic-numeric.html#an-alternative-solution-scikit-learn-pipelines",
     "href": "lectures/05-basic-numeric.html#an-alternative-solution-scikit-learn-pipelines",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "An alternative solution: Scikit-learn Pipelines",
     "text": "An alternative solution: Scikit-learn Pipelines\n\nHard-coding scaling (and other) parameters is okay, provided you can justify the choice and document where they came from\nScikit-learn Pipeline is a convenient alternative\nEach step in the pipeline has a fit and transform method\n\nfit computes parameters from the training data\ntransform applies the transformation\nfit_transform does both — only use on training data!\n\nYou can call these functions on the whole pipeline to fit or apply all in one go"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#summary",
     "href": "lectures/05-basic-numeric.html#summary",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Summary",
     "text": "Summary\n\nNumerical data often needs to be transformed to fit model assumptions\nStandardizing and normalizing are very common\nNonlinear transformations can also be beneficial\nMake sure to only compute parameters based on training data!"
   },
   {
     "objectID": "lectures/05-basic-numeric.html#coming-up-next",
     "href": "lectures/05-basic-numeric.html#coming-up-next",
-    "title": "5: Basic Numeric Transformations",
+    "title": "5. Basic Numeric Transformations",
     "section": "Coming up next",
     "text": "Coming up next\n\nLecture: Back to sampling/splitting\nTruth and reconciliation day — no lab next week (but assignment 1 is due!)\nNext topic: Missing data, outliers, and interaction effects"
   },
@@ -672,151 +672,130 @@
     "text": "Coming up next\n\nLab: basic regression, show me where you’re at\nLecture: Simple models and evaluation metrics"
   },
   {
-    "objectID": "labs/04-eda.html",
-    "href": "labs/04-eda.html",
-    "title": "4: Exploratory Data Analysis",
+    "objectID": "labs/05-missing-outliers.html",
+    "href": "labs/05-missing-outliers.html",
+    "title": "5. Missing and Weird Data",
     "section": "",
-    "text": "Lab submission due on October 21, 2026. This is a week longer than normal; not because I expect it to take longer, but because it’s reading week and I don’t like having deadlines in the middle."
+    "text": "Lab submission due on October 28, 2026."
   },
   {
-    "objectID": "labs/04-eda.html#objective",
-    "href": "labs/04-eda.html#objective",
-    "title": "4: Exploratory Data Analysis",
+    "objectID": "labs/05-missing-outliers.html#objective",
+    "href": "labs/05-missing-outliers.html#objective",
+    "title": "5. Missing and Weird Data",
     "section": "Objective",
-    "text": "Objective\nLearn a bit about:\n\nCombining data from different sources\nWorking with datetime formats\nData exploration"
+    "text": "Objective\nLearn a bit about:\n\nIdentifying missing data and outliers\nExploring patterns in missing data and outliers\nExplaining missing data and outliers"
   },
   {
-    "objectID": "labs/04-eda.html#setup",
-    "href": "labs/04-eda.html#setup",
-    "title": "4: Exploratory Data Analysis",
+    "objectID": "labs/05-missing-outliers.html#setup",
+    "href": "labs/05-missing-outliers.html#setup",
+    "title": "5. Missing and Weird Data",
     "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab04 in your labs repo. Download and add to it:\n\nclimate_traffic_data.zip, unzipped\nA new notebook or Python script for your lab work\n\n\n\n\n\n\n\nNote\n\n\n\nThis is the same data I demonstrated combining in class. You can refer to my notebook if you get stuck, but try to figure it out and understand what’s going on rather than copying big chunks of code."
+    "text": "Setup\nCreate a new directory named lab05 in your labs repo. Download and add to it:\n\n2026 City of Calgary Assessment data\nA new notebook or Python script for your lab work\n\nThis is a subset of data from the Current Year Property Assessments (Parcel) dataset available on Calgary’s open data portal. I’ve removed some of the columns and limited it to only those properties without farm or non-residential value (though, as you will discover, this does not mean that all properties are actually residential!).\nTo understand the various columns, you might want to refer to the City’s data tables, particularly Land Use Designations and Sub-property use codes."
   },
   {
-    "objectID": "labs/04-eda.html#combining-data",
-    "href": "labs/04-eda.html#combining-data",
-    "title": "4: Exploratory Data Analysis",
-    "section": "Combining data",
-    "text": "Combining data\nI’ve given you a zip file with 12 CSVs containing month-by-month climate data for the City of Calgary (reported hourly), as well as a year’s worth of traffic incidents, both from 2025. In contrast to your prior labs and assignments, we are not going to be predicting anything, just looking at the past year to try to get some insights.\n\nLoad the 12 weather csvs and concatenate into a single dataframe, then print out the info about the features.\nLoad the road incident csv and again print out the info.\nIdentify which feature on each dataframe is the date/time info. What time zone are they reporting in?\nTry to combine the datasets using Pandas’ merge_asof function, which will align each traffic incident with the nearest climate observation. What error do you get?\nTo fix the error, you’ll need to convert the string timestamps to a proper datetime datatype. An easy way to do this is with Pandas’ to_datetime method, but be careful about ensuring both end up with the same unit! datetime[ns] is not the same as datetime[us].\n\n\n\n\n\n\nTip\n\n\n\nIn addition to converting the date format, don’t forget to account for the time zone for each dataset! In the Environment Canada Data, LST stands for “local standard time”.\n\n\nAfter converting the dates, go back and merge using merge_asof to create a combined dataframe with the approximate weather for each traffic incident."
+    "objectID": "labs/05-missing-outliers.html#understanding-missing-values",
+    "href": "labs/05-missing-outliers.html#understanding-missing-values",
+    "title": "5. Missing and Weird Data",
+    "section": "Understanding missing values",
+    "text": "Understanding missing values\n\nLoad the csv and inspect it. Which columns have missing data? Do the data types make sense? If not, you may need to convert some strings to floats, for example.\nSplit the data and reserve a reasonable sized test set. You can choose to stratify if it seems justifiable.\nLook at the data with missing features. I recommend just printing out the raw dataframe and eyeballing to see if anything jumps out first, e.g.\n# print the first 50 rows with missing values\ndf[df.isna().any(axis=1)].head(50)\nBased on the results of the previous step, pick a potential relationship of the missing data to explore using visualizations or summary statistics. For example, is there a relationship between missing land size and sub-property use codes?\n\n\n\n\n\n\nTip\n\n\n\nConsider looking at the relative ratios of value_counts for missing values vs non-missing values. Bar charts can be helpful, but clunky. Seaborn can help streamline things, e.g.:\nsns.histplot(df, x=\"PROPERTY_TYPE\", hue=df[\"YEAR_OF_CONSTRUCTION\"].isna(), multiple=\"dodge\")\nwould show a histogram of PROPERTY_TYPE values, coloured based on whether or not there are any missing values in YEAR_OF_CONSTRUCTION.\n\n\nContinue to explore your missing values until you have a reasonable explanation for their presence. Based on what you’ve learned, how would you recommend treating these in a predictive modelling pipeline? Justify your answer, but you do not need to actually build a model at this time."
   },
   {
-    "objectID": "labs/04-eda.html#exploring",
-    "href": "labs/04-eda.html#exploring",
-    "title": "4: Exploratory Data Analysis",
-    "section": "Exploring",
-    "text": "Exploring\nNow that you have a dataset combining weather with traffic incidents, it’s time to explore!1\nRemember that the goal of exploratory data analysis (EDA) is to understand your data. Ask questions, then look for answers using visualizations or summary statistics. The example I gave in class was “is there a relationship between temperature and traffic incidents”, which I tried to answer with a histogram and concluded that there seems to be an overrepresentation at lower temperatures — however, I didn’t account for the missing data in June, so this particular visualization can be improved.\nIn your lab notebook:\n\nState a question about the dataset.\nVisualize the data in some way to try to find the answer.\nRecord what you think the visualization is telling you."
+    "objectID": "labs/05-missing-outliers.html#understanding-outliers",
+    "href": "labs/05-missing-outliers.html#understanding-outliers",
+    "title": "5. Missing and Weird Data",
+    "section": "Understanding outliers",
+    "text": "Understanding outliers\n\n\n\n\n\n\nImportantRemember\n\n\n\nOutliers are context-dependent! Algorithmic rules like \\(1.5\\times \\mathrm{IQR}\\) or \\(3\\sigma\\) can help identify weird values, but knowing how to handle them requires understanding how they came to be.\n\n\n\nUsing your domain knowledge (e.g. detached homes usually cost more than condos, the oldest building still standing was built in 1876, etc), identify some anomalous values in the numeric features. These may be beyond the range of “typical” values for a single feature, or they may deviate from the dominant relationship between features.\nAgain, print out the table of data with weird values to understand their context.\nBased on the patterns observed in the tabular data, explore the anomalous values further with visualizations. For example, do they all belong to a certain property type?\nDo your outliers seem more likely to be mistakes, an unexpected data entry process, or true extreme values? Justify your answer.\nBased on your previous response, how would you propose to deal with the outliers in a predictive modelling pipeline? Again, justify your response, but you do not need to actually build a model."
   },
   {
-    "objectID": "labs/04-eda.html#submit",
-    "href": "labs/04-eda.html#submit",
-    "title": "4: Exploratory Data Analysis",
+    "objectID": "labs/05-missing-outliers.html#submit",
+    "href": "labs/05-missing-outliers.html#submit",
+    "title": "5. Missing and Weird Data",
     "section": "Submit",
     "text": "Submit\nAs usual, add your lab04 directory to your labs repo and push your changes to GitHub."
   },
   {
-    "objectID": "labs/04-eda.html#footnotes",
-    "href": "labs/04-eda.html#footnotes",
-    "title": "4: Exploratory Data Analysis",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nIn this case, you don’t need to split the data as we’re not trying to build a predictive model. It’s also a time-series, which needs special consideration.↩︎"
-  },
-  {
-    "objectID": "labs/02-basic-models.html",
-    "href": "labs/02-basic-models.html",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/03-categorical.html",
+    "href": "labs/03-categorical.html",
+    "title": "3. Categorical Data Representation",
     "section": "",
-    "text": "Lab submission due on September 23, 2026."
+    "text": "Lab submission due on September 29, 2026."
   },
   {
-    "objectID": "labs/02-basic-models.html#objective",
-    "href": "labs/02-basic-models.html#objective",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/03-categorical.html#objective",
+    "href": "labs/03-categorical.html#objective",
+    "title": "3. Categorical Data Representation",
     "section": "Objective",
-    "text": "Objective\nLearn a bit about:\n\nScikit-learn pipelines\nThe need for validation data\nThe overall iterative workflow of making predictions from data\n\nAs we haven’t yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation."
+    "text": "Objective\nLearn a bit about:\n\nMore Scikit-learn pipelines\nCategorical data encoding decisions\nThings to watch out for when encoding categorical data"
   },
   {
-    "objectID": "labs/02-basic-models.html#setup",
-    "href": "labs/02-basic-models.html#setup",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/03-categorical.html#setup",
+    "href": "labs/03-categorical.html#setup",
+    "title": "3. Categorical Data Representation",
     "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab02 in your labs repo. Download and add to it:\n\ntitanic_train.csv — the training data\ntitanic.ipynb — the starter notebook\n\nYou can also check out the test data, but this doesn’t have a truth value. If you want to know the final performance of your model, you’ll need to submit it to Kaggle."
+    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually.\nIf you download and load the CSV, you’ll need to define your y target variable from the Class column."
   },
   {
-    "objectID": "labs/02-basic-models.html#predicting-titanic-survivorship",
-    "href": "labs/02-basic-models.html#predicting-titanic-survivorship",
-    "title": "2: Basic Modelling",
-    "section": "Predicting Titanic survivorship",
-    "text": "Predicting Titanic survivorship\nConsider this a “Hello, world!” of supervised learning! The Titanic survival dataset is one of the most popular practice datasets.\n\nOpen your copy of titanic.ipynb and run the first cell. Install any missing packages you encounter.\nI’ve done some basic exploratory data analysis and constructed the pipeline for you, as we haven’t gotten to this in class yet. The pipeline is as follows:\npipeline = make_pipeline(\n   make_column_transformer(\n      (OneHotEncoder(), cat_feats),\n      (StandardScaler(), num_feats)\n   )\n   # TODO: add some kind of classification model\n)\nAdd a decision tree classifier to the pipeline.\nTrain and cross-validate your tree, choosing an appropriate scoring metric.\n\n\n\n\n\n\nTip\n\n\n\nIf your model complains about missing values (or some more obscure message about NaN), you might need to remove the Embarked feature — I missed that it actually has 2 missing features.\n\n\nExperiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:\n\nDropping features that don’t add value\nTraining a forest of trees\nChanging tree depth to avoid overfitting\n\nAs you make changes, record why you’re making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it’s okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:\n# Started with max depth of 3 but it seemed like it wasn't learning enough\n# Increasing to 4 improves predictions without overfitting\ntree = DecisionTreeClassifier(maxDepth=4)\nRepeat, but with some kind of linear classification model, such as LinearSVC or LogisticRegression. What changes?"
+    "objectID": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
+    "href": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
+    "title": "3. Categorical Data Representation",
+    "section": "Predicting breast cancer recurrance",
+    "text": "Predicting breast cancer recurrance\nThis is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study1. A number of categorical features are recorded for each, along with the target variable (one of no-recurrence-events and recurrence-events).\nEach of the following steps is also indicated as TODO items in the starter notebook.\n\nConvert the target into a binary feature, assumed to be named y\nDo some basic exploration on the categorical features, paying attention to:\n\nfeature cardinality\nordinal vs nominal\n\nThere’s also a single continuous value — inspect it using an appropriate visualization or other method\nDefine appropriate encoders for the categorical features (either OneHotEncoder or OrdinalEncoder). Pay attention to the names of the categories for ordinal encoding! By default they will map to alphabetical order, but that is not the same as numerical order (why?).\nPut your encoders into the provided pipeline skeleton, then cross-validate to see how your model behaves. Can you make any changes that improve the performance?\n\n\n\n\n\n\n\nNoteStretch goal\n\n\n\nIf you want to take things a step further, see if you can interpret the .feature_importances_ attribute of the classifier. You can access this with the last element of the pipeline, i.e.:\nimportance = pipeline[-1].feature_importances_"
   },
   {
-    "objectID": "labs/02-basic-models.html#submit",
-    "href": "labs/02-basic-models.html#submit",
-    "title": "2: Basic Modelling",
+    "objectID": "labs/03-categorical.html#submit",
+    "href": "labs/03-categorical.html#submit",
+    "title": "3. Categorical Data Representation",
     "section": "Submit",
-    "text": "Submit\nAdd and push your code and observations to your GitHub repo for your completion-based lab mark."
+    "text": "Submit\nAs usual, git add, commit, and push your work. It’s okay if you don’t make it all the way, I’ll be looking for at least one appropriately defined categorical encoder."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DATA 3464 | Fall 2026",
+    "objectID": "labs/03-categorical.html#footnotes",
+    "href": "labs/03-categorical.html#footnotes",
+    "title": "3. Categorical Data Representation",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis seems to me to be a limitation of the dataset — there may be more recurrances that happened after the study period.↩︎"
+  },
+  {
+    "objectID": "labs/01-clean-regression.html",
+    "href": "labs/01-clean-regression.html",
+    "title": "1. Regression with Clean Data",
     "section": "",
-    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
+    "text": "Lab submission due on September 16, 2026."
   },
   {
-    "objectID": "index.html#lectures",
-    "href": "index.html#lectures",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7: Missing and weird data\n \n \nSlide 9\n\n\n\nNo matching items"
+    "objectID": "labs/01-clean-regression.html#objective",
+    "href": "labs/01-clean-regression.html#objective",
+    "title": "1. Regression with Clean Data",
+    "section": "Objective",
+    "text": "Objective\nThe main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need “clean” and easy to manage data."
   },
   {
-    "objectID": "index.html#labs",
-    "href": "index.html#labs",
-    "title": "DATA 3464 | Fall 2026",
-    "section": "Labs",
-    "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\nOct 7, 2026\n4: Exploratory Data Analysis\nOct 21, 2026\n\n\n\nNo matching items"
+    "objectID": "labs/01-clean-regression.html#deliverables",
+    "href": "labs/01-clean-regression.html#deliverables",
+    "title": "1. Regression with Clean Data",
+    "section": "Deliverables",
+    "text": "Deliverables\nClick here to accept the “labs” assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please create a new directory named lab01 (or similar) and add:\n\nYour code to load, process, and visualize the data\nA brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions\nA list of references, such as:\n\nComplete URLs, e.g. to library documentation or Stack Overflow answers\nSearch queries, particularly if you used the “AI overview” response\nA complete transcript of AI chat history, if any\n\n\nThese can all be in one document if you document your process inline with your code.\n\n\n\n\n\n\nCaution\n\n\n\nAI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!"
   },
   {
-    "objectID": "assignments/02-eda.html",
-    "href": "assignments/02-eda.html",
-    "title": "Assignment 2: Merging and exploring datasets",
-    "section": "",
-    "text": "Due date: Friday, October 30 at 5 pm. Reasonable requests for extensions will be granted, and realistically, I will not look at these until the following Monday anyway."
+    "objectID": "labs/01-clean-regression.html#instructions",
+    "href": "labs/01-clean-regression.html#instructions",
+    "title": "1. Regression with Clean Data",
+    "section": "Instructions",
+    "text": "Instructions\n\nClone the labs repo to your local machine and create a new subdirectory named lab01. In this folder:\nIn the programming language of your choice, write a program to:\n\nLoad the data in simple_regression.csv\nCalculate the line of best fit using simple linear regression\nCreate a scatter plot of the data with the best fit line\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to document your process as you do this! For example, if you get stuck on a step and need to look things up, add a comment.\n\n\nWith reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.\n\nIs linear regression an appropriate model for these data?\nHow well does your model fit the data?\nWhat additional information would help to create a more accurate model?\n\nRepeat the first question but with the simple_regression_full.csv dataset. This contains extra columns; select only the same ones that are present in simple_regression.csv. In your report, answer the following:\n\nWhat additional steps did you need to do to recreate the plot?\nDo you have any guess what this dataset represents?"
   },
   {
-    "objectID": "assignments/02-eda.html#setup",
-    "href": "assignments/02-eda.html#setup",
-    "title": "Assignment 2: Merging and exploring datasets",
-    "section": "Setup",
-    "text": "Setup\nYou may work in groups up to 3. Please join a group on D2L, then pick one person to accept the assignment and create the GitHub repository with the datasets. Whoever does this becomes the group manager and can invite team members with their GitHub username.\nIn your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create one coherent report named assignment2 that includes:\n\nYour group members’ names\nA description of your understanding of the various data files provided\nA clear statement of your research question\nA conclusion answering your research question, including key figures as supporting evidence\nReflections on lessons learned and challenges\n\nYour report can be in Markdown or PDF format. In these instructions, I’ve indicated where you should write in your report in an annoying bold face.\nI encourage you to talk things through as you try different things. If you talk with classmates from a different group, cite their contribution. Similarly, if you use a web resource, add a link in the code — this is both polite, and a good habit to develop."
-  },
-  {
-    "objectID": "assignments/02-eda.html#the-problem",
-    "href": "assignments/02-eda.html#the-problem",
-    "title": "Assignment 2: Merging and exploring datasets",
-    "section": "The problem",
-    "text": "The problem\nHumans and wildlife are having more and more encounters, and Parks Canada would like to understand the data they’ve collected. Your task is to combine and explore various Parks Canada wildlife encounters datasets to gain insights about trends in animal encounters.\nThe data provided in the starter code repo was downloaded from Canada’s Open Data Portal and https://climatedata.ca. The parks-canada-attendance-* and climate-daily* csvs should be fairly understandable, but you will need to read the description of the Animal Encounters Datasets to understand the relationship between the various tables (for example, why a single incident might involve multiple animal records).\n\nData Combining\nThere’s a lot of separate datasets here that all relate to each other. Combining them is non-trivial, but is an essential step to being able to understand them.\n\nLoad the four animal encounters csvs (incidents,responses, activities, and animals_involved) as pandas dataframes.\nDo some basic exploration to understand the contents of these dataframes.\nJoin the dataframes on the Incident Number key. Other columns may also be duplicated; try to create a single dataframe with all the unique columns, without any duplicated columns. There will be duplicated incident numbers, that’s okay! Just remember this later on if you want to count unique incidents.\nLoad the climate-daily files and concatenate them. Again, do some basic exploration to understand the information provided.\nLoad the various parks-canada-attendance CSVs to find the number of visitors per year. Yes, it’s annoying that these are broken up into multiple files! Also annoying is the date range: each “season” (e.g. 2019-2020) goes from April 1 to March 31st. You’ll need to find the best way of structuring this data to align visitor counts to incidents.\nRestrict your datasets to just Banff and Jasper parks to keep things manageable and join all the various data sources by date.\n\n\n\n\n\n\nTip\n\n\n\nConvert the date columns to a datetime format before merging, just like in lab 4. Be careful with the visitor data; you’ll need to find the visitor count corresponding to the April-March year in which the incident occurred. For example, an incident occurring in January 2022 would fall within the 2021-22 attendance record.\n\n\nYou may need to process Banff and Jasper separately.\n\nCongratulations, you now have a giant dataframe with incidents, animals involved, responses, climate data, and the number of visitors to each park! Getting to this point is a surprising amount of work, even after I’ve done the acquisition part for you.\nIn your report, write a summary description of the various data sources and how they relate to each other. You might want to do some preliminary data exploration first to understand the various columns.\n\n\nData Exploration\n\n\n\n\n\n\nNote\n\n\n\nThere is no modelling in this assignment, it’s simply a retrospective look at some collected data, so no splitting is required.\n\n\nThis section is a lot more free-form than combining the data. Now that you have a better understanding of the data, it’s time to formulate a research question. To begin, create:\n\nAt least 2 exploratory visualizations or statistics for the numerical data\nAt least 2 exploratory visualizations or statistics for the categorical data\nFor each, state why you chose that way of examining the data, and at least one observation. This doesn’t need to go in your report, but it should be in your exploration notebook(s).\n\nAfter doing this, hopefully something interesting popped out to investigate further. In your report, write a clear statement of the research question you are trying to answer. Examples might include (but are not limited to):\n\nIs there a trend of increased animal encounters while driving?\nAre wilderness encounters associated with warmer temperatures?\nWhat trends in responses are there for different kinds of animals? If you are comparing incident count over time, you will need to normalize by visitor count.\n\nTo answer your research question, you will likely need to create several additional visualizations. In your exploration document, state what you are trying to answer, then visualize, then make a comment about your observations.\n\n\n\n\n\n\nNoteGet Creative!\n\n\n\nPoke at the data and see what happens. Many of your questions may lead nowhere, and that’s okay! I’d like to see your process as you explore and develop insights.\n\n\nIf, along the way, you see something interesting, you may want to update your research question. That’s fine! If you start off looking at one thing and switch to another, leave the original explorations in your notebook. I’d like to see the process as well as the final decision.\nIn your report, include one or two key figures that provide the answer to your research question and write a short paragraph describing your observations."
-  },
-  {
-    "objectID": "assignments/02-eda.html#reflections",
-    "href": "assignments/02-eda.html#reflections",
-    "title": "Assignment 2: Merging and exploring datasets",
-    "section": "Reflections",
-    "text": "Reflections\nIn your report, write a brief paragraph describing what you found challenging about this assignment, and one thing that was particularly interesting or surprising."
-  },
-  {
-    "objectID": "assignments/02-eda.html#submission",
-    "href": "assignments/02-eda.html#submission",
-    "title": "Assignment 2: Merging and exploring datasets",
+    "objectID": "labs/01-clean-regression.html#submission",
+    "href": "labs/01-clean-regression.html#submission",
+    "title": "1. Regression with Clean Data",
     "section": "Submission",
-    "text": "Submission\nCommit changes and push your working documents and report to the GitHub repo. Make sure to include rendered outputs in your notebooks so that I can see the visualizations without needing to run your code.\nYou may commit and push as often as you like (and in fact, regular commits are a good idea!). I will only evaluate the last one committed before the deadline."
+    "text": "Submission\nSubmit your work by adding your new files to the lab repo with git add, commit with git commit, and push your changes to GitHub with git push. You may add/commit/push as many times as you like; only the last revision will be marked. Your repo should include:\n\nYour source code in the language of your choice\nYour report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)\nYour list of references\n\n\n\n\n\n\n\nImportant\n\n\n\nDo not commit virtual environments (venv) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a .gitignore file to your repo such as this one.\nIf you are using Python 3.13 or newer, the virtual environment directory will be ignored automatically.\n\n\nLabs are marked pass/fail based on “best effort” completion — you don’t need to finish the whole thing, just get as far as you can in a reasonable amount of time."
   },
   {
-    "objectID": "assignments/02-eda.html#marking-scheme",
-    "href": "assignments/02-eda.html#marking-scheme",
-    "title": "Assignment 2: Merging and exploring datasets",
-    "section": "Marking Scheme",
-    "text": "Marking Scheme\nEach of the following components will be marked on a 4-point scale and weighted as follows:\n\n\n\nComponent\nWeight\n\n\n\n\nData combining process and accuracy\n20%\n\n\nExploratory questions, plots, and observations\n30%\n\n\nResearch question and interpretation\n20%\n\n\nReflections\n20%\n\n\nOverall coherency and citations\n10%\n\n\n\n\n\n\n\n\n\n\n\nScore\nDescription\n\n\n\n\n4\nExcellent — thoughtful and creative without any errors or omissions\n\n\n3\nPretty good, but with minor errors or omissions\n\n\n2\nMostly complete, but with major errors or omissions, lacking in detail\n\n\n1\nA minimal effort was made, incomplete or incorrect\n\n\n0\nNo effort was made, or the submission is plagiarized"
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nOct 9, 2026\n\n\nAssignment 2: Merging and exploring datasets\n\n\n \n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/01-simple-model.html",
@@ -861,95 +840,158 @@
     "text": "Footnotes\n\n\nWhy under $20k? I don’t know, maybe they get a prize or something. It just seemed like a clear dividing line when I inspected the data, and I needed an excuse to turn this into a classification problem.↩︎"
   },
   {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
+    "objectID": "assignments/02-eda.html",
+    "href": "assignments/02-eda.html",
+    "title": "Assignment 2: Merging and exploring datasets",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nAssignment 1: Simple Modelling\n\n\n \n\n\n\n\n\n\nOct 9, 2026\n\n\nAssignment 2: Merging and exploring datasets\n\n\n \n\n\n\n\n\n\nNo matching items"
+    "text": "Due date: Friday, October 30 at 5 pm. Reasonable requests for extensions will be granted, and realistically, I will not look at these until the following Monday anyway."
   },
   {
-    "objectID": "labs/01-clean-regression.html",
-    "href": "labs/01-clean-regression.html",
-    "title": "1: Regression with Clean Data",
-    "section": "",
-    "text": "Lab submission due on September 16, 2026."
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#objective",
-    "href": "labs/01-clean-regression.html#objective",
-    "title": "1: Regression with Clean Data",
-    "section": "Objective",
-    "text": "Objective\nThe main goal of this exercise is for me to learn about your current habits and knowledge. It also serves as an example for why we need “clean” and easy to manage data."
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#deliverables",
-    "href": "labs/01-clean-regression.html#deliverables",
-    "title": "1: Regression with Clean Data",
-    "section": "Deliverables",
-    "text": "Deliverables\nClick here to accept the “labs” assignment on Classroom50. This is the repo where you will be adding a new lab each week. For this lab, please create a new directory named lab01 (or similar) and add:\n\nYour code to load, process, and visualize the data\nA brief report in PDF, Markdown, or Jupyter notebook format describing your process and answering a few questions\nA list of references, such as:\n\nComplete URLs, e.g. to library documentation or Stack Overflow answers\nSearch queries, particularly if you used the “AI overview” response\nA complete transcript of AI chat history, if any\n\n\nThese can all be in one document if you document your process inline with your code.\n\n\n\n\n\n\nCaution\n\n\n\nAI is not forbidden for labs, but it will be during lab exams. I recommend you practice without it!"
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#instructions",
-    "href": "labs/01-clean-regression.html#instructions",
-    "title": "1: Regression with Clean Data",
-    "section": "Instructions",
-    "text": "Instructions\n\nClone the labs repo to your local machine and create a new subdirectory named lab01. In this folder:\nIn the programming language of your choice, write a program to:\n\nLoad the data in simple_regression.csv\nCalculate the line of best fit using simple linear regression\nCreate a scatter plot of the data with the best fit line\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to document your process as you do this! For example, if you get stuck on a step and need to look things up, add a comment.\n\n\nWith reference to your scatter plot, answer the following questions and justify your answer. You may make and include additional plots or calculations as desired to include in your justification.\n\nIs linear regression an appropriate model for these data?\nHow well does your model fit the data?\nWhat additional information would help to create a more accurate model?\n\nRepeat the first question but with the simple_regression_full.csv dataset. This contains extra columns; select only the same ones that are present in simple_regression.csv. In your report, answer the following:\n\nWhat additional steps did you need to do to recreate the plot?\nDo you have any guess what this dataset represents?"
-  },
-  {
-    "objectID": "labs/01-clean-regression.html#submission",
-    "href": "labs/01-clean-regression.html#submission",
-    "title": "1: Regression with Clean Data",
-    "section": "Submission",
-    "text": "Submission\nSubmit your work by adding your new files to the lab repo with git add, commit with git commit, and push your changes to GitHub with git push. You may add/commit/push as many times as you like; only the last revision will be marked. Your repo should include:\n\nYour source code in the language of your choice\nYour report, including your scatter plots and responses to the questions (these may be part of the source code if using a format such as Jupyter notebooks)\nYour list of references\n\n\n\n\n\n\n\nImportant\n\n\n\nDo not commit virtual environments (venv) to your repository, these are gigantic and non-transferrable. In fact, I recommend adding a .gitignore file to your repo such as this one.\nIf you are using Python 3.13 or newer, the virtual environment directory will be ignored automatically.\n\n\nLabs are marked pass/fail based on “best effort” completion — you don’t need to finish the whole thing, just get as far as you can in a reasonable amount of time."
-  },
-  {
-    "objectID": "labs/03-categorical.html",
-    "href": "labs/03-categorical.html",
-    "title": "3: Categorical Data Representation",
-    "section": "",
-    "text": "Lab submission due on September 29, 2026."
-  },
-  {
-    "objectID": "labs/03-categorical.html#objective",
-    "href": "labs/03-categorical.html#objective",
-    "title": "3: Categorical Data Representation",
-    "section": "Objective",
-    "text": "Objective\nLearn a bit about:\n\nMore Scikit-learn pipelines\nCategorical data encoding decisions\nThings to watch out for when encoding categorical data"
-  },
-  {
-    "objectID": "labs/03-categorical.html#setup",
-    "href": "labs/03-categorical.html#setup",
-    "title": "3: Categorical Data Representation",
+    "objectID": "assignments/02-eda.html#setup",
+    "href": "assignments/02-eda.html#setup",
+    "title": "Assignment 2: Merging and exploring datasets",
     "section": "Setup",
-    "text": "Setup\nCreate a new directory named lab03 in your labs repo. Download and add to it:\n\ncategorical.ipynb\n\nThis notebook also fetches the breast cancer dataset from the UCI Machine Learning datasets archive. You’ll need to pip install ucimlrepo for this to work, or if you don’t want to do that, you can download a CSV manually.\nIf you download and load the CSV, you’ll need to define your y target variable from the Class column."
+    "text": "Setup\nYou may work in groups up to 3. Please join a group on D2L, then pick one person to accept the assignment and create the GitHub repository with the datasets. Whoever does this becomes the group manager and can invite team members with their GitHub username.\nIn your repo, you may store as many python files, Jupyter notebooks, draft documents, etc. However, please create one coherent report named assignment2 that includes:\n\nYour group members’ names\nA description of your understanding of the various data files provided\nA clear statement of your research question\nA conclusion answering your research question, including key figures as supporting evidence\nReflections on lessons learned and challenges\n\nYour report can be in Markdown or PDF format. In these instructions, I’ve indicated where you should write in your report in an annoying bold face.\nI encourage you to talk things through as you try different things. If you talk with classmates from a different group, cite their contribution. Similarly, if you use a web resource, add a link in the code — this is both polite, and a good habit to develop."
   },
   {
-    "objectID": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
-    "href": "labs/03-categorical.html#predicting-breast-cancer-recurrance",
-    "title": "3: Categorical Data Representation",
-    "section": "Predicting breast cancer recurrance",
-    "text": "Predicting breast cancer recurrance\nThis is another small dataset, painstakingly collected in the 1980s from real breast cancer patients. Each sample represents an individual with breast cancer, which may or may not have recurred during the time period of the study1. A number of categorical features are recorded for each, along with the target variable (one of no-recurrence-events and recurrence-events).\nEach of the following steps is also indicated as TODO items in the starter notebook.\n\nConvert the target into a binary feature, assumed to be named y\nDo some basic exploration on the categorical features, paying attention to:\n\nfeature cardinality\nordinal vs nominal\n\nThere’s also a single continuous value — inspect it using an appropriate visualization or other method\nDefine appropriate encoders for the categorical features (either OneHotEncoder or OrdinalEncoder). Pay attention to the names of the categories for ordinal encoding! By default they will map to alphabetical order, but that is not the same as numerical order (why?).\nPut your encoders into the provided pipeline skeleton, then cross-validate to see how your model behaves. Can you make any changes that improve the performance?\n\n\n\n\n\n\n\nNoteStretch goal\n\n\n\nIf you want to take things a step further, see if you can interpret the .feature_importances_ attribute of the classifier. You can access this with the last element of the pipeline, i.e.:\nimportance = pipeline[-1].feature_importances_"
+    "objectID": "assignments/02-eda.html#the-problem",
+    "href": "assignments/02-eda.html#the-problem",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "The problem",
+    "text": "The problem\nHumans and wildlife are having more and more encounters, and Parks Canada would like to understand the data they’ve collected. Your task is to combine and explore various Parks Canada wildlife encounters datasets to gain insights about trends in animal encounters.\nThe data provided in the starter code repo was downloaded from Canada’s Open Data Portal and https://climatedata.ca. The parks-canada-attendance-* and climate-daily* csvs should be fairly understandable, but you will need to read the description of the Animal Encounters Datasets to understand the relationship between the various tables (for example, why a single incident might involve multiple animal records).\n\nData Combining\nThere’s a lot of separate datasets here that all relate to each other. Combining them is non-trivial, but is an essential step to being able to understand them.\n\nLoad the four animal encounters csvs (incidents,responses, activities, and animals_involved) as pandas dataframes.\nDo some basic exploration to understand the contents of these dataframes.\nJoin the dataframes on the Incident Number key. Other columns may also be duplicated; try to create a single dataframe with all the unique columns, without any duplicated columns. There will be duplicated incident numbers, that’s okay! Just remember this later on if you want to count unique incidents.\nLoad the climate-daily files and concatenate them. Again, do some basic exploration to understand the information provided.\nLoad the various parks-canada-attendance CSVs to find the number of visitors per year. Yes, it’s annoying that these are broken up into multiple files! Also annoying is the date range: each “season” (e.g. 2019-2020) goes from April 1 to March 31st. You’ll need to find the best way of structuring this data to align visitor counts to incidents.\nRestrict your datasets to just Banff and Jasper parks to keep things manageable and join all the various data sources by date.\n\n\n\n\n\n\nTip\n\n\n\nConvert the date columns to a datetime format before merging, just like in lab 4. Be careful with the visitor data; you’ll need to find the visitor count corresponding to the April-March year in which the incident occurred. For example, an incident occurring in January 2022 would fall within the 2021-22 attendance record.\n\n\nYou may need to process Banff and Jasper separately.\n\nCongratulations, you now have a giant dataframe with incidents, animals involved, responses, climate data, and the number of visitors to each park! Getting to this point is a surprising amount of work, even after I’ve done the acquisition part for you.\nIn your report, write a summary description of the various data sources and how they relate to each other. You might want to do some preliminary data exploration first to understand the various columns.\n\n\nData Exploration\n\n\n\n\n\n\nNote\n\n\n\nThere is no modelling in this assignment, it’s simply a retrospective look at some collected data, so no splitting is required.\n\n\nThis section is a lot more free-form than combining the data. Now that you have a better understanding of the data, it’s time to formulate a research question. To begin, create:\n\nAt least 2 exploratory visualizations or statistics for the numerical data\nAt least 2 exploratory visualizations or statistics for the categorical data\nFor each, state why you chose that way of examining the data, and at least one observation. This doesn’t need to go in your report, but it should be in your exploration notebook(s).\n\nAfter doing this, hopefully something interesting popped out to investigate further. In your report, write a clear statement of the research question you are trying to answer. Examples might include (but are not limited to):\n\nIs there a year-over-year increase in animal encounters while driving?\nAre wilderness encounters associated with warmer temperatures?\nWhat trends in responses are there for different kinds of animals?\n\nIf you are comparing incident count over time, you will need to normalize by visitor count.\nTo answer your research question, you will likely need to create several additional visualizations. In your exploration document, state what you are trying to answer, then visualize, then make a comment about your observations.\n\n\n\n\n\n\nNoteGet Creative!\n\n\n\nPoke at the data and see what happens. Many of your questions may lead nowhere, and that’s okay! I’d like to see your process as you explore and develop insights.\n\n\nIf, along the way, you see something interesting, you may want to update your research question. That’s fine! If you start off looking at one thing and switch to another, leave the original explorations in your notebook. I’d like to see the process as well as the final decision.\nIn your report, include one or two key figures that provide the answer to your research question and write a short paragraph describing your observations."
   },
   {
-    "objectID": "labs/03-categorical.html#submit",
-    "href": "labs/03-categorical.html#submit",
-    "title": "3: Categorical Data Representation",
+    "objectID": "assignments/02-eda.html#reflections",
+    "href": "assignments/02-eda.html#reflections",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "Reflections",
+    "text": "Reflections\nIn your report, write a brief paragraph describing what you found challenging about this assignment, and one thing that was particularly interesting or surprising."
+  },
+  {
+    "objectID": "assignments/02-eda.html#submission",
+    "href": "assignments/02-eda.html#submission",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "Submission",
+    "text": "Submission\nCommit changes and push your working documents and report to the GitHub repo. Make sure to include rendered outputs in your notebooks so that I can see the visualizations without needing to run your code.\nYou may commit and push as often as you like (and in fact, regular commits are a good idea!). I will only evaluate the last one committed before the deadline."
+  },
+  {
+    "objectID": "assignments/02-eda.html#marking-scheme",
+    "href": "assignments/02-eda.html#marking-scheme",
+    "title": "Assignment 2: Merging and exploring datasets",
+    "section": "Marking Scheme",
+    "text": "Marking Scheme\nEach of the following components will be marked on a 4-point scale and weighted as follows:\n\n\n\nComponent\nWeight\n\n\n\n\nData combining process and accuracy\n20%\n\n\nExploratory questions, plots, and observations\n30%\n\n\nResearch question and interpretation\n20%\n\n\nReflections\n20%\n\n\nOverall coherency and citations\n10%\n\n\n\n\n\n\n\n\n\n\n\nScore\nDescription\n\n\n\n\n4\nExcellent — thoughtful and creative without any errors or omissions\n\n\n3\nPretty good, but with minor errors or omissions\n\n\n2\nMostly complete, but with major errors or omissions, lacking in detail\n\n\n1\nA minimal effort was made, incomplete or incorrect\n\n\n0\nNo effort was made, or the submission is plagiarized"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "",
+    "text": "Welcome to DATA 3464 in Fall 2026!\nThis website will be updated with content before each lecture and lab. Announcements, grades, and other private information will be communicated through D2L.\nSee a mistake? Why not submit an issue?"
+  },
+  {
+    "objectID": "index.html#lectures",
+    "href": "index.html#lectures",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Lectures",
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4. Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5. Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6. Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7. Missing and weird data\n \n \nCompleted\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#labs",
+    "href": "index.html#labs",
+    "title": "DATA 3464 | Fall 2026",
+    "section": "Labs",
+    "text": "Labs\n\n\n\n\nDate\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1. Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2. Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3. Categorical Data Representation\nSep 29, 2026\n\n\nOct 7, 2026\n4. Exploratory Data Analysis\nOct 21, 2026\n\n\nOct 21, 2026\n5. Missing and Weird Data\nOct 28, 2026\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "labs/02-basic-models.html",
+    "href": "labs/02-basic-models.html",
+    "title": "2. Basic Modelling",
+    "section": "",
+    "text": "Lab submission due on September 23, 2026."
+  },
+  {
+    "objectID": "labs/02-basic-models.html#objective",
+    "href": "labs/02-basic-models.html#objective",
+    "title": "2. Basic Modelling",
+    "section": "Objective",
+    "text": "Objective\nLearn a bit about:\n\nScikit-learn pipelines\nThe need for validation data\nThe overall iterative workflow of making predictions from data\n\nAs we haven’t yet talked about data transformations or feature engineering, the focus will be on the modelling and cross-validation."
+  },
+  {
+    "objectID": "labs/02-basic-models.html#setup",
+    "href": "labs/02-basic-models.html#setup",
+    "title": "2. Basic Modelling",
+    "section": "Setup",
+    "text": "Setup\nCreate a new directory named lab02 in your labs repo. Download and add to it:\n\ntitanic_train.csv — the training data\ntitanic.ipynb — the starter notebook\n\nYou can also check out the test data, but this doesn’t have a truth value. If you want to know the final performance of your model, you’ll need to submit it to Kaggle."
+  },
+  {
+    "objectID": "labs/02-basic-models.html#predicting-titanic-survivorship",
+    "href": "labs/02-basic-models.html#predicting-titanic-survivorship",
+    "title": "2. Basic Modelling",
+    "section": "Predicting Titanic survivorship",
+    "text": "Predicting Titanic survivorship\nConsider this a “Hello, world!” of supervised learning! The Titanic survival dataset is one of the most popular practice datasets.\n\nOpen your copy of titanic.ipynb and run the first cell. Install any missing packages you encounter.\nI’ve done some basic exploratory data analysis and constructed the pipeline for you, as we haven’t gotten to this in class yet. The pipeline is as follows:\npipeline = make_pipeline(\n   make_column_transformer(\n      (OneHotEncoder(), cat_feats),\n      (StandardScaler(), num_feats)\n   )\n   # TODO: add some kind of classification model\n)\nAdd a decision tree classifier to the pipeline.\nTrain and cross-validate your tree, choosing an appropriate scoring metric.\n\n\n\n\n\n\nTip\n\n\n\nIf your model complains about missing values (or some more obscure message about NaN), you might need to remove the Embarked feature — I missed that it actually has 2 missing features.\n\n\nExperiment! Does your model seem like it’s working fairly well? If not, what could you change? Consider:\n\nDropping features that don’t add value\nTraining a forest of trees\nChanging tree depth to avoid overfitting\n\nAs you make changes, record why you’re making the change and your observations. Since this may involve going back and tweaking just one or two lines of code, it’s okay to write these as comments in the code without copy/pasting the entire pipeline, e.g.:\n# Started with max depth of 3 but it seemed like it wasn't learning enough\n# Increasing to 4 improves predictions without overfitting\ntree = DecisionTreeClassifier(maxDepth=4)\nRepeat, but with some kind of linear classification model, such as LinearSVC or LogisticRegression. What changes?"
+  },
+  {
+    "objectID": "labs/02-basic-models.html#submit",
+    "href": "labs/02-basic-models.html#submit",
+    "title": "2. Basic Modelling",
     "section": "Submit",
-    "text": "Submit\nAs usual, git add, commit, and push your work. It’s okay if you don’t make it all the way, I’ll be looking for at least one appropriately defined categorical encoder."
+    "text": "Submit\nAdd and push your code and observations to your GitHub repo for your completion-based lab mark."
   },
   {
-    "objectID": "labs/03-categorical.html#footnotes",
-    "href": "labs/03-categorical.html#footnotes",
-    "title": "3: Categorical Data Representation",
+    "objectID": "labs/04-eda.html",
+    "href": "labs/04-eda.html",
+    "title": "4. Exploratory Data Analysis",
+    "section": "",
+    "text": "Lab submission due on October 21, 2026. This is a week longer than normal; not because I expect it to take longer, but because it’s reading week and I don’t like having deadlines in the middle."
+  },
+  {
+    "objectID": "labs/04-eda.html#objective",
+    "href": "labs/04-eda.html#objective",
+    "title": "4. Exploratory Data Analysis",
+    "section": "Objective",
+    "text": "Objective\nLearn a bit about:\n\nCombining data from different sources\nWorking with datetime formats\nData exploration"
+  },
+  {
+    "objectID": "labs/04-eda.html#setup",
+    "href": "labs/04-eda.html#setup",
+    "title": "4. Exploratory Data Analysis",
+    "section": "Setup",
+    "text": "Setup\nCreate a new directory named lab04 in your labs repo. Download and add to it:\n\nclimate_traffic_data.zip, unzipped\nA new notebook or Python script for your lab work\n\n\n\n\n\n\n\nNote\n\n\n\nThis is the same data I demonstrated combining in class. You can refer to my notebook if you get stuck, but try to figure it out and understand what’s going on rather than copying big chunks of code."
+  },
+  {
+    "objectID": "labs/04-eda.html#combining-data",
+    "href": "labs/04-eda.html#combining-data",
+    "title": "4. Exploratory Data Analysis",
+    "section": "Combining data",
+    "text": "Combining data\nI’ve given you a zip file with 12 CSVs containing month-by-month climate data for the City of Calgary (reported hourly), as well as a year’s worth of traffic incidents, both from 2025. In contrast to your prior labs and assignments, we are not going to be predicting anything, just looking at the past year to try to get some insights.\n\nLoad the 12 weather csvs and concatenate into a single dataframe, then print out the info about the features.\nLoad the road incident csv and again print out the info.\nIdentify which feature on each dataframe is the date/time info. What time zone are they reporting in?\nTry to combine the datasets using Pandas’ merge_asof function, which will align each traffic incident with the nearest climate observation. What error do you get?\nTo fix the error, you’ll need to convert the string timestamps to a proper datetime datatype. An easy way to do this is with Pandas’ to_datetime method, but be careful about ensuring both end up with the same unit! datetime[ns] is not the same as datetime[us].\n\n\n\n\n\n\nTip\n\n\n\nIn addition to converting the date format, don’t forget to account for the time zone for each dataset! In the Environment Canada Data, LST stands for “local standard time”.\n\n\nAfter converting the dates, go back and merge using merge_asof to create a combined dataframe with the approximate weather for each traffic incident."
+  },
+  {
+    "objectID": "labs/04-eda.html#exploring",
+    "href": "labs/04-eda.html#exploring",
+    "title": "4. Exploratory Data Analysis",
+    "section": "Exploring",
+    "text": "Exploring\nNow that you have a dataset combining weather with traffic incidents, it’s time to explore!1\nRemember that the goal of exploratory data analysis (EDA) is to understand your data. Ask questions, then look for answers using visualizations or summary statistics. The example I gave in class was “is there a relationship between temperature and traffic incidents”, which I tried to answer with a histogram and concluded that there seems to be an overrepresentation at lower temperatures — however, I didn’t account for the missing data in June, so this particular visualization can be improved.\nIn your lab notebook:\n\nState a question about the dataset.\nVisualize the data in some way to try to find the answer.\nRecord what you think the visualization is telling you."
+  },
+  {
+    "objectID": "labs/04-eda.html#submit",
+    "href": "labs/04-eda.html#submit",
+    "title": "4. Exploratory Data Analysis",
+    "section": "Submit",
+    "text": "Submit\nAs usual, add your lab04 directory to your labs repo and push your changes to GitHub."
+  },
+  {
+    "objectID": "labs/04-eda.html#footnotes",
+    "href": "labs/04-eda.html#footnotes",
+    "title": "4. Exploratory Data Analysis",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis seems to me to be a limitation of the dataset — there may be more recurrances that happened after the study period.↩︎"
+    "text": "Footnotes\n\n\nIn this case, you don’t need to split the data as we’re not trying to build a predictive model. It’s also a time-series, which needs special consideration.↩︎"
   },
   {
     "objectID": "labs/index.html",
     "href": "labs/index.html",
     "title": "Labs",
     "section": "",
-    "text": "Date\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1: Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2: Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3: Categorical Data Representation\nSep 29, 2026\n\n\nOct 7, 2026\n4: Exploratory Data Analysis\nOct 21, 2026\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nDue\n\n\n\n\nSep 9, 2026\n1. Regression with Clean Data\nSep 16, 2026\n\n\nSep 16, 2026\n2. Basic Modelling\nSep 23, 2026\n\n\nSep 23, 2026\n3. Categorical Data Representation\nSep 29, 2026\n\n\nOct 7, 2026\n4. Exploratory Data Analysis\nOct 21, 2026\n\n\nOct 21, 2026\n5. Missing and Weird Data\nOct 28, 2026\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/02-basic-models.html",
@@ -1101,196 +1143,196 @@
   {
     "objectID": "lectures/04-categorical.html",
     "href": "lectures/04-categorical.html",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/04-categorical.html#code",
     "href": "lectures/04-categorical.html#code",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data"
   },
   {
     "objectID": "lectures/04-categorical.html#slides",
     "href": "lectures/04-categorical.html#slides",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "",
     "text": "PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/04-categorical.html#data-3464-fundamentals-of-data-processing",
     "href": "lectures/04-categorical.html#data-3464-fundamentals-of-data-processing",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "DATA 3464: Fundamentals of Data Processing",
     "text": "DATA 3464: Fundamentals of Data Processing\n\nCategorical Data Basics\nCharlotte Curtis September 22, 2026"
   },
   {
     "objectID": "lectures/04-categorical.html#topic-overview",
     "href": "lectures/04-categorical.html#topic-overview",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "Topic overview",
     "text": "Topic overview\n\nExploring categorical data\nBasic categorical data encoding strategies\nOut of scope: Fancier encoding strategies, like feature hashing and target encoding\n\nResources used:\n\nFeature Engineering Chapter 5\nScikit-learn User Guide (7.3)"
   },
   {
     "objectID": "lectures/04-categorical.html#what-is-categorical-data",
     "href": "lectures/04-categorical.html#what-is-categorical-data",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "What is categorical data?",
     "text": "What is categorical data?\n\nSamples can take on one of several discrete values or groups\n\nNominal: no particular order to the groups\nOrdinal: groups relate to each other in a specific order\n\nCategories can be represented as strings or numeric types\n\nDomain knowledge is necessary!\n\n\n\n\nLet’s take a few minutes to brainstorm some examples"
   },
   {
     "objectID": "lectures/04-categorical.html#exploring-categorical-data",
     "href": "lectures/04-categorical.html#exploring-categorical-data",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "Exploring categorical data",
     "text": "Exploring categorical data\n\nWe’ve already done some of this, but some ideas to consider:\n\npandas.DataFrame.value_counts() - how many of each category?\nUse category to group, then compute summary stats\nPlot color per category\nScatter plot with jitter"
   },
   {
     "objectID": "lectures/04-categorical.html#representing-categorical-data",
     "href": "lectures/04-categorical.html#representing-categorical-data",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "Representing categorical data",
     "text": "Representing categorical data\n\nTo do math on categorical data, we need to map to numbers\nConsider:\n\nOrdinal or nominal?\nHow many possible categories (cardinality)?\nAny chance new ones might show up?\n\n\n\n\nHow could we encode the examples? What are the benefits and drawbacks of each method?"
   },
   {
     "objectID": "lectures/04-categorical.html#ordinal-encoding",
     "href": "lectures/04-categorical.html#ordinal-encoding",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "Ordinal encoding",
     "text": "Ordinal encoding\n\n\n\n\n\n\nCategory\nFeature\n\n\n\n\nUnder Control\n0\n\n\nBeing Held\n1\n\n\n*Out of Control (Monitored)\n2\n\n\nOut of Control\n3\n\n\n\n* I am not a wildfire expert, this is my best guess at ordering\n\nImage source: Natural Resources Canada"
   },
   {
     "objectID": "lectures/04-categorical.html#nominal-categories-one-hot-encoding",
     "href": "lectures/04-categorical.html#nominal-categories-one-hot-encoding",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "Nominal categories: one-hot encoding",
     "text": "Nominal categories: one-hot encoding\n\n\nCategories have no natural relationship\nCreate \\(k\\) new features from \\(k\\) categories, very sparse matrix\n\n\n\n\n\nAnimal\n\ncat\ndog\nrabbit\n\n\n\n\ncat\n→\n1\n0\n0\n\n\ndog\n→\n0\n1\n0\n\n\nrabbit\n→\n0\n0\n1"
   },
   {
     "objectID": "lectures/04-categorical.html#from-numbers-to-categories-discretization",
     "href": "lectures/04-categorical.html#from-numbers-to-categories-discretization",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "From numbers to categories: discretization",
     "text": "From numbers to categories: discretization\n\n\n\nSometimes numeric data is better represented as categorical\nStill needs encoding strategy\nCan introduce nonlinear relationships\nLike everything, contextual"
   },
   {
     "objectID": "lectures/04-categorical.html#advantagesdisadvantages-of-various-methods",
     "href": "lectures/04-categorical.html#advantagesdisadvantages-of-various-methods",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "Advantages/disadvantages of various methods",
     "text": "Advantages/disadvantages of various methods\n\n\nOrdinal\n\n\nCompact (1 column/feature)\nOnly useful for naturally ordered data\n\n \n\nImposes (linear) relationship\nDifficult to deal with novel categories\n\n\n\nOne-hot\n\n\nNo assumptions made about relationships\nNovel features implied by 0\n\n \n\nMemory intensive\nNot good for high cardinality\nPotential collinearity issues"
   },
   {
     "objectID": "lectures/04-categorical.html#coming-up-next",
     "href": "lectures/04-categorical.html#coming-up-next",
-    "title": "4: Categorical data basics",
+    "title": "4. Categorical data basics",
     "section": "Coming up next",
     "text": "Coming up next\n\nLecture: Basic numeric transformations\nLab: Modelling with categorical data\nAssignment 1 due soon!\n\n\nFeature Engineering Chapter 5"
   },
   {
     "objectID": "lectures/06-splitting-combining.html",
     "href": "lectures/06-splitting-combining.html",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#code",
     "href": "lectures/06-splitting-combining.html#code",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#slides",
     "href": "lectures/06-splitting-combining.html#slides",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "",
     "text": "PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#data-3464-fundamentals-of-data-processing",
     "href": "lectures/06-splitting-combining.html#data-3464-fundamentals-of-data-processing",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "DATA 3464: Fundamentals of Data Processing",
     "text": "DATA 3464: Fundamentals of Data Processing\n\nSplitting and combining data\nCharlotte Curtis September 23, 2026"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#topic-overview",
     "href": "lectures/06-splitting-combining.html#topic-overview",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Topic overview",
     "text": "Topic overview\nAdding detail to the process thus far\n\nSplitting and sampling data\nSome more visualization tricks\nCombining multiple datasets\n\nResources used:\n\nFeature Engineering Sections 3.3-3.4\nHands on Machine Learning with Scikit-Learn and Tensorflow/PyTorch, Chapter 2. Available at MRU Library"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#the-data-process-to-date",
     "href": "lectures/06-splitting-combining.html#the-data-process-to-date",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "The data process to date",
     "text": "The data process to date\n\n\n\nWe’ve talked about why to split, but not how\nWe might also have more than one table to deal with"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#how-to-split-your-data",
     "href": "lectures/06-splitting-combining.html#how-to-split-your-data",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "How to split your data",
     "text": "How to split your data\n\nSimple scenario: random sample (typically 70-80% for training)\nOnly works if:\n\nStratification doesn’t matter\nData is guaranteed not to change\nData is not a time-series\n\n\n\n\nHow do we know if stratification is necessary?"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#sampling-bias",
     "href": "lectures/06-splitting-combining.html#sampling-bias",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Sampling bias",
     "text": "Sampling bias\nStratification is used to mitigate sampling bias\n\nCilantro example: assume 80% of population likes cilantro\nGoal: ensure our sample is representative of the population, \\(\\pm 5\\%\\)\n\n\nThe binomial distribution can be used to model the probability of choosing \\(k\\) people who like cilantro from \\(n\\) total participants:\n\\[P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}, \\mathrm{where} \\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\]"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#sampling-bias-continued",
     "href": "lectures/06-splitting-combining.html#sampling-bias-continued",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Sampling bias continued",
     "text": "Sampling bias continued\n\n\\(P(X = k)\\) is the probability mass function, and the corresponding cumulative distribution function is just the sum up to \\(k\\):\n\\[P(X \\leq k) = \\sum_{i=0}^k \\binom{n}{i}p^i(1-p)^{n-i}\\]\nSuppose we randomly sample 100 people. What is the probability of fewer than 75 79 or more than 85 81 cilantro lovers?\n\nHere I’ve defined an “unbiased sample” as being \\(\\pm5\\%\\) of expected of the smallest category (that this is a correction from the version presented in class!)"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#stratification-approach",
     "href": "lectures/06-splitting-combining.html#stratification-approach",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Stratification approach",
     "text": "Stratification approach\n\nThe need for stratification depends on sample size, distribution of stratification category, and how much bias you’re willing to accept\n\n\n\n\nSmall Sample Size\nLarge Sample Size\n\n\n\n\nUnbalanced Classes\nStratify\nMaybe\n\n\nBalanced Classes\nMaybe\nNot necessary\n\n\n\nStratification categories can be the target variable, or a predictor\nGoal is to have the same class distribution in both testing and training"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#repeatable-randomness",
     "href": "lectures/06-splitting-combining.html#repeatable-randomness",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Repeatable randomness",
     "text": "Repeatable randomness\n\n\nAt minimum, you should always set a random seed so that every time you sample your data it is the same “random sample”\nThis isn’t enough if your data might get updated! You can:\n\nStore the IDs of your split offline, then sample any new data and append to them (ensuring that test/train never mix)\nGet fancy with a deterministic method like hashing features to create unique IDs, then thresholding based on maximum possible value\n\n\n\n\nAs usual, we want to avoid data leakage"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#back-to-visualizations",
     "href": "lectures/06-splitting-combining.html#back-to-visualizations",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Back to visualizations",
     "text": "Back to visualizations\nNow that we’ve got a test set safely stashed, we can ask questions about the data and use visualizations and statistics to answer them. Some examples:\n\nDo any of my features seem to be related to my target?\nDo any of my features seem to be related to each other?\nWhy are some values more common than others?\nDo these values make sense in the context of my domain knowledge?\nIf I group my data together in some way, are there clear trends?\n\n\nR for Data Science has some good examples of further questions"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#some-handy-tricks",
     "href": "lectures/06-splitting-combining.html#some-handy-tricks",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Some handy tricks",
     "text": "Some handy tricks\n\nA few things to tweak that can make visualizations easier to read:\n\nHistogram bin sizes\n\nAiming for a smooth distribution that works for your data\n\nTransparency (alpha)\n\nUseful for both dense scatter plots and overlapping categories\n\n“Jitter”\n\nMostly for scatter plot of continuous vs categorical data\nAdd a tiny bit of random noise to spread out samples"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#combining-data-sources",
     "href": "lectures/06-splitting-combining.html#combining-data-sources",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Combining data sources",
     "text": "Combining data sources\n\nMy assumption: you know all about joins from DATA 2721 and DATA 2402\n\nConcatenating tables: pd.concat([list, of, dataframes], axis=??)\nJoining to nearest match: pd.asof\nWatch out for datatypes! Dates in particular are a huge pain\n\ndatetime[ns] is not the same as datetime[s]"
   },
   {
     "objectID": "lectures/06-splitting-combining.html#coming-up-next",
     "href": "lectures/06-splitting-combining.html#coming-up-next",
-    "title": "6: Splitting and combining data",
+    "title": "6. Splitting and combining data",
     "section": "Coming up next",
     "text": "Coming up next\n\nNo lab this week (Truth and Reconciliation)\nAssignment 1 is due!\nNext topic: Missing data and outliers\nWritten test 1 next Thursday"
   },
@@ -1299,7 +1341,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4: Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5: Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6: Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7: Missing and weird data\n \n \nSlide 9\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4. Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5. Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6. Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7. Missing and weird data\n \n \nCompleted\n\n\n\nNo matching items"
   },
   {
     "objectID": "demo_code/04_categorical/catdemo.html",

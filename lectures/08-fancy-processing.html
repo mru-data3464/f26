@@ -84,9 +84,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-592052b09b2b4480cdcbd220f87409bf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-28aef47f634cd1d96fc8ebf84ddc38fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-592052b09b2b4480cdcbd220f87409bf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3e208ab2a520bff1082bd5c021bef27e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -524,8 +524,8 @@ Figure from <a href="https://en.wikipedia.org/wiki/Principal_component_analysis"
 <h2 class="anchored" data-anchor-id="back-to-pca">Back to PCA</h2>
 <ul>
 <li>Principle component analysis, proposed in 1901 by <a href="https://en.wikipedia.org/wiki/Karl_Pearson">Karl Pearson</a>, is a linear projection of multidimensional data onto the axes of maximum variance</li>
-<li>The axes are found by <strong>eigendecomposition</strong> of the covariance matrix: <span class="math display">\[C = Q\Lambda Q^{-1}\]</span></li>
-<li>The eigenvectors <span class="math inline">\(Q\)</span> form the new orthogonal basis for the covariance matrix <span class="math inline">\(C\)</span>, while the eigenvalues <span class="math inline">\(\Lambda\)</span> represent the amount of variance “explained”</li>
+<li>The axes are found by <strong>eigendecomposition</strong> of the correlation matrix: <span class="math display">\[C = Q\Lambda Q^{-1}\]</span></li>
+<li>The eigenvectors <span class="math inline">\(Q\)</span> form the new orthogonal basis for the correlation matrix <span class="math inline">\(C\)</span>, while the eigenvalues <span class="math inline">\(\Lambda\)</span> represent the amount of variance “explained”</li>
 <li><span class="math inline">\(X^*\)</span> can be calculated as: <span class="math display">\[X^* = XQ\]</span></li>
 </ul>
 </section>

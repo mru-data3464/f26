@@ -7,7 +7,7 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/08_fancy_transformations/fancy.ipynb"
 demo-data: "/demo_code/04_categorical/profiles_revised.csv"
-leftoff: ""
+leftoff: "Slide 14"
 ---
 
 <!-- 
@@ -186,9 +186,9 @@ Drawbacks
 
 ## Back to PCA
 * Principle component analysis, proposed in 1901 by [Karl Pearson](https://en.wikipedia.org/wiki/Karl_Pearson), is a linear projection of multidimensional data onto the axes of maximum variance
-* The axes are found by **eigendecomposition** of the covariance matrix:
+* The axes are found by **eigendecomposition** of the correlation matrix:
   $$C = Q\Lambda Q^{-1}$$
-* The eigenvectors $Q$ form the new orthogonal basis for the covariance matrix $C$, while the eigenvalues $\Lambda$ represent the amount of variance "explained"
+* The eigenvectors $Q$ form the new orthogonal basis for the correlation matrix $C$, while the eigenvalues $\Lambda$ represent the amount of variance "explained"
 * $X^*$ can be calculated as:
   $$X^* = XQ$$
 

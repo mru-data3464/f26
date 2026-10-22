@@ -1,5 +1,18 @@
 [
   {
+    "listing": "/lectures/index.html",
+    "items": [
+      "/lectures/01-intro.html",
+      "/lectures/02-basic-models.html",
+      "/lectures/03-eda.html",
+      "/lectures/04-categorical.html",
+      "/lectures/05-basic-numeric.html",
+      "/lectures/06-splitting-combining.html",
+      "/lectures/07-missing-and-weird-data.html",
+      "/lectures/08-fancy-processing.html"
+    ]
+  },
+  {
     "listing": "/assignments/index.html",
     "items": [
       "/assignments/01-simple-model.html",
@@ -16,6 +29,7 @@
       "/lectures/05-basic-numeric.html",
       "/lectures/06-splitting-combining.html",
       "/lectures/07-missing-and-weird-data.html",
+      "/lectures/08-fancy-processing.html",
       "/lectures/index.html",
       "/labs/01-clean-regression.html",
       "/labs/02-basic-models.html",
@@ -33,18 +47,6 @@
       "/labs/03-categorical.html",
       "/labs/04-eda.html",
       "/labs/05-missing-outliers.html"
-    ]
-  },
-  {
-    "listing": "/lectures/index.html",
-    "items": [
-      "/lectures/01-intro.html",
-      "/lectures/02-basic-models.html",
-      "/lectures/03-eda.html",
-      "/lectures/04-categorical.html",
-      "/lectures/05-basic-numeric.html",
-      "/lectures/06-splitting-combining.html",
-      "/lectures/07-missing-and-weird-data.html"
     ]
   }
 ]

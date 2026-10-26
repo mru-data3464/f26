@@ -4,10 +4,9 @@ date: 2026-10-27
 marp: true
 theme: marp-mru
 paginate: true
-draft: true
 headingDivider: 2
-demo-code: ""
-demo-data: ""
+demo-code: "/demo_code/09_interactions/housing.ipynb"
+demo-data: "/demo_code/09_interactions/housing.csv"
 leftoff: ""
 ---
 
@@ -85,7 +84,11 @@ First, use your domain knowledge! Then consider [guiding principles](https://fea
     - Multicollinearity issues
     - Can negatively impact performance
   
-> **Goal of feature selection**: Reduce the number of predictors as far as possible without compromising predictive performance
+<div data-marpit-fragment>
+
+> **Goal of feature selection**: Reduce the number of predictors without compromising predictive performance
+
+</div>
 
 ## Performing feature selection
 <!-- _class: code_reminder -->
@@ -140,3 +143,5 @@ In general, the recommended order is:
 
 
 ## Coming up next
+- Something completely different: unstructured file formats!
+- Guest lecture from Brian Larson, the BI & Data Analytics Manager of Brookfield Residential

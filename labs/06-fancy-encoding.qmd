@@ -1,0 +1,41 @@
+---
+title: "6. Predictive Modelling with Fancy Encoding"
+date: 2026-10-28
+due: "November 3, 2026"
+draft: true
+---
+
+Lab submission due on {{< meta due >}}.
+
+## Objective
+Learn a bit about:
+
+- Encoding high cardinality features
+- Encoding features with infrequent categories
+- A complete pipeline with missing data, outliers, and complex categories
+
+## Setup
+Create a new directory named `lab06` in your labs repo containing a new notebook or Python script for your lab work.
+
+We will be working with the same property assessment data as [lab 5](05-missing-outliers). Do not create a new copy of `assessment.csv`, just load it into the new notebook using the relative path (e.g. `../lab05/assessment.csv`).
+
+:::{.callout-tip}
+
+If you have not yet completed lab 5, you will need to do that first to understand the data.
+
+:::
+
+In this lab, you will be creating a model to **predict assessment price** from the various housing features. You may use a regression model of your choice.
+
+## Explore the categorical features
+
+## Create your processing pipeline
+1. Load the data and split into training/testing **using the same parameters** (random seed etc) as in lab 5. You can copy directly from lab 5's notebook, but you want to avoid accidentally creating a different split.
+2. Build a processing pipeline for your numeric features, using your own recommendations from lab 5 for addressing missing values and outliers.
+3. For categorical features, 
+
+## Train and iterate
+
+
+## Submit
+As usual, add your `lab04` directory to your `labs` repo and push your changes to GitHub.

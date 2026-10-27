@@ -281,18 +281,25 @@ speaks      6440
 status      5</code></pre>
 </div>
 </div>
-<div id="70193196" class="cell">
+<div id="70193196" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's check the "pets" category</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> train[<span class="st">"pets"</span>].value_counts().plot.bar()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../../img/08-pets-dist.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fancy_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="9cf138c5" class="cell" data-execution_count="9">
+</div>
+</div>
+<div id="9cf138c5" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: see how it changes with max_categories</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pet_enc <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>, max_categories<span class="op">=</span><span class="dv">12</span>).set_output(transform<span class="op">=</span><span class="st">"pandas"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>one_hot_pets <span class="op">=</span> pet_enc.fit_transform(train[[<span class="st">"pets"</span>]])</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>one_hot_pets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -487,9 +494,9 @@ status      5</code></pre>
 </div>
 </div>
 </div>
-<div id="d7f2d410" class="cell" data-execution_count="10">
+<div id="d7f2d410" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>one_hot_pets.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>pets_has cats                         1118.0
 pets_has dogs                         3311.0
 pets_has dogs and dislikes cats        424.0
@@ -508,9 +515,9 @@ dtype: float64</code></pre>
 <section id="feature-hashing" class="level2">
 <h2 class="anchored" data-anchor-id="feature-hashing">Feature Hashing</h2>
 <p>For very high cardinality strings (or other iterables)</p>
-<div id="39c8dcff" class="cell" data-execution_count="18">
+<div id="39c8dcff" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>train[<span class="st">"speaks"</span>].value_counts().head(<span class="dv">50</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>speaks
 english                                                    17487
 english (fluently)                                          5355
@@ -565,13 +572,13 @@ english, chinese (poorly)                                     51
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="bd66328a" class="cell" data-execution_count="50">
+<div id="bd66328a" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># feature hasher needs lists of strings, and can't handle nans</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>train.fillna({<span class="st">"speaks"</span>: <span class="st">""</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>language_enc <span class="op">=</span> FeatureHasher(n_features<span class="op">=</span><span class="dv">18</span>, input_type<span class="op">=</span><span class="st">"string"</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>lang_hash <span class="op">=</span> language_enc.fit_transform(train[<span class="st">"speaks"</span>].<span class="bu">str</span>.split(<span class="st">","</span>)).todense()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="d5e4df11" class="cell" data-execution_count="51">
+<div id="d5e4df11" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> [</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ["french (okay)"], </span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"french (okay)"</span>, <span class="st">"english"</span>], </span>
@@ -581,7 +588,7 @@ Name: count, dtype: int64</code></pre>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"english"</span>, <span class="st">"french"</span>]</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>language_enc.transform(test).todense()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>matrix([[ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  1.,
           0.,  0., -1.,  0.,  0.],
         [ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,
@@ -607,7 +614,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="37ed240d" class="cell" data-execution_count="15">
+<div id="37ed240d" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>edu_encoder <span class="op">=</span> TargetEncoder(target_type<span class="op">=</span><span class="st">"continuous"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># note: this should replace -1 with nan, but it's not behaving</span></span>
@@ -668,7 +675,7 @@ dropped out of high school          $87,727.75</code></pre>
 <section id="plot-of-pairs-of-features-of-the-iris-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="plot-of-pairs-of-features-of-the-iris-dataset">Plot of pairs of features of the Iris dataset</h2>
 <p>Let’s first plot the pairs of features of the Iris dataset.</p>
-<div id="a609874c" class="cell" data-execution_count="52">
+<div id="a609874c" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -692,7 +699,7 @@ dropped out of high school          $87,727.75</code></pre>
 <section id="plot-a-pca-representation" class="level2">
 <h2 class="anchored" data-anchor-id="plot-a-pca-representation">Plot a PCA representation</h2>
 <p>Let’s apply a Principal Component Analysis (PCA) to the iris dataset and then plot the irises across the first three principal components. This will allow us to better differentiate among the three types!</p>
-<div id="3b9a7ee2" class="cell" data-execution_count="53">
+<div id="3b9a7ee2" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># unused but required import for doing 3d projections with matplotlib &lt; 3.2</span></span>
@@ -742,7 +749,7 @@ dropped out of high school          $87,727.75</code></pre>
 </div>
 </div>
 <p>PCA will create 3 new features that are a linear combination of the 4 original features. In addition, this transformation maximizes the variance. With this transformation, we can identify each species using only the first principal component.</p>
-<div id="233597cf" class="cell" data-execution_count="55">
+<div id="233597cf" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_reduced[:,<span class="dv">0</span>], X_reduced[:,<span class="dv">1</span>],c<span class="op">=</span>iris.target)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Principle component 1"</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Principle component 2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -758,7 +765,7 @@ dropped out of high school          $87,727.75</code></pre>
 <section id="charlottes-extras" class="level2">
 <h2 class="anchored" data-anchor-id="charlottes-extras">Charlotte’s Extras</h2>
 <p>The iris demo is great, but I had a few more things to show off.</p>
-<div id="2656115c" class="cell" data-execution_count="56">
+<div id="2656115c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA is eigendecomposition!</span></span>
@@ -784,7 +791,7 @@ dropped out of high school          $87,727.75</code></pre>
  [ 0.3582892  -0.07548102  0.54583143  0.75365743]]</code></pre>
 </div>
 </div>
-<div id="015e7b89" class="cell" data-execution_count="57">
+<div id="015e7b89" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># eigenvalue version - same, just flipped</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>X_eig <span class="op">=</span> (X_centred <span class="op">@</span> Q).values</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -811,7 +818,7 @@ c:\Users\ccurtis\Documents\f26\venv\Lib\site-packages\matplotlib\collections.py:
 </div>
 </div>
 </div>
-<div id="461c9108" class="cell" data-execution_count="58">
+<div id="461c9108" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the explained variance ratio</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>), pca.explained_variance_ratio_)</span>
@@ -825,7 +832,7 @@ c:\Users\ccurtis\Documents\f26\venv\Lib\site-packages\matplotlib\collections.py:
 </div>
 </div>
 </div>
-<div id="c5e3e92d" class="cell" data-execution_count="59">
+<div id="c5e3e92d" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What is that first one?</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.bar(<span class="bu">range</span>(<span class="dv">4</span>), pca.components_[<span class="dv">0</span>], width<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">4</span>), iris.feature_names, rotation<span class="op">=</span><span class="dv">45</span>)</span>
@@ -843,7 +850,7 @@ c:\Users\ccurtis\Documents\f26\venv\Lib\site-packages\matplotlib\collections.py:
 <h2 class="anchored" data-anchor-id="lda">LDA</h2>
 <p>Linear Discriminant Analysis (LDA) is similar, but maximizes between-class variance instead of overall variance.</p>
 <p>This means it relies on knowing the class labels, so it is a supervised learning technique as well as dimensional reduction.</p>
-<div id="168dcfde" class="cell">
+<div id="168dcfde" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What about LDA instead?</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> LinearDiscriminantAnalysis</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>lda <span class="op">=</span> LinearDiscriminantAnalysis()</span>
@@ -855,16 +862,30 @@ c:\Users\ccurtis\Documents\f26\venv\Lib\site-packages\matplotlib\collections.py:
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    c<span class="op">=</span>iris.target</span>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">"equal"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fancy_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="505bbb97" class="cell">
+</div>
+</div>
+<div id="505bbb97" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare PCA and LDA weights</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.bar(np.arange(<span class="dv">4</span>)<span class="op">-</span><span class="fl">0.1</span>, pca.components_[<span class="dv">0</span>], width<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">"PCA"</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.bar(np.arange(<span class="dv">4</span>)<span class="op">+</span><span class="fl">0.1</span>, lda.coef_[<span class="dv">0</span>] <span class="op">/</span> lda.coef_[<span class="dv">0</span>].<span class="bu">sum</span>(), width<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="st">"LDA"</span>)</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">4</span>), iris.feature_names, rotation<span class="op">=</span><span class="dv">45</span>)</span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Weight"</span>)</span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fancy_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="5fcdd64f" class="cell">
+</div>
+</div>
+<div id="5fcdd64f" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the explained variance ratio</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>), pca.explained_variance_ratio_, label<span class="op">=</span><span class="st">"PCA"</span>)</span>
@@ -872,6 +893,13 @@ c:\Users\ccurtis\Documents\f26\venv\Lib\site-packages\matplotlib\collections.py:
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Variance explained"</span>)</span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Component"</span>)</span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fancy_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 

@@ -7,7 +7,7 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/08_fancy_transformations/fancy.ipynb"
 demo-data: "/demo_code/04_categorical/profiles_revised.csv"
-leftoff: "Slide 14"
+leftoff: "Completed Oct 27"
 ---
 
 <!-- 

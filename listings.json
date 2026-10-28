@@ -17,6 +17,7 @@
       "/labs/03-categorical.html",
       "/labs/04-eda.html",
       "/labs/05-missing-outliers.html",
+      "/labs/06-fancy-encoding.html",
       "/labs/index.html"
     ]
   },
@@ -34,7 +35,8 @@
       "/labs/02-basic-models.html",
       "/labs/03-categorical.html",
       "/labs/04-eda.html",
-      "/labs/05-missing-outliers.html"
+      "/labs/05-missing-outliers.html",
+      "/labs/06-fancy-encoding.html"
     ]
   },
   {

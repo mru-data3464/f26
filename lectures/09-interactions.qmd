@@ -103,6 +103,7 @@ First, use your domain knowledge! Then consider [guiding principles](https://fea
 
 ## Performing feature selection
 <!-- _class: code_reminder -->
+
 * Many different ways to choose which features to keep
     - **Intrinsic methods**: some models effectively ignore irrelevant features
     - **Filter methods**: filter features based on some criteria (e.g. correlation)
@@ -113,6 +114,23 @@ First, use your domain knowledge! Then consider [guiding principles](https://fea
 <div data-marpit-fragment>
 
 > A subtle source of data leakage is in performing feature selection on the entire training set, then cross-validating
+
+</div>
+
+## A note on regularization
+* **Regularization** encompasses a number of techniques that simplify models, usually aimed at **reducing overfitting**
+* A common type of regularization is to impose a **penalty** on the error term, for example: **Ridge Regression**
+    $$J(\mathbf{w}) = MSE(\mathbf{w}) + \lambda \frac{1}{2} \sum_{i=1}^n w_i^2$$
+    where $\lambda$ is the **regularization parameter**
+* The regularization term is only added during training, not evaluation
+
+## Other forms of regularization
+* Anything that **constrains** a model and forces it to be simpler can be considered regularization
+* This can include "early stopping" for iterative methods
+
+<div data-marpit-fragment>
+
+> What other forms of regularization have we seen in this course?
 
 </div>
 

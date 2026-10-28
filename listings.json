@@ -1,5 +1,37 @@
 [
   {
+    "listing": "/lectures/index.html",
+    "items": [
+      "/lectures/01-intro.html",
+      "/lectures/02-basic-models.html",
+      "/lectures/03-eda.html",
+      "/lectures/04-categorical.html",
+      "/lectures/05-basic-numeric.html",
+      "/lectures/06-splitting-combining.html",
+      "/lectures/07-missing-and-weird-data.html",
+      "/lectures/08-fancy-processing.html",
+      "/lectures/09-interactions.html"
+    ]
+  },
+  {
+    "listing": "/labs/index.html",
+    "items": [
+      "/labs/01-clean-regression.html",
+      "/labs/02-basic-models.html",
+      "/labs/03-categorical.html",
+      "/labs/04-eda.html",
+      "/labs/05-missing-outliers.html",
+      "/labs/06-fancy-encoding.html"
+    ]
+  },
+  {
+    "listing": "/assignments/index.html",
+    "items": [
+      "/assignments/01-simple-model.html",
+      "/assignments/02-eda.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/lectures/01-intro.html",
@@ -19,38 +51,6 @@
       "/labs/05-missing-outliers.html",
       "/labs/06-fancy-encoding.html",
       "/labs/index.html"
-    ]
-  },
-  {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/01-simple-model.html",
-      "/assignments/02-eda.html"
-    ]
-  },
-  {
-    "listing": "/labs/index.html",
-    "items": [
-      "/labs/01-clean-regression.html",
-      "/labs/02-basic-models.html",
-      "/labs/03-categorical.html",
-      "/labs/04-eda.html",
-      "/labs/05-missing-outliers.html",
-      "/labs/06-fancy-encoding.html"
-    ]
-  },
-  {
-    "listing": "/lectures/index.html",
-    "items": [
-      "/lectures/01-intro.html",
-      "/lectures/02-basic-models.html",
-      "/lectures/03-eda.html",
-      "/lectures/04-categorical.html",
-      "/lectures/05-basic-numeric.html",
-      "/lectures/06-splitting-combining.html",
-      "/lectures/07-missing-and-weird-data.html",
-      "/lectures/08-fancy-processing.html",
-      "/lectures/09-interactions.html"
     ]
   }
 ]

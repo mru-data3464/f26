@@ -7,7 +7,6 @@ paginate: true
 headingDivider: 2
 demo-code: "/demo_code/10_text/text_demo.ipynb"
 leftoff: ""
-draft: true
 ---
 
 <!-- 
@@ -15,16 +14,11 @@ _class: title_slide
 _paginate: skip
 -->
 
-{{< katex />}}
-{{% ignore %}}
-
 ## <!--fit-->DATA 3464: Fundamentals of Data Processing
 ### <!--fit-->Wrangling text
 
 Charlotte Curtis
 October 29, 2026
-
-{{% /ignore %}}
 
 ## Topic overview
 - Text file formats and character encodings

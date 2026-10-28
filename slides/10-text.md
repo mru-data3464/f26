@@ -5,7 +5,7 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-demo-code: "/demo_code/10_text"
+demo-code: "/demo_code/10_text/text_demo.ipynb"
 leftoff: ""
 draft: true
 ---
@@ -164,25 +164,25 @@ October 29, 2026
 <!-- _class: title_slide -->
 
 ## Basic characters
-![bg fit](../../static/img/regex_cards/01_literals.jpg)
+![bg fit](../img/regex_cards/01_literals.jpg)
 
 ## "Word" characters
-![bg fit](../../static/img/regex_cards/02_words.jpg)
+![bg fit](../img/regex_cards/02_words.jpg)
 
 ## Whitespace
-![bg fit](../../static/img/regex_cards/03_whitespace.jpg)
+![bg fit](../img/regex_cards/03_whitespace.jpg)
 
 ## Quantifiers
-![bg fit](../../static/img/regex_cards/04_quantifiers.jpg)
+![bg fit](../img/regex_cards/04_quantifiers.jpg)
 
 ## Brackets and braces
-![bg fit](../../static/img/regex_cards/05_brackets.jpg)
+![bg fit](../img/regex_cards/05_brackets.jpg)
 
 ## Range and boundary
-![bg fit](../../static/img/regex_cards/06_range_boundary.jpg)
+![bg fit](../img/regex_cards/06_range_boundary.jpg)
 
 ## Start (not) and end
-![bg fit](../../static/img/regex_cards/07_start_end.jpg)
+![bg fit](../img/regex_cards/07_start_end.jpg)
 
 ## Capturing groups
 * Seems weird that `(?:...)` is so verbose, why not just `(...)`?

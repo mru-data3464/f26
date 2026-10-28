@@ -105,3 +105,5 @@ What change has the biggest impact on the model? If you like, you can add on int
 
 ## Submit
 As usual, add your `lab06` directory to your `labs` repo and push your changes to GitHub.
+
+It's okay if you don't get a perfect model that incorporates everything, I'll just be looking to see at least **one complex categorical feature** (high cardinality and/or low frequency categories) that is handled appropriately.

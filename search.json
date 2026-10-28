@@ -1019,7 +1019,7 @@
     "href": "labs/06-fancy-encoding.html#submit",
     "title": "6. Predictive Modelling with Fancy Encoding",
     "section": "Submit",
-    "text": "Submit\nAs usual, add your lab06 directory to your labs repo and push your changes to GitHub."
+    "text": "Submit\nAs usual, add your lab06 directory to your labs repo and push your changes to GitHub.\nIt’s okay if you don’t get a perfect model that incorporates everything, I’ll just be looking to see at least one complex categorical feature (high cardinality and/or low frequency categories) that is handled appropriately."
   },
   {
     "objectID": "lectures/01-intro.html",

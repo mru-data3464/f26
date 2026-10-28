@@ -49,9 +49,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cf8dbb1c0a3d75b72da23e7afe33030c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-8b15ce926aac5f3f134fda9349e014de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-cf8dbb1c0a3d75b72da23e7afe33030c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3e208ab2a520bff1082bd5c021bef27e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-609e3c79602f5389d6c685635af7d9fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -178,6 +178,8 @@ window.Quarto = {
   <li><a href="#brute-force-approach" id="toc-brute-force-approach" class="nav-link" data-scroll-target="#brute-force-approach">Brute-force approach</a></li>
   <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection">Feature selection</a></li>
   <li><a href="#performing-feature-selection" id="toc-performing-feature-selection" class="nav-link" data-scroll-target="#performing-feature-selection">Performing feature selection</a></li>
+  <li><a href="#a-note-on-regularization" id="toc-a-note-on-regularization" class="nav-link" data-scroll-target="#a-note-on-regularization">A note on regularization</a></li>
+  <li><a href="#other-forms-of-regularization" id="toc-other-forms-of-regularization" class="nav-link" data-scroll-target="#other-forms-of-regularization">Other forms of regularization</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#overall-processing-order" id="toc-overall-processing-order" class="nav-link" data-scroll-target="#overall-processing-order">Overall Processing Order</a></li>
   <li><a href="#coming-up-next" id="toc-coming-up-next" class="nav-link" data-scroll-target="#coming-up-next">Coming up next</a></li>
@@ -343,6 +345,26 @@ Note: common to use β or θ for the weights instead of w, especially in statist
 <div data-marpit-fragment="">
 <blockquote class="blockquote">
 <p>A subtle source of data leakage is in performing feature selection on the entire training set, then cross-validating</p>
+</blockquote>
+</div>
+</section>
+<section id="a-note-on-regularization" class="level2">
+<h2 class="anchored" data-anchor-id="a-note-on-regularization">A note on regularization</h2>
+<ul>
+<li><strong>Regularization</strong> encompasses a number of techniques that simplify models, usually aimed at <strong>reducing overfitting</strong></li>
+<li>A common type of regularization is to impose a <strong>penalty</strong> on the error term, for example: <strong>Ridge Regression</strong> <span class="math display">\[J(\mathbf{w}) = MSE(\mathbf{w}) + \lambda \frac{1}{2} \sum_{i=1}^n w_i^2\]</span> where <span class="math inline">\(\lambda\)</span> is the <strong>regularization parameter</strong></li>
+<li>The regularization term is only added during training, not evaluation</li>
+</ul>
+</section>
+<section id="other-forms-of-regularization" class="level2">
+<h2 class="anchored" data-anchor-id="other-forms-of-regularization">Other forms of regularization</h2>
+<ul>
+<li>Anything that <strong>constrains</strong> a model and forces it to be simpler can be considered regularization</li>
+<li>This can include “early stopping” for iterative methods</li>
+</ul>
+<div data-marpit-fragment="">
+<blockquote class="blockquote">
+<p>What other forms of regularization have we seen in this course?</p>
 </blockquote>
 </div>
 </section>

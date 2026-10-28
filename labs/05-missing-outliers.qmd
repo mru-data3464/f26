@@ -63,4 +63,4 @@ Outliers are context-dependent! Algorithmic rules like $1.5\times \mathrm{IQR}$ 
 5. Based on your previous response, how would you propose to deal with the outliers in a predictive modelling pipeline? Again, justify your response, but you do not need to actually build a model.
 
 ## Submit
-As usual, add your `lab04` directory to your `labs` repo and push your changes to GitHub.
+As usual, add your `lab05` directory to your `labs` repo and push your changes to GitHub.

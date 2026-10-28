@@ -2,7 +2,6 @@
 title: "6. Predictive Modelling with Fancy Encoding"
 date: 2026-10-28
 due: "November 3, 2026"
-draft: true
 ---
 
 Lab submission due on {{< meta due >}}.
@@ -25,17 +24,84 @@ If you have not yet completed lab 5, you will need to do that first to understan
 
 :::
 
-In this lab, you will be creating a model to **predict assessment price** from the various housing features. You may use a regression model of your choice.
+In this lab, you will be creating a model to **predict assessment price** from the various housing features.
+
+## Split the data
+First, load the data and split into training/testing **using the same parameters** (random seed etc) as in lab 5. You can copy directly from lab 5's notebook, but you want to avoid accidentally creating a different split.
+
+Since this is a fairly large dataset, let's use this as an excuse to use a **validation split** instead of cross-validation. Take your `train` split and split it again into `train` and `val` datasets.
+
+You should now have three splits, with the `train` dataset being the largest.
+
+## Create a baseline model
+Using the regression model of your choice, create a simple model that just uses the numeric features with basic imputing and scaling. You can copy paste this one:
+
+```python
+from sklearn.preprocessing import StandardScaler
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import make_pipeline
+from sklearn.compose import make_column_transformer
+from sklearn.linear_model import LinearRegression
+
+nums = ["YEAR_OF_CONSTRUCTION", "LAND_SIZE_SM"]
+
+# naive numeric-only processing pipeline
+num_pipeline = make_pipeline(
+    SimpleImputer(strategy="mean"),
+    StandardScaler()
+)
+
+pipeline = make_pipeline(
+    make_column_transformer(
+        (num_pipeline, nums),
+    ),
+    LinearRegression()
+)
+```
+
+The performance is quite bad (MAE around $300k for my training and validation splits), but that just leaves lots of room for improvement.
+
+Since we're not using `cross_val_score`, you'll need to fit and evaluate separately, e.g.:
+
+```python
+from sklearn.metrics import mean_absolute_error
+
+pipeline.fit(train, train["ASSESSED_VALUE"])
+y_hat = pipeline.predict(train)
+y_hat_val = pipeline.predict(val)
+
+print(f"Train MAE: ${mean_absolute_error(train["ASSESSED_VALUE"], y_hat)}")
+print(f"Val   MAE: ${mean_absolute_error(val["ASSESSED_VALUE"], y_hat_val)}")
+```
+
+Don't forget to look at your data as well!
 
 ## Explore the categorical features
+The previous lab focused primarily on the numerical features, so you're going to need to explore the categorical features a bit.
 
-## Create your processing pipeline
-1. Load the data and split into training/testing **using the same parameters** (random seed etc) as in lab 5. You can copy directly from lab 5's notebook, but you want to avoid accidentally creating a different split.
-2. Build a processing pipeline for your numeric features, using your own recommendations from lab 5 for addressing missing values and outliers.
-3. For categorical features, 
+Using bar graphs and/or summary statistics, poke around the categorical data until you're confident of an encoding approach. Some questions you want to answer are:
 
-## Train and iterate
+- Is the feature ordinal or nominal?
+- What is the cardinality?
+- Is there a relationship with the target?
+- Are there lots of low-frequency categories that should be combined? How many unique categories make sense for this dataset?
 
+You don't need to spend too much time on this, just enough to inform the processing step. 
+
+## Refine your processing pipeline
+Try making one change at a time and make note of how it changes the results. Pay attention to the performance on both training and validation; if these start to diverge, you may be overfitting.
+1. Modify the pipeline for your numeric features, using your own recommendations from lab 5 for addressing missing values and outliers.
+2. Build a processing pipeline for your categorical features. For the nominal features, consider using the following, and justify your choice:
+   - [`TargetEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.TargetEncoder.html) if there is a logical relationship with the target.
+   - [`OneHotEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) with the `max_categories` attribute specified.
+   
+:::{.callout-tip}
+
+Make sure to set `target_type="continuous"` if you use a `TargetEncoder`! Otherwise, you may run out of ram (like I did) and have the whole thing come crashing down.
+
+:::
+
+What change has the biggest impact on the model? If you like, you can add on interaction effects as well, but we haven't finished talking about that in class yet.
 
 ## Submit
-As usual, add your `lab04` directory to your `labs` repo and push your changes to GitHub.
+As usual, add your `lab06` directory to your `labs` repo and push your changes to GitHub.

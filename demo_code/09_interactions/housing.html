@@ -499,7 +499,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="12">
+<div id="cell-10" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>train.plot.scatter(x<span class="op">=</span><span class="st">"median_income"</span>, y<span class="op">=</span><span class="st">"median_house_value"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -509,7 +509,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="13">
+<div id="cell-11" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>train.boxplot(column<span class="op">=</span><span class="st">"median_house_value"</span>, by<span class="op">=</span><span class="st">"ocean_proximity"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -521,7 +521,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 <section id="missing-features" class="level2">
 <h2 class="anchored" data-anchor-id="missing-features">Missing features</h2>
-<div id="cell-13" class="cell" data-execution_count="14">
+<div id="cell-13" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, let's look at the missing values in the total_bedrooms column</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>null_rows_idx <span class="op">=</span> train.isnull().<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Missing </span><span class="sc">{</span><span class="bu">len</span>(train[null_rows_idx])<span class="sc">}</span><span class="ss"> of </span><span class="sc">{</span><span class="bu">len</span>(train)<span class="sc">}</span><span class="ss"> rows"</span>)</span>
@@ -529,7 +529,7 @@ Name: count, dtype: int64</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Missing 163 of 16512 rows</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
@@ -624,7 +624,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="categorical-encoding" class="level2">
 <h2 class="anchored" data-anchor-id="categorical-encoding">Categorical Encoding</h2>
-<div id="cell-15" class="cell" data-execution_count="15">
+<div id="cell-15" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1: Ordinal encoding</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># naive implementation</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If ordinal, needs to make sense - default values are alphabetical</span></span>
@@ -632,7 +632,7 @@ Name: count, dtype: int64</code></pre>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    categories<span class="op">=</span>[[<span class="st">"ISLAND"</span>, <span class="st">"NEAR BAY"</span>, <span class="st">"NEAR OCEAN"</span>, <span class="st">"&lt;1H OCEAN"</span>, <span class="st">"INLAND"</span>]]</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="16">
+<div id="cell-16" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's confirm what "near bay" means - San Francisco Bay area?</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>near_bay <span class="op">=</span> train[<span class="st">"ocean_proximity"</span>] <span class="op">==</span> <span class="st">"NEAR BAY"</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(train[<span class="st">"longitude"</span>], train[<span class="st">"latitude"</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
@@ -648,7 +648,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="processing-pipelines" class="level2">
 <h2 class="anchored" data-anchor-id="processing-pipelines">Processing Pipelines</h2>
-<div id="cell-18" class="cell" data-execution_count="17">
+<div id="cell-18" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>num_attribs <span class="op">=</span> [</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"longitude"</span>,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"latitude"</span>,</span>
@@ -663,17 +663,16 @@ Name: count, dtype: int64</code></pre>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The numeric features get the usual treatment</span></span>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>num_pipeline <span class="op">=</span> make_pipeline(</span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    KNNImputer(),</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    StandardScaler(),</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># altogether now</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>preprocessing <span class="op">=</span> make_column_transformer(</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    (num_pipeline, num_attribs),</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    (ordinal_encoder, [<span class="st">"ocean_proximity"</span>]),</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>preprocessing</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co"># altogether now</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>preprocessing <span class="op">=</span> make_column_transformer(</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    (num_pipeline, num_attribs),</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    (ordinal_encoder, [<span class="st">"ocean_proximity"</span>]),</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>preprocessing</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <style>.sk-global {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
@@ -1373,9 +1372,7 @@ a.param-doc-link::before {
   margin-top: 0.5em;
 }
 </style><div id="sk-container-id-1" tabindex="0" class="sk-top-container sk-global"><div class="sk-text-repr-fallback"><pre>ColumnTransformer(transformers=[('pipeline',
-                                 Pipeline(steps=[('knnimputer', KNNImputer()),
-                                                 ('standardscaler',
-                                                  StandardScaler())]),
+                                 Pipeline(steps=[('knnimputer', KNNImputer())]),
                                  ['longitude', 'latitude', 'housing_median_age',
                                   'total_rooms', 'total_bedrooms', 'population',
                                   'households', 'median_income']),
@@ -1608,53 +1605,7 @@ The imputed value is always `0`.<br>
 
             </details>
         </div>
-    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-4" type="checkbox"><label for="sk-estimator-id-4" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StandardScaler</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="pipeline__standardscaler__">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                
-<table class="parameters-table caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<tbody>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param"><a href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.StandardScaler.html#:~:text=copy,-bool%2C%20default%3DTrue" class="param-doc-link" style="anchor-name: --doc-link-copy;" rel="noreferrer" target="_blank">copy <span class="param-doc-description" style="position-anchor: --doc-link-copy;"> copy: bool, default=True<br>
-<br>
-If False, try to avoid a copy and do inplace scaling instead.<br>
-This is not guaranteed to always work inplace; e.g. if the data is<br>
-not a NumPy array or scipy.sparse CSR matrix, a copy may still be<br>
-returned.</span></a></td>
-<td class="value">True</td>
-</tr>
-<tr class="default even">
-<td><em></em></td>
-<td class="param"><a href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.StandardScaler.html#:~:text=with_mean,-bool%2C%20default%3DTrue" class="param-doc-link" style="anchor-name: --doc-link-with_mean;" rel="noreferrer" target="_blank">with_mean <span class="param-doc-description" style="position-anchor: --doc-link-with_mean;"> with_mean: bool, default=True<br>
-<br>
-If True, center the data before scaling.<br>
-This does not work (and will raise an exception) when attempted on<br>
-sparse matrices, because centering them entails building a dense<br>
-matrix which in common use cases is likely to be too large to fit in<br>
-memory.</span></a></td>
-<td class="value">True</td>
-</tr>
-<tr class="default odd">
-<td><em></em></td>
-<td class="param"><a href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.StandardScaler.html#:~:text=with_std,-bool%2C%20default%3DTrue" class="param-doc-link" style="anchor-name: --doc-link-with_std;" rel="noreferrer" target="_blank">with_std <span class="param-doc-description" style="position-anchor: --doc-link-with_std;"> with_std: bool, default=True<br>
-<br>
-If True, scale the data to unit variance (or equivalently,<br>
-unit standard deviation).</span></a></td>
-<td class="value">True</td>
-</tr>
-</tbody>
-</table>
-
-            </details>
-        </div>
-    </div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-5" type="checkbox"><label for="sk-estimator-id-5" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>ordinalencoder</div></div></label><div class="sk-toggleable__content " data-param-prefix="ordinalencoder__"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-6" type="checkbox"><label for="sk-estimator-id-6" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OrdinalEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">?<span>Documentation for OrdinalEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="ordinalencoder__">
+    </div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-4" type="checkbox"><label for="sk-estimator-id-4" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>ordinalencoder</div></div></label><div class="sk-toggleable__content " data-param-prefix="ordinalencoder__"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-5" type="checkbox"><label for="sk-estimator-id-5" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OrdinalEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">?<span>Documentation for OrdinalEncoder</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="ordinalencoder__">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
@@ -1937,7 +1888,7 @@ function forceTheme(elementId) {
 forceTheme('sk-container-id-1');</script>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="18">
+<div id="cell-19" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally we can train some kind of model</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> make_pipeline(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    preprocessing,</span>
@@ -1947,14 +1898,14 @@ forceTheme('sk-container-id-1');</script>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>ref_mae <span class="op">=</span> cross_val_score(pipeline, train, train[<span class="st">"median_house_value"</span>], scoring<span class="op">=</span><span class="st">"neg_mean_absolute_error"</span>)</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="op">-</span>ref_mae.mean())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>50281.2259777973</code></pre>
+<pre><code>50281.22597779729</code></pre>
 </div>
 </div>
 </section>
 <section id="a-systemic-approach-for-interactions" class="level2">
 <h2 class="anchored" data-anchor-id="a-systemic-approach-for-interactions">A systemic approach for interactions</h2>
 <p>Baseline: no interactions considered. Then, add on each pairwise interaction and plot results.</p>
-<div id="cell-21" class="cell">
+<div id="cell-21" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 8 numerical attributes plus our single ordinal encoded category</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>feat_names <span class="op">=</span> num_attribs <span class="op">+</span> [<span class="st">"ocean_proximity"</span>]</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="bu">len</span>(feat_names)</span>
@@ -1976,13 +1927,14 @@ forceTheme('sk-container-id-1');</script>
 <span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                (FunctionTransformer(interact), [i, j]),</span>
 <span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                remainder<span class="op">=</span><span class="st">"passthrough"</span>,</span>
 <span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>            ),</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>            LinearRegression()</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        i_effect[count] <span class="op">=</span> cross_val_score(pipeline, train, train[<span class="st">"median_house_value"</span>], scoring<span class="op">=</span><span class="st">"neg_mean_absolute_error"</span>).mean()</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        names[count] <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>feat_names[i]<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>feat_names[j]<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> count <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>            StandardScaler(),</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>            LinearRegression()</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        i_effect[count] <span class="op">=</span> cross_val_score(pipeline, train, train[<span class="st">"median_house_value"</span>], scoring<span class="op">=</span><span class="st">"neg_mean_absolute_error"</span>).mean()</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        names[count] <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>feat_names[i]<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>feat_names[j]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> count <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="22">
+<div id="cell-22" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the ones that improve the MAE</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> np.argsort(i_effect, descending<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
@@ -2003,52 +1955,307 @@ forceTheme('sk-container-id-1');</script>
 <section id="the-easier-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-easier-way">The easier way</h2>
 <p>Generate all pairwise interactions, then use feature selection to keep the ones that improve things. More efficient if your dataset isn’t too big.</p>
-<div id="cell-24" class="cell">
+<div id="cell-24" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> make_pipeline(</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    preprocessing,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    PolynomialFeatures(interaction_only<span class="op">=</span><span class="va">True</span>),</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    LinearRegression(),</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-validate</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>all_interactions_mae <span class="op">=</span> cross_val_score(pipeline, train, train[<span class="st">"median_house_value"</span>], scoring<span class="op">=</span><span class="st">"neg_mean_absolute_error"</span>)</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>all_interactions_mae.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    StandardScaler(),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    LinearRegression(),</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>).set_output(transform<span class="op">=</span><span class="st">"pandas"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-validate</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>all_interactions_mae <span class="op">=</span> cross_val_score(pipeline, train, train[<span class="st">"median_house_value"</span>], scoring<span class="op">=</span><span class="st">"neg_mean_absolute_error"</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>all_interactions_mae.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>np.float64(41105.323921591305)</code></pre>
 </div>
-<div id="cell-25" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> make_pipeline(</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    preprocessing,</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    PolynomialFeatures(interaction_only<span class="op">=</span><span class="va">True</span>),</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    SelectFromModel(DecisionTreeRegressor(), threshold<span class="op">=</span><span class="st">"0.75*median"</span>),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    LinearRegression(),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-validate</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>select_interactions_mae <span class="op">=</span> cross_val_score(pipeline, train, train[<span class="st">"median_house_value"</span>], scoring<span class="op">=</span><span class="st">"neg_mean_absolute_error"</span>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>select_interactions_mae.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-26" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pipeline[:<span class="op">-</span><span class="dv">1</span>].fit(train, train[<span class="st">"median_house_value"</span>])</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pipeline[:<span class="op">-</span><span class="dv">1</span>].get_feature_names_out()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-25" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pipeline.fit(train, train[<span class="st">"median_house_value"</span>])</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>train_transform <span class="op">=</span> pipeline[:<span class="op">-</span><span class="dv">1</span>].transform(train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-26" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> train_transform.columns:</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+pipeline__longitude
+pipeline__latitude
+pipeline__housing_median_age
+pipeline__total_rooms
+pipeline__total_bedrooms
+pipeline__population
+pipeline__households
+pipeline__median_income
+ordinalencoder__ocean_proximity
+pipeline__longitude^2
+pipeline__longitude pipeline__latitude
+pipeline__longitude pipeline__housing_median_age
+pipeline__longitude pipeline__total_rooms
+pipeline__longitude pipeline__total_bedrooms
+pipeline__longitude pipeline__population
+pipeline__longitude pipeline__households
+pipeline__longitude pipeline__median_income
+pipeline__longitude ordinalencoder__ocean_proximity
+pipeline__latitude^2
+pipeline__latitude pipeline__housing_median_age
+pipeline__latitude pipeline__total_rooms
+pipeline__latitude pipeline__total_bedrooms
+pipeline__latitude pipeline__population
+pipeline__latitude pipeline__households
+pipeline__latitude pipeline__median_income
+pipeline__latitude ordinalencoder__ocean_proximity
+pipeline__housing_median_age^2
+pipeline__housing_median_age pipeline__total_rooms
+pipeline__housing_median_age pipeline__total_bedrooms
+pipeline__housing_median_age pipeline__population
+pipeline__housing_median_age pipeline__households
+pipeline__housing_median_age pipeline__median_income
+pipeline__housing_median_age ordinalencoder__ocean_proximity
+pipeline__total_rooms^2
+pipeline__total_rooms pipeline__total_bedrooms
+pipeline__total_rooms pipeline__population
+pipeline__total_rooms pipeline__households
+pipeline__total_rooms pipeline__median_income
+pipeline__total_rooms ordinalencoder__ocean_proximity
+pipeline__total_bedrooms^2
+pipeline__total_bedrooms pipeline__population
+pipeline__total_bedrooms pipeline__households
+pipeline__total_bedrooms pipeline__median_income
+pipeline__total_bedrooms ordinalencoder__ocean_proximity
+pipeline__population^2
+pipeline__population pipeline__households
+pipeline__population pipeline__median_income
+pipeline__population ordinalencoder__ocean_proximity
+pipeline__households^2
+pipeline__households pipeline__median_income
+pipeline__households ordinalencoder__ocean_proximity
+pipeline__median_income^2
+pipeline__median_income ordinalencoder__ocean_proximity
+ordinalencoder__ocean_proximity^2
+pipeline__longitude^3
+pipeline__longitude^2 pipeline__latitude
+pipeline__longitude^2 pipeline__housing_median_age
+pipeline__longitude^2 pipeline__total_rooms
+pipeline__longitude^2 pipeline__total_bedrooms
+pipeline__longitude^2 pipeline__population
+pipeline__longitude^2 pipeline__households
+pipeline__longitude^2 pipeline__median_income
+pipeline__longitude^2 ordinalencoder__ocean_proximity
+pipeline__longitude pipeline__latitude^2
+pipeline__longitude pipeline__latitude pipeline__housing_median_age
+pipeline__longitude pipeline__latitude pipeline__total_rooms
+pipeline__longitude pipeline__latitude pipeline__total_bedrooms
+pipeline__longitude pipeline__latitude pipeline__population
+pipeline__longitude pipeline__latitude pipeline__households
+pipeline__longitude pipeline__latitude pipeline__median_income
+pipeline__longitude pipeline__latitude ordinalencoder__ocean_proximity
+pipeline__longitude pipeline__housing_median_age^2
+pipeline__longitude pipeline__housing_median_age pipeline__total_rooms
+pipeline__longitude pipeline__housing_median_age pipeline__total_bedrooms
+pipeline__longitude pipeline__housing_median_age pipeline__population
+pipeline__longitude pipeline__housing_median_age pipeline__households
+pipeline__longitude pipeline__housing_median_age pipeline__median_income
+pipeline__longitude pipeline__housing_median_age ordinalencoder__ocean_proximity
+pipeline__longitude pipeline__total_rooms^2
+pipeline__longitude pipeline__total_rooms pipeline__total_bedrooms
+pipeline__longitude pipeline__total_rooms pipeline__population
+pipeline__longitude pipeline__total_rooms pipeline__households
+pipeline__longitude pipeline__total_rooms pipeline__median_income
+pipeline__longitude pipeline__total_rooms ordinalencoder__ocean_proximity
+pipeline__longitude pipeline__total_bedrooms^2
+pipeline__longitude pipeline__total_bedrooms pipeline__population
+pipeline__longitude pipeline__total_bedrooms pipeline__households
+pipeline__longitude pipeline__total_bedrooms pipeline__median_income
+pipeline__longitude pipeline__total_bedrooms ordinalencoder__ocean_proximity
+pipeline__longitude pipeline__population^2
+pipeline__longitude pipeline__population pipeline__households
+pipeline__longitude pipeline__population pipeline__median_income
+pipeline__longitude pipeline__population ordinalencoder__ocean_proximity
+pipeline__longitude pipeline__households^2
+pipeline__longitude pipeline__households pipeline__median_income
+pipeline__longitude pipeline__households ordinalencoder__ocean_proximity
+pipeline__longitude pipeline__median_income^2
+pipeline__longitude pipeline__median_income ordinalencoder__ocean_proximity
+pipeline__longitude ordinalencoder__ocean_proximity^2
+pipeline__latitude^3
+pipeline__latitude^2 pipeline__housing_median_age
+pipeline__latitude^2 pipeline__total_rooms
+pipeline__latitude^2 pipeline__total_bedrooms
+pipeline__latitude^2 pipeline__population
+pipeline__latitude^2 pipeline__households
+pipeline__latitude^2 pipeline__median_income
+pipeline__latitude^2 ordinalencoder__ocean_proximity
+pipeline__latitude pipeline__housing_median_age^2
+pipeline__latitude pipeline__housing_median_age pipeline__total_rooms
+pipeline__latitude pipeline__housing_median_age pipeline__total_bedrooms
+pipeline__latitude pipeline__housing_median_age pipeline__population
+pipeline__latitude pipeline__housing_median_age pipeline__households
+pipeline__latitude pipeline__housing_median_age pipeline__median_income
+pipeline__latitude pipeline__housing_median_age ordinalencoder__ocean_proximity
+pipeline__latitude pipeline__total_rooms^2
+pipeline__latitude pipeline__total_rooms pipeline__total_bedrooms
+pipeline__latitude pipeline__total_rooms pipeline__population
+pipeline__latitude pipeline__total_rooms pipeline__households
+pipeline__latitude pipeline__total_rooms pipeline__median_income
+pipeline__latitude pipeline__total_rooms ordinalencoder__ocean_proximity
+pipeline__latitude pipeline__total_bedrooms^2
+pipeline__latitude pipeline__total_bedrooms pipeline__population
+pipeline__latitude pipeline__total_bedrooms pipeline__households
+pipeline__latitude pipeline__total_bedrooms pipeline__median_income
+pipeline__latitude pipeline__total_bedrooms ordinalencoder__ocean_proximity
+pipeline__latitude pipeline__population^2
+pipeline__latitude pipeline__population pipeline__households
+pipeline__latitude pipeline__population pipeline__median_income
+pipeline__latitude pipeline__population ordinalencoder__ocean_proximity
+pipeline__latitude pipeline__households^2
+pipeline__latitude pipeline__households pipeline__median_income
+pipeline__latitude pipeline__households ordinalencoder__ocean_proximity
+pipeline__latitude pipeline__median_income^2
+pipeline__latitude pipeline__median_income ordinalencoder__ocean_proximity
+pipeline__latitude ordinalencoder__ocean_proximity^2
+pipeline__housing_median_age^3
+pipeline__housing_median_age^2 pipeline__total_rooms
+pipeline__housing_median_age^2 pipeline__total_bedrooms
+pipeline__housing_median_age^2 pipeline__population
+pipeline__housing_median_age^2 pipeline__households
+pipeline__housing_median_age^2 pipeline__median_income
+pipeline__housing_median_age^2 ordinalencoder__ocean_proximity
+pipeline__housing_median_age pipeline__total_rooms^2
+pipeline__housing_median_age pipeline__total_rooms pipeline__total_bedrooms
+pipeline__housing_median_age pipeline__total_rooms pipeline__population
+pipeline__housing_median_age pipeline__total_rooms pipeline__households
+pipeline__housing_median_age pipeline__total_rooms pipeline__median_income
+pipeline__housing_median_age pipeline__total_rooms ordinalencoder__ocean_proximity
+pipeline__housing_median_age pipeline__total_bedrooms^2
+pipeline__housing_median_age pipeline__total_bedrooms pipeline__population
+pipeline__housing_median_age pipeline__total_bedrooms pipeline__households
+pipeline__housing_median_age pipeline__total_bedrooms pipeline__median_income
+pipeline__housing_median_age pipeline__total_bedrooms ordinalencoder__ocean_proximity
+pipeline__housing_median_age pipeline__population^2
+pipeline__housing_median_age pipeline__population pipeline__households
+pipeline__housing_median_age pipeline__population pipeline__median_income
+pipeline__housing_median_age pipeline__population ordinalencoder__ocean_proximity
+pipeline__housing_median_age pipeline__households^2
+pipeline__housing_median_age pipeline__households pipeline__median_income
+pipeline__housing_median_age pipeline__households ordinalencoder__ocean_proximity
+pipeline__housing_median_age pipeline__median_income^2
+pipeline__housing_median_age pipeline__median_income ordinalencoder__ocean_proximity
+pipeline__housing_median_age ordinalencoder__ocean_proximity^2
+pipeline__total_rooms^3
+pipeline__total_rooms^2 pipeline__total_bedrooms
+pipeline__total_rooms^2 pipeline__population
+pipeline__total_rooms^2 pipeline__households
+pipeline__total_rooms^2 pipeline__median_income
+pipeline__total_rooms^2 ordinalencoder__ocean_proximity
+pipeline__total_rooms pipeline__total_bedrooms^2
+pipeline__total_rooms pipeline__total_bedrooms pipeline__population
+pipeline__total_rooms pipeline__total_bedrooms pipeline__households
+pipeline__total_rooms pipeline__total_bedrooms pipeline__median_income
+pipeline__total_rooms pipeline__total_bedrooms ordinalencoder__ocean_proximity
+pipeline__total_rooms pipeline__population^2
+pipeline__total_rooms pipeline__population pipeline__households
+pipeline__total_rooms pipeline__population pipeline__median_income
+pipeline__total_rooms pipeline__population ordinalencoder__ocean_proximity
+pipeline__total_rooms pipeline__households^2
+pipeline__total_rooms pipeline__households pipeline__median_income
+pipeline__total_rooms pipeline__households ordinalencoder__ocean_proximity
+pipeline__total_rooms pipeline__median_income^2
+pipeline__total_rooms pipeline__median_income ordinalencoder__ocean_proximity
+pipeline__total_rooms ordinalencoder__ocean_proximity^2
+pipeline__total_bedrooms^3
+pipeline__total_bedrooms^2 pipeline__population
+pipeline__total_bedrooms^2 pipeline__households
+pipeline__total_bedrooms^2 pipeline__median_income
+pipeline__total_bedrooms^2 ordinalencoder__ocean_proximity
+pipeline__total_bedrooms pipeline__population^2
+pipeline__total_bedrooms pipeline__population pipeline__households
+pipeline__total_bedrooms pipeline__population pipeline__median_income
+pipeline__total_bedrooms pipeline__population ordinalencoder__ocean_proximity
+pipeline__total_bedrooms pipeline__households^2
+pipeline__total_bedrooms pipeline__households pipeline__median_income
+pipeline__total_bedrooms pipeline__households ordinalencoder__ocean_proximity
+pipeline__total_bedrooms pipeline__median_income^2
+pipeline__total_bedrooms pipeline__median_income ordinalencoder__ocean_proximity
+pipeline__total_bedrooms ordinalencoder__ocean_proximity^2
+pipeline__population^3
+pipeline__population^2 pipeline__households
+pipeline__population^2 pipeline__median_income
+pipeline__population^2 ordinalencoder__ocean_proximity
+pipeline__population pipeline__households^2
+pipeline__population pipeline__households pipeline__median_income
+pipeline__population pipeline__households ordinalencoder__ocean_proximity
+pipeline__population pipeline__median_income^2
+pipeline__population pipeline__median_income ordinalencoder__ocean_proximity
+pipeline__population ordinalencoder__ocean_proximity^2
+pipeline__households^3
+pipeline__households^2 pipeline__median_income
+pipeline__households^2 ordinalencoder__ocean_proximity
+pipeline__households pipeline__median_income^2
+pipeline__households pipeline__median_income ordinalencoder__ocean_proximity
+pipeline__households ordinalencoder__ocean_proximity^2
+pipeline__median_income^3
+pipeline__median_income^2 ordinalencoder__ocean_proximity
+pipeline__median_income ordinalencoder__ocean_proximity^2
+ordinalencoder__ocean_proximity^3</code></pre>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> make_pipeline(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    preprocessing,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>),</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    StandardScaler(),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    SelectFromModel(DecisionTreeRegressor(), max_features<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    LinearRegression(),</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-validate</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>select_interactions_mae <span class="op">=</span> cross_val_score(pipeline, train, train[<span class="st">"median_house_value"</span>], scoring<span class="op">=</span><span class="st">"neg_mean_absolute_error"</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="op">-</span>select_interactions_mae.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>np.float64(52331.08642721037)</code></pre>
+</div>
+</div>
+<div id="cell-28" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pipeline[:<span class="op">-</span><span class="dv">1</span>].fit(train, train[<span class="st">"median_house_value"</span>])</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(pipeline[:<span class="op">-</span><span class="dv">1</span>].get_feature_names_out()))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>pipeline[:<span class="op">-</span><span class="dv">1</span>].get_feature_names_out()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>array(['pipeline__longitude pipeline__median_income',
+       'pipeline__latitude^2',
+       'pipeline__latitude pipeline__median_income',
+       'pipeline__latitude ordinalencoder__ocean_proximity',
+       'pipeline__longitude^3',
+       'pipeline__longitude^2 pipeline__latitude',
+       'pipeline__longitude pipeline__latitude ordinalencoder__ocean_proximity',
+       'pipeline__housing_median_age pipeline__median_income^2',
+       'pipeline__total_bedrooms pipeline__median_income^2',
+       'pipeline__population ordinalencoder__ocean_proximity^2'],
+      dtype=object)</code></pre>
+</div>
 </div>
 </section>
 <section id="sanity-check-look-at-your-data" class="level2">
 <h2 class="anchored" data-anchor-id="sanity-check-look-at-your-data">Sanity check: look at your data!</h2>
-<div id="cell-28" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convenient function to evaluate performance</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_predictions(actual, pred):</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    plt.scatter(actual, pred, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    plt.plot([<span class="dv">0</span>, <span class="dv">500000</span>], [<span class="dv">0</span>, <span class="dv">500000</span>], color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"Actual Median House Value ($)"</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"Predicted Median House Value ($)"</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    mae <span class="op">=</span> mean_absolute_error(actual, pred)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    plt.text(<span class="dv">300000</span>, <span class="dv">10000</span>, <span class="ss">f"MAE = $</span><span class="sc">{</span>mae<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-30" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convenient function to evaluate performance</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_predictions(actual, pred):</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    plt.scatter(actual, pred, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    plt.plot([<span class="dv">0</span>, <span class="dv">500000</span>], [<span class="dv">0</span>, <span class="dv">500000</span>], color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"Actual Median House Value ($)"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"Predicted Median House Value ($)"</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    mae <span class="op">=</span> mean_absolute_error(actual, pred)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    plt.text(<span class="dv">300000</span>, <span class="dv">10000</span>, <span class="ss">f"MAE = $</span><span class="sc">{</span>mae<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pipeline.fit(train, train[<span class="st">"median_house_value"</span>])</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>y_est <span class="op">=</span> pipeline.predict(train)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plot_predictions(train[<span class="st">"median_house_value"</span>], y_est)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-31" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pipeline.fit(train, train[<span class="st">"median_house_value"</span>])</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y_est <span class="op">=</span> pipeline.predict(train)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>plot_predictions(train[<span class="st">"median_house_value"</span>], y_est)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="housing_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="housing_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

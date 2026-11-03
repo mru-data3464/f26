@@ -1,0 +1,4 @@
+this is a line
+This is another line
+This is after a carriage return
+This is windows style

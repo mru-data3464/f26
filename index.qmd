@@ -4,9 +4,11 @@ listing:
   - id: lectures
     contents: lectures/*.qmd
     template: _templates/listing-lecture.ejs.md
+    sort: "filename asc"
   - id: labs
     contents: labs/*.qmd
     template: _templates/listing-labs.ejs.md
+    sort: "filename asc"
 ---
 
 Welcome to DATA 3464 in Fall 2026!

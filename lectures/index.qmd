@@ -2,4 +2,5 @@
 title: Lectures
 listing:
   template: ../_templates/listing-lecture.ejs.md
+  sort: "filename asc"
 ---

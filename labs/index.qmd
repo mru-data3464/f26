@@ -2,4 +2,5 @@
 title: Labs
 listing:
   template: ../_templates/listing-labs.ejs.md
+  sort: "filename asc"
 ---

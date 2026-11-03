@@ -3,22 +3,6 @@
     "listing": "/lectures/index.html",
     "items": [
       "/lectures/01-intro.html",
-      "/lectures/10-text.html",
-      "/lectures/02-basic-models.html",
-      "/lectures/03-eda.html",
-      "/lectures/04-categorical.html",
-      "/lectures/05-basic-numeric.html",
-      "/lectures/06-splitting-combining.html",
-      "/lectures/07-missing-and-weird-data.html",
-      "/lectures/08-fancy-processing.html",
-      "/lectures/09-interactions.html"
-    ]
-  },
-  {
-    "listing": "/index.html",
-    "items": [
-      "/lectures/01-intro.html",
-      "/lectures/10-text.html",
       "/lectures/02-basic-models.html",
       "/lectures/03-eda.html",
       "/lectures/04-categorical.html",
@@ -27,6 +11,22 @@
       "/lectures/07-missing-and-weird-data.html",
       "/lectures/08-fancy-processing.html",
       "/lectures/09-interactions.html",
+      "/lectures/10-text.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/lectures/01-intro.html",
+      "/lectures/02-basic-models.html",
+      "/lectures/03-eda.html",
+      "/lectures/04-categorical.html",
+      "/lectures/05-basic-numeric.html",
+      "/lectures/06-splitting-combining.html",
+      "/lectures/07-missing-and-weird-data.html",
+      "/lectures/08-fancy-processing.html",
+      "/lectures/09-interactions.html",
+      "/lectures/10-text.html",
       "/lectures/index.html",
       "/labs/01-clean-regression.html",
       "/labs/02-basic-models.html",

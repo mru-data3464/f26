@@ -137,7 +137,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nOct 29, 2026\n10: Wrangling text\n \n\n\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4. Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5. Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6. Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7. Missing and weird data\n \n \nCompleted Oct 20\n\n\nOct 22, 2026\n8. Fancy feature transformations\n \n \nCompleted Oct 27\n\n\nOct 27, 2026\n9. Interaction Effects\n \n \nCompleted Oct 29\n\n\n\nNo matching items"
+    "text": "Date\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4. Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5. Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6. Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7. Missing and weird data\n \n \nCompleted Oct 20\n\n\nOct 22, 2026\n8. Fancy feature transformations\n \n \nCompleted Oct 27\n\n\nOct 27, 2026\n9. Interaction Effects\n \n \nCompleted Oct 29\n\n\nOct 29, 2026\n10. Wrangling text\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/09-interactions.html",
@@ -977,7 +977,7 @@
     "href": "index.html#lectures",
     "title": "DATA 3464 | Fall 2026",
     "section": "Lectures",
-    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nOct 29, 2026\n10: Wrangling text\n \n\n\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4. Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5. Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6. Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7. Missing and weird data\n \n \nCompleted Oct 20\n\n\nOct 22, 2026\n8. Fancy feature transformations\n \n \nCompleted Oct 27\n\n\nOct 27, 2026\n9. Interaction Effects\n \n \nCompleted Oct 29\n\n\n\nNo matching items"
+    "text": "Lectures\n\n\n\n\nDate\nTitle\nSlides\nDemo Code\nProgress\n\n\n\n\nSep 3, 2026\n1. Introduction\n \n \nComplete\n\n\nSep 10, 2026\n2. Basic machine learning models\n \n\nSlide 17\n\n\nSep 17, 2026\n3. Exploratory Data Analysis\n \n \nCompleted Sept 22\n\n\nSep 22, 2026\n4. Categorical data basics\n \n \nCompleted Sept 22\n\n\nSep 24, 2026\n5. Basic Numeric Transformations\n \n\nCompleted Sept 24\n\n\nSep 29, 2026\n6. Splitting and combining data\n \n \nCompleted Oct 1\n\n\nOct 1, 2026\n7. Missing and weird data\n \n \nCompleted Oct 20\n\n\nOct 22, 2026\n8. Fancy feature transformations\n \n \nCompleted Oct 27\n\n\nOct 27, 2026\n9. Interaction Effects\n \n \nCompleted Oct 29\n\n\nOct 29, 2026\n10. Wrangling text\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#labs",
@@ -1703,189 +1703,189 @@
   {
     "objectID": "lectures/10-text.html",
     "href": "lectures/10-text.html",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data\n\n\n\n\n\n\n PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/10-text.html#code",
     "href": "lectures/10-text.html#code",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "",
     "text": "Demo Notebook\n\n\n Demo Data"
   },
   {
     "objectID": "lectures/10-text.html#slides",
     "href": "lectures/10-text.html#slides",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "",
     "text": "PDF Slides\n HTML Slides"
   },
   {
     "objectID": "lectures/10-text.html#data-3464-fundamentals-of-data-processing",
     "href": "lectures/10-text.html#data-3464-fundamentals-of-data-processing",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "DATA 3464: Fundamentals of Data Processing",
     "text": "DATA 3464: Fundamentals of Data Processing\n\nWrangling text\nCharlotte Curtis October 29, 2026"
   },
   {
     "objectID": "lectures/10-text.html#topic-overview",
     "href": "lectures/10-text.html#topic-overview",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Topic overview",
     "text": "Topic overview\n\nText file formats and character encodings\nExtracting features from (un)structured text\nRegular expressions\n\nResources used:\n\nPython documentation\nJoel on Software Blog Post"
   },
   {
     "objectID": "lectures/10-text.html#what-is-a-text-file",
     "href": "lectures/10-text.html#what-is-a-text-file",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "What is a text file?",
     "text": "What is a text file?\n\n\nAny file is just a sequence of bytes\nThe file extension is somewhat meaningless\nText files contain only human-readable characters\nBinary files are everything else, including:\n\nImages\nPDFs\nWord documents*\nExecutables\n\n\n\nTechnically word docs are just zip files with XML (structured text) inside"
   },
   {
     "objectID": "lectures/10-text.html#character-encodings",
     "href": "lectures/10-text.html#character-encodings",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Character encodings",
     "text": "Character encodings\n\n\n\n\nTo properly read a text file, we need to know its encoding\nCharacter encodings define how bytes are interpreted\nTurns out this is surprisingly complicated\n\n\nQuote from PikePDF documentation"
   },
   {
     "objectID": "lectures/10-text.html#ascii",
     "href": "lectures/10-text.html#ascii",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "ASCII",
     "text": "ASCII\n\nAmerican Standard Code for Information Interchange (1963)\n7-bit encoding (128 characters)\nFirst 32 are control characters (e.g., newline, tab)\nThen punctuation, digits, uppercase letters, lowercase letters\nMost computers use 8-bit bytes, so there’s a whole 128 characters “left over”\n\n\n\nThis is a very English-centric character set!\n\n\n\n\n\n\nhttps://xkcd.com/927/"
   },
   {
     "objectID": "lectures/10-text.html#unicode-to-the-rescue",
     "href": "lectures/10-text.html#unicode-to-the-rescue",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Unicode to the rescue",
     "text": "Unicode to the rescue\n\n\nIn the 1980s things were already getting out of hand\nThe Unicode consortium published a standard in 1993 that assigned a code point to every character they could think of (297,334 as of Unicode 17.0)\nCurrently, the most common encoding is UTF-8\n\n“Unicode Transformation Format – 8-bit”\nHow can 297k characters be represented in only 8 bits?\n\nThe first 128 characters are 1 byte each and align with ASCII\nAfter that, 2-4 bytes per character are used\n\n\n\nThere’s also UTF-16 and UTF-32, but now we need to deal with endianness"
   },
   {
     "objectID": "lectures/10-text.html#line-endings",
     "href": "lectures/10-text.html#line-endings",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Line endings",
-    "text": "Line endings\n\nSay we agree to use UTF-8 👍\nA text file is still just a big long string of bytes\nHumans like things to be orderly and readable with line breaks | System | Abbreviation | Escape sequence | Code point | | ———— | ——————– | ————— | ————- | | Pre-OS X Mac | CR (carriage return) | \\r | U+000D | | Unix | LF (line feed) | \\n | U+000A | | Windows | CRLF | \\r\\n | U+000D U+000A |\nResult: chaos, but we’ve mostly settled on LF (\\n)"
+    "text": "Line endings\n\nSay we agree to use UTF-8 👍\nA text file is still just a big long string of bytes\nHumans like things to be orderly and readable with line breaks\n\n\n\n\n\n\n\n\n\nSystem\nAbbreviation\nEscape sequence\nCode point\n\n\n\n\nPre-OS X Mac\nCR (carriage return)\n\\r\nU+000D\n\n\nUnix\nLF (line feed)\n\\n\nU+000A\n\n\nWindows\nCRLF\n\\r\\n\nU+000D U+000A\n\n\n\nResult: chaos, but we’ve mostly settled on LF (\\n)"
   },
   {
     "objectID": "lectures/10-text.html#why-am-i-telling-you-all-this",
     "href": "lectures/10-text.html#why-am-i-telling-you-all-this",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Why am I telling you all this?",
     "text": "Why am I telling you all this?\n\nAs data scientists, you will need to ingest data from various sources\nYou will encounter character encoding and/or line ending issues\nYou don’t need to memorize all this, but recognizing that an issue exists will go a long ways towards fixing it\n\n\n\nExample: misadventures with “smart” quotes"
   },
   {
     "objectID": "lectures/10-text.html#portable-document-format",
     "href": "lectures/10-text.html#portable-document-format",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Portable document format",
     "text": "Portable document format\n\nThe PDF specification was first published in 1993\nPDFs are like a “digital paper” that can contain text, images, vector graphics, and more (like JavaScript, forms, and weirdly, 3D models)\nWe use them for all sorts of things because the appearance is consistent\nThey are absolutely terrible for pretty much everything else"
   },
   {
     "objectID": "lectures/10-text.html#some-useful-pdf-packages",
     "href": "lectures/10-text.html#some-useful-pdf-packages",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Some useful PDF packages:",
     "text": "Some useful PDF packages:\n\npdfminer.six: extract text and metadata\npdfplumber: built on pdfminer.six, layout aware text extraction\npikepdf: low level PDF manipulation\npymupdf: more low level PDF manipulation\nand many (many) more!\n\n\n\nDATA 3463 covers more about PDFs, including OCR. The main focus in this class is on fixing the issues and dealing with edge case"
   },
   {
     "objectID": "lectures/10-text.html#hypertext-markup-language",
     "href": "lectures/10-text.html#hypertext-markup-language",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Hypertext markup language",
     "text": "Hypertext markup language\n\nMuch simpler than PDFs, but still not great for data exchange\nMarkup languages are structured text files that define how content should be displayed, but it’s not always consistent\nMost of the internet is UTF-8 encoded HTML\nWe can try to extract text with something like BeautifulSoup\n\nAgain, more on web scraping in DATA 3463"
   },
   {
     "objectID": "lectures/10-text.html#back-to-text",
     "href": "lectures/10-text.html#back-to-text",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Back to text",
     "text": "Back to text\n\nAssuming we’ve got text from somewhere, we probably want to:\n\nOrganize it into a structured format (csv, database, json)\nIdentify specific features (postal codes, dates, names)\n\nNeed to deal with encoding issues, garbled sentences, mixed up tables, and all the other bizarre ways things go wrong\nThere is no magic flowchart for this! Lots of trying things, seeing what happens, dealing with a few edge cases at a time\n\n\n\nOne really useful tool is regular expressions :hammer:"
   },
   {
     "objectID": "lectures/10-text.html#regular-expressions",
     "href": "lectures/10-text.html#regular-expressions",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Regular expressions",
     "text": "Regular expressions\n\nThe card game?\nNote: card groupings and colours are logical where possible, but sometimes just random"
   },
   {
     "objectID": "lectures/10-text.html#basic-characters",
     "href": "lectures/10-text.html#basic-characters",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Basic characters",
     "text": "Basic characters"
   },
   {
     "objectID": "lectures/10-text.html#word-characters",
     "href": "lectures/10-text.html#word-characters",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "“Word” characters",
     "text": "“Word” characters"
   },
   {
     "objectID": "lectures/10-text.html#whitespace",
     "href": "lectures/10-text.html#whitespace",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Whitespace",
     "text": "Whitespace"
   },
   {
     "objectID": "lectures/10-text.html#quantifiers",
     "href": "lectures/10-text.html#quantifiers",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Quantifiers",
     "text": "Quantifiers"
   },
   {
     "objectID": "lectures/10-text.html#brackets-and-braces",
     "href": "lectures/10-text.html#brackets-and-braces",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Brackets and braces",
     "text": "Brackets and braces"
   },
   {
     "objectID": "lectures/10-text.html#range-and-boundary",
     "href": "lectures/10-text.html#range-and-boundary",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Range and boundary",
     "text": "Range and boundary"
   },
   {
     "objectID": "lectures/10-text.html#start-not-and-end",
     "href": "lectures/10-text.html#start-not-and-end",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Start (not) and end",
     "text": "Start (not) and end"
   },
   {
     "objectID": "lectures/10-text.html#capturing-groups",
     "href": "lectures/10-text.html#capturing-groups",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Capturing groups",
     "text": "Capturing groups\n\nSeems weird that (?:...) is so verbose, why not just (...)?\nEven more common than grouping is capturing: (...)\nThis lets us save part of the match for later\n\nExamples:\n\nextract the dollar amount from a $$ string\nextract the area code from a phone number\nextract the domain from an email address"
   },
   {
     "objectID": "lectures/10-text.html#regex-tools",
     "href": "lectures/10-text.html#regex-tools",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Regex tools",
     "text": "Regex tools\n\nRegex101 for quickly testing, debugging, and learning\nre module for using regexes in Python\ngrep for searching through files on the command line\nsed for doing regex-based find and replace on the command line\nRegex the card game for learning and fun?"
   },
   {
     "objectID": "lectures/10-text.html#case-study-cloudflare-outage",
     "href": "lectures/10-text.html#case-study-cloudflare-outage",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Case study: Cloudflare outage",
     "text": "Case study: Cloudflare outage\nIn July 2019, a poorly formed regex in Cloudflare’s firewall rules caused CPU usage to spike and websites to come crashing down worldwide. The cause? This regex:\n(?:(?:\\\"|'|\\]|\\}|\\\\|\\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\\`|\\-|\\+)+[)]*;?((?:\\s|-|~|!|{}|\\|\\||\\+)*.*(?:.*=.*)))\n\nRegex engines perform backtracking to check for multiple match possibilities\nThis particular string led to catastrophic backtracking\nMoral of the story: test carefully, both positive and negative"
   },
   {
     "objectID": "lectures/10-text.html#coming-up-next",
     "href": "lectures/10-text.html#coming-up-next",
-    "title": "10: Wrangling text",
+    "title": "10. Wrangling text",
     "section": "Coming up next",
     "text": "Coming up next\n\nAssignment 3: curate a dataset\nA primer on data cards\nIntro to signals and images"
   },

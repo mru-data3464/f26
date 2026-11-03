@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-10-29">
 
-<title>10: Wrangling text – DATA 3464 | Fall 2026</title>
+<title>10. Wrangling text – DATA 3464 | Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">10: Wrangling text</h1>
+<h1 class="title">10. Wrangling text</h1>
 </div>
 
 
@@ -322,7 +322,43 @@ Quote from <a href="https://pikepdf.readthedocs.io/en/latest/topics/encoding.htm
 <ul>
 <li><p>Say we agree to use UTF-8 👍</p></li>
 <li><p>A text file is still just a big long string of <strong>bytes</strong></p></li>
-<li><p>Humans like things to be orderly and readable with <strong>line breaks</strong> | System | Abbreviation | Escape sequence | Code point | | ———— | ——————– | ————— | ————- | | Pre-OS X Mac | CR (carriage return) | <code>\r</code> | U+000D | | Unix | LF (line feed) | <code>\n</code> | U+000A | | Windows | CRLF | <code>\r\n</code> | U+000D U+000A |</p></li>
+<li><p>Humans like things to be orderly and readable with <strong>line breaks</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 33%">
+<col style="width: 25%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Abbreviation</th>
+<th>Escape sequence</th>
+<th>Code point</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pre-OS X Mac</td>
+<td>CR (carriage return)</td>
+<td><code>\r</code></td>
+<td>U+000D</td>
+</tr>
+<tr class="even">
+<td>Unix</td>
+<td>LF (line feed)</td>
+<td><code>\n</code></td>
+<td>U+000A</td>
+</tr>
+<tr class="odd">
+<td>Windows</td>
+<td>CRLF</td>
+<td><code>\r\n</code></td>
+<td>U+000D U+000A</td>
+</tr>
+</tbody>
+</table></li>
 <li><p>Result: chaos, but we’ve mostly settled on LF (<code>\n</code>)</p></li>
 </ul>
 </section>

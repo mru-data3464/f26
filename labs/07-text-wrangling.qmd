@@ -1,0 +1,57 @@
+---
+title: "7. Wrangling Text"
+date: 2026-11-04
+due: "November 11, 2026"
+draft: true
+---
+
+Lab submission due on {{< meta due >}}.
+
+## Objective
+Learn a bit about:
+- Text files that don't magically import
+- Different kinds of text encodings
+- Reading and using documentation
+
+## Setup
+Create a new directory named `lab07` in your labs repo. Add to it:
+- [CPI_MONTHLY.csv](_07-starter/CPI_MONTHLY.csv)
+- [cpp-cntrbtn-rts-mxmms-xmptns-en.csv](_07-starter/cpp-cntrbtn-rts-mxmms-xmptns-en.csv)
+
+## Your task
+This activity was inspired in the Winter 2026 semester by a friend who complained that Canada Pension Plan (CPP) contribution maximums have been outpacing inflation (yes, this is very much a first world problem). The [CPP website](https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/canada-pension-plan-cpp/cpp-contribution-rates-maximums-exemptions.html) provides information in tabular form, but it's nice to interpret it visually.
+
+To create a nice pretty plot, I downloaded the CSV of contribution maximums from the CPP website, and the consumer price index (CPI) data from the [Bank of Canada](https://www.bankofcanada.ca/rates/price-indexes/cpi/) to compare to inflation. Conveniently, these files both have some text oddities that make Pandas complain if you just try to do the usual `pd.read_csv` with default parameters.
+
+:::{.callout}
+
+Research question: has the maximum CPP contribution been increasing faster than inflation since 2010?
+
+:::
+
+## Steps
+1. Using Pandas, try to load both CSVs as dataframes. What happens?
+2. Referring to the [`read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) documentation, try to find the options that allow you to import the files. You can look at the CSVs in a text editor, but **do not edit them** — your goal is to find a programmatic fix.
+3. After loading the files, ensure the date fields are actual `DateTime` objects and not strings.
+4. Make a plot that compares:
+    - The `Maximum annual employee and employer contribution` vs time
+    - The 2010 contribution value, adjusted for inflation
+
+    :::{.callout-tip}
+
+    You'll need to calculate the inflation-adjusted value for every year since 2010, considering compounding inflation. Since we have monthly CPI values, you can compound monthly, i.e.:
+
+    $$A = P(1 + \frac{r}{12})$$
+
+    For example, at the end of one month at 2.1\% inflation, $1000 would become:
+
+    $$1001.75 = 1000(1 + \frac{0.021}{12})$$
+
+    It doesn't seem like a lot, but if you apply this repeatedly month after month, that \$1000 can certainly grow.
+
+    :::
+
+5. Answer the research question! Based on your graph, have the annual contributions risen consistent with inflation, or are 
+
+## Submit
+As usual, commit and push your changes so I can take a peek and give you feedback (and that 1% completion grade).

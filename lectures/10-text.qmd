@@ -6,7 +6,8 @@ theme: marp-mru
 paginate: true
 headingDivider: 2
 demo-code: "/demo_code/10_text/text_demo.ipynb"
-leftoff: ""
+demo-data: "/demo_code/10_text/tbf-written-responses-to-the-alberta-pension-plan-online-survey.pdf"
+leftoff: "Slide 8"
 ---
 
 ::: {.column-margin}

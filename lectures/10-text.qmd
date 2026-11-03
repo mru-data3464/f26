@@ -1,5 +1,5 @@
 ---
-title: "10: Wrangling text"
+title: "10. Wrangling text"
 date: 2026-10-29
 marp: true
 theme: marp-mru
@@ -103,6 +103,7 @@ October 29, 2026
 * Say we agree to use UTF-8 👍
 * A text file is still just a big long string of **bytes**
 * Humans like things to be orderly and readable with **line breaks**
+
     | System       | Abbreviation         | Escape sequence | Code point    |
     | ------------ | -------------------- | --------------- | ------------- |
     | Pre-OS X Mac | CR (carriage return) | `\r`            | U+000D        |

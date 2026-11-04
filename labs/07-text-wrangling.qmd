@@ -36,7 +36,7 @@ To answer this question, I downloaded the CSV of contribution maximums from the 
     - The `Maximum annual employee and employer contribution` vs year
     - The 2010 contribution value vs year, adjusted for inflation
 
-    :::{.callout-tip}
+    ::: {.callout-tip}
 
     You'll need to calculate the inflation-adjusted value for every year since 2010, considering compounding inflation. Since we have monthly CPI values, you can compound monthly, i.e.:
 

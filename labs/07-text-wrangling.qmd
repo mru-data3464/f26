@@ -36,19 +36,19 @@ To answer this question, I downloaded the CSV of contribution maximums from the 
     - The `Maximum annual employee and employer contribution` vs year
     - The 2010 contribution value vs year, adjusted for inflation
 
-    ::: {.callout-tip}
+::: {.callout-tip}
 
-    You'll need to calculate the inflation-adjusted value for every year since 2010, considering compounding inflation. Since we have monthly CPI values, you can compound monthly, i.e.:
+You'll need to calculate the inflation-adjusted value for every year since 2010, considering compounding inflation. Since we have monthly CPI values, you can compound monthly, i.e.:
 
-    $$A = P(1 + \frac{r}{12})$$
+$$A = P(1 + \frac{r}{12})$$
 
-    For example, at the end of one month at 2.1\% inflation, $1000 would become:
+For example, at the end of one month at 2.1\% inflation, $1000 would become:
 
-    $$1001.75 = 1000(1 + \frac{0.021}{12})$$
+$$1001.75 = 1000(1 + \frac{0.021}{12})$$
 
-    It doesn't seem like a lot, but if you apply this repeatedly month after month, that \$1000 can certainly grow.
+It doesn't seem like a lot, but if you apply this repeatedly month after month, that \$1000 can certainly grow.
 
-    :::
+:::
 
 5. Answer the research question: Based on your graph, have the annual contributions risen consistent with inflation, or are high income earners contributing more to the CPP than in 2010?
 

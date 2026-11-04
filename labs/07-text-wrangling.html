@@ -244,22 +244,34 @@ window.Quarto = {
 <section id="steps" class="level2">
 <h2 class="anchored" data-anchor-id="steps">Steps</h2>
 <ol type="1">
-<li><p>Using Pandas, try to load both CSVs as dataframes. What happens?</p></li>
-<li><p>Referring to the <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code>read_csv</code></a> documentation, try to find the options that allow you to import the files. You can look at the CSVs in a text editor, but <strong>do not edit them</strong> — your goal is to find a programmatic fix.</p></li>
-<li><p>After loading the files, ensure the date fields are actual <code>DateTime</code> objects and not strings.</p></li>
-<li><p>Make a plot that shows:</p>
+<li>Using Pandas, try to load both CSVs as dataframes. What happens?</li>
+<li>Referring to the <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code>read_csv</code></a> documentation, try to find the options that allow you to import the files. You can look at the CSVs in a text editor, but <strong>do not edit them</strong> — your goal is to find a programmatic fix.</li>
+<li>After loading the files, ensure the date fields are actual <code>DateTime</code> objects and not strings.</li>
+<li>Make a plot that shows:
 <ul>
 <li>The <code>Maximum annual employee and employer contribution</code> vs year</li>
 <li>The 2010 contribution value vs year, adjusted for inflation</li>
-</ul>
-<p>::: {.callout-tip}</p>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You’ll need to calculate the inflation-adjusted value for every year since 2010, considering compounding inflation. Since we have monthly CPI values, you can compound monthly, i.e.:</p>
 <p><span class="math display">\[A = P(1 + \frac{r}{12})\]</span></p>
 <p>For example, at the end of one month at 2.1% inflation, $1000 would become:</p>
 <p><span class="math display">\[1001.75 = 1000(1 + \frac{0.021}{12})\]</span></p>
 <p>It doesn’t seem like a lot, but if you apply this repeatedly month after month, that $1000 can certainly grow.</p>
-<p>:::</p></li>
-<li><p>Answer the research question: Based on your graph, have the annual contributions risen consistent with inflation, or are high income earners contributing more to the CPP than in 2010?</p></li>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Answer the research question: Based on your graph, have the annual contributions risen consistent with inflation, or are high income earners contributing more to the CPP than in 2010?</li>
 </ol>
 </section>
 <section id="submit" class="level2">

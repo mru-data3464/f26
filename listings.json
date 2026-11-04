@@ -15,6 +15,13 @@
     ]
   },
   {
+    "listing": "/assignments/index.html",
+    "items": [
+      "/assignments/01-simple-model.html",
+      "/assignments/02-eda.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/lectures/01-intro.html",
@@ -34,14 +41,8 @@
       "/labs/04-eda.html",
       "/labs/05-missing-outliers.html",
       "/labs/06-fancy-encoding.html",
+      "/labs/07-text-wrangling.html",
       "/labs/index.html"
-    ]
-  },
-  {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/01-simple-model.html",
-      "/assignments/02-eda.html"
     ]
   },
   {
@@ -52,7 +53,8 @@
       "/labs/03-categorical.html",
       "/labs/04-eda.html",
       "/labs/05-missing-outliers.html",
-      "/labs/06-fancy-encoding.html"
+      "/labs/06-fancy-encoding.html",
+      "/labs/07-text-wrangling.html"
     ]
   }
 ]

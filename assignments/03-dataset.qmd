@@ -75,13 +75,15 @@ Data cards are a structured way of documenting datasets. You can go a little [ov
 However you choose to process your data, include your code in your repo. This can by Python or Bash scripts, notebooks, etc. **No marks will be awarded for using an LLM to extract data directly**.
 
 ### Presentation
-The last two lectures have been reserved for showing off your dataset. Prepare an 8-10 minute presentation in the format of your choice (PDF, PPTX, Google Slides, etc) that includes the following information:
+The last ~~two~~ lecture has been reserved for showing off your dataset. Prepare a ~~8-10~~ **5-6 minute**[^1] presentation in the format of your choice (PDF, PPTX, Google Slides, etc) that includes the following information:
 - A clear statement of your research question and dataset goals
 - Examples of your data
 - How you collected the data
 - How you processed and labelled the data
 - Which parts were the most challenging?
 - What further work would you do if you had more time?
+
+[^1]: This is, unfortunately, a very short presentation! I mistakenly thought we had two lectures in the last week of classes.
 
 Your presentation slides also serve as the "executive summary" of your work.
 

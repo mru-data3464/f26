@@ -1,8 +1,7 @@
 ---
-title: "10. Bash scripting and data cards"
+title: "11. Bash scripting and data cards"
 date: 2026-11-12
 marp: true
-draft: true
 theme: marp-mru
 paginate: true
 headingDivider: 2

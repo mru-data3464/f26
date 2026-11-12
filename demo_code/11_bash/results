@@ -1,0 +1,3 @@
+  -b, --byte-offset         print the byte offset with output lines
+  -o, --only-matching       show only the part of a line matching PATTERN
+  -u, --unix-byte-offsets   report offsets as if CRs were not there

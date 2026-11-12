@@ -5,6 +5,8 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
+demo_code: "demo_code/11_bash"
+leftoff: "Completed November 12"
 ---
 
 <!-- _class: title_slide -->

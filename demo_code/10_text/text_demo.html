@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">256</span>):</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        f.write(b.to_bytes())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="47fd1fa9" class="cell" data-execution_count="6">
+<div id="47fd1fa9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read it back</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"bytes.txt"</span>, <span class="st">"rb"</span>) <span class="im">as</span> f:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    all_bytes <span class="op">=</span> f.read()</span>
@@ -467,38 +467,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 255 0b11111111</code></pre>
 </div>
 </div>
-<div id="17406e04" class="cell" data-execution_count="7">
+<div id="17406e04" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just the printable character range</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>printable <span class="op">=</span> <span class="bu">range</span>(<span class="dv">32</span>, <span class="dv">127</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"printable.txt"</span>, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b <span class="kw">in</span> printable:</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        f.write(b.to_bytes())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1d71a801" class="cell" data-execution_count="17">
+<div id="1d71a801" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> [<span class="st">"-aardvark"</span>, <span class="st">"Airplane"</span>, <span class="st">"big"</span>, <span class="st">"bag"</span>, <span class="st">"Cat"</span>, <span class="st">"d"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>test.sort()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>['-aardvark', 'Airplane', 'Cat', 'bag', 'big', 'd']</code></pre>
 </div>
 </div>
-<div id="f6648539" class="cell" data-execution_count="16">
+<div id="f6648539" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">5</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>test.sort()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>[1, 2, 5, 10]</code></pre>
 </div>
 </div>
-<div id="95833b20" class="cell" data-execution_count="11">
+<div id="95833b20" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> [<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"5"</span>, <span class="st">"10"</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>test.sort()</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>['1', '10', '2', '5']</code></pre>
 </div>
 </div>
-<div id="166ba552" class="cell" data-execution_count="25">
+<div id="166ba552" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating bytes</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">0</span>).to_bytes())</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"_"</span>)</span>
@@ -510,7 +510,7 @@ _
 0b1001000 0b1001001 </code></pre>
 </div>
 </div>
-<div id="e6b2937a" class="cell" data-execution_count="26">
+<div id="e6b2937a" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Files in different encodings</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"utf8.txt"</span>, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>, ) <span class="im">as</span> f:</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"ABC 🔥"</span>)</span>
@@ -518,7 +518,7 @@ _
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"utf16.txt"</span>, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-16"</span>) <span class="im">as</span> f:</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"ABC 🔥"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="20c40b55" class="cell" data-execution_count="27">
+<div id="20c40b55" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>ls <span class="op">-</span>l <span class="op">*</span>.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Volume in drive C is Windows
@@ -529,15 +529,17 @@ _
 
  Directory of c:\Users\ccurtis\Documents\f26\demo_code\10_text
 
-11/03/2026  10:22 AM               256 bytes.txt
-11/03/2026  10:27 AM                95 printable.txt
-11/03/2026  10:47 AM                14 utf16.txt
-11/03/2026  10:47 AM                 8 utf8.txt
-               4 File(s)            373 bytes
-               0 Dir(s)  148,750,057,472 bytes free</code></pre>
+11/10/2026  10:44 AM               256 bytes.txt
+11/03/2026  11:06 AM                92 lineendings.txt
+11/10/2026  10:44 AM                95 printable.txt
+11/03/2026  10:53 AM                 5 quote.txt
+11/10/2026  10:44 AM                14 utf16.txt
+11/10/2026  10:44 AM                 8 utf8.txt
+               6 File(s)            470 bytes
+               0 Dir(s)  142,779,285,504 bytes free</code></pre>
 </div>
 </div>
-<div id="8e7456b5" class="cell" data-execution_count="28">
+<div id="8e7456b5" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read back the bytes</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Utf-8:"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"utf8.txt"</span>, <span class="st">"rb"</span>) <span class="im">as</span> f:</span>
@@ -577,7 +579,7 @@ b'%'
 b'\xdd'</code></pre>
 </div>
 </div>
-<div id="884b1b9f" class="cell" data-execution_count="31">
+<div id="884b1b9f" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What happens if we use the wrong encoding?</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"utf16.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f.read())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -585,7 +587,7 @@ b'\xdd'</code></pre>
 <pre><code>ÿþABC =Ø%Ý</code></pre>
 </div>
 </div>
-<div id="7ab0500b" class="cell" data-execution_count="36">
+<div id="7ab0500b" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> codecs</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(codecs.BOM_BE)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(codecs.BOM_LE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -594,31 +596,31 @@ b'\xdd'</code></pre>
 b'\xff\xfe'</code></pre>
 </div>
 </div>
-<div id="fe8afa18" class="cell" data-execution_count="38">
+<div id="fe8afa18" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"quote.txt"</span>, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"' ’"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="b90837d7" class="cell" data-execution_count="39">
+<div id="b90837d7" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'quote.txt'</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"cp1252"</span>) <span class="im">as</span> f:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f.read())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>' â€™</code></pre>
 </div>
 </div>
-<div id="5fa93e95" class="cell" data-execution_count="48">
+<div id="5fa93e95" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"lineendings.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"this is a line</span><span class="ch">\n</span><span class="st">This is another line</span><span class="ch">\n</span><span class="st">This is after a carriage return</span><span class="ch">\n</span><span class="st">This is windows style"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="f0066df0" class="cell" data-execution_count="45">
+<div id="f0066df0" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">"â€œnoâ€"</span>.encode(<span class="st">"cp1252"</span>).decode(<span class="st">"utf-8"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">UnicodeDecodeError</span>                        Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[45]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-fg">"â€œnoâ€ "</span>.encode(<span class="ansi-yellow-fg">"cp1252"</span>).decode(<span class="ansi-yellow-fg">"utf-8"</span>)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[16]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-fg">"â€œnoâ€"</span>.encode(<span class="ansi-yellow-fg">"cp1252"</span>).decode(<span class="ansi-yellow-fg">"utf-8"</span>)
 
-<span class="ansi-red-fg">UnicodeDecodeError</span>: 'utf-8' codec can't decode bytes in position 5-6: invalid continuation byte</pre>
+<span class="ansi-red-fg">UnicodeDecodeError</span>: 'utf-8' codec can't decode bytes in position 5-6: unexpected end of data</pre>
 </div>
 </div>
 </div>
@@ -627,7 +629,7 @@ b'\xff\xfe'</code></pre>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f.read())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Downloaded from <a href="https://open.alberta.ca/publications/written-responses-to-the-alberta-pension-plan-online-survey">here</a> on March 3, 2026.</p>
-<div id="27a402ec" class="cell" data-execution_count="49">
+<div id="27a402ec" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install pdfplumber pikepdf pdfminer.six</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collecting pdfplumber
@@ -723,11 +725,11 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 [notice] To update, run: python.exe -m pip install --upgrade pip</code></pre>
 </div>
 </div>
-<div id="2dcda056" class="cell" data-execution_count="50">
+<div id="2dcda056" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pdfplumber</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> pdfplumber.<span class="bu">open</span>(<span class="st">"tbf-written-responses-to-the-alberta-pension-plan-online-survey.pdf"</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> pdf.pages[<span class="dv">0</span>]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> pdf.pages[<span class="dv">5</span>]</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> page.extract_table()</span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> p1:</span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row[<span class="dv">1</span>])</span>
@@ -737,35 +739,39 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(funky)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>V
-Q15FreeText
+Do NOT go through with pulling Albertans out of
+CPP. Your survey is skewed to assume we support
+this idea. We do not.
+What are going to be the management, and
+trading fees of fund managers of the APP?
 
 
 
 
+The panel should consider scrapping the Alberta
+Pension Plan idea and staying in CPP. What a
+waste of government resource. Foolishness!
+
+Supplemental medical benefits eg improved
+prescription coverage or out of province
+coverage.
 
 
 
+Consider NOT leaving the CPP!
 
 
-Calculation seems far too high compared to the
-actual worth of the CPP. We are counting our
-chickens before they hatch and shouldn't be
-basing all the numbers off $344 billion.
-Ensure that the interests of Albertans are
-protected through the pension migration.
 
-According to the Fair Deal Panel, an Alberta
-Pension Plan did not have support from Albertans
-and they still recommended it. Why arenâ€™t
-these Panels listening to Albertans? Will this new
-Panel also ignore what Albertans want.
-N/A
+Invest in businessâ€™s that are benefiting Alberta.
 
-According to the Fair Deal Panel, an Alberta
-Pension Plan did not have support from Albertans
-and they still recommended it. Why arenâ€™t
-these Panels listening to Albertans? Will this new
-Panel also ignore what Albertans want.</code></pre>
+Make sure they are managed away from the
+provincial government. Meaning the Alberta
+government cannot pass legislation to tell the APP
+how to manage the assets and the Alberta
+government does not manage in any way, even at
+arms' length the assets. It is done independently
+
+</code></pre>
 </div>
 </div>
 <div id="fef73508" class="cell" data-execution_count="51">
@@ -790,97 +796,149 @@ Decoded with windows encoding:
 Youâ€™re crazy!</code></pre>
 </div>
 </div>
-<div id="4215ca11" class="cell">
+<div id="4215ca11" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> <span class="st">'"$20,000+"'</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>numbers.replace(<span class="st">"$"</span>,<span class="st">""</span>).replace(<span class="st">','</span>,<span class="st">""</span>).replace(<span class="st">'"'</span>,<span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>'20000+'</code></pre>
 </div>
-<div id="607cadd4" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># replace anything in [] with empty space</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>re.sub(<span class="st">'[$,"+]'</span>, <span class="st">""</span>, numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="607cadd4" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># replace anything in [] with empty space</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>re.sub(<span class="st">'[$,"+]'</span>, <span class="st">""</span>, numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>'20000'</code></pre>
+</div>
+</div>
+<div id="ac45d98a" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>re.findall(<span class="vs">r"</span><span class="ch">\$</span><span class="kw">(</span><span class="dv">\s</span><span class="op">?</span><span class="dv">\d</span><span class="op">+</span><span class="vs">,</span><span class="op">?</span><span class="dv">\d</span><span class="op">+</span><span class="kw">)</span><span class="vs">"</span>, numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>['20,000']</code></pre>
+</div>
 </div>
 <div id="99382d7c" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from cp1252 to utf8</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>funky.encode(<span class="st">"cp1252"</span>).decode(<span class="st">"utf8"</span>).replace(<span class="st">"</span><span class="ch">\u2019</span><span class="st">"</span>,<span class="st">"'"</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>funky.encode(<span class="st">"ascii"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from cp1252 to utf8</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>funky.encode(<span class="st">"cp1252"</span>).decode(<span class="st">"utf8"</span>).replace(<span class="st">"</span><span class="ch">\u2019</span><span class="st">"</span>,<span class="st">"'"</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>funky.encode(<span class="st">"ascii"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="335684b7" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pikepdf</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> pikepdf.<span class="bu">open</span>(<span class="st">"tbf-written-responses-to-the-alberta-pension-plan-online-survey.pdf"</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> pdf.pages[<span class="dv">0</span>]</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>page.contents_coalesce()</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(page.Contents.read_bytes().decode())</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get form xobject</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(page.Resources.XObject.Fm0.read_bytes().decode())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pikepdf</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> pikepdf.<span class="bu">open</span>(<span class="st">"tbf-written-responses-to-the-alberta-pension-plan-online-survey.pdf"</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> pdf.pages[<span class="dv">0</span>]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>page.contents_coalesce()</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(page.Contents.read_bytes().decode())</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get form xobject</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(page.Resources.XObject.Fm0.read_bytes().decode())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="more-regex-adventures" class="level1">
 <h1>More regex adventures</h1>
-<div id="2560454b" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># raw string demo</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print("newline\nnext line")</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(r"newline\nnext line")</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>test_string <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="st">$123</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="st">$10,000</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="st">$1,000,000.00</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="st">$36.50</span></span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="st">1234</span></span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="st">1,000,000</span></span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="st">$no numbers at all</span></span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co"># python's "raw" string means we don't have to double escape things</span></span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> re.finditer(<span class="vs">r"</span><span class="ch">\$</span><span class="kw">(</span><span class="dv">\d</span><span class="op">+</span><span class="pp">[,</span><span class="dv">\d</span><span class="pp">{3}]</span><span class="op">*</span>(?:<span class="ch">\.</span><span class="dv">\d\d</span>)<span class="op">?</span><span class="kw">)</span><span class="vs">"</span>, test_string)</span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> matches:</span>
-<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(m)</span>
-<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(m.group(<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2560454b" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># raw string demo</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\t</span><span class="st">newline</span><span class="ch">\u2051\n</span><span class="st">next line"</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\\</span><span class="st">tnewline</span><span class="ch">\\</span><span class="st">u2051</span><span class="ch">\\</span><span class="st">nnext line"</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="vs">r"C:</span><span class="er">\</span><span class="vs">Users</span><span class="er">\</span><span class="vs">ccurtis</span><span class="dv">\D</span><span class="vs">ocuments</span><span class="ch">\f</span><span class="vs">26</span><span class="dv">\d</span><span class="vs">emo_code</span><span class="ch">\10</span><span class="vs">_text"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="vs">r"newline</span><span class="ch">\n</span><span class="vs">next line"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    newline⁑
+next line
+\tnewline\u2051\nnext line
+C:\Users\ccurtis\Documents\f26\demo_code\10_text
+newline\nnext line</code></pre>
 </div>
-<div id="e4680866" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>phone_numbers <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="st">a bunch of things</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="st">some of them are phone numbers: 555-555-1234</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="st">Sometimes they don't have the hyphen: 123 345 1234</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="st">I don't want to match any 3 digits like 404 or 555</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> re.finditer(<span class="vs">r"</span><span class="kw">(</span><span class="dv">\d</span><span class="op">{3}</span><span class="kw">)</span><span class="pp">[-</span><span class="dv">\s</span><span class="pp">]</span><span class="dv">\d</span><span class="op">{3}</span><span class="pp">[-</span><span class="dv">\s</span><span class="pp">]</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">"</span>, phone_numbers)</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>area_codes <span class="op">=</span> []</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> matches:</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(m, m.group(<span class="dv">1</span>))</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    area_codes.append(<span class="bu">int</span>(m.group(<span class="dv">1</span>)))</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(area_codes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="3c6c57db" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>emails <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="st">someone@mtroyal.ca</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="st">else@mru.ca</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="st">maybe@gmail.com</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="st">some_people_still_use@hotmail.com</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="st">assume it's not just emails</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="st">maybe there's a stray @symbol</span></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="st">something@mtroyal</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># goal: retrieve usernames and domain from emails</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co"># might be simplifying email rules a bit</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> re.finditer(<span class="vs">r"</span><span class="kw">(</span><span class="pp">[a-zA-Z]</span><span class="dv">\w</span><span class="op">*</span><span class="kw">)</span><span class="ch">\@</span><span class="kw">(</span><span class="dv">\w</span><span class="op">+</span><span class="ch">\.</span><span class="pp">[a-z]</span><span class="op">+</span><span class="kw">)</span><span class="vs">"</span>, emails)</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>usernames <span class="op">=</span> []</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>domains <span class="op">=</span> []</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> matches:</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>    usernames.append(m.group(<span class="dv">1</span>))</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>    domains.append(m.group(<span class="dv">2</span>))</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(usernames)</span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(domains)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="97224b90" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>test_string <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="st">$123</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="st">$10,000</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="st">$1,000,000.00</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="st">$36.50</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="st">1234</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="st">1,000,000</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="st">$no numbers at all</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co"># python's "raw" string means we don't have to double escape things</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> re.finditer(<span class="vs">r"</span><span class="ch">\$</span><span class="kw">(</span><span class="dv">\d</span><span class="op">+</span><span class="pp">[,</span><span class="dv">\d</span><span class="pp">{3}]</span><span class="op">*</span><span class="kw">)</span>(?:<span class="ch">\.</span><span class="kw">(</span><span class="dv">\d</span><span class="op">{2}</span><span class="kw">)</span>)<span class="op">?</span><span class="vs">"</span>, test_string)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> matches:</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(m)</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(m.group(<span class="dv">1</span>), m.group(<span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;re.Match object; span=(1, 5), match='$123'&gt;
+123 None
+&lt;re.Match object; span=(6, 13), match='$10,000'&gt;
+10,000 None
+&lt;re.Match object; span=(14, 27), match='$1,000,000.00'&gt;
+1,000,000 00
+&lt;re.Match object; span=(28, 34), match='$36.50'&gt;
+36 50</code></pre>
 </div>
-<div id="fad8d192" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pwd</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd ..</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pwd</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># absolute path</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd <span class="op">~</span>\Documents<span class="op">\</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="e4680866" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>phone_numbers <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="st">a bunch of things</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="st">some of them are phone numbers: 555-555-1234</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="st">Sometimes they don't have the hyphen: 123 345 1234</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="st">I don't want to match any 3 digits like 404 or 555</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> re.finditer(<span class="vs">r"</span><span class="kw">(</span><span class="dv">\d</span><span class="op">{3}</span><span class="kw">)</span><span class="pp">[-</span><span class="dv">\s</span><span class="pp">]</span><span class="dv">\d</span><span class="op">{3}</span><span class="pp">[-</span><span class="dv">\s</span><span class="pp">]</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">"</span>, phone_numbers)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>area_codes <span class="op">=</span> []</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> matches:</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(m, m.group(<span class="dv">1</span>))</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    area_codes.append(<span class="bu">int</span>(m.group(<span class="dv">1</span>)))</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(area_codes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;re.Match object; span=(51, 63), match='555-555-1234'&gt; 555
+&lt;re.Match object; span=(102, 114), match='123 345 1234'&gt; 123
+[555, 123]</code></pre>
+</div>
+</div>
+<div id="3c6c57db" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>emails <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="st">someone@mtroyal.ca</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="st">else@mru.ca</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="st">maybe@gmail.com</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="st">some_people_still_use@hotmail.com</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="st">assume it's not just emails</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="st">maybe there's a stray @symbol</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="st">something@mtroyal</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># goal: retrieve usernames and domain from emails</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># might be simplifying email rules a bit</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> re.finditer(<span class="vs">r"</span><span class="kw">(</span><span class="pp">[a-zA-Z]</span><span class="dv">\w</span><span class="op">*</span><span class="kw">)</span><span class="ch">\@</span><span class="kw">(</span><span class="dv">\w</span><span class="op">+</span><span class="ch">\.</span><span class="pp">[a-z]</span><span class="op">+</span><span class="kw">)</span><span class="vs">"</span>, emails)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>usernames <span class="op">=</span> []</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>domains <span class="op">=</span> []</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> matches:</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>    usernames.append(m.group(<span class="dv">1</span>))</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>    domains.append(m.group(<span class="dv">2</span>))</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(usernames)</span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(domains)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['someone', 'else', 'maybe', 'some_people_still_use']
+['mtroyal.ca', 'mru.ca', 'gmail.com', 'hotmail.com']</code></pre>
+</div>
+</div>
+<div id="fad8d192" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>test_string <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="st">random_state = 42</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="st">random_state=1234</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="st">random_state=0123</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="st">something=56</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>matches <span class="op">=</span> re.finditer(<span class="vs">r"random_state</span><span class="dv">\s</span><span class="op">*</span><span class="vs">=</span><span class="dv">\s</span><span class="op">*</span><span class="kw">(</span><span class="dv">\d</span><span class="op">+</span><span class="kw">)</span><span class="vs">"</span>, test_string)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> []</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> matches:</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    nums.append(<span class="bu">int</span>(m.group(<span class="dv">1</span>)))</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>nums</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>[42, 1234, 123]</code></pre>
+</div>
 </div>
 
 

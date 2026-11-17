@@ -5,8 +5,8 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-demo_code: "demo_code/12_time/timeseries_example.ipynb"
-demo_data: "demo_code/12_time/glenmore_traffic.csv"
+demo-code: "demo_code/12_time/timeseries_example.ipynb"
+demo-data: "demo_code/12_time/glenmore_traffic.csv"
 leftoff: "Completed November 17"
 ---
 

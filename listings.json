@@ -1,13 +1,5 @@
 [
   {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/01-simple-model.html",
-      "/assignments/02-eda.html",
-      "/assignments/03-dataset.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/lectures/01-intro.html",
@@ -21,6 +13,8 @@
       "/lectures/09-interactions.html",
       "/lectures/10-text.html",
       "/lectures/11-bash-cards.html",
+      "/lectures/12-timeseries.html",
+      "/lectures/13-signals-audio.html",
       "/lectures/index.html",
       "/labs/01-clean-regression.html",
       "/labs/02-basic-models.html",
@@ -29,7 +23,16 @@
       "/labs/05-missing-outliers.html",
       "/labs/06-fancy-encoding.html",
       "/labs/07-text-wrangling.html",
+      "/labs/08-bash.html",
       "/labs/index.html"
+    ]
+  },
+  {
+    "listing": "/assignments/index.html",
+    "items": [
+      "/assignments/01-simple-model.html",
+      "/assignments/02-eda.html",
+      "/assignments/03-dataset.html"
     ]
   },
   {
@@ -41,7 +44,8 @@
       "/labs/04-eda.html",
       "/labs/05-missing-outliers.html",
       "/labs/06-fancy-encoding.html",
-      "/labs/07-text-wrangling.html"
+      "/labs/07-text-wrangling.html",
+      "/labs/08-bash.html"
     ]
   },
   {
@@ -57,7 +61,9 @@
       "/lectures/08-fancy-processing.html",
       "/lectures/09-interactions.html",
       "/lectures/10-text.html",
-      "/lectures/11-bash-cards.html"
+      "/lectures/11-bash-cards.html",
+      "/lectures/12-timeseries.html",
+      "/lectures/13-signals-audio.html"
     ]
   }
 ]

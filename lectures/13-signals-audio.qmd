@@ -5,7 +5,7 @@ marp: true
 theme: marp-mru
 paginate: true
 headingDivider: 2
-demo_code: "demo_code/13_signals/signals_1D.ipynb"
+demo-code: "demo_code/13_signals/signals_1D.ipynb"
 leftoff: "Slide 4"
 ---
 

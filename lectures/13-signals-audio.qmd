@@ -6,7 +6,7 @@ theme: marp-mru
 paginate: true
 headingDivider: 2
 demo-code: "demo_code/13_signals/signals_1D.ipynb"
-leftoff: "Slide 4"
+leftoff: "Completed November 19"
 ---
 
 ::: {.column-margin}

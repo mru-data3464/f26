@@ -4,12 +4,20 @@ date: 2026-11-09
 due: "Friday, November 27 at 5 pm"
 ---
 
-
-Due date: {{< meta due >}}, with presentations (and the second written test) the following week.
+Due date: {{< meta due >}}, with presentations in the last week of class.
 
 You may work in groups up to 3, and I strongly advise working in groups this time! Some of the work is just plain tedious. Click [here](https://classroom50.org/mru-data3464-f26/data-3464/assignments/assignment-3/accept) to create your groups on Classroom 50 and clone your mostly empty repository. This time, I will create the corresponding D2L groups.
 
 I encourage you to talk things through as you try different things. If you talk with classmates from a different group, **cite their contribution**. Similarly, if you use a web resource, add a link in the code - this is both polite, and a good habit to develop.
+
+## Frequently asked questions
+I've been getting some questions about this assignment, which is great! Don't hesitate to ask for clarification, and I'll post answers here in case others have the same questions.
+
+1. **Can we adapt an existing dataset?** Yes. You can combine multiple existing datasets into a new dataset, provided it is non-trivial (as in assignment 2).
+
+2. **Can we replicate an existing dataset?** No. While that would be a good exercise in understanding how data are processed, I'd like you to do something new.
+
+3. **Can we use AI in the process?** Yes, provided **none of the data is AI-generated**. Examples of acceptable use include generating a labelling tool to help label your data manually or using AI-assisted coding to write processing scripts. The usual **attribution and understanding rules** apply.
 
 ## The problem
 Thus far, we have worked with data at varying levels of "cleanliness" — whether from CSVs, database queries, or poorly encoded governmental PDFs. At this point, you have a pretty good sense of what a nice dataset to work with looks like, and what a not-so-nice one looks like. The goal of this assignment is to **create a dataset** that is appropriate for a supervised machine learning task.

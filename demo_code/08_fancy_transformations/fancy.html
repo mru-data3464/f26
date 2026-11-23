@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Combining infrequent categories – DATA 3464 | Fall 2026</title>
+<title>Fancy Encoding and Data Transformations – DATA 3464 | Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -84,9 +84,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5e4950f7cc57867688055aa4b030798f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-f112516fec58f1b6274c484386eccdc4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-5e4950f7cc57867688055aa4b030798f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-132002df15ea4f823f66d2cdb4dbf165.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-559c00c4137fdc4f43f71781c988610c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-132002df15ea4f823f66d2cdb4dbf165.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Combining infrequent categories</h1>
+<h1 class="title">Fancy Encoding and Data Transformations</h1>
 </div>
 
 
@@ -295,6 +295,8 @@ status      5</code></pre>
 </div>
 </div>
 </div>
+<section id="combining-infrequent-categories" class="level2">
+<h2 class="anchored" data-anchor-id="combining-infrequent-categories">Combining infrequent categories</h2>
 <div id="9cf138c5" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: see how it changes with max_categories</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pet_enc <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>, max_categories<span class="op">=</span><span class="dv">12</span>).set_output(transform<span class="op">=</span><span class="st">"pandas"</span>)</span>
@@ -513,6 +515,7 @@ pets_infrequent_sklearn                539.0
 dtype: float64</code></pre>
 </div>
 </div>
+</section>
 <section id="feature-hashing" class="level2">
 <h2 class="anchored" data-anchor-id="feature-hashing">Feature Hashing</h2>
 <p>For very high cardinality strings (or other iterables)</p>

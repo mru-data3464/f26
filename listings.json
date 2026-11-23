@@ -1,5 +1,26 @@
 [
   {
+    "listing": "/labs/index.html",
+    "items": [
+      "/labs/01-clean-regression.html",
+      "/labs/02-basic-models.html",
+      "/labs/03-categorical.html",
+      "/labs/04-eda.html",
+      "/labs/05-missing-outliers.html",
+      "/labs/06-fancy-encoding.html",
+      "/labs/07-text-wrangling.html",
+      "/labs/08-bash.html"
+    ]
+  },
+  {
+    "listing": "/assignments/index.html",
+    "items": [
+      "/assignments/01-simple-model.html",
+      "/assignments/02-eda.html",
+      "/assignments/03-dataset.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/lectures/01-intro.html",
@@ -15,6 +36,7 @@
       "/lectures/11-bash-cards.html",
       "/lectures/12-timeseries.html",
       "/lectures/13-signals-audio.html",
+      "/lectures/14-images.html",
       "/lectures/index.html",
       "/labs/01-clean-regression.html",
       "/labs/02-basic-models.html",
@@ -25,27 +47,6 @@
       "/labs/07-text-wrangling.html",
       "/labs/08-bash.html",
       "/labs/index.html"
-    ]
-  },
-  {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/01-simple-model.html",
-      "/assignments/02-eda.html",
-      "/assignments/03-dataset.html"
-    ]
-  },
-  {
-    "listing": "/labs/index.html",
-    "items": [
-      "/labs/01-clean-regression.html",
-      "/labs/02-basic-models.html",
-      "/labs/03-categorical.html",
-      "/labs/04-eda.html",
-      "/labs/05-missing-outliers.html",
-      "/labs/06-fancy-encoding.html",
-      "/labs/07-text-wrangling.html",
-      "/labs/08-bash.html"
     ]
   },
   {
@@ -63,7 +64,8 @@
       "/lectures/10-text.html",
       "/lectures/11-bash-cards.html",
       "/lectures/12-timeseries.html",
-      "/lectures/13-signals-audio.html"
+      "/lectures/13-signals-audio.html",
+      "/lectures/14-images.html"
     ]
   }
 ]

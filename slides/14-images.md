@@ -8,6 +8,7 @@ headingDivider: 2
 layout: lecture
 toc: true
 demo-code: "/demo_code/14_images/image_demos.ipynb"
+leftoff: "Slide 6"
 ---
 
 <!-- 

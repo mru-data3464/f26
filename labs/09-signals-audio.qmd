@@ -16,7 +16,7 @@ Learn about:
 ## Setup
 Create a `lab09` subdirectory in your labs repo and add the following files. **Do not listen to them** — try to figure out which is which by looking at the signals.
 - [sound1.wav](_09-starter/sound1.wav)
-- [sound2.wav](09-starter/sound2.wav)
+- [sound2.wav](_09-starter/sound2.wav)
 
 The files were downloaded from freesound.org:
 - Breaking Glass #1.wav by abstraktgeneriert -- https://freesound.org/s/233607/ -- License: Creative Commons 0

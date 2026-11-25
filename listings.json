@@ -9,15 +9,8 @@
       "/labs/05-missing-outliers.html",
       "/labs/06-fancy-encoding.html",
       "/labs/07-text-wrangling.html",
-      "/labs/08-bash.html"
-    ]
-  },
-  {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/01-simple-model.html",
-      "/assignments/02-eda.html",
-      "/assignments/03-dataset.html"
+      "/labs/08-bash.html",
+      "/labs/09-signals-audio.html"
     ]
   },
   {
@@ -46,7 +39,16 @@
       "/labs/06-fancy-encoding.html",
       "/labs/07-text-wrangling.html",
       "/labs/08-bash.html",
+      "/labs/09-signals-audio.html",
       "/labs/index.html"
+    ]
+  },
+  {
+    "listing": "/assignments/index.html",
+    "items": [
+      "/assignments/01-simple-model.html",
+      "/assignments/02-eda.html",
+      "/assignments/03-dataset.html"
     ]
   },
   {

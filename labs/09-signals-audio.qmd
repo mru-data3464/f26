@@ -1,0 +1,80 @@
+---
+title: "Lab 9: 1D Signals and Audio"
+date: 2026-11-25
+due: "December 2, 2026"
+---
+
+Lab submission due on {{< meta due >}}.
+
+## Objective
+Learn about:
+- Audio as 1D signals
+- Time and frequency representations
+- Characteristics of audio files
+- Basic audio processing
+
+## Setup
+Create a `lab09` subdirectory in your labs repo and add the following files. **Do not listen to them** — try to figure out which is which by looking at the signals.
+- [sound1.wav](_09-starter/sound1.wav)
+- [sound2.wav](_09-starter/sound2.wav)
+
+The files were downloaded from freesound.org:
+- Breaking Glass #1.wav by abstraktgeneriert -- https://freesound.org/s/233607/ -- License: Creative Commons 0
+- sirene_06080401.wav by WIM -- https://freesound.org/s/26173/ -- License: Attribution 4.0
+
+As the attribution suggests, one is breaking glass and the other is a siren.
+
+## Task 1: Load and inspect the data
+As usual, it's a good idea to do some EDA before diving in. This is also an excuse to play with two different libraries:
+
+- [`wavfile.read()`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html#scipy.io.wavfile.read) reads a wav file and interprets it as-is, returning a tuple of the sample rate (int) and the signal data (a numpy `ndarray`).
+- [`librosa.load()`](https://librosa.org/doc/latest/generated/librosa.load.html) reads a wav file and by default does some basic preprocessing.
+
+1. Load both of the files using `wavfile.read()` (ignoring the warnings that pop up). Try to determine the the...
+   - Sampling rates
+   - Number of Channels
+   - Data types
+   - Bit depths
+    If there are differences between the files, how does this present a challenge in processing?
+
+2. Next, load both using `librosa.load()`. How do the resulting signals differ?
+3. Working with the `librosa` data, plot the signals in the time domain on the same graph.
+   
+   ::: {.callout-tip}
+
+   The [sampling rate](https://en.wikipedia.org/wiki/Sampling_(signal_processing)#Sampling_rate) or sampling frequency is the number of samples per second. You can use this to figure out the time vector for your plots.
+
+   :::
+
+4. Compute the frequency domain representation of both sounds and plot the magnitude spectrum.
+   
+   ::: {.callout-tip}
+   
+   Matplotlib has a function [`plt.magnitude_spectrum`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.magnitude_spectrum.html) which computes the FFT, scales it by the number of samples, and plots the magnitude in the positive half of the frequency spectrum. Neat. Just remember to pass the `Fs` (sampling frequency) parameter so that you get an accurate frequency axis.
+
+   :::
+
+5. Based on the time and frequency plots, can you guess which signal is breaking glass and which is a siren? Remember, high in frequency = short in time.
+
+## Task 2: Basic audio processing
+Now that you've got the two clips loaded, you can start playing around with some processing. You can listen to the sounds as you change them with:
+
+```python
+import IPython.display as ipd
+ipd.Audio(sound, rate=sampling_rate)
+```
+
+which will display a little "play" button in the notebook.
+
+Here's some suggestions of things to try:
+
+1. Resample at various sampling rates, e.g. using `librosa.resample`. How does this affect both sounds? Pay particular attention to the frequency domain!
+
+2. One useful feature in audio signals is the **onset**, or when a sound starts. This is more useful for longer signals (like finding the beat in songs), but it could also be useful for aligning the start of a sound in a dataset. Try using [`librosa.onset.onset_detect`](https://librosa.org/doc/main/generated/librosa.onset.onset_detect.html) to find the time or sample for a "new note" in each signal. Do the results make sense to you?
+
+3. Try adding "noise" to your sounds, such as random numbers sampled from a normal distribution.
+
+4. Generate your own sounds and play with them, such as a constant [tone](https://librosa.org/doc//1.0.1/api/generated/librosa.tone.html).
+
+## Submit
+As usual, commit and push what you've done so I can see your work. 

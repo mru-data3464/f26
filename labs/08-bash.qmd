@@ -13,7 +13,7 @@ Learn about:
 - Extracting text features with regular expressions
 
 ## Setup
-Create a `lab08` subdirectory 
+Create a `lab08` subdirectory in your labs repo to store the files you'll be creating. There is no additional starter data or code.
 
 ## Basic Bash
 Open up Git Bash (if you're on Windows), or Terminal on OSX, or some flavour of terminal on Linux. If you're on Git bash, then the `C:` drive is mapped to `/c/`. On the lab computers, you're probably starting off in your `H:` drive, or `/h/`.
